@@ -28,35 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
+            this.GMap = new GMap.NET.WindowsForms.GMapControl();
             this.SearchButton = new System.Windows.Forms.Button();
+            this.LatitudeTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.LongitudeTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.LatitudeLabel = new System.Windows.Forms.Label();
+            this.LongitudeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // gMapControl1
+            // GMap
             // 
-            this.gMapControl1.Bearing = 0F;
-            this.gMapControl1.CanDragMap = true;
-            this.gMapControl1.EmptyTileColor = System.Drawing.Color.Navy;
-            this.gMapControl1.GrayScaleMode = false;
-            this.gMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.gMapControl1.LevelsKeepInMemory = 5;
-            this.gMapControl1.Location = new System.Drawing.Point(375, 22);
-            this.gMapControl1.MarkersEnabled = true;
-            this.gMapControl1.MaxZoom = 2;
-            this.gMapControl1.MinZoom = 2;
-            this.gMapControl1.MouseWheelZoomEnabled = true;
-            this.gMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.gMapControl1.Name = "gMapControl1";
-            this.gMapControl1.NegativeMode = false;
-            this.gMapControl1.PolygonsEnabled = true;
-            this.gMapControl1.RetryLoadTile = 0;
-            this.gMapControl1.RoutesEnabled = true;
-            this.gMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.gMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.gMapControl1.ShowTileGridLines = false;
-            this.gMapControl1.Size = new System.Drawing.Size(348, 295);
-            this.gMapControl1.TabIndex = 0;
-            this.gMapControl1.Zoom = 0D;
+            this.GMap.Bearing = 0F;
+            this.GMap.CanDragMap = true;
+            this.GMap.EmptyTileColor = System.Drawing.Color.Navy;
+            this.GMap.GrayScaleMode = false;
+            this.GMap.LevelsKeepInMemory = 5;
+            this.GMap.Location = new System.Drawing.Point(375, 22);
+            this.GMap.MarkersEnabled = true;
+            this.GMap.MaxZoom = 2;
+            this.GMap.MinZoom = 2;
+            this.GMap.MouseWheelZoomEnabled = true;
+            this.GMap.Name = "GMap";
+            this.GMap.NegativeMode = false;
+            this.GMap.PolygonsEnabled = true;
+            this.GMap.RetryLoadTile = 0;
+            this.GMap.RoutesEnabled = true;
+            this.GMap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.GMap.ShowTileGridLines = false;
+            this.GMap.Size = new System.Drawing.Size(348, 295);
+            this.GMap.TabIndex = 0;
+            this.GMap.Zoom = 0D;
+            this.GMap.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // SearchButton
             // 
@@ -66,24 +68,67 @@
             this.SearchButton.TabIndex = 1;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // LatitudeTextBox
+            // 
+            this.LatitudeTextBox.Location = new System.Drawing.Point(83, 149);
+            this.LatitudeTextBox.Name = "LatitudeTextBox";
+            this.LatitudeTextBox.Size = new System.Drawing.Size(214, 22);
+            this.LatitudeTextBox.TabIndex = 2;
+            // 
+            // LongitudeTextBox
+            // 
+            this.LongitudeTextBox.Location = new System.Drawing.Point(83, 232);
+            this.LongitudeTextBox.Name = "LongitudeTextBox";
+            this.LongitudeTextBox.Size = new System.Drawing.Size(214, 22);
+            this.LongitudeTextBox.TabIndex = 3;
+            // 
+            // LatitudeLabel
+            // 
+            this.LatitudeLabel.AutoSize = true;
+            this.LatitudeLabel.Location = new System.Drawing.Point(83, 121);
+            this.LatitudeLabel.Name = "LatitudeLabel";
+            this.LatitudeLabel.Size = new System.Drawing.Size(57, 16);
+            this.LatitudeLabel.TabIndex = 4;
+            this.LatitudeLabel.Text = "Latitude:";
+            // 
+            // LongitudeLabel
+            // 
+            this.LongitudeLabel.AutoSize = true;
+            this.LongitudeLabel.Location = new System.Drawing.Point(83, 213);
+            this.LongitudeLabel.Name = "LongitudeLabel";
+            this.LongitudeLabel.Size = new System.Drawing.Size(66, 16);
+            this.LongitudeLabel.TabIndex = 5;
+            this.LongitudeLabel.Text = "Longitude";
+            this.LongitudeLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LongitudeLabel);
+            this.Controls.Add(this.LatitudeLabel);
+            this.Controls.Add(this.LongitudeTextBox);
+            this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
-            this.Controls.Add(this.gMapControl1);
+            this.Controls.Add(this.GMap);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private GMap.NET.WindowsForms.GMapControl gMapControl1;
+        private GMap.NET.WindowsForms.GMapControl GMap;
         private System.Windows.Forms.Button SearchButton;
+        private System.Windows.Forms.MaskedTextBox LatitudeTextBox;
+        private System.Windows.Forms.MaskedTextBox LongitudeTextBox;
+        private System.Windows.Forms.Label LatitudeLabel;
+        private System.Windows.Forms.Label LongitudeLabel;
     }
 }
 
