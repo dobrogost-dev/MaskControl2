@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GMap = new GMap.NET.WindowsForms.GMapControl();
+            this.Map = new GMap.NET.WindowsForms.GMapControl();
             this.SearchButton = new System.Windows.Forms.Button();
             this.LatitudeTextBox = new System.Windows.Forms.MaskedTextBox();
             this.LongitudeTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -36,29 +36,32 @@
             this.LongitudeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // GMap
+            // Map
             // 
-            this.GMap.Bearing = 0F;
-            this.GMap.CanDragMap = true;
-            this.GMap.EmptyTileColor = System.Drawing.Color.Navy;
-            this.GMap.GrayScaleMode = false;
-            this.GMap.LevelsKeepInMemory = 5;
-            this.GMap.Location = new System.Drawing.Point(375, 22);
-            this.GMap.MarkersEnabled = true;
-            this.GMap.MaxZoom = 2;
-            this.GMap.MinZoom = 2;
-            this.GMap.MouseWheelZoomEnabled = true;
-            this.GMap.Name = "GMap";
-            this.GMap.NegativeMode = false;
-            this.GMap.PolygonsEnabled = true;
-            this.GMap.RetryLoadTile = 0;
-            this.GMap.RoutesEnabled = true;
-            this.GMap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.GMap.ShowTileGridLines = false;
-            this.GMap.Size = new System.Drawing.Size(348, 295);
-            this.GMap.TabIndex = 0;
-            this.GMap.Zoom = 0D;
-            this.GMap.Load += new System.EventHandler(this.gMapControl1_Load);
+            this.Map.Bearing = 0F;
+            this.Map.CanDragMap = true;
+            this.Map.EmptyTileColor = System.Drawing.Color.Navy;
+            this.Map.GrayScaleMode = false;
+            this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.Map.LevelsKeepInMemory = 5;
+            this.Map.Location = new System.Drawing.Point(375, 22);
+            this.Map.MarkersEnabled = true;
+            this.Map.MaxZoom = 2;
+            this.Map.MinZoom = 2;
+            this.Map.MouseWheelZoomEnabled = true;
+            this.Map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.Map.Name = "Map";
+            this.Map.NegativeMode = false;
+            this.Map.PolygonsEnabled = true;
+            this.Map.RetryLoadTile = 0;
+            this.Map.RoutesEnabled = true;
+            this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.Map.ShowTileGridLines = false;
+            this.Map.Size = new System.Drawing.Size(348, 295);
+            this.Map.TabIndex = 0;
+            this.Map.Zoom = 0D;
+            this.Map.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // SearchButton
             // 
@@ -113,7 +116,7 @@
             this.Controls.Add(this.LongitudeTextBox);
             this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
-            this.Controls.Add(this.GMap);
+            this.Controls.Add(this.Map);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -123,7 +126,7 @@
 
         #endregion
 
-        private GMap.NET.WindowsForms.GMapControl GMap;
+        private GMap.NET.WindowsForms.GMapControl Map;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.MaskedTextBox LatitudeTextBox;
         private System.Windows.Forms.MaskedTextBox LongitudeTextBox;
