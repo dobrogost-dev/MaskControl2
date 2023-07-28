@@ -36,6 +36,8 @@
             this.LongitudeLabel = new System.Windows.Forms.Label();
             this.AddressLabel = new System.Windows.Forms.Label();
             this.AddressTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.ZoomInButton = new System.Windows.Forms.Button();
+            this.ZoomOutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Map
@@ -63,7 +65,7 @@
             this.Map.Size = new System.Drawing.Size(482, 343);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
-            this.Map.Load += new System.EventHandler(this.gMapControl1_Load);
+            this.Map.Load += new System.EventHandler(this.Map_Load);
             // 
             // SearchButton
             // 
@@ -106,16 +108,15 @@
             this.LongitudeLabel.Size = new System.Drawing.Size(66, 16);
             this.LongitudeLabel.TabIndex = 5;
             this.LongitudeLabel.Text = "Longitude";
-            this.LongitudeLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // AddressLabel
             // 
             this.AddressLabel.AutoSize = true;
             this.AddressLabel.Location = new System.Drawing.Point(60, 348);
             this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(66, 16);
+            this.AddressLabel.Size = new System.Drawing.Size(58, 16);
             this.AddressLabel.TabIndex = 7;
-            this.AddressLabel.Text = "Longitude";
+            this.AddressLabel.Text = "Address";
             // 
             // AddressTextBox
             // 
@@ -124,11 +125,33 @@
             this.AddressTextBox.Size = new System.Drawing.Size(205, 22);
             this.AddressTextBox.TabIndex = 6;
             // 
+            // ZoomInButton
+            // 
+            this.ZoomInButton.Location = new System.Drawing.Point(318, 370);
+            this.ZoomInButton.Name = "ZoomInButton";
+            this.ZoomInButton.Size = new System.Drawing.Size(93, 28);
+            this.ZoomInButton.TabIndex = 8;
+            this.ZoomInButton.Text = "Zoom in";
+            this.ZoomInButton.UseVisualStyleBackColor = true;
+            this.ZoomInButton.Click += new System.EventHandler(this.ZoomInButton_Click);
+            // 
+            // ZoomOutButton
+            // 
+            this.ZoomOutButton.Location = new System.Drawing.Point(417, 370);
+            this.ZoomOutButton.Name = "ZoomOutButton";
+            this.ZoomOutButton.Size = new System.Drawing.Size(93, 28);
+            this.ZoomOutButton.TabIndex = 9;
+            this.ZoomOutButton.Text = "Zoom out";
+            this.ZoomOutButton.UseVisualStyleBackColor = true;
+            this.ZoomOutButton.Click += new System.EventHandler(this.ZoomOutButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 513);
+            this.Controls.Add(this.ZoomOutButton);
+            this.Controls.Add(this.ZoomInButton);
             this.Controls.Add(this.AddressLabel);
             this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.LongitudeLabel);
@@ -154,6 +177,8 @@
         private System.Windows.Forms.Label LongitudeLabel;
         private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.MaskedTextBox AddressTextBox;
+        private System.Windows.Forms.Button ZoomInButton;
+        private System.Windows.Forms.Button ZoomOutButton;
     }
 }
 

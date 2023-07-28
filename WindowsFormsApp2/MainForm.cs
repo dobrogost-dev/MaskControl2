@@ -15,6 +15,7 @@ namespace WindowsFormsApp2
 {
     public partial class MainForm : Form
     {
+        public static int BaseZoom = 1;
         public MainForm()
         {
             InitializeComponent();
@@ -23,16 +24,9 @@ namespace WindowsFormsApp2
             double longitude = 21.0026;
             Map.Position = new PointLatLng(latitude, longitude);
             Map.MouseWheelZoomEnabled = true;
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gMapControl1_Load(object sender, EventArgs e)
-        {
-
+            Map.MaxZoom = 20;
+            Map.MinZoom = 3;
+            Map.Zoom = Map.MinZoom;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -45,6 +39,24 @@ namespace WindowsFormsApp2
             double latitude = Convert.ToDouble(LatitudeTextBox.Text, provider);
             double longitude = Convert.ToDouble(LongitudeTextBox.Text, provider);*/
             Map.SetPositionByKeywords(AddressTextBox.Text);
+        }
+
+        private void ZoomInButton_Click(object sender, EventArgs e)
+        {
+            Map.Zoom = Math.Min(Map.MaxZoom, Map.Zoom + BaseZoom );
+            Console.WriteLine(Map.Zoom);
+        }
+
+        private void ZoomOutButton_Click(object sender, EventArgs e)
+        {
+            Map.Zoom = Math.Max(Map.MinZoom, Map.Zoom - BaseZoom);
+            Console.WriteLine(Map.Zoom);
+
+        }
+
+        private void Map_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
