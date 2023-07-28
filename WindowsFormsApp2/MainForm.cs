@@ -22,6 +22,7 @@ namespace WindowsFormsApp2
             double latitude = 52.2188;
             double longitude = 21.0026;
             Map.Position = new PointLatLng(latitude, longitude);
+            Map.MouseWheelZoomEnabled = true;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -36,14 +37,14 @@ namespace WindowsFormsApp2
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            NumberFormatInfo provider = new NumberFormatInfo();
+            /*NumberFormatInfo provider = new NumberFormatInfo();
             provider.NumberDecimalSeparator = ".";
             provider.NumberGroupSeparator = ",";
             Console.WriteLine(LatitudeTextBox.Text);
             Console.WriteLine(LongitudeTextBox.Text);
             double latitude = Convert.ToDouble(LatitudeTextBox.Text, provider);
-            double longitude = Convert.ToDouble(LongitudeTextBox.Text, provider);
-            Map.Position = new PointLatLng(latitude, longitude);
+            double longitude = Convert.ToDouble(LongitudeTextBox.Text, provider);*/
+            Map.SetPositionByKeywords(AddressTextBox.Text);
         }
     }
 }

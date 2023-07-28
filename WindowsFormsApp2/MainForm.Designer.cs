@@ -34,6 +34,8 @@
             this.LongitudeTextBox = new System.Windows.Forms.MaskedTextBox();
             this.LatitudeLabel = new System.Windows.Forms.Label();
             this.LongitudeLabel = new System.Windows.Forms.Label();
+            this.AddressLabel = new System.Windows.Forms.Label();
+            this.AddressTextBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // Map
@@ -44,7 +46,7 @@
             this.Map.GrayScaleMode = false;
             this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.Map.LevelsKeepInMemory = 5;
-            this.Map.Location = new System.Drawing.Point(375, 22);
+            this.Map.Location = new System.Drawing.Point(318, 21);
             this.Map.MarkersEnabled = true;
             this.Map.MaxZoom = 2;
             this.Map.MinZoom = 2;
@@ -58,16 +60,16 @@
             this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Map.ShowTileGridLines = false;
-            this.Map.Size = new System.Drawing.Size(348, 295);
+            this.Map.Size = new System.Drawing.Size(482, 343);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
             this.Map.Load += new System.EventHandler(this.gMapControl1_Load);
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(69, 345);
+            this.SearchButton.Location = new System.Drawing.Point(49, 422);
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(228, 75);
+            this.SearchButton.Size = new System.Drawing.Size(234, 65);
             this.SearchButton.TabIndex = 1;
             this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
@@ -75,14 +77,14 @@
             // 
             // LatitudeTextBox
             // 
-            this.LatitudeTextBox.Location = new System.Drawing.Point(83, 149);
+            this.LatitudeTextBox.Location = new System.Drawing.Point(69, 49);
             this.LatitudeTextBox.Name = "LatitudeTextBox";
             this.LatitudeTextBox.Size = new System.Drawing.Size(214, 22);
             this.LatitudeTextBox.TabIndex = 2;
             // 
             // LongitudeTextBox
             // 
-            this.LongitudeTextBox.Location = new System.Drawing.Point(83, 232);
+            this.LongitudeTextBox.Location = new System.Drawing.Point(69, 115);
             this.LongitudeTextBox.Name = "LongitudeTextBox";
             this.LongitudeTextBox.Size = new System.Drawing.Size(214, 22);
             this.LongitudeTextBox.TabIndex = 3;
@@ -90,7 +92,7 @@
             // LatitudeLabel
             // 
             this.LatitudeLabel.AutoSize = true;
-            this.LatitudeLabel.Location = new System.Drawing.Point(83, 121);
+            this.LatitudeLabel.Location = new System.Drawing.Point(69, 21);
             this.LatitudeLabel.Name = "LatitudeLabel";
             this.LatitudeLabel.Size = new System.Drawing.Size(57, 16);
             this.LatitudeLabel.TabIndex = 4;
@@ -99,18 +101,36 @@
             // LongitudeLabel
             // 
             this.LongitudeLabel.AutoSize = true;
-            this.LongitudeLabel.Location = new System.Drawing.Point(83, 213);
+            this.LongitudeLabel.Location = new System.Drawing.Point(69, 96);
             this.LongitudeLabel.Name = "LongitudeLabel";
             this.LongitudeLabel.Size = new System.Drawing.Size(66, 16);
             this.LongitudeLabel.TabIndex = 5;
             this.LongitudeLabel.Text = "Longitude";
             this.LongitudeLabel.Click += new System.EventHandler(this.label2_Click);
             // 
+            // AddressLabel
+            // 
+            this.AddressLabel.AutoSize = true;
+            this.AddressLabel.Location = new System.Drawing.Point(60, 348);
+            this.AddressLabel.Name = "AddressLabel";
+            this.AddressLabel.Size = new System.Drawing.Size(66, 16);
+            this.AddressLabel.TabIndex = 7;
+            this.AddressLabel.Text = "Longitude";
+            // 
+            // AddressTextBox
+            // 
+            this.AddressTextBox.Location = new System.Drawing.Point(60, 367);
+            this.AddressTextBox.Name = "AddressTextBox";
+            this.AddressTextBox.Size = new System.Drawing.Size(205, 22);
+            this.AddressTextBox.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(823, 513);
+            this.Controls.Add(this.AddressLabel);
+            this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.LongitudeLabel);
             this.Controls.Add(this.LatitudeLabel);
             this.Controls.Add(this.LongitudeTextBox);
@@ -132,6 +152,8 @@
         private System.Windows.Forms.MaskedTextBox LongitudeTextBox;
         private System.Windows.Forms.Label LatitudeLabel;
         private System.Windows.Forms.Label LongitudeLabel;
+        private System.Windows.Forms.Label AddressLabel;
+        private System.Windows.Forms.MaskedTextBox AddressTextBox;
     }
 }
 
