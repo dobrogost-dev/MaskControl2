@@ -79,22 +79,22 @@
             // 
             // LatitudeTextBox
             // 
-            this.LatitudeTextBox.Location = new System.Drawing.Point(69, 49);
+            this.LatitudeTextBox.Location = new System.Drawing.Point(49, 49);
             this.LatitudeTextBox.Name = "LatitudeTextBox";
-            this.LatitudeTextBox.Size = new System.Drawing.Size(214, 22);
+            this.LatitudeTextBox.Size = new System.Drawing.Size(206, 22);
             this.LatitudeTextBox.TabIndex = 2;
             // 
             // LongitudeTextBox
             // 
-            this.LongitudeTextBox.Location = new System.Drawing.Point(69, 115);
+            this.LongitudeTextBox.Location = new System.Drawing.Point(49, 115);
             this.LongitudeTextBox.Name = "LongitudeTextBox";
-            this.LongitudeTextBox.Size = new System.Drawing.Size(214, 22);
+            this.LongitudeTextBox.Size = new System.Drawing.Size(206, 22);
             this.LongitudeTextBox.TabIndex = 3;
             // 
             // LatitudeLabel
             // 
             this.LatitudeLabel.AutoSize = true;
-            this.LatitudeLabel.Location = new System.Drawing.Point(69, 21);
+            this.LatitudeLabel.Location = new System.Drawing.Point(46, 21);
             this.LatitudeLabel.Name = "LatitudeLabel";
             this.LatitudeLabel.Size = new System.Drawing.Size(57, 16);
             this.LatitudeLabel.TabIndex = 4;
@@ -103,7 +103,7 @@
             // LongitudeLabel
             // 
             this.LongitudeLabel.AutoSize = true;
-            this.LongitudeLabel.Location = new System.Drawing.Point(69, 96);
+            this.LongitudeLabel.Location = new System.Drawing.Point(46, 96);
             this.LongitudeLabel.Name = "LongitudeLabel";
             this.LongitudeLabel.Size = new System.Drawing.Size(66, 16);
             this.LongitudeLabel.TabIndex = 5;
@@ -120,9 +120,9 @@
             // 
             // AddressTextBox
             // 
-            this.AddressTextBox.Location = new System.Drawing.Point(60, 367);
+            this.AddressTextBox.Location = new System.Drawing.Point(49, 367);
             this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(205, 22);
+            this.AddressTextBox.Size = new System.Drawing.Size(234, 22);
             this.AddressTextBox.TabIndex = 6;
             // 
             // ZoomInButton
