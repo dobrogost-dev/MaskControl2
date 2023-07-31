@@ -38,6 +38,9 @@
             this.ZoomInButton = new System.Windows.Forms.Button();
             this.ZoomOutButton = new System.Windows.Forms.Button();
             this.LongitudeTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.MaskButton = new System.Windows.Forms.Button();
+            this.RadiusLabel = new System.Windows.Forms.Label();
+            this.RadiusTextBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // Map
@@ -145,11 +148,40 @@
             this.LongitudeTextBox.Size = new System.Drawing.Size(134, 22);
             this.LongitudeTextBox.TabIndex = 3;
             // 
+            // MaskButton
+            // 
+            this.MaskButton.Location = new System.Drawing.Point(555, 42);
+            this.MaskButton.Name = "MaskButton";
+            this.MaskButton.Size = new System.Drawing.Size(113, 34);
+            this.MaskButton.TabIndex = 10;
+            this.MaskButton.Text = "Mask";
+            this.MaskButton.UseVisualStyleBackColor = true;
+            this.MaskButton.Click += new System.EventHandler(this.MaskButton_Click);
+            // 
+            // RadiusLabel
+            // 
+            this.RadiusLabel.AutoSize = true;
+            this.RadiusLabel.Location = new System.Drawing.Point(352, 48);
+            this.RadiusLabel.Name = "RadiusLabel";
+            this.RadiusLabel.Size = new System.Drawing.Size(50, 16);
+            this.RadiusLabel.TabIndex = 12;
+            this.RadiusLabel.Text = "Radius";
+            // 
+            // RadiusTextBox
+            // 
+            this.RadiusTextBox.Location = new System.Drawing.Point(415, 48);
+            this.RadiusTextBox.Name = "RadiusTextBox";
+            this.RadiusTextBox.Size = new System.Drawing.Size(134, 22);
+            this.RadiusTextBox.TabIndex = 11;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 513);
+            this.Controls.Add(this.RadiusLabel);
+            this.Controls.Add(this.RadiusTextBox);
+            this.Controls.Add(this.MaskButton);
             this.Controls.Add(this.ZoomOutButton);
             this.Controls.Add(this.ZoomInButton);
             this.Controls.Add(this.AddressLabel);
@@ -179,6 +211,9 @@
         private System.Windows.Forms.Button ZoomInButton;
         private System.Windows.Forms.Button ZoomOutButton;
         private System.Windows.Forms.MaskedTextBox LongitudeTextBox;
+        private System.Windows.Forms.Button MaskButton;
+        private System.Windows.Forms.Label RadiusLabel;
+        private System.Windows.Forms.MaskedTextBox RadiusTextBox;
     }
 }
 
