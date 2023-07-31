@@ -47,6 +47,7 @@ namespace WindowsFormsApp2
             double latitude = Convert.ToDouble(LatitudeTextBox.Text, provider);
             double longitude = Convert.ToDouble(LongitudeTextBox.Text, provider);*/
             Map.SetPositionByKeywords(AddressTextBox.Text);
+            Map.Zoom = 18;
         }
 
         private void ZoomInButton_Click(object sender, EventArgs e)
