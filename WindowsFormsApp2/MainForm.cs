@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static GMap.NET.Entity.OpenStreetMapGraphHopperGeocodeEntity;
 
 namespace WindowsFormsApp2
 {
@@ -20,6 +21,7 @@ namespace WindowsFormsApp2
     {
         public static int BaseZoom = 1;
         public GMapOverlay markersOverlay;
+        public GMarkerGoogle currentMarker = new GMarkerGoogle(new PointLatLng(0,0), GMarkerGoogleType.red_dot);
         public MainForm()
         {
             InitializeComponent();
@@ -39,13 +41,6 @@ namespace WindowsFormsApp2
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            /*NumberFormatInfo provider = new NumberFormatInfo();
-            provider.NumberDecimalSeparator = ".";
-            provider.NumberGroupSeparator = ",";
-            Console.WriteLine(LatitudeTextBox.Text);
-            Console.WriteLine(LongitudeTextBox.Text);
-            double latitude = Convert.ToDouble(LatitudeTextBox.Text, provider);
-            double longitude = Convert.ToDouble(LongitudeTextBox.Text, provider);*/
             Map.SetPositionByKeywords(AddressTextBox.Text);
             Map.Zoom = 18;
         }
@@ -71,16 +66,12 @@ namespace WindowsFormsApp2
         {
             if (e.Button == MouseButtons.Left)
             {
-                // Pobranie współrzędnych punktu kliknięcia
+                if (markersOverlay.Markers.Count == 0) 
+                {
+                    markersOverlay.Markers.Add(currentMarker);
+                }
                 PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
-
-                // Tworzenie markera
-                GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red_dot);
-
-                // Dodanie markera do warstwy
-                markersOverlay.Markers.Add(marker);
-
-                // Odświeżenie mapy, aby pokazać dodany marker
+                currentMarker.Position = point;
                 Map.Refresh();
             }
         }
