@@ -36,9 +36,9 @@ namespace WindowsFormsApp2
                 Console.WriteLine("Building id: " + building.id);
                 foreach (long node in building.nodes)
                 {
-                    Console.WriteLine("Node id: " + node);
-                    Console.WriteLine("Node latitude: " + nodes.FirstOrDefault(e => e.id == node).lat);
-                    Console.WriteLine("Node longitude: " + nodes.FirstOrDefault(e => e.id == node).lon);
+                    Console.WriteLine("     Node id: " + node);
+                    Console.WriteLine("         Node latitude: " + nodes.FirstOrDefault(e => e.id == node).lat);
+                    Console.WriteLine("         Node longitude: " + nodes.FirstOrDefault(e => e.id == node).lon);
                 }
             }
         }

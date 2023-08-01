@@ -82,6 +82,11 @@ namespace WindowsFormsApp2
 
         private async void MaskButton_Click(object sender, EventArgs e)
         {
+            if (RadiusTextBox.Text == string.Empty ||
+                markersOverlay.Markers.Count == 0)
+            {
+                return;
+            }
             double radius = Double.Parse(RadiusTextBox.Text);
             // Zmiana double na stringa oddzielonego kropką zamiast przecinka
             string latitude = currentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);

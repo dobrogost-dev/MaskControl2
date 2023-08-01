@@ -34,7 +34,6 @@
             this.LatitudeLabel = new System.Windows.Forms.Label();
             this.LongitudeLabel = new System.Windows.Forms.Label();
             this.AddressLabel = new System.Windows.Forms.Label();
-            this.AddressTextBox = new System.Windows.Forms.MaskedTextBox();
             this.ZoomInButton = new System.Windows.Forms.Button();
             this.ZoomOutButton = new System.Windows.Forms.Button();
             this.LongitudeTextBox = new System.Windows.Forms.MaskedTextBox();
@@ -45,6 +44,7 @@
             this.RadiusTextBox = new System.Windows.Forms.TextBox();
             this.DefaultFloorHeightTextBox = new System.Windows.Forms.TextBox();
             this.DefaultBuildingHeightTextBox = new System.Windows.Forms.TextBox();
+            this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Map
@@ -117,13 +117,6 @@
             this.AddressLabel.Size = new System.Drawing.Size(58, 16);
             this.AddressLabel.TabIndex = 7;
             this.AddressLabel.Text = "Address";
-            // 
-            // AddressTextBox
-            // 
-            this.AddressTextBox.Location = new System.Drawing.Point(81, 6);
-            this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(468, 22);
-            this.AddressTextBox.TabIndex = 6;
             // 
             // ZoomInButton
             // 
@@ -213,11 +206,19 @@
             this.DefaultBuildingHeightTextBox.TabIndex = 19;
             this.DefaultBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultBuildingHeightTextBox_TextChanged);
             // 
+            // AddressTextBox
+            // 
+            this.AddressTextBox.Location = new System.Drawing.Point(82, 9);
+            this.AddressTextBox.Name = "AddressTextBox";
+            this.AddressTextBox.Size = new System.Drawing.Size(460, 22);
+            this.AddressTextBox.TabIndex = 20;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 500);
+            this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.DefaultBuildingHeightTextBox);
             this.Controls.Add(this.DefaultFloorHeightTextBox);
             this.Controls.Add(this.RadiusTextBox);
@@ -228,7 +229,6 @@
             this.Controls.Add(this.ZoomOutButton);
             this.Controls.Add(this.ZoomInButton);
             this.Controls.Add(this.AddressLabel);
-            this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.LongitudeLabel);
             this.Controls.Add(this.LatitudeLabel);
             this.Controls.Add(this.LongitudeTextBox);
@@ -250,7 +250,6 @@
         private System.Windows.Forms.Label LatitudeLabel;
         private System.Windows.Forms.Label LongitudeLabel;
         private System.Windows.Forms.Label AddressLabel;
-        private System.Windows.Forms.MaskedTextBox AddressTextBox;
         private System.Windows.Forms.Button ZoomInButton;
         private System.Windows.Forms.Button ZoomOutButton;
         private System.Windows.Forms.MaskedTextBox LongitudeTextBox;
@@ -261,6 +260,7 @@
         private System.Windows.Forms.TextBox RadiusTextBox;
         private System.Windows.Forms.TextBox DefaultFloorHeightTextBox;
         private System.Windows.Forms.TextBox DefaultBuildingHeightTextBox;
+        private System.Windows.Forms.TextBox AddressTextBox;
     }
 }
 
