@@ -93,22 +93,22 @@ namespace WindowsFormsApp2
             string longitude = currentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
 
             string apiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{radius},{latitude},{longitude});(._;>;);out;";
-            Console.WriteLine(apiUrl);
+            //Console.WriteLine(apiUrl);
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
                     // Wysyłamy żądanie GET do API OpenStreetMap
                     HttpResponseMessage response = await client.GetAsync(apiUrl);
-                    Console.WriteLine($"Response: {response}");
-                    Console.WriteLine($"Response: {response.Content.ReadAsStringAsync()}");
+                    //Console.WriteLine($"Response: {response}");
+                    //Console.WriteLine($"Response: {response.Content.ReadAsStringAsync()}");
                     if (response.IsSuccessStatusCode)
                     {
                         // Odczytujemy odpowiedź jako ciąg JSON
                         string jsonResponse = await response.Content.ReadAsStringAsync();
-                        Console.WriteLine(jsonResponse);
+                        //Console.WriteLine(jsonResponse);
                         OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
-                        maskCalculator.LoadData(apiResponse);
+                        maskCalculator.LoadData(apiResponse, currentMarker.Position);
                         maskCalculator.ShowBuildings();
                     }
                     else
