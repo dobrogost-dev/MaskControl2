@@ -40,11 +40,11 @@
             this.LongitudeTextBox = new System.Windows.Forms.MaskedTextBox();
             this.MaskButton = new System.Windows.Forms.Button();
             this.RadiusLabel = new System.Windows.Forms.Label();
-            this.RadiusTextBox = new System.Windows.Forms.MaskedTextBox();
             this.DefaultFloorHeightLabel = new System.Windows.Forms.Label();
-            this.DefaultFloorHeightTextBox = new System.Windows.Forms.MaskedTextBox();
             this.DefaultBuildingHeightLabel = new System.Windows.Forms.Label();
-            this.DefaultBuildingHeightTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.RadiusTextBox = new System.Windows.Forms.TextBox();
+            this.DefaultFloorHeightTextBox = new System.Windows.Forms.TextBox();
+            this.DefaultBuildingHeightTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Map
@@ -171,13 +171,6 @@
             this.RadiusLabel.TabIndex = 12;
             this.RadiusLabel.Text = "Radius";
             // 
-            // RadiusTextBox
-            // 
-            this.RadiusTextBox.Location = new System.Drawing.Point(415, 48);
-            this.RadiusTextBox.Name = "RadiusTextBox";
-            this.RadiusTextBox.Size = new System.Drawing.Size(134, 22);
-            this.RadiusTextBox.TabIndex = 11;
-            // 
             // DefaultFloorHeightLabel
             // 
             this.DefaultFloorHeightLabel.AutoSize = true;
@@ -186,13 +179,6 @@
             this.DefaultFloorHeightLabel.Size = new System.Drawing.Size(117, 16);
             this.DefaultFloorHeightLabel.TabIndex = 14;
             this.DefaultFloorHeightLabel.Text = "Default floor height";
-            // 
-            // DefaultFloorHeightTextBox
-            // 
-            this.DefaultFloorHeightTextBox.Location = new System.Drawing.Point(162, 391);
-            this.DefaultFloorHeightTextBox.Name = "DefaultFloorHeightTextBox";
-            this.DefaultFloorHeightTextBox.Size = new System.Drawing.Size(89, 22);
-            this.DefaultFloorHeightTextBox.TabIndex = 13;
             // 
             // DefaultBuildingHeightLabel
             // 
@@ -203,24 +189,41 @@
             this.DefaultBuildingHeightLabel.TabIndex = 16;
             this.DefaultBuildingHeightLabel.Text = "Default building height";
             // 
+            // RadiusTextBox
+            // 
+            this.RadiusTextBox.Location = new System.Drawing.Point(408, 48);
+            this.RadiusTextBox.Name = "RadiusTextBox";
+            this.RadiusTextBox.Size = new System.Drawing.Size(134, 22);
+            this.RadiusTextBox.TabIndex = 17;
+            this.RadiusTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // DefaultFloorHeightTextBox
+            // 
+            this.DefaultFloorHeightTextBox.Location = new System.Drawing.Point(165, 391);
+            this.DefaultFloorHeightTextBox.Name = "DefaultFloorHeightTextBox";
+            this.DefaultFloorHeightTextBox.Size = new System.Drawing.Size(134, 22);
+            this.DefaultFloorHeightTextBox.TabIndex = 18;
+            this.DefaultFloorHeightTextBox.TextChanged += new System.EventHandler(this.DefaultFloorHeightTextBox_TextChanged);
+            // 
             // DefaultBuildingHeightTextBox
             // 
-            this.DefaultBuildingHeightTextBox.Location = new System.Drawing.Point(162, 424);
+            this.DefaultBuildingHeightTextBox.Location = new System.Drawing.Point(165, 421);
             this.DefaultBuildingHeightTextBox.Name = "DefaultBuildingHeightTextBox";
-            this.DefaultBuildingHeightTextBox.Size = new System.Drawing.Size(89, 22);
-            this.DefaultBuildingHeightTextBox.TabIndex = 15;
+            this.DefaultBuildingHeightTextBox.Size = new System.Drawing.Size(134, 22);
+            this.DefaultBuildingHeightTextBox.TabIndex = 19;
+            this.DefaultBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultBuildingHeightTextBox_TextChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 500);
-            this.Controls.Add(this.DefaultBuildingHeightLabel);
             this.Controls.Add(this.DefaultBuildingHeightTextBox);
-            this.Controls.Add(this.DefaultFloorHeightLabel);
             this.Controls.Add(this.DefaultFloorHeightTextBox);
-            this.Controls.Add(this.RadiusLabel);
             this.Controls.Add(this.RadiusTextBox);
+            this.Controls.Add(this.DefaultBuildingHeightLabel);
+            this.Controls.Add(this.DefaultFloorHeightLabel);
+            this.Controls.Add(this.RadiusLabel);
             this.Controls.Add(this.MaskButton);
             this.Controls.Add(this.ZoomOutButton);
             this.Controls.Add(this.ZoomInButton);
@@ -253,11 +256,11 @@
         private System.Windows.Forms.MaskedTextBox LongitudeTextBox;
         private System.Windows.Forms.Button MaskButton;
         private System.Windows.Forms.Label RadiusLabel;
-        private System.Windows.Forms.MaskedTextBox RadiusTextBox;
         private System.Windows.Forms.Label DefaultFloorHeightLabel;
-        private System.Windows.Forms.MaskedTextBox DefaultFloorHeightTextBox;
         private System.Windows.Forms.Label DefaultBuildingHeightLabel;
-        private System.Windows.Forms.MaskedTextBox DefaultBuildingHeightTextBox;
+        private System.Windows.Forms.TextBox RadiusTextBox;
+        private System.Windows.Forms.TextBox DefaultFloorHeightTextBox;
+        private System.Windows.Forms.TextBox DefaultBuildingHeightTextBox;
     }
 }
 

@@ -28,10 +28,11 @@ namespace WindowsFormsApp2
         public MainForm()
         {
             InitializeComponent();
+
             Map.MapProvider = GMapProviders.OpenStreetMap;
-            double latitude = 52.2188;
-            double longitude = 21.0026;
-            Map.Position = new PointLatLng(latitude, longitude);
+            double DefaultLatitude = 52.2188;
+            double Defaultongitude = 21.0026;
+            Map.Position = new PointLatLng(DefaultLatitude, Defaultongitude);
             Map.MouseWheelZoomEnabled = true;
             Map.ShowCenter = false;
             Map.MaxZoom = 20;
@@ -82,6 +83,7 @@ namespace WindowsFormsApp2
         private async void MaskButton_Click(object sender, EventArgs e)
         {
             double radius = Double.Parse(RadiusTextBox.Text);
+            // Zmiana double na stringa oddzielonego kropką zamiast przecinka
             string latitude = currentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
             string longitude = currentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
 
@@ -115,6 +117,32 @@ namespace WindowsFormsApp2
                 }
             }
         }
-        // Klasa do deserializacji odpowiedzi JSON z API OpenStreetMap
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!IsValidDecimal(RadiusTextBox.Text))
+            {
+                RadiusTextBox.Text = string.Empty;
+            }
+        }
+
+        private void DefaultFloorHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!IsValidDecimal(DefaultFloorHeightTextBox.Text))
+            {
+                DefaultFloorHeightTextBox.Text = string.Empty;
+            }
+        }
+
+        private void DefaultBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!IsValidDecimal(DefaultBuildingHeightTextBox.Text))
+            {
+                DefaultBuildingHeightTextBox.Text = string.Empty;
+            }
+        }
+        private bool IsValidDecimal(string input)
+        {
+            return decimal.TryParse(input, out _);
+        }
     }
 }
