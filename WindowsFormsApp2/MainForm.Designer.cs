@@ -41,6 +41,10 @@
             this.MaskButton = new System.Windows.Forms.Button();
             this.RadiusLabel = new System.Windows.Forms.Label();
             this.RadiusTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.DefaultFloorHeightLabel = new System.Windows.Forms.Label();
+            this.DefaultFloorHeightTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.DefaultBuildingHeightLabel = new System.Windows.Forms.Label();
+            this.DefaultBuildingHeightTextBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // Map
@@ -65,7 +69,7 @@
             this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Map.ShowTileGridLines = false;
-            this.Map.Size = new System.Drawing.Size(790, 350);
+            this.Map.Size = new System.Drawing.Size(656, 256);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
             this.Map.Load += new System.EventHandler(this.Map_Load);
@@ -123,7 +127,7 @@
             // 
             // ZoomInButton
             // 
-            this.ZoomInButton.Location = new System.Drawing.Point(12, 473);
+            this.ZoomInButton.Location = new System.Drawing.Point(21, 130);
             this.ZoomInButton.Name = "ZoomInButton";
             this.ZoomInButton.Size = new System.Drawing.Size(93, 28);
             this.ZoomInButton.TabIndex = 8;
@@ -133,7 +137,7 @@
             // 
             // ZoomOutButton
             // 
-            this.ZoomOutButton.Location = new System.Drawing.Point(111, 473);
+            this.ZoomOutButton.Location = new System.Drawing.Point(20, 164);
             this.ZoomOutButton.Name = "ZoomOutButton";
             this.ZoomOutButton.Size = new System.Drawing.Size(93, 28);
             this.ZoomOutButton.TabIndex = 9;
@@ -174,11 +178,47 @@
             this.RadiusTextBox.Size = new System.Drawing.Size(134, 22);
             this.RadiusTextBox.TabIndex = 11;
             // 
+            // DefaultFloorHeightLabel
+            // 
+            this.DefaultFloorHeightLabel.AutoSize = true;
+            this.DefaultFloorHeightLabel.Location = new System.Drawing.Point(18, 394);
+            this.DefaultFloorHeightLabel.Name = "DefaultFloorHeightLabel";
+            this.DefaultFloorHeightLabel.Size = new System.Drawing.Size(117, 16);
+            this.DefaultFloorHeightLabel.TabIndex = 14;
+            this.DefaultFloorHeightLabel.Text = "Default floor height";
+            // 
+            // DefaultFloorHeightTextBox
+            // 
+            this.DefaultFloorHeightTextBox.Location = new System.Drawing.Point(162, 391);
+            this.DefaultFloorHeightTextBox.Name = "DefaultFloorHeightTextBox";
+            this.DefaultFloorHeightTextBox.Size = new System.Drawing.Size(89, 22);
+            this.DefaultFloorHeightTextBox.TabIndex = 13;
+            // 
+            // DefaultBuildingHeightLabel
+            // 
+            this.DefaultBuildingHeightLabel.AutoSize = true;
+            this.DefaultBuildingHeightLabel.Location = new System.Drawing.Point(18, 427);
+            this.DefaultBuildingHeightLabel.Name = "DefaultBuildingHeightLabel";
+            this.DefaultBuildingHeightLabel.Size = new System.Drawing.Size(138, 16);
+            this.DefaultBuildingHeightLabel.TabIndex = 16;
+            this.DefaultBuildingHeightLabel.Text = "Default building height";
+            // 
+            // DefaultBuildingHeightTextBox
+            // 
+            this.DefaultBuildingHeightTextBox.Location = new System.Drawing.Point(162, 424);
+            this.DefaultBuildingHeightTextBox.Name = "DefaultBuildingHeightTextBox";
+            this.DefaultBuildingHeightTextBox.Size = new System.Drawing.Size(89, 22);
+            this.DefaultBuildingHeightTextBox.TabIndex = 15;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 513);
+            this.ClientSize = new System.Drawing.Size(769, 500);
+            this.Controls.Add(this.DefaultBuildingHeightLabel);
+            this.Controls.Add(this.DefaultBuildingHeightTextBox);
+            this.Controls.Add(this.DefaultFloorHeightLabel);
+            this.Controls.Add(this.DefaultFloorHeightTextBox);
             this.Controls.Add(this.RadiusLabel);
             this.Controls.Add(this.RadiusTextBox);
             this.Controls.Add(this.MaskButton);
@@ -214,6 +254,10 @@
         private System.Windows.Forms.Button MaskButton;
         private System.Windows.Forms.Label RadiusLabel;
         private System.Windows.Forms.MaskedTextBox RadiusTextBox;
+        private System.Windows.Forms.Label DefaultFloorHeightLabel;
+        private System.Windows.Forms.MaskedTextBox DefaultFloorHeightTextBox;
+        private System.Windows.Forms.Label DefaultBuildingHeightLabel;
+        private System.Windows.Forms.MaskedTextBox DefaultBuildingHeightTextBox;
     }
 }
 
