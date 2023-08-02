@@ -73,10 +73,20 @@ namespace WindowsFormsApp2
                     Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
                 }
             }
+            polygonsOverlay.Clear();
             List<PointLatLng> BaseBuildingPolygons = GetPolygons(BaseBuilding);
-            GMapPolygon buildingPolygon = new GMapPolygon(BaseBuildingPolygons, "building");
-            buildingPolygon.Fill = new SolidBrush(System.Drawing.Color.FromArgb(50, System.Drawing.Color.Blue));
-            buildingPolygon.Stroke = new Pen(System.Drawing.Color.Blue, 1);
+            DrawBuilding(polygonsOverlay, BaseBuildingPolygons, Color.Blue);
+            foreach (Building building in Buildings)
+            {
+                List<PointLatLng> BuildingPolygons = GetPolygons(building);
+                DrawBuilding(polygonsOverlay, BuildingPolygons, Color.Orange);
+            }
+        }
+        public void DrawBuilding(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, System.Drawing.Color color)
+        {
+            GMapPolygon buildingPolygon = new GMapPolygon(polygons, "building");
+            buildingPolygon.Fill = new SolidBrush(System.Drawing.Color.FromArgb(50, color));
+            buildingPolygon.Stroke = new Pen(color, 1);
             polygonsOverlay.Polygons.Add(buildingPolygon);
         }
         public List<PointLatLng> GetPolygons(Building building)
