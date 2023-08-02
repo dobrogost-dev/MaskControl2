@@ -47,6 +47,10 @@ namespace WindowsFormsApp2
             Map.MouseClick += GMapControl_MouseClick;
             LatitudeTextBox.ReadOnly = true;
             LongitudeTextBox.ReadOnly = true;
+            East_SouthEastTextBox.ReadOnly = true;
+            SouthEast_SouthTextBox.ReadOnly = true;
+            South_SouthWestTextBox.ReadOnly = true;
+            SouthWest_WestTextBox.ReadOnly = true;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -127,8 +131,13 @@ namespace WindowsFormsApp2
                         OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
                         maskCalculator.LoadData(apiResponse, currentMarker.Position);
                         maskCalculator.ShowBuildings(polygonsOverlay);
-                        maskCalculator.CalculateMasks(2.7, 10);
+                        MaskResult MaskResults = maskCalculator.CalculateMasks(2.7, 10);
                         Map.Refresh();
+                        East_SouthEastTextBox.Text = MaskResults.East_SouthEast.ToString();
+                        SouthEast_SouthTextBox.Text = MaskResults.SouthEast_South.ToString();
+                        South_SouthWestTextBox.Text = MaskResults.South_SouthWest.ToString();
+                        SouthWest_WestTextBox.Text = MaskResults.SouthWest_West.ToString();
+
                     }
                     else
                     {
@@ -170,6 +179,11 @@ namespace WindowsFormsApp2
         }
 
         private void LongitudeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }

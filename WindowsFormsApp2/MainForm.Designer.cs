@@ -45,6 +45,14 @@
             this.DefaultFloorHeightTextBox = new System.Windows.Forms.TextBox();
             this.DefaultBuildingHeightTextBox = new System.Windows.Forms.TextBox();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
+            this.East_SouthEastTextBox = new System.Windows.Forms.TextBox();
+            this.East_SouthEastLabel = new System.Windows.Forms.Label();
+            this.SouthEast_SouthLabel = new System.Windows.Forms.Label();
+            this.SouthEast_SouthTextBox = new System.Windows.Forms.TextBox();
+            this.South_SouthWestLabel = new System.Windows.Forms.Label();
+            this.South_SouthWestTextBox = new System.Windows.Forms.TextBox();
+            this.SouthWest_WestLabel = new System.Windows.Forms.Label();
+            this.SouthWest_WestTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Map
@@ -76,7 +84,7 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(601, 2);
+            this.SearchButton.Location = new System.Drawing.Point(753, 8);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(113, 34);
             this.SearchButton.TabIndex = 1;
@@ -148,7 +156,7 @@
             // 
             // MaskButton
             // 
-            this.MaskButton.Location = new System.Drawing.Point(601, 42);
+            this.MaskButton.Location = new System.Drawing.Point(753, 48);
             this.MaskButton.Name = "MaskButton";
             this.MaskButton.Size = new System.Drawing.Size(113, 34);
             this.MaskButton.TabIndex = 10;
@@ -159,7 +167,7 @@
             // RadiusLabel
             // 
             this.RadiusLabel.AutoSize = true;
-            this.RadiusLabel.Location = new System.Drawing.Point(460, 51);
+            this.RadiusLabel.Location = new System.Drawing.Point(595, 54);
             this.RadiusLabel.Name = "RadiusLabel";
             this.RadiusLabel.Size = new System.Drawing.Size(50, 16);
             this.RadiusLabel.TabIndex = 12;
@@ -185,7 +193,7 @@
             // 
             // RadiusTextBox
             // 
-            this.RadiusTextBox.Location = new System.Drawing.Point(516, 48);
+            this.RadiusTextBox.Location = new System.Drawing.Point(651, 51);
             this.RadiusTextBox.Name = "RadiusTextBox";
             this.RadiusTextBox.Size = new System.Drawing.Size(79, 22);
             this.RadiusTextBox.TabIndex = 17;
@@ -211,14 +219,86 @@
             // 
             this.AddressTextBox.Location = new System.Drawing.Point(90, 8);
             this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(505, 22);
+            this.AddressTextBox.Size = new System.Drawing.Size(640, 22);
             this.AddressTextBox.TabIndex = 20;
+            // 
+            // East_SouthEastTextBox
+            // 
+            this.East_SouthEastTextBox.Location = new System.Drawing.Point(732, 151);
+            this.East_SouthEastTextBox.Name = "East_SouthEastTextBox";
+            this.East_SouthEastTextBox.Size = new System.Drawing.Size(134, 22);
+            this.East_SouthEastTextBox.TabIndex = 21;
+            // 
+            // East_SouthEastLabel
+            // 
+            this.East_SouthEastLabel.AutoSize = true;
+            this.East_SouthEastLabel.Location = new System.Drawing.Point(739, 130);
+            this.East_SouthEastLabel.Name = "East_SouthEastLabel";
+            this.East_SouthEastLabel.Size = new System.Drawing.Size(99, 16);
+            this.East_SouthEastLabel.TabIndex = 25;
+            this.East_SouthEastLabel.Text = "East-SouthEast";
+            // 
+            // SouthEast_SouthLabel
+            // 
+            this.SouthEast_SouthLabel.AutoSize = true;
+            this.SouthEast_SouthLabel.Location = new System.Drawing.Point(739, 192);
+            this.SouthEast_SouthLabel.Name = "SouthEast_SouthLabel";
+            this.SouthEast_SouthLabel.Size = new System.Drawing.Size(106, 16);
+            this.SouthEast_SouthLabel.TabIndex = 27;
+            this.SouthEast_SouthLabel.Text = "SouthEast-South";
+            // 
+            // SouthEast_SouthTextBox
+            // 
+            this.SouthEast_SouthTextBox.Location = new System.Drawing.Point(732, 213);
+            this.SouthEast_SouthTextBox.Name = "SouthEast_SouthTextBox";
+            this.SouthEast_SouthTextBox.Size = new System.Drawing.Size(134, 22);
+            this.SouthEast_SouthTextBox.TabIndex = 26;
+            // 
+            // South_SouthWestLabel
+            // 
+            this.South_SouthWestLabel.AutoSize = true;
+            this.South_SouthWestLabel.Location = new System.Drawing.Point(739, 258);
+            this.South_SouthWestLabel.Name = "South_SouthWestLabel";
+            this.South_SouthWestLabel.Size = new System.Drawing.Size(110, 16);
+            this.South_SouthWestLabel.TabIndex = 29;
+            this.South_SouthWestLabel.Text = "South-SouthWest";
+            // 
+            // South_SouthWestTextBox
+            // 
+            this.South_SouthWestTextBox.Location = new System.Drawing.Point(732, 279);
+            this.South_SouthWestTextBox.Name = "South_SouthWestTextBox";
+            this.South_SouthWestTextBox.Size = new System.Drawing.Size(134, 22);
+            this.South_SouthWestTextBox.TabIndex = 28;
+            // 
+            // SouthWest_WestLabel
+            // 
+            this.SouthWest_WestLabel.AutoSize = true;
+            this.SouthWest_WestLabel.Location = new System.Drawing.Point(739, 325);
+            this.SouthWest_WestLabel.Name = "SouthWest_WestLabel";
+            this.SouthWest_WestLabel.Size = new System.Drawing.Size(107, 16);
+            this.SouthWest_WestLabel.TabIndex = 31;
+            this.SouthWest_WestLabel.Text = "SouthWest-West";
+            // 
+            // SouthWest_WestTextBox
+            // 
+            this.SouthWest_WestTextBox.Location = new System.Drawing.Point(732, 346);
+            this.SouthWest_WestTextBox.Name = "SouthWest_WestTextBox";
+            this.SouthWest_WestTextBox.Size = new System.Drawing.Size(134, 22);
+            this.SouthWest_WestTextBox.TabIndex = 30;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 587);
+            this.ClientSize = new System.Drawing.Size(893, 586);
+            this.Controls.Add(this.SouthWest_WestLabel);
+            this.Controls.Add(this.SouthWest_WestTextBox);
+            this.Controls.Add(this.South_SouthWestLabel);
+            this.Controls.Add(this.South_SouthWestTextBox);
+            this.Controls.Add(this.SouthEast_SouthLabel);
+            this.Controls.Add(this.SouthEast_SouthTextBox);
+            this.Controls.Add(this.East_SouthEastLabel);
+            this.Controls.Add(this.East_SouthEastTextBox);
             this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.DefaultBuildingHeightTextBox);
             this.Controls.Add(this.DefaultFloorHeightTextBox);
@@ -238,6 +318,7 @@
             this.Controls.Add(this.Map);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,6 +343,14 @@
         private System.Windows.Forms.TextBox DefaultFloorHeightTextBox;
         private System.Windows.Forms.TextBox DefaultBuildingHeightTextBox;
         private System.Windows.Forms.TextBox AddressTextBox;
+        private System.Windows.Forms.TextBox East_SouthEastTextBox;
+        private System.Windows.Forms.Label East_SouthEastLabel;
+        private System.Windows.Forms.Label SouthEast_SouthLabel;
+        private System.Windows.Forms.TextBox SouthEast_SouthTextBox;
+        private System.Windows.Forms.Label South_SouthWestLabel;
+        private System.Windows.Forms.TextBox South_SouthWestTextBox;
+        private System.Windows.Forms.Label SouthWest_WestLabel;
+        private System.Windows.Forms.TextBox SouthWest_WestTextBox;
     }
 }
 
