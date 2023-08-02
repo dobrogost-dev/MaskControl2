@@ -137,10 +137,10 @@ namespace WindowsFormsApp2
                         double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
                         MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
                         Map.Refresh();
-                        East_SouthEastTextBox.Text = MaskResults.East_SouthEast.ToString();
-                        SouthEast_SouthTextBox.Text = MaskResults.SouthEast_South.ToString();
-                        South_SouthWestTextBox.Text = MaskResults.South_SouthWest.ToString();
-                        SouthWest_WestTextBox.Text = MaskResults.SouthWest_West.ToString();
+                        East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°"; 
+                        SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
+                        South_SouthWestTextBox.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
+                        SouthWest_WestTextBox.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
 
                     }
                     else
