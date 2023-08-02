@@ -44,6 +44,8 @@ namespace WindowsFormsApp2
             Map.Overlays.Add(markersOverlay);
             Map.Overlays.Add(polygonsOverlay);
             Map.MouseClick += GMapControl_MouseClick;
+            LatitudeTextBox.ReadOnly = true;
+            LongitudeTextBox.ReadOnly = true;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -79,6 +81,9 @@ namespace WindowsFormsApp2
                 PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
                 currentMarker.Position = point;
                 Map.Refresh();
+                LatitudeTextBox.Text = point.Lat.ToString();
+                LongitudeTextBox.Text = point.Lng.ToString();
+
             }
         }
 
@@ -151,6 +156,11 @@ namespace WindowsFormsApp2
         private bool IsValidDecimal(string input)
         {
             return decimal.TryParse(input, out _);
+        }
+
+        private void LongitudeLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

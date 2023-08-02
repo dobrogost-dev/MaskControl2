@@ -69,14 +69,14 @@
             this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Map.ShowTileGridLines = false;
-            this.Map.Size = new System.Drawing.Size(656, 256);
+            this.Map.Size = new System.Drawing.Size(702, 346);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
             this.Map.Load += new System.EventHandler(this.Map_Load);
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(555, 0);
+            this.SearchButton.Location = new System.Drawing.Point(601, 2);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(113, 34);
             this.SearchButton.TabIndex = 1;
@@ -86,9 +86,9 @@
             // 
             // LatitudeTextBox
             // 
-            this.LatitudeTextBox.Location = new System.Drawing.Point(81, 48);
+            this.LatitudeTextBox.Location = new System.Drawing.Point(92, 45);
             this.LatitudeTextBox.Name = "LatitudeTextBox";
-            this.LatitudeTextBox.Size = new System.Drawing.Size(134, 22);
+            this.LatitudeTextBox.Size = new System.Drawing.Size(240, 22);
             this.LatitudeTextBox.TabIndex = 2;
             // 
             // LatitudeLabel
@@ -108,6 +108,7 @@
             this.LongitudeLabel.Size = new System.Drawing.Size(66, 16);
             this.LongitudeLabel.TabIndex = 5;
             this.LongitudeLabel.Text = "Longitude";
+            this.LongitudeLabel.Click += new System.EventHandler(this.LongitudeLabel_Click);
             // 
             // AddressLabel
             // 
@@ -140,14 +141,14 @@
             // 
             // LongitudeTextBox
             // 
-            this.LongitudeTextBox.Location = new System.Drawing.Point(81, 83);
+            this.LongitudeTextBox.Location = new System.Drawing.Point(90, 83);
             this.LongitudeTextBox.Name = "LongitudeTextBox";
-            this.LongitudeTextBox.Size = new System.Drawing.Size(134, 22);
+            this.LongitudeTextBox.Size = new System.Drawing.Size(240, 22);
             this.LongitudeTextBox.TabIndex = 3;
             // 
             // MaskButton
             // 
-            this.MaskButton.Location = new System.Drawing.Point(555, 42);
+            this.MaskButton.Location = new System.Drawing.Point(601, 42);
             this.MaskButton.Name = "MaskButton";
             this.MaskButton.Size = new System.Drawing.Size(113, 34);
             this.MaskButton.TabIndex = 10;
@@ -158,7 +159,7 @@
             // RadiusLabel
             // 
             this.RadiusLabel.AutoSize = true;
-            this.RadiusLabel.Location = new System.Drawing.Point(352, 48);
+            this.RadiusLabel.Location = new System.Drawing.Point(460, 51);
             this.RadiusLabel.Name = "RadiusLabel";
             this.RadiusLabel.Size = new System.Drawing.Size(50, 16);
             this.RadiusLabel.TabIndex = 12;
@@ -167,7 +168,7 @@
             // DefaultFloorHeightLabel
             // 
             this.DefaultFloorHeightLabel.AutoSize = true;
-            this.DefaultFloorHeightLabel.Location = new System.Drawing.Point(18, 394);
+            this.DefaultFloorHeightLabel.Location = new System.Drawing.Point(12, 502);
             this.DefaultFloorHeightLabel.Name = "DefaultFloorHeightLabel";
             this.DefaultFloorHeightLabel.Size = new System.Drawing.Size(117, 16);
             this.DefaultFloorHeightLabel.TabIndex = 14;
@@ -176,7 +177,7 @@
             // DefaultBuildingHeightLabel
             // 
             this.DefaultBuildingHeightLabel.AutoSize = true;
-            this.DefaultBuildingHeightLabel.Location = new System.Drawing.Point(18, 427);
+            this.DefaultBuildingHeightLabel.Location = new System.Drawing.Point(12, 535);
             this.DefaultBuildingHeightLabel.Name = "DefaultBuildingHeightLabel";
             this.DefaultBuildingHeightLabel.Size = new System.Drawing.Size(138, 16);
             this.DefaultBuildingHeightLabel.TabIndex = 16;
@@ -184,15 +185,15 @@
             // 
             // RadiusTextBox
             // 
-            this.RadiusTextBox.Location = new System.Drawing.Point(408, 48);
+            this.RadiusTextBox.Location = new System.Drawing.Point(516, 48);
             this.RadiusTextBox.Name = "RadiusTextBox";
-            this.RadiusTextBox.Size = new System.Drawing.Size(134, 22);
+            this.RadiusTextBox.Size = new System.Drawing.Size(79, 22);
             this.RadiusTextBox.TabIndex = 17;
             this.RadiusTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // DefaultFloorHeightTextBox
             // 
-            this.DefaultFloorHeightTextBox.Location = new System.Drawing.Point(165, 391);
+            this.DefaultFloorHeightTextBox.Location = new System.Drawing.Point(159, 499);
             this.DefaultFloorHeightTextBox.Name = "DefaultFloorHeightTextBox";
             this.DefaultFloorHeightTextBox.Size = new System.Drawing.Size(134, 22);
             this.DefaultFloorHeightTextBox.TabIndex = 18;
@@ -200,7 +201,7 @@
             // 
             // DefaultBuildingHeightTextBox
             // 
-            this.DefaultBuildingHeightTextBox.Location = new System.Drawing.Point(165, 421);
+            this.DefaultBuildingHeightTextBox.Location = new System.Drawing.Point(159, 529);
             this.DefaultBuildingHeightTextBox.Name = "DefaultBuildingHeightTextBox";
             this.DefaultBuildingHeightTextBox.Size = new System.Drawing.Size(134, 22);
             this.DefaultBuildingHeightTextBox.TabIndex = 19;
@@ -208,16 +209,16 @@
             // 
             // AddressTextBox
             // 
-            this.AddressTextBox.Location = new System.Drawing.Point(82, 9);
+            this.AddressTextBox.Location = new System.Drawing.Point(90, 8);
             this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(460, 22);
+            this.AddressTextBox.Size = new System.Drawing.Size(505, 22);
             this.AddressTextBox.TabIndex = 20;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(769, 500);
+            this.ClientSize = new System.Drawing.Size(726, 587);
             this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.DefaultBuildingHeightTextBox);
             this.Controls.Add(this.DefaultFloorHeightTextBox);
