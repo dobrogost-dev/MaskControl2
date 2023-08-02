@@ -35,6 +35,7 @@ namespace WindowsFormsApp2
             double Defaultongitude = 21.0026;
             Map.Position = new PointLatLng(DefaultLatitude, Defaultongitude);
             Map.MouseWheelZoomEnabled = true;
+            Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionWithoutCenter;
             Map.ShowCenter = false;
             Map.MaxZoom = 20;
             Map.MinZoom = 3;
