@@ -103,8 +103,10 @@ namespace WindowsFormsApp2
 
         private async void MaskButton_Click(object sender, EventArgs e)
         {
-            if (RadiusTextBox.Text == string.Empty ||
-                markersOverlay.Markers.Count == 0)
+            if (markersOverlay.Markers.Count == 0 ||
+                RadiusTextBox.Text == string.Empty ||
+                DefaultFloorHeightTextBox.Text == string.Empty ||
+                DefaultBuildingHeightTextBox.Text == string.Empty)
             {
                 return;
             }
@@ -131,7 +133,9 @@ namespace WindowsFormsApp2
                         OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
                         maskCalculator.LoadData(apiResponse, currentMarker.Position);
                         maskCalculator.ShowBuildings(polygonsOverlay);
-                        MaskResult MaskResults = maskCalculator.CalculateMasks(2.7, 10);
+                        double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
+                        double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
+                        MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
                         Map.Refresh();
                         East_SouthEastTextBox.Text = MaskResults.East_SouthEast.ToString();
                         SouthEast_SouthTextBox.Text = MaskResults.SouthEast_South.ToString();
