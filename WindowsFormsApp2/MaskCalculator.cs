@@ -55,7 +55,7 @@ namespace WindowsFormsApp2
                 }
             }
             Buildings.Remove(BaseBuilding);
-            double FarthestNorth = GetPointFarthestNorth(BaseBuilding);
+            double FarthestNorth = GetCenterPosition(BaseBuilding).Lat;
             List<Building> NorthBuildings = new List<Building>();
             foreach (Building building in Buildings)
             {
