@@ -14,8 +14,8 @@ namespace WindowsFormsApp2
     public class MaskCalculator
     {
         private Building BaseBuilding;
-        private ICollection<Building> Buildings { get; set; }
-        private ICollection<Node> Nodes { get; set; }
+        private List<Building> Buildings { get; set; }
+        private List<Node> Nodes { get; set; }
         public void LoadData(OSMdata Data, PointLatLng BasePoint) 
         {
             Console.WriteLine(BasePoint);
@@ -31,6 +31,7 @@ namespace WindowsFormsApp2
                 else if (element.type == "way")
                 {
                     Building building = element as Building;
+                    AssignDirection(building, BasePoint);
                     Buildings.Add(building);
                 }
             }
@@ -50,6 +51,17 @@ namespace WindowsFormsApp2
                 }
             }
             Buildings.Remove(BaseBuilding);
+            double FarthestNorth = GetPointFarthestNorth(BaseBuilding);
+            List<Building> NorthBuildings = new List<Building>();
+            foreach (Building building in Buildings)
+            {
+                double FarthestSouth = GetPointFarthestSouth(building);
+                if (FarthestNorth < FarthestSouth)
+                {
+                    NorthBuildings.Add(building);
+                }
+            }
+            Buildings.RemoveAll(building => NorthBuildings.Contains(building));
         }
         public void ShowBuildings(GMapOverlay polygonsOverlay)
         {
@@ -66,6 +78,7 @@ namespace WindowsFormsApp2
                 Console.WriteLine("Building id: " + building.id);
                 Console.WriteLine("     Building height: " + building.tags.height);
                 Console.WriteLine("     Building levels: " + building.tags.BuildingLevels);
+                Console.WriteLine("     Building direction: " + building.direction);
                 foreach (long node in building.nodes)
                 {
                     Console.WriteLine("     Node id: " + node);
@@ -79,7 +92,17 @@ namespace WindowsFormsApp2
             foreach (Building building in Buildings)
             {
                 List<PointLatLng> BuildingPolygons = GetPolygons(building);
-                DrawBuilding(polygonsOverlay, BuildingPolygons, Color.Orange);
+                Color color = Color.Gray;
+                switch (building.direction)
+                {
+                    case Building.Direction.Unspecified: color = Color.Orange; break;
+                    case Building.Direction.East_SouthEast: color = Color.Red; break;
+                    case Building.Direction.SouthEast_South: color = Color.Green; break;
+                    case Building.Direction.South_SouthWest: color = Color.Magenta; break;
+                    case Building.Direction.SouthWest_West: color = Color.Brown; break;
+                    default: color = Color.Gray; break;
+                }
+                DrawBuilding(polygonsOverlay, BuildingPolygons, color);
             }
         }
         public void DrawBuilding(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, System.Drawing.Color color)
@@ -130,7 +153,76 @@ namespace WindowsFormsApp2
             }
             return new PointLatLng(lat / length, lng / length);
         }
+        public static double CalculateAzimuth(PointLatLng point1, PointLatLng point2)
+        {
+            const double radianToDegree = 180.0 / Math.PI;
+            const double degreeToRadian = Math.PI / 180.0;
 
+            double dLon = (point2.Lng - point1.Lng) * degreeToRadian;
+            point1.Lat *= degreeToRadian;
+            point2.Lat *= degreeToRadian;
+
+            double y = Math.Sin(dLon) * Math.Cos(point2.Lat);
+            double x = Math.Cos(point1.Lat) * Math.Sin(point2.Lat) - Math.Sin(point1.Lat) * Math.Cos(point2.Lat) * Math.Cos(dLon);
+            double azimuth = Math.Atan2(y, x) * radianToDegree;
+
+            return (azimuth + 360) % 360; 
+        }
+        public void AssignDirection(Building building, PointLatLng point)
+        {
+            PointLatLng buildingCenter = GetCenterPosition(building);
+            double azimuth = CalculateAzimuth(point, buildingCenter);
+            if (azimuth < 135)
+            {
+                building.direction = Building.Direction.East_SouthEast;
+            }
+            else if (azimuth >= 135 && azimuth < 180)
+            {
+                building.direction = Building.Direction.SouthEast_South;
+            }
+            else if (azimuth >= 180 && azimuth < 225)
+            {
+                building.direction = Building.Direction.South_SouthWest;
+            }
+            else if (azimuth >= 225)
+            {
+                building.direction = Building.Direction.SouthWest_West;
+            }
+            Console.WriteLine("Calculating azimuth for: " + buildingCenter);
+            Console.WriteLine("Azimuth: " + azimuth);
+        }
+        public double GetPointFarthestNorth(Building building)
+        {
+            double result = -10000;
+            foreach(long node in building.nodes)
+            {
+                Node newNode = Nodes
+                    .Select(e => e)
+                    .Where(e => e.id == node)
+                    .FirstOrDefault();
+                if (newNode.lat > result)
+                {
+                    result = newNode.lat;
+                }
+            }
+            return result;
+        }
+        public double GetPointFarthestSouth(Building building)
+        {
+            double result = 10000;
+            foreach (long node in building.nodes)
+            {
+                Node newNode = Nodes
+                    .Select(e => e)
+                    .Where(e => e.id == node)
+                    .FirstOrDefault();
+                if (newNode.lat < result)
+                {
+                    result = newNode.lat;
+                }
+            }
+            return result;
+        }
         public MaskResult CalculateMask()
         {
             return null;

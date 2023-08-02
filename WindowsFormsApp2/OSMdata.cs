@@ -44,10 +44,19 @@ namespace WindowsFormsApp2
     }
     public class Building : Element
     {
+        public enum Direction
+        {
+            Unspecified,
+            East_SouthEast,
+            SouthEast_South,
+            South_SouthWest,
+            SouthWest_West
+        }
         public override string type { get { return "way"; } }
         public long id { get; set; }
         public long[] nodes { get; set; }
         public BuildingTags tags { get; set; }
+        public Direction direction = Direction.Unspecified;
     }
 
     public class BuildingTags
