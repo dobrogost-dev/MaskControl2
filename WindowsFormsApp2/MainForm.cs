@@ -127,6 +127,7 @@ namespace WindowsFormsApp2
                         OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
                         maskCalculator.LoadData(apiResponse, currentMarker.Position);
                         maskCalculator.ShowBuildings(polygonsOverlay);
+                        maskCalculator.CalculateMasks(2.7, 10);
                         Map.Refresh();
                     }
                     else

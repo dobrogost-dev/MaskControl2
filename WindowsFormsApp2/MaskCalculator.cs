@@ -21,6 +21,10 @@ namespace WindowsFormsApp2
             Console.WriteLine(BasePoint);
             Buildings = new List<Building>();
             Nodes = new List<Node>();
+            if (Data.elements.Length == 0)
+            {
+                return;
+            }
             foreach (Element element in Data.elements)
             {
                 if (element.type == "node")
@@ -65,6 +69,10 @@ namespace WindowsFormsApp2
         }
         public void ShowBuildings(GMapOverlay polygonsOverlay)
         {
+            if (Buildings.Count == 0 || Nodes.Count == 0)
+            {
+                return;
+            }
             Console.WriteLine("/////////////////////////////////////////////////////////////");
             Console.WriteLine("Default building id: " + BaseBuilding.id);
             foreach (long node in BaseBuilding.nodes)
@@ -223,17 +231,123 @@ namespace WindowsFormsApp2
             }
             return result;
         }
-        public MaskResult CalculateMask()
+        public double GetMaskValue(PointLatLng BasePoint, PointLatLng TargetPoint, double height)
         {
-            return null;
+            double distance = CalculateDistanceInMeters(BasePoint.Lat, BasePoint.Lng, TargetPoint.Lat, TargetPoint.Lng);
+            Console.WriteLine("         Distance: " + distance);
+            double diagonal = Math.Sqrt((distance * distance) + (height * height));
+            Console.WriteLine("         Diagonal: " + diagonal);
+            double mask = CalculateAngleBetweenSides(distance, diagonal);
+            Console.WriteLine("         Mask: " + mask);
+            return mask;
+        }
+        public static double CalculateDistanceInMeters(double lat1, double lon1, double lat2, double lon2)
+        {
+            const double radiusEarth = 6371.0; 
+
+            double dLat = (lat2 - lat1) * (Math.PI / 180.0);
+            double dLon = (lon2 - lon1) * (Math.PI / 180.0);
+
+            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                       Math.Cos(lat1 * (Math.PI / 180.0)) * Math.Cos(lat2 * (Math.PI / 180.0)) *
+                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+            double distance = radiusEarth * c;
+
+            return distance * 1000;
+        }
+        public static double CalculateAngleBetweenSides(double baseLength, double hypotenuse)
+        {
+            double sinAlpha = baseLength / hypotenuse;
+            Console.WriteLine("Sinus alfa: " +  sinAlpha);
+            double angleInRadians = Math.Acos(sinAlpha); // Używamy funkcji Asin do obliczenia kąta w radianach
+            Console.WriteLine("Kat w radianach: " + angleInRadians);
+            double angleInDegrees = angleInRadians * (180.0 / Math.PI); // Konwersja radianów na stopnie
+            Console.WriteLine("Kat w stopniach: " + angleInDegrees);
+
+
+            return angleInDegrees;
+        }
+        public double ProcessMask(Building building, double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
+        {
+            double mask = 0;
+            if (building.tags.height != null)
+            {
+                Console.WriteLine("     Using height");
+                mask = GetMaskValue(GetCenterPosition(BaseBuilding),
+                    GetCenterPosition(building), Double.Parse(building.tags.height));
+            }
+            else if (building.tags.BuildingLevels != null)
+            {
+                Console.WriteLine("     Using building levels");
+                mask = GetMaskValue(GetCenterPosition(BaseBuilding),
+                    GetCenterPosition(building), Double.Parse(building.tags.BuildingLevels) * DefaultBuildingFloorHeight);
+            }
+            else
+            {
+                Console.WriteLine("     Using default value");
+                mask = GetMaskValue(GetCenterPosition(BaseBuilding),
+                    GetCenterPosition(building), DefaultBuildingHeight);
+            }
+            return mask;
+        }
+        public MaskResult CalculateMasks(double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
+        {
+            MaskResult result = new MaskResult();
+            if (Buildings.Count == 0 || Nodes.Count == 0)
+            {
+                return result;
+            }
+            foreach (Building building in Buildings)
+            {
+                Console.WriteLine("Calculating mask");
+                Console.WriteLine("Building id " + building.id);
+                Console.WriteLine("Building direction " + building.direction);
+                Console.WriteLine("Coordinates " + GetCenterPosition(building));
+                double mask = 0;
+                switch (building.direction)
+                {
+                    case Building.Direction.East_SouthEast:
+                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultBuildingHeight);
+                        if (mask > result.East_SouthEast)
+                        {
+                            result.East_SouthEast = mask;
+                        }
+                        break;
+                    case Building.Direction.SouthEast_South:
+                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultBuildingHeight);
+                        if (mask > result.SouthEast_South)
+                        {
+                            result.SouthEast_South = mask;
+                        }
+                        break;
+                    case Building.Direction.South_SouthWest:
+                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultBuildingHeight);
+                        if (mask > result.South_SouthWest)
+                        {
+                            result.South_SouthWest = mask;
+                        }
+                        break;
+                    case Building.Direction.SouthWest_West:
+                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultBuildingHeight);
+                        if (mask > result.SouthWest_West)
+                        {
+                            result.SouthWest_West = mask;
+                        }
+                        break;
+                }
+                Console.WriteLine("         Mask: " + mask);
+
+            }
+            return result;
         }
 
     }
     public class MaskResult
     {
-        private long East_SouthEast { get; set; }
-        private long SouthEast_South { get; set; }
-        private long South_SouthWest { get; set; }
-        private long SouthWest_West { get; set; }
+        public double East_SouthEast { get; set; } = 0;
+        public double SouthEast_South { get; set; } = 0;
+        public double South_SouthWest { get; set; } = 0;
+        public double SouthWest_West { get; set; } = 0;
     }
 }
