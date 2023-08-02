@@ -23,6 +23,7 @@ namespace WindowsFormsApp2
     {
         public static int BaseZoom = 1;
         public GMapOverlay markersOverlay;
+        public GMapOverlay polygonsOverlay;
         public GMarkerGoogle currentMarker = new GMarkerGoogle(new PointLatLng(0,0), GMarkerGoogleType.red_dot);
         public MaskCalculator maskCalculator = new MaskCalculator();
         public MainForm()
@@ -39,7 +40,9 @@ namespace WindowsFormsApp2
             Map.MinZoom = 3;
             Map.Zoom = Map.MinZoom;
             markersOverlay = new GMapOverlay("markers");
+            polygonsOverlay = new GMapOverlay("polygons");
             Map.Overlays.Add(markersOverlay);
+            Map.Overlays.Add(polygonsOverlay);
             Map.MouseClick += GMapControl_MouseClick;
         }
 
@@ -52,14 +55,13 @@ namespace WindowsFormsApp2
         private void ZoomInButton_Click(object sender, EventArgs e)
         {
             Map.Zoom = Math.Min(Map.MaxZoom, Map.Zoom + BaseZoom );
-            Console.WriteLine(Map.Zoom);
+            Console.WriteLine("Zoom: " + Map.Zoom);
         }
 
         private void ZoomOutButton_Click(object sender, EventArgs e)
         {
             Map.Zoom = Math.Max(Map.MinZoom, Map.Zoom - BaseZoom);
-            Console.WriteLine(Map.Zoom);
-
+            Console.WriteLine("Zoom: " + Map.Zoom);
         }
 
         private void Map_Load(object sender, EventArgs e)
@@ -109,7 +111,8 @@ namespace WindowsFormsApp2
                         //Console.WriteLine(jsonResponse);
                         OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
                         maskCalculator.LoadData(apiResponse, currentMarker.Position);
-                        maskCalculator.ShowBuildings();
+                        maskCalculator.ShowBuildings(polygonsOverlay);
+                        Map.Refresh();
                     }
                     else
                     {

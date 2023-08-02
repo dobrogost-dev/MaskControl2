@@ -1,6 +1,8 @@
 ﻿using GMap.NET;
+using GMap.NET.WindowsForms;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,6 @@ namespace WindowsFormsApp2
             Console.WriteLine(BasePoint);
             Buildings = new List<Building>();
             Nodes = new List<Node>();
-            bool FirstBuildingIteration = true;
             foreach (Element element in Data.elements)
             {
                 if (element.type == "node")
@@ -27,20 +28,30 @@ namespace WindowsFormsApp2
                     Node node = element as Node;
                     Nodes.Add(node);
                 }
-                else if (FirstBuildingIteration)
-                {
-                    Building building = element as Building;
-                    BaseBuilding = building;
-                    FirstBuildingIteration = false;
-                }
                 else if (element.type == "way")
                 {
                     Building building = element as Building;
                     Buildings.Add(building);
                 }
             }
+            double distance = 100000000000;
+            foreach(Building building in Buildings)
+            {
+                PointLatLng buildingCenter = GetCenterPosition(building);
+                double buildingDistance = GetDistance(buildingCenter, BasePoint);
+                Console.WriteLine("Building id: " + building.id);
+                Console.WriteLine("     Center: " + buildingCenter);
+                Console.WriteLine("     Distance: " + buildingDistance);
+                if (buildingDistance < distance)
+                {
+                    distance = buildingDistance;
+                    Console.WriteLine("Assigning building id " + building.id + " as a base building");
+                    BaseBuilding = building;
+                }
+            }
+            Buildings.Remove(BaseBuilding);
         }
-        public void ShowBuildings()
+        public void ShowBuildings(GMapOverlay polygonsOverlay)
         {
             Console.WriteLine("/////////////////////////////////////////////////////////////");
             Console.WriteLine("Default building id: " + BaseBuilding.id);
@@ -62,6 +73,35 @@ namespace WindowsFormsApp2
                     Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
                 }
             }
+            List<PointLatLng> BaseBuildingPolygons = GetPolygons(BaseBuilding);
+            GMapPolygon buildingPolygon = new GMapPolygon(BaseBuildingPolygons, "building");
+            buildingPolygon.Fill = new SolidBrush(System.Drawing.Color.FromArgb(50, System.Drawing.Color.Blue));
+            buildingPolygon.Stroke = new Pen(System.Drawing.Color.Blue, 1);
+            polygonsOverlay.Polygons.Add(buildingPolygon);
+        }
+        public List<PointLatLng> GetPolygons(Building building)
+        {
+            List<PointLatLng> result = new List<PointLatLng>();
+            foreach(long node in building.nodes)
+            {
+                Node newNode = Nodes
+                    .Select(e => e)
+                    .Where(e => e.id == node)
+                    .FirstOrDefault();
+                result.Add(new PointLatLng(newNode.lat, newNode.lon));
+            }
+            return result;
+        }
+        public double GetDistance(PointLatLng p1, PointLatLng p2)
+        {
+            GMapRoute route = new GMapRoute("getDistance");
+            route.Points.Add(p1);
+            route.Points.Add(p2);
+            double distance = route.Distance;
+            route.Clear();
+            route = null;
+
+            return distance;
         }
         public PointLatLng GetCenterPosition(Building building)
         {
