@@ -52,6 +52,13 @@ namespace WindowsFormsApp2
             SouthEast_SouthTextBox.ReadOnly = true;
             South_SouthWestTextBox.ReadOnly = true;
             SouthWest_WestTextBox.ReadOnly = true;
+
+            string DefaultRadius = "100";
+            RadiusTextBox.Text = DefaultRadius;
+            string DefaultFloorHeight = "2,7";
+            DefaultFloorHeightTextBox.Text = DefaultFloorHeight;
+            string DefaultBuildingHeight = "10";
+            DefaultBuildingHeightTextBox.Text = DefaultBuildingHeight;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
