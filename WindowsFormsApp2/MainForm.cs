@@ -105,11 +105,28 @@ namespace WindowsFormsApp2
 
         private async void MaskButton_Click(object sender, EventArgs e)
         {
-            if (markersOverlay.Markers.Count == 0 ||
-                RadiusTextBox.Text == string.Empty ||
-                DefaultFloorHeightTextBox.Text == string.Empty ||
-                DefaultBuildingHeightTextBox.Text == string.Empty)
+            if (RadiusTextBox.Text == string.Empty)
             {
+                MessageBox.Show("Radius value is required in order to calculate mask",
+                    "Radius required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (DefaultFloorHeightTextBox.Text == string.Empty)
+            {
+                MessageBox.Show("Default building floor height value is required in order to calculate mask",
+                    "Default building floor height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (DefaultBuildingHeightTextBox.Text == string.Empty)
+            {
+                MessageBox.Show("Default building height value is required in order to calculate mask",
+                    "Default building height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (markersOverlay.Markers.Count == 0)
+            {
+                MessageBox.Show("Marker is required in order to calculate mask",
+                    "Marker required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             double radius = Double.Parse(RadiusTextBox.Text);
