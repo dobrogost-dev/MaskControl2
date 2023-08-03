@@ -79,11 +79,6 @@ namespace WindowsFormsApp2
         {
             if (e.Button == MouseButtons.Left)
             {
-                // Obsługa przeciągania mapy lewym przyciskiem myszy
-                Map.DragButton = MouseButtons.Left;
-            } 
-            else if (e.Button == MouseButtons.Right)
-            {
                 if (markersOverlay.Markers.Count == 0) 
                 {
                     markersOverlay.Markers.Add(currentMarker);
@@ -95,10 +90,6 @@ namespace WindowsFormsApp2
                 LongitudeTextBox.Text = point.Lng.ToString();
 
             }
-        }
-        private void Map_OnMapDrag()
-        {
-            Map.DragButton = MouseButtons.Right;
         }
 
         private async void MaskButton_Click(object sender, EventArgs e)
