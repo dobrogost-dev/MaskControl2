@@ -56,10 +56,12 @@ namespace WindowsFormsApp2
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            Map.SetPositionByKeywords(AddressTextBox.Text);
-            Map.Zoom = 18;
+            if (AddressTextBox.Text != string.Empty)
+            {
+                Map.SetPositionByKeywords(AddressTextBox.Text);
+                Map.Zoom = 18;
+            }
         }
-
         private void ZoomInButton_Click(object sender, EventArgs e)
         {
             Map.Zoom = Math.Min(Map.MaxZoom, Map.Zoom + BaseZoom );
