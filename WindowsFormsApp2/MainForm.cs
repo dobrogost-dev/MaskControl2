@@ -59,6 +59,7 @@ namespace WindowsFormsApp2
             DefaultFloorHeightTextBox.Text = DefaultFloorHeight;
             string DefaultBuildingHeight = "10";
             DefaultBuildingHeightTextBox.Text = DefaultBuildingHeight;
+            MaskButton.Enabled = false;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -98,7 +99,7 @@ namespace WindowsFormsApp2
                 Map.Refresh();
                 LatitudeTextBox.Text = point.Lat.ToString();
                 LongitudeTextBox.Text = point.Lng.ToString();
-
+                MaskButton.Enabled = true;
             }
         }
 
