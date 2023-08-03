@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static GMap.NET.Entity.OpenStreetMapGraphHopperGeocodeEntity;
+using GMapRoute = GMap.NET.WindowsForms.GMapRoute;
 
 namespace WindowsFormsApp2
 {
@@ -24,6 +25,7 @@ namespace WindowsFormsApp2
         public static int BaseZoom = 1;
         public GMapOverlay markersOverlay;
         public GMapOverlay polygonsOverlay;
+        public GMapOverlay linesOverlay;
         public GMarkerGoogle currentMarker = new GMarkerGoogle(new PointLatLng(0,0), GMarkerGoogleType.red_dot);
         public MaskCalculator maskCalculator = new MaskCalculator();
         public MainForm()
@@ -40,12 +42,18 @@ namespace WindowsFormsApp2
             Map.MaxZoom = 20;
             Map.MinZoom = 3;
             Map.Zoom = Map.MinZoom;
+            Map.MouseDoubleClick += GMapControl_MouseDoubleClick;
+            Map.DragButton = MouseButtons.Left;
+
             markersOverlay = new GMapOverlay("markers");
             polygonsOverlay = new GMapOverlay("polygons");
+            linesOverlay = new GMapOverlay("lines");
             Map.Overlays.Add(markersOverlay);
             Map.Overlays.Add(polygonsOverlay);
-            Map.MouseClick += GMapControl_MouseClick;
+            Map.Overlays.Add(linesOverlay);
+
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
             LatitudeTextBox.ReadOnly = true;
             LongitudeTextBox.ReadOnly = true;
             East_SouthEastTextBox.ReadOnly = true;
@@ -59,6 +67,7 @@ namespace WindowsFormsApp2
             DefaultFloorHeightTextBox.Text = DefaultFloorHeight;
             string DefaultBuildingHeight = "10";
             DefaultBuildingHeightTextBox.Text = DefaultBuildingHeight;
+
             MaskButton.Enabled = false;
         }
 
@@ -86,23 +95,19 @@ namespace WindowsFormsApp2
         {
 
         }
-        private void GMapControl_MouseClick(object sender, MouseEventArgs e)
+        private void GMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (markersOverlay.Markers.Count == 0)
             {
-                if (markersOverlay.Markers.Count == 0) 
-                {
-                    markersOverlay.Markers.Add(currentMarker);
-                }
-                PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
-                currentMarker.Position = point;
-                Map.Refresh();
-                LatitudeTextBox.Text = point.Lat.ToString();
-                LongitudeTextBox.Text = point.Lng.ToString();
-                MaskButton.Enabled = true;
+                markersOverlay.Markers.Add(currentMarker);
             }
+            PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
+            currentMarker.Position = point;
+            Map.Refresh();
+            LatitudeTextBox.Text = point.Lat.ToString();
+            LongitudeTextBox.Text = point.Lng.ToString();
+            MaskButton.Enabled = true;
         }
-
         private async void MaskButton_Click(object sender, EventArgs e)
         {
             if (RadiusTextBox.Text == string.Empty)
@@ -155,12 +160,13 @@ namespace WindowsFormsApp2
                         double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
                         double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
                         MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
+                        //maskCalculator.DrawLines(linesOverlay, radius);
                         Map.Refresh();
                         East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°"; 
                         SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
                         South_SouthWestTextBox.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
                         SouthWest_WestTextBox.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
-
+                        
                     }
                     else
                     {

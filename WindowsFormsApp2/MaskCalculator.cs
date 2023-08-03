@@ -341,7 +341,49 @@ namespace WindowsFormsApp2
             }
             return result;
         }
+        public static double MetersToDegrees(double meters)
+        {
+            const double earthRadius = 6378137; // Promień Ziemi w metrach
+            const double degreesPerRadian = 180.0 / Math.PI;
 
+            return meters / earthRadius * degreesPerRadian;
+        }
+
+        public void DrawLines(GMapOverlay linesOverlay, double radius)
+        {
+            if (BaseBuilding == null)
+            {
+                return;
+            }
+
+            PointLatLng basePoint = GetCenterPosition(BaseBuilding);
+            double distance = MetersToDegrees(radius);
+            Console.WriteLine(distance);
+            PointLatLng east = new PointLatLng(basePoint.Lat, basePoint.Lng + distance);
+            PointLatLng eastsouth = new PointLatLng(basePoint.Lat - distance / 2, basePoint.Lng + distance / 2);
+            PointLatLng south = new PointLatLng(basePoint.Lat - distance, basePoint.Lng);
+            PointLatLng southwest = new PointLatLng(basePoint.Lat - distance / 2, basePoint.Lng - distance / 2);
+            PointLatLng west = new PointLatLng(basePoint.Lat, basePoint.Lng - distance);
+
+            DrawLine(linesOverlay, basePoint, east);
+            DrawLine(linesOverlay, basePoint, eastsouth);
+            DrawLine(linesOverlay, basePoint, south);
+            DrawLine(linesOverlay, basePoint, southwest);
+            DrawLine(linesOverlay, basePoint, west);
+
+        }
+        public void DrawLine(GMapOverlay linesOverlay, PointLatLng startPoint, PointLatLng endPoint)
+        {
+            List<PointLatLng> points = new List<PointLatLng>
+            {
+                startPoint,
+                endPoint
+            };
+
+            GMapRoute lineRoute = new GMapRoute(points, "line");
+            lineRoute.Stroke = new Pen(Color.Black, 2);
+            linesOverlay.Routes.Add(lineRoute);
+        }
     }
     public class MaskResult
     {
