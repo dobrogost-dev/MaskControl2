@@ -45,6 +45,7 @@ namespace WindowsFormsApp2
             Map.Overlays.Add(markersOverlay);
             Map.Overlays.Add(polygonsOverlay);
             Map.MouseClick += GMapControl_MouseClick;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             LatitudeTextBox.ReadOnly = true;
             LongitudeTextBox.ReadOnly = true;
             East_SouthEastTextBox.ReadOnly = true;
