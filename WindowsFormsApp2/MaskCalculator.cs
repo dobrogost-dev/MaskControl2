@@ -134,10 +134,10 @@ namespace WindowsFormsApp2
                     switch (building.direction)
                     {
                         case Building.Direction.Unspecified: color = Color.Orange; break;
-                        case Building.Direction.East_SouthEast: color = Color.Red; break;
-                        case Building.Direction.SouthEast_South: color = Color.Green; break;
+                        case Building.Direction.East_SouthEast: color = Color.Green; break;
+                        case Building.Direction.SouthEast_South: color = Color.Aqua; break;
                         case Building.Direction.South_SouthWest: color = Color.Magenta; break;
-                        case Building.Direction.SouthWest_West: color = Color.Brown; break;
+                        case Building.Direction.SouthWest_West: color = Color.Red; break;
                         default: color = Color.Gray; break;
                     }
                 } else
