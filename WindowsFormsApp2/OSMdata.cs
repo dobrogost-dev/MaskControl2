@@ -57,6 +57,8 @@ namespace WindowsFormsApp2
         public long[] nodes { get; set; }
         public BuildingTags tags { get; set; }
         public Direction direction = Direction.Unspecified;
+        public PointLatLng CenterPoint { get; set; }
+        public List<PointLatLng> SideCenterPoints { get; set; }
     }
 
     public class BuildingTags

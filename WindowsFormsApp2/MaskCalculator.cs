@@ -42,16 +42,41 @@ namespace WindowsFormsApp2
             double distance = 100000000000;
             foreach(Building building in Buildings)
             {
-                PointLatLng buildingCenter = GetCenterPosition(building);
-                double buildingDistance = GetDistance(buildingCenter, BasePoint);
+
+                building.CenterPoint = GetCenterPosition(building);
+                double buildingDistance = GetDistance(building.CenterPoint, BasePoint);
                 Console.WriteLine("Building id: " + building.id);
-                Console.WriteLine("     Center: " + buildingCenter);
+                Console.WriteLine("     Center: " + building.CenterPoint);
                 Console.WriteLine("     Distance: " + buildingDistance);
                 if (buildingDistance < distance)
                 {
                     distance = buildingDistance;
                     Console.WriteLine("Assigning building id " + building.id + " as a base building");
                     BaseBuilding = building;
+                }
+                Console.WriteLine("Adding side points for building id " + building.id);
+                Console.WriteLine("Building center point: " + building.CenterPoint);
+                building.SideCenterPoints = new List<PointLatLng>();
+                for (int i = 0; i < building.nodes.Length - 1; i++)
+                {
+                    Node newNode = Nodes
+                        .Select(e => e)
+                        .Where(e => e.id == building.nodes[i])
+                        .FirstOrDefault();
+                    Node nextNode = Nodes
+                        .Select(e => e)
+                        .Where(e => e.id == building.nodes[i + 1])
+                        .FirstOrDefault();
+
+                    PointLatLng Corner = new PointLatLng(newNode.lat, newNode.lon);
+                    PointLatLng NextCorner = new PointLatLng(nextNode.lat, nextNode.lon);
+
+                    double NewLat = (newNode.lat + nextNode.lat) / 2;
+                    double NewLng = (newNode.lon + nextNode.lon) / 2;
+
+                    PointLatLng SidePoint = new PointLatLng(NewLat, NewLng);
+                    building.SideCenterPoints.Add(SidePoint);
+                    Console.WriteLine("     Side point: " + SidePoint);
                 }
             }
             Buildings.Remove(BaseBuilding);
