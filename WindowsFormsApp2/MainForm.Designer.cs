@@ -56,14 +56,22 @@
             this.BuildingDataRadioButton = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.DirectionRadioButton = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.DirectionLegendPanel = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BuildingDataLegendPanel = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.DirectionLinesCheckBox = new System.Windows.Forms.CheckBox();
+            this.DirectionLegendPanel.SuspendLayout();
+            this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // SearchButton
@@ -208,7 +216,7 @@
             // 
             // East_SouthEastTextBox
             // 
-            this.East_SouthEastTextBox.Location = new System.Drawing.Point(732, 151);
+            this.East_SouthEastTextBox.Location = new System.Drawing.Point(743, 138);
             this.East_SouthEastTextBox.Name = "East_SouthEastTextBox";
             this.East_SouthEastTextBox.Size = new System.Drawing.Size(134, 22);
             this.East_SouthEastTextBox.TabIndex = 21;
@@ -216,7 +224,7 @@
             // East_SouthEastLabel
             // 
             this.East_SouthEastLabel.AutoSize = true;
-            this.East_SouthEastLabel.Location = new System.Drawing.Point(739, 130);
+            this.East_SouthEastLabel.Location = new System.Drawing.Point(750, 117);
             this.East_SouthEastLabel.Name = "East_SouthEastLabel";
             this.East_SouthEastLabel.Size = new System.Drawing.Size(99, 16);
             this.East_SouthEastLabel.TabIndex = 25;
@@ -225,7 +233,7 @@
             // SouthEast_SouthLabel
             // 
             this.SouthEast_SouthLabel.AutoSize = true;
-            this.SouthEast_SouthLabel.Location = new System.Drawing.Point(739, 192);
+            this.SouthEast_SouthLabel.Location = new System.Drawing.Point(750, 179);
             this.SouthEast_SouthLabel.Name = "SouthEast_SouthLabel";
             this.SouthEast_SouthLabel.Size = new System.Drawing.Size(106, 16);
             this.SouthEast_SouthLabel.TabIndex = 27;
@@ -233,7 +241,7 @@
             // 
             // SouthEast_SouthTextBox
             // 
-            this.SouthEast_SouthTextBox.Location = new System.Drawing.Point(732, 213);
+            this.SouthEast_SouthTextBox.Location = new System.Drawing.Point(743, 200);
             this.SouthEast_SouthTextBox.Name = "SouthEast_SouthTextBox";
             this.SouthEast_SouthTextBox.Size = new System.Drawing.Size(134, 22);
             this.SouthEast_SouthTextBox.TabIndex = 26;
@@ -241,7 +249,7 @@
             // South_SouthWestLabel
             // 
             this.South_SouthWestLabel.AutoSize = true;
-            this.South_SouthWestLabel.Location = new System.Drawing.Point(739, 258);
+            this.South_SouthWestLabel.Location = new System.Drawing.Point(750, 245);
             this.South_SouthWestLabel.Name = "South_SouthWestLabel";
             this.South_SouthWestLabel.Size = new System.Drawing.Size(110, 16);
             this.South_SouthWestLabel.TabIndex = 29;
@@ -249,7 +257,7 @@
             // 
             // South_SouthWestTextBox
             // 
-            this.South_SouthWestTextBox.Location = new System.Drawing.Point(732, 279);
+            this.South_SouthWestTextBox.Location = new System.Drawing.Point(743, 266);
             this.South_SouthWestTextBox.Name = "South_SouthWestTextBox";
             this.South_SouthWestTextBox.Size = new System.Drawing.Size(134, 22);
             this.South_SouthWestTextBox.TabIndex = 28;
@@ -257,7 +265,7 @@
             // SouthWest_WestLabel
             // 
             this.SouthWest_WestLabel.AutoSize = true;
-            this.SouthWest_WestLabel.Location = new System.Drawing.Point(739, 325);
+            this.SouthWest_WestLabel.Location = new System.Drawing.Point(750, 312);
             this.SouthWest_WestLabel.Name = "SouthWest_WestLabel";
             this.SouthWest_WestLabel.Size = new System.Drawing.Size(107, 16);
             this.SouthWest_WestLabel.TabIndex = 31;
@@ -265,7 +273,7 @@
             // 
             // SouthWest_WestTextBox
             // 
-            this.SouthWest_WestTextBox.Location = new System.Drawing.Point(732, 346);
+            this.SouthWest_WestTextBox.Location = new System.Drawing.Point(743, 333);
             this.SouthWest_WestTextBox.Name = "SouthWest_WestTextBox";
             this.SouthWest_WestTextBox.Size = new System.Drawing.Size(134, 22);
             this.SouthWest_WestTextBox.TabIndex = 30;
@@ -300,7 +308,7 @@
             // BuildingDataRadioButton
             // 
             this.BuildingDataRadioButton.AutoSize = true;
-            this.BuildingDataRadioButton.Location = new System.Drawing.Point(732, 430);
+            this.BuildingDataRadioButton.Location = new System.Drawing.Point(743, 417);
             this.BuildingDataRadioButton.Name = "BuildingDataRadioButton";
             this.BuildingDataRadioButton.Size = new System.Drawing.Size(141, 20);
             this.BuildingDataRadioButton.TabIndex = 33;
@@ -312,7 +320,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(729, 374);
+            this.label1.Location = new System.Drawing.Point(740, 361);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 16);
             this.label1.TabIndex = 34;
@@ -322,7 +330,7 @@
             // 
             this.DirectionRadioButton.AutoSize = true;
             this.DirectionRadioButton.Checked = true;
-            this.DirectionRadioButton.Location = new System.Drawing.Point(732, 404);
+            this.DirectionRadioButton.Location = new System.Drawing.Point(743, 391);
             this.DirectionRadioButton.Name = "DirectionRadioButton";
             this.DirectionRadioButton.Size = new System.Drawing.Size(81, 20);
             this.DirectionRadioButton.TabIndex = 35;
@@ -331,57 +339,29 @@
             this.DirectionRadioButton.UseVisualStyleBackColor = true;
             this.DirectionRadioButton.CheckedChanged += new System.EventHandler(this.DirectionRadioButton_CheckedChanged);
             // 
-            // panel1
+            // DirectionLegendPanel
             // 
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(681, 469);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 113);
-            this.panel1.TabIndex = 36;
+            this.DirectionLegendPanel.Controls.Add(this.label7);
+            this.DirectionLegendPanel.Controls.Add(this.label6);
+            this.DirectionLegendPanel.Controls.Add(this.label5);
+            this.DirectionLegendPanel.Controls.Add(this.label4);
+            this.DirectionLegendPanel.Controls.Add(this.label3);
+            this.DirectionLegendPanel.Controls.Add(this.label2);
+            this.DirectionLegendPanel.Location = new System.Drawing.Point(681, 469);
+            this.DirectionLegendPanel.Name = "DirectionLegendPanel";
+            this.DirectionLegendPanel.Size = new System.Drawing.Size(210, 113);
+            this.DirectionLegendPanel.TabIndex = 36;
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Legend";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.LightGreen;
-            this.label3.Location = new System.Drawing.Point(10, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Green - East-SouthEast";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.SkyBlue;
-            this.label4.Location = new System.Drawing.Point(10, 60);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(148, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Aqua - SouthEast-South";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Orchid;
-            this.label5.Location = new System.Drawing.Point(10, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Magenta: South-SouthWest";
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.label7.Location = new System.Drawing.Point(10, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 16);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Blue: Base building";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -393,16 +373,116 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "Red: SouthWest-West";
             // 
-            // label7
+            // label5
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.label7.Location = new System.Drawing.Point(10, 28);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(126, 16);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Blue - Base building";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Orchid;
+            this.label5.Location = new System.Drawing.Point(10, 76);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(169, 16);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Magenta: South-SouthWest";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.SkyBlue;
+            this.label4.Location = new System.Drawing.Point(10, 60);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(144, 16);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Aqua: SouthEast-South";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.LightGreen;
+            this.label3.Location = new System.Drawing.Point(10, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(142, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Green: East-SouthEast";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 16);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Legend";
+            // 
+            // BuildingDataLegendPanel
+            // 
+            this.BuildingDataLegendPanel.Controls.Add(this.label8);
+            this.BuildingDataLegendPanel.Controls.Add(this.label9);
+            this.BuildingDataLegendPanel.Controls.Add(this.label10);
+            this.BuildingDataLegendPanel.Controls.Add(this.label12);
+            this.BuildingDataLegendPanel.Controls.Add(this.label13);
+            this.BuildingDataLegendPanel.Location = new System.Drawing.Point(681, 469);
+            this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
+            this.BuildingDataLegendPanel.Size = new System.Drawing.Size(210, 113);
+            this.BuildingDataLegendPanel.TabIndex = 37;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.label8.Location = new System.Drawing.Point(10, 28);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 16);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Blue: Base building";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.LightCoral;
+            this.label9.Location = new System.Drawing.Point(10, 92);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(137, 16);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Red: By default height";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.SandyBrown;
+            this.label10.Location = new System.Drawing.Point(10, 76);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(160, 16);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Orange: By building floors";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.LightGreen;
+            this.label12.Location = new System.Drawing.Point(10, 60);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(105, 16);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Green: By height";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(10, 4);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 16);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Legend";
+            // 
+            // DirectionLinesCheckBox
+            // 
+            this.DirectionLinesCheckBox.AutoSize = true;
+            this.DirectionLinesCheckBox.Location = new System.Drawing.Point(743, 442);
+            this.DirectionLinesCheckBox.Name = "DirectionLinesCheckBox";
+            this.DirectionLinesCheckBox.Size = new System.Drawing.Size(147, 20);
+            this.DirectionLinesCheckBox.TabIndex = 38;
+            this.DirectionLinesCheckBox.Text = "Show direction lines";
+            this.DirectionLinesCheckBox.UseVisualStyleBackColor = true;
+            this.DirectionLinesCheckBox.CheckedChanged += new System.EventHandler(this.DirectionLinesCheckBox_CheckedChanged);
             // 
             // MainForm
             // 
@@ -410,7 +490,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 586);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.DirectionLinesCheckBox);
+            this.Controls.Add(this.BuildingDataLegendPanel);
+            this.Controls.Add(this.DirectionLegendPanel);
             this.Controls.Add(this.DirectionRadioButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BuildingDataRadioButton);
@@ -442,8 +524,10 @@
             this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.DirectionLegendPanel.ResumeLayout(false);
+            this.DirectionLegendPanel.PerformLayout();
+            this.BuildingDataLegendPanel.ResumeLayout(false);
+            this.BuildingDataLegendPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,13 +562,20 @@
         private System.Windows.Forms.RadioButton BuildingDataRadioButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton DirectionRadioButton;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel DirectionLegendPanel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel BuildingDataLegendPanel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox DirectionLinesCheckBox;
     }
 }
 

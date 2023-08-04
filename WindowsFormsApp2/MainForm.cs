@@ -71,7 +71,9 @@ namespace WindowsFormsApp2
             DefaultBuildingHeightTextBox.Text = DefaultBuildingHeight;
 
             MaskButton.Enabled = false;
-
+            BuildingDataLegendPanel.Visible = false;
+            DirectionLegendPanel.Visible = false;
+            linesOverlay.IsVisibile = false;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -163,13 +165,15 @@ namespace WindowsFormsApp2
                         double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
                         double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
                         MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
-                        //maskCalculator.DrawLines(linesOverlay, radius);
+
+                        maskCalculator.DrawLines(linesOverlay, radius);
                         Map.Refresh();
                         East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°"; 
                         SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
                         South_SouthWestTextBox.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
                         SouthWest_WestTextBox.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
-                        
+
+                        DirectionLegendPanel.Visible = true;
                     }
                     else
                     {
@@ -237,6 +241,8 @@ namespace WindowsFormsApp2
             {
                 maskCalculator.ShowBuildings(polygonsOverlay, true);
                 Map.Refresh();
+                DirectionLegendPanel.Visible = true;
+                BuildingDataLegendPanel.Visible = false;
             }
         }
 
@@ -247,12 +253,25 @@ namespace WindowsFormsApp2
             {
                 maskCalculator.ShowBuildings(polygonsOverlay, false);
                 Map.Refresh();
+                DirectionLegendPanel.Visible = false;
+                BuildingDataLegendPanel.Visible = true;
             }
         }
 
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DirectionLinesCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DirectionLinesCheckBox.Checked)
+            {
+                linesOverlay.IsVisibile = true;
+            } else
+            {
+                linesOverlay.IsVisibile = false;
+            }
         }
     }
 }
