@@ -16,6 +16,8 @@ namespace WindowsFormsApp2
         private Building BaseBuilding;
         private List<Building> Buildings { get; set; }
         private List<Node> Nodes { get; set; }
+
+        public bool Initialized = false;
         public void LoadData(OSMdata Data, PointLatLng BasePoint) 
         {
             Console.WriteLine(BasePoint);
@@ -91,8 +93,9 @@ namespace WindowsFormsApp2
                 }
             }
             Buildings.RemoveAll(building => NorthBuildings.Contains(building));
+            Initialized = true;
         }
-        public void ShowBuildings(GMapOverlay polygonsOverlay)
+        public void ShowBuildings(GMapOverlay polygonsOverlay, bool DirectionBuilding)
         {
             if (Buildings.Count == 0 || Nodes.Count == 0)
             {
@@ -126,17 +129,33 @@ namespace WindowsFormsApp2
             {
                 List<PointLatLng> BuildingPolygons = GetPolygons(building);
                 Color color = Color.Gray;
-                switch (building.direction)
+                if (DirectionBuilding)
                 {
-                    case Building.Direction.Unspecified: color = Color.Orange; break;
-                    case Building.Direction.East_SouthEast: color = Color.Red; break;
-                    case Building.Direction.SouthEast_South: color = Color.Green; break;
-                    case Building.Direction.South_SouthWest: color = Color.Magenta; break;
-                    case Building.Direction.SouthWest_West: color = Color.Brown; break;
-                    default: color = Color.Gray; break;
+                    switch (building.direction)
+                    {
+                        case Building.Direction.Unspecified: color = Color.Orange; break;
+                        case Building.Direction.East_SouthEast: color = Color.Red; break;
+                        case Building.Direction.SouthEast_South: color = Color.Green; break;
+                        case Building.Direction.South_SouthWest: color = Color.Magenta; break;
+                        case Building.Direction.SouthWest_West: color = Color.Brown; break;
+                        default: color = Color.Gray; break;
+                    }
+                } else
+                {
+                    if (building.tags.height != null)
+                    {
+                        color = Color.Green;
+                    } else if (building.tags.BuildingLevels != null)
+                    {
+                        color = Color.Orange;
+                    } else
+                    {
+                        color = Color.Red;
+                    }
                 }
                 DrawBuilding(polygonsOverlay, BuildingPolygons, color);
             }
+ 
         }
         public void DrawBuilding(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, System.Drawing.Color color)
         {

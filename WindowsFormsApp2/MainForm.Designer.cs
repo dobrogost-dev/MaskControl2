@@ -53,6 +53,9 @@
             this.SouthWest_WestLabel = new System.Windows.Forms.Label();
             this.SouthWest_WestTextBox = new System.Windows.Forms.TextBox();
             this.Map = new GMap.NET.WindowsForms.GMapControl();
+            this.BuildingDataRadioButton = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DirectionRadioButton = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // SearchButton
@@ -286,12 +289,49 @@
             this.Map.Zoom = 0D;
             this.Map.Load += new System.EventHandler(this.Map_Load);
             // 
+            // BuildingDataRadioButton
+            // 
+            this.BuildingDataRadioButton.AutoSize = true;
+            this.BuildingDataRadioButton.Location = new System.Drawing.Point(732, 430);
+            this.BuildingDataRadioButton.Name = "BuildingDataRadioButton";
+            this.BuildingDataRadioButton.Size = new System.Drawing.Size(141, 20);
+            this.BuildingDataRadioButton.TabIndex = 33;
+            this.BuildingDataRadioButton.TabStop = true;
+            this.BuildingDataRadioButton.Text = "Used building data";
+            this.BuildingDataRadioButton.UseVisualStyleBackColor = true;
+            this.BuildingDataRadioButton.CheckedChanged += new System.EventHandler(this.BuildingDataRadioButton_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(729, 374);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 16);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Color buildings by";
+            // 
+            // DirectionRadioButton
+            // 
+            this.DirectionRadioButton.AutoSize = true;
+            this.DirectionRadioButton.Checked = true;
+            this.DirectionRadioButton.Location = new System.Drawing.Point(732, 404);
+            this.DirectionRadioButton.Name = "DirectionRadioButton";
+            this.DirectionRadioButton.Size = new System.Drawing.Size(81, 20);
+            this.DirectionRadioButton.TabIndex = 35;
+            this.DirectionRadioButton.TabStop = true;
+            this.DirectionRadioButton.Text = "Direction";
+            this.DirectionRadioButton.UseVisualStyleBackColor = true;
+            this.DirectionRadioButton.CheckedChanged += new System.EventHandler(this.DirectionRadioButton_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(893, 586);
+            this.Controls.Add(this.DirectionRadioButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.BuildingDataRadioButton);
             this.Controls.Add(this.SouthWest_WestLabel);
             this.Controls.Add(this.SouthWest_WestTextBox);
             this.Controls.Add(this.South_SouthWestLabel);
@@ -351,6 +391,9 @@
         private System.Windows.Forms.Label SouthWest_WestLabel;
         private System.Windows.Forms.TextBox SouthWest_WestTextBox;
         private GMap.NET.WindowsForms.GMapControl Map;
+        private System.Windows.Forms.RadioButton BuildingDataRadioButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton DirectionRadioButton;
     }
 }
 
