@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Map = new GMap.NET.WindowsForms.GMapControl();
             this.SearchButton = new System.Windows.Forms.Button();
             this.LatitudeTextBox = new System.Windows.Forms.MaskedTextBox();
             this.LatitudeLabel = new System.Windows.Forms.Label();
@@ -53,34 +52,8 @@
             this.South_SouthWestTextBox = new System.Windows.Forms.TextBox();
             this.SouthWest_WestLabel = new System.Windows.Forms.Label();
             this.SouthWest_WestTextBox = new System.Windows.Forms.TextBox();
+            this.Map = new GMap.NET.WindowsForms.GMapControl();
             this.SuspendLayout();
-            // 
-            // Map
-            // 
-            this.Map.Bearing = 0F;
-            this.Map.CanDragMap = true;
-            this.Map.EmptyTileColor = System.Drawing.Color.Navy;
-            this.Map.GrayScaleMode = false;
-            this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.Map.LevelsKeepInMemory = 5;
-            this.Map.Location = new System.Drawing.Point(12, 117);
-            this.Map.MarkersEnabled = true;
-            this.Map.MaxZoom = 2;
-            this.Map.MinZoom = 2;
-            this.Map.MouseWheelZoomEnabled = true;
-            this.Map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.Map.Name = "Map";
-            this.Map.NegativeMode = false;
-            this.Map.PolygonsEnabled = true;
-            this.Map.RetryLoadTile = 0;
-            this.Map.RoutesEnabled = true;
-            this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.Map.ShowTileGridLines = false;
-            this.Map.Size = new System.Drawing.Size(702, 346);
-            this.Map.TabIndex = 0;
-            this.Map.Zoom = 0D;
-            this.Map.Load += new System.EventHandler(this.Map_Load);
             // 
             // SearchButton
             // 
@@ -286,6 +259,33 @@
             this.SouthWest_WestTextBox.Size = new System.Drawing.Size(134, 22);
             this.SouthWest_WestTextBox.TabIndex = 30;
             // 
+            // Map
+            // 
+            this.Map.Bearing = 0F;
+            this.Map.CanDragMap = true;
+            this.Map.EmptyTileColor = System.Drawing.Color.Navy;
+            this.Map.GrayScaleMode = false;
+            this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.Map.LevelsKeepInMemory = 5;
+            this.Map.Location = new System.Drawing.Point(12, 117);
+            this.Map.MarkersEnabled = true;
+            this.Map.MaxZoom = 2;
+            this.Map.MinZoom = 2;
+            this.Map.MouseWheelZoomEnabled = true;
+            this.Map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.Map.Name = "Map";
+            this.Map.NegativeMode = false;
+            this.Map.PolygonsEnabled = true;
+            this.Map.RetryLoadTile = 0;
+            this.Map.RoutesEnabled = true;
+            this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.Map.ShowTileGridLines = false;
+            this.Map.Size = new System.Drawing.Size(702, 346);
+            this.Map.TabIndex = 0;
+            this.Map.Zoom = 0D;
+            this.Map.Load += new System.EventHandler(this.Map_Load);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
@@ -326,8 +326,6 @@
         }
 
         #endregion
-
-        private GMap.NET.WindowsForms.GMapControl Map;
         private System.Windows.Forms.Button SearchButton;
         private System.Windows.Forms.MaskedTextBox LatitudeTextBox;
         private System.Windows.Forms.Label LatitudeLabel;
@@ -352,6 +350,7 @@
         private System.Windows.Forms.TextBox South_SouthWestTextBox;
         private System.Windows.Forms.Label SouthWest_WestLabel;
         private System.Windows.Forms.TextBox SouthWest_WestTextBox;
+        private GMap.NET.WindowsForms.GMapControl Map;
     }
 }
 

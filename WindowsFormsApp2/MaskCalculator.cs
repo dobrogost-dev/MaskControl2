@@ -196,8 +196,8 @@ namespace WindowsFormsApp2
             {
                 building.direction = Building.Direction.SouthWest_West;
             }
-            Console.WriteLine("Calculating azimuth for: " + buildingCenter);
-            Console.WriteLine("Azimuth: " + azimuth);
+           //Console.WriteLine("Calculating azimuth for: " + buildingCenter);
+           // Console.WriteLine("Azimuth: " + azimuth);
         }
         public double GetPointFarthestNorth(Building building)
         {
@@ -234,11 +234,11 @@ namespace WindowsFormsApp2
         public double GetMaskValue(PointLatLng BasePoint, PointLatLng TargetPoint, double height)
         {
             double distance = CalculateDistanceInMeters(BasePoint.Lat, BasePoint.Lng, TargetPoint.Lat, TargetPoint.Lng);
-            Console.WriteLine("         Distance: " + distance);
+            //Console.WriteLine("         Distance: " + distance);
             double diagonal = Math.Sqrt((distance * distance) + (height * height));
-            Console.WriteLine("         Diagonal: " + diagonal);
+            //Console.WriteLine("         Diagonal: " + diagonal);
             double mask = CalculateAngleBetweenSides(distance, diagonal);
-            Console.WriteLine("         Mask: " + mask);
+            //Console.WriteLine("         Mask: " + mask);
             return mask;
         }
         public static double CalculateDistanceInMeters(double lat1, double lon1, double lat2, double lon2)
@@ -259,11 +259,11 @@ namespace WindowsFormsApp2
         public static double CalculateAngleBetweenSides(double baseLength, double hypotenuse)
         {
             double sinAlpha = baseLength / hypotenuse;
-            Console.WriteLine("Sinus alfa: " +  sinAlpha);
+            //Console.WriteLine("Sinus alfa: " +  sinAlpha);
             double angleInRadians = Math.Acos(sinAlpha); // Używamy funkcji Asin do obliczenia kąta w radianach
-            Console.WriteLine("Kat w radianach: " + angleInRadians);
+            //Console.WriteLine("Kat w radianach: " + angleInRadians);
             double angleInDegrees = angleInRadians * (180.0 / Math.PI); // Konwersja radianów na stopnie
-            Console.WriteLine("Kat w stopniach: " + angleInDegrees);
+            //Console.WriteLine("Kat w stopniach: " + angleInDegrees);
 
 
             return angleInDegrees;
@@ -300,10 +300,10 @@ namespace WindowsFormsApp2
             }
             foreach (Building building in Buildings)
             {
-                Console.WriteLine("Calculating mask");
-                Console.WriteLine("Building id " + building.id);
-                Console.WriteLine("Building direction " + building.direction);
-                Console.WriteLine("Coordinates " + GetCenterPosition(building));
+                //Console.WriteLine("Calculating mask");
+                //Console.WriteLine("Building id " + building.id);
+                //Console.WriteLine("Building direction " + building.direction);
+                //Console.WriteLine("Coordinates " + GetCenterPosition(building));
                 double mask = 0;
                 switch (building.direction)
                 {
@@ -336,7 +336,7 @@ namespace WindowsFormsApp2
                         }
                         break;
                 }
-                Console.WriteLine("         Mask: " + mask);
+                //Console.WriteLine("         Mask: " + mask);
 
             }
             return result;

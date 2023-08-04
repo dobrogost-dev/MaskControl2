@@ -44,6 +44,8 @@ namespace WindowsFormsApp2
             Map.Zoom = Map.MinZoom;
             Map.MouseDoubleClick += GMapControl_MouseDoubleClick;
             Map.DragButton = MouseButtons.Left;
+            Map.Margin = new Padding(10);
+            Map.BorderStyle = BorderStyle.FixedSingle;
 
             markersOverlay = new GMapOverlay("markers");
             polygonsOverlay = new GMapOverlay("polygons");
@@ -69,6 +71,7 @@ namespace WindowsFormsApp2
             DefaultBuildingHeightTextBox.Text = DefaultBuildingHeight;
 
             MaskButton.Enabled = false;
+
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -153,7 +156,7 @@ namespace WindowsFormsApp2
                     {
                         // Odczytujemy odpowiedź jako ciąg JSON
                         string jsonResponse = await response.Content.ReadAsStringAsync();
-                        //Console.WriteLine(jsonResponse);
+                        Console.WriteLine(jsonResponse);
                         OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
                         maskCalculator.LoadData(apiResponse, currentMarker.Position);
                         maskCalculator.ShowBuildings(polygonsOverlay);
