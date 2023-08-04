@@ -281,6 +281,13 @@ namespace WindowsFormsApp2
 
             return distance * 1000;
         }
+        public Node GetNodeForId(long id)
+        {
+            return Nodes
+                .Select(e => e)
+                .Where(e => e.id == id)
+                .FirstOrDefault();
+        }
         public static double CalculateAngleBetweenSides(double baseLength, double hypotenuse)
         {
             double sinAlpha = baseLength / hypotenuse;
@@ -296,23 +303,45 @@ namespace WindowsFormsApp2
         public double ProcessMask(Building building, double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
         {
             double mask = 0;
+            double distance = 1000000;
+            PointLatLng BasePoint = new PointLatLng();
+            PointLatLng TargetPoint = new PointLatLng();
+            foreach (PointLatLng SidePoint in BaseBuilding.SideCenterPoints)
+            {
+                foreach(long node in building.nodes)
+                {
+                    Node NewNode = GetNodeForId(node);
+                    PointLatLng NodePosition = new PointLatLng(NewNode.lat, NewNode.lon);
+                    double newDistance = GetDistance(SidePoint, new PointLatLng(NewNode.lat, NewNode.lon));
+                    if (newDistance < distance)
+                    {
+                        distance = newDistance;
+                        BasePoint = SidePoint;
+                        TargetPoint = NodePosition;
+                    }
+                }
+            }
+            Console.WriteLine("Building id: " + building.id);
+            Console.WriteLine("Base point: " + BasePoint);
+            Console.WriteLine("Target point: " + TargetPoint);
+
             if (building.tags.height != null)
             {
                 Console.WriteLine("     Using height");
-                mask = GetMaskValue(GetCenterPosition(BaseBuilding),
-                    GetCenterPosition(building), Double.Parse(building.tags.height));
+                mask = GetMaskValue(BasePoint,
+                    TargetPoint, Double.Parse(building.tags.height));
             }
             else if (building.tags.BuildingLevels != null)
             {
                 Console.WriteLine("     Using building levels");
-                mask = GetMaskValue(GetCenterPosition(BaseBuilding),
-                    GetCenterPosition(building), Double.Parse(building.tags.BuildingLevels) * DefaultBuildingFloorHeight);
+                mask = GetMaskValue(BasePoint,
+                    TargetPoint, Double.Parse(building.tags.BuildingLevels) * DefaultBuildingFloorHeight);
             }
             else
             {
                 Console.WriteLine("     Using default value");
-                mask = GetMaskValue(GetCenterPosition(BaseBuilding),
-                    GetCenterPosition(building), DefaultBuildingHeight);
+                mask = GetMaskValue(BasePoint,
+                    TargetPoint, DefaultBuildingHeight);
             }
             return mask;
         }
