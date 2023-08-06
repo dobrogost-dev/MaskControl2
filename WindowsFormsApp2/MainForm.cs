@@ -95,11 +95,6 @@ namespace WindowsFormsApp2
             Map.Zoom = Math.Max(Map.MinZoom, Map.Zoom - BaseZoom);
             Console.WriteLine("Zoom: " + Map.Zoom);
         }
-
-        private void Map_Load(object sender, EventArgs e)
-        {
-
-        }
         private void GMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (markersOverlay.Markers.Count == 0)
@@ -186,13 +181,6 @@ namespace WindowsFormsApp2
                 }
             }
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (!IsValidDecimal(RadiusTextBox.Text))
-            {
-                RadiusTextBox.Text = string.Empty;
-            }
-        }
 
         private void DefaultFloorHeightTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -213,27 +201,6 @@ namespace WindowsFormsApp2
         {
             return decimal.TryParse(input, out _);
         }
-
-        private void LongitudeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DirectionRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             BuildingDataRadioButton.Checked = !DirectionRadioButton.Checked;
@@ -257,12 +224,6 @@ namespace WindowsFormsApp2
                 BuildingDataLegendPanel.Visible = true;
             }
         }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void DirectionLinesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (DirectionLinesCheckBox.Checked)
@@ -271,6 +232,14 @@ namespace WindowsFormsApp2
             } else
             {
                 linesOverlay.IsVisibile = false;
+            }
+        }
+
+        private void RadiusTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!IsValidDecimal(RadiusTextBox.Text))
+            {
+                RadiusTextBox.Text = string.Empty;
             }
         }
     }

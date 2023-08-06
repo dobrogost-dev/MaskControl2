@@ -108,7 +108,6 @@
             this.LongitudeLabel.Size = new System.Drawing.Size(66, 16);
             this.LongitudeLabel.TabIndex = 5;
             this.LongitudeLabel.Text = "Longitude";
-            this.LongitudeLabel.Click += new System.EventHandler(this.LongitudeLabel_Click);
             // 
             // AddressLabel
             // 
@@ -189,7 +188,7 @@
             this.RadiusTextBox.Name = "RadiusTextBox";
             this.RadiusTextBox.Size = new System.Drawing.Size(79, 22);
             this.RadiusTextBox.TabIndex = 17;
-            this.RadiusTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.RadiusTextBox.TextChanged += new System.EventHandler(this.RadiusTextBox_TextChanged);
             // 
             // DefaultFloorHeightTextBox
             // 
@@ -303,7 +302,6 @@
             this.Map.Size = new System.Drawing.Size(702, 346);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
-            this.Map.Load += new System.EventHandler(this.Map_Load);
             // 
             // BuildingDataRadioButton
             // 
@@ -361,7 +359,6 @@
             this.label7.Size = new System.Drawing.Size(122, 16);
             this.label7.TabIndex = 5;
             this.label7.Text = "Blue: Base building";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -523,7 +520,6 @@
             this.Controls.Add(this.Map);
             this.Name = "MainForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.DirectionLegendPanel.ResumeLayout(false);
             this.DirectionLegendPanel.PerformLayout();
             this.BuildingDataLegendPanel.ResumeLayout(false);
