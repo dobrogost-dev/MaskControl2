@@ -31,11 +31,37 @@ namespace WindowsFormsApp2
         public MainForm()
         {
             InitializeComponent();
-
-            Map.MapProvider = GMapProviders.OpenStreetMap;
             double DefaultLatitude = 52.2188;
-            double Defaultongitude = 21.0026;
-            Map.Position = new PointLatLng(DefaultLatitude, Defaultongitude);
+            double DefaultLongitude = 21.0026;
+            SetMapConfiguration(DefaultLatitude, DefaultLongitude);
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            LatitudeTextBox.ReadOnly = true;
+            LongitudeTextBox.ReadOnly = true;
+            East_SouthEastTextBox.ReadOnly = true;
+            SouthEast_SouthTextBox.ReadOnly = true;
+            South_SouthWestTextBox.ReadOnly = true;
+            SouthWest_WestTextBox.ReadOnly = true;
+
+            string DefaultRadius = "100";
+            string DefaultFloorHeight = "2,7";
+            string DefaultBuildingHeight = "10";
+
+            RadiusTextBox.Text = DefaultRadius;
+            DefaultFloorHeightTextBox.Text = DefaultFloorHeight;
+            DefaultBuildingHeightTextBox.Text = DefaultBuildingHeight;
+
+            MaskButton.Enabled = false;
+            BuildingDataLegendPanel.Visible = false;
+            DirectionLegendPanel.Visible = false;
+            linesOverlay.IsVisibile = false;
+        }
+
+        private void SetMapConfiguration(double DefaultLatitude, double DefaultLongitude)
+        {
+            Map.MapProvider = GMapProviders.OpenStreetMap;
+            Map.Position = new PointLatLng(DefaultLatitude, DefaultLongitude);
             Map.MouseWheelZoomEnabled = true;
             Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionWithoutCenter;
             Map.ShowCenter = false;
@@ -53,27 +79,6 @@ namespace WindowsFormsApp2
             Map.Overlays.Add(markersOverlay);
             Map.Overlays.Add(polygonsOverlay);
             Map.Overlays.Add(linesOverlay);
-
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-
-            LatitudeTextBox.ReadOnly = true;
-            LongitudeTextBox.ReadOnly = true;
-            East_SouthEastTextBox.ReadOnly = true;
-            SouthEast_SouthTextBox.ReadOnly = true;
-            South_SouthWestTextBox.ReadOnly = true;
-            SouthWest_WestTextBox.ReadOnly = true;
-
-            string DefaultRadius = "100";
-            RadiusTextBox.Text = DefaultRadius;
-            string DefaultFloorHeight = "2,7";
-            DefaultFloorHeightTextBox.Text = DefaultFloorHeight;
-            string DefaultBuildingHeight = "10";
-            DefaultBuildingHeightTextBox.Text = DefaultBuildingHeight;
-
-            MaskButton.Enabled = false;
-            BuildingDataLegendPanel.Visible = false;
-            DirectionLegendPanel.Visible = false;
-            linesOverlay.IsVisibile = false;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
