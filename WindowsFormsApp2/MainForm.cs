@@ -26,17 +26,19 @@ namespace WindowsFormsApp2
         public GMapOverlay markersOverlay;
         public GMapOverlay polygonsOverlay;
         public GMapOverlay linesOverlay;
-        public GMarkerGoogle currentMarker = new GMarkerGoogle(new PointLatLng(0,0), GMarkerGoogleType.red_dot);
-        public MaskCalculator maskCalculator = new MaskCalculator();
+        public GMarkerGoogle currentMarker;
+        public MaskCalculator maskCalculator;
         public MainForm()
         {
+            currentMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.red_dot);
+            maskCalculator = new MaskCalculator();
+
             InitializeComponent();
             double DefaultLatitude = 52.2188;
             double DefaultLongitude = 21.0026;
             SetMapConfiguration(DefaultLatitude, DefaultLongitude);
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-
             LatitudeTextBox.ReadOnly = true;
             LongitudeTextBox.ReadOnly = true;
             East_SouthEastTextBox.ReadOnly = true;
@@ -186,26 +188,6 @@ namespace WindowsFormsApp2
                 }
             }
         }
-
-        private void DefaultFloorHeightTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!IsValidDecimal(DefaultFloorHeightTextBox.Text))
-            {
-                DefaultFloorHeightTextBox.Text = string.Empty;
-            }
-        }
-
-        private void DefaultBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!IsValidDecimal(DefaultBuildingHeightTextBox.Text))
-            {
-                DefaultBuildingHeightTextBox.Text = string.Empty;
-            }
-        }
-        private bool IsValidDecimal(string input)
-        {
-            return decimal.TryParse(input, out _);
-        }
         private void DirectionRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             BuildingDataRadioButton.Checked = !DirectionRadioButton.Checked;
@@ -242,9 +224,24 @@ namespace WindowsFormsApp2
 
         private void RadiusTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!IsValidDecimal(RadiusTextBox.Text))
+            if (!MainFormUtilities.IsValidDecimal(RadiusTextBox.Text))
             {
                 RadiusTextBox.Text = string.Empty;
+            }
+        }
+        private void DefaultFloorHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!MainFormUtilities.IsValidDecimal(DefaultFloorHeightTextBox.Text))
+            {
+                DefaultFloorHeightTextBox.Text = string.Empty;
+            }
+        }
+
+        private void DefaultBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!MainFormUtilities.IsValidDecimal(DefaultBuildingHeightTextBox.Text))
+            {
+                DefaultBuildingHeightTextBox.Text = string.Empty;
             }
         }
     }

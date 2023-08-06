@@ -107,6 +107,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainFormUtilities.cs" />
     <Compile Include="MaskCalculator.cs" />
     <Compile Include="OSMdata.cs" />
     <Compile Include="Program.cs" />
