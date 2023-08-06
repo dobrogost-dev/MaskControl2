@@ -163,7 +163,8 @@ namespace WindowsFormsApp2
                         Console.WriteLine(jsonResponse);
                         OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
                         maskCalculator.LoadData(apiResponse, currentMarker.Position);
-                        maskCalculator.ShowBuildings(polygonsOverlay, DirectionRadioButton.Checked);
+                        //maskCalculator.ShowBuildingsLogs();
+                        maskCalculator.DrawBuildings(polygonsOverlay, DirectionRadioButton.Checked);
                         double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
                         double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
                         MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
@@ -193,7 +194,7 @@ namespace WindowsFormsApp2
             BuildingDataRadioButton.Checked = !DirectionRadioButton.Checked;
             if (maskCalculator.Initialized)
             {
-                maskCalculator.ShowBuildings(polygonsOverlay, true);
+                maskCalculator.DrawBuildings(polygonsOverlay, true);
                 Map.Refresh();
                 DirectionLegendPanel.Visible = true;
                 BuildingDataLegendPanel.Visible = false;
@@ -205,7 +206,7 @@ namespace WindowsFormsApp2
             DirectionRadioButton.Checked = !BuildingDataRadioButton.Checked;
             if (maskCalculator.Initialized)
             {
-                maskCalculator.ShowBuildings(polygonsOverlay, false);
+                maskCalculator.DrawBuildings(polygonsOverlay, false);
                 Map.Refresh();
                 DirectionLegendPanel.Visible = false;
                 BuildingDataLegendPanel.Visible = true;

@@ -54,7 +54,9 @@ namespace WindowsFormsApp2
         }
         public override string type { get { return "way"; } }
         public long id { get; set; }
-        public long[] nodes { get; set; }
+        [JsonProperty("nodes")]
+        public long[] NodesId { get; set; }
+        public List<Node> Nodes { get; set; }
         public BuildingTags tags { get; set; }
         public Direction direction = Direction.Unspecified;
         public PointLatLng CenterPoint { get; set; }

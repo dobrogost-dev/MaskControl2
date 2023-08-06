@@ -109,6 +109,8 @@
     </Compile>
     <Compile Include="MainFormUtilities.cs" />
     <Compile Include="MaskCalculator.cs" />
+    <Compile Include="MaskCalculatorUtilities.cs" />
+    <Compile Include="MaskResult.cs" />
     <Compile Include="OSMdata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

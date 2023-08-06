@@ -13,20 +13,35 @@ namespace WindowsFormsApp2
 {
     public class MaskCalculator
     {
+        private PointLatLng BasePoint;
         private Building BaseBuilding;
         private List<Building> Buildings { get; set; }
         private List<Node> Nodes { get; set; }
 
         public bool Initialized = false;
-        public void LoadData(OSMdata Data, PointLatLng BasePoint) 
+        public void LoadData(OSMdata Data, PointLatLng LoadedBasePoint)
         {
-            Console.WriteLine(BasePoint);
+            //Console.WriteLine("Setting base point as: " + BasePoint);
+            BasePoint = LoadedBasePoint;
+
             Buildings = new List<Building>();
             Nodes = new List<Node>();
+
             if (Data.elements.Length == 0)
             {
                 return;
             }
+
+            LoadElements(Data);
+            InitializeBuildings();
+            FindBaseBuilding();
+            Buildings.Remove(BaseBuilding);
+            RemoveNorthernBuildings();
+            Initialized = true;
+        }
+
+        private void LoadElements(OSMdata Data)
+        {
             foreach (Element element in Data.elements)
             {
                 if (element.type == "node")
@@ -41,73 +56,92 @@ namespace WindowsFormsApp2
                     Buildings.Add(building);
                 }
             }
-            double distance = 100000000000;
-            foreach(Building building in Buildings)
+        }
+        private void InitializeBuildings()
+        {
+            foreach (Building building in Buildings)
             {
+                AssignNodes(building);
+                CalculateSideCenterPoints(building);
+            }
+        }
+        private void AssignNodes(Building building)
+        {
+            building.Nodes = new List<Node>();
+            foreach(long node in building.NodesId)
+            {
+                Node NodeInstance = GetNodeById(node);
+                building.Nodes.Add(NodeInstance);
+            }
+        }
+        private void CalculateSideCenterPoints(Building building)
+        {
+            building.SideCenterPoints = new List<PointLatLng>();
+            for (int i = 0; i < building.NodesId.Length - 1; i++)
+            {
+                //Node CurrentNode = building.Nodes.Select(e => e).Where(e => e.id == building.NodesId[i]).FirstOrDefault();
+                Node CurrentNode = GetNodeById(building.NodesId[i]);
+                Node NextNode = GetNodeById(building.NodesId[i + 1]);
 
+                double NewLat = (CurrentNode.lat + NextNode.lat) / 2;
+                double NewLng = (CurrentNode.lon + NextNode.lon) / 2;
+
+                PointLatLng SideCenterPoint = new PointLatLng(NewLat, NewLng);
+                building.SideCenterPoints.Add(SideCenterPoint);
+                //Console.WriteLine("     Side point: " + SidePoint);
+            }
+        }
+        private Node GetNodeById(long id)
+        {
+            return Nodes
+                .Select(e => e)
+                .Where(e => e.id == id)
+                .FirstOrDefault();
+        }
+        private void FindBaseBuilding()
+        {
+            double HighestDistanceToBasePoint = double.MaxValue;
+            foreach (Building building in Buildings)
+            {
                 building.CenterPoint = GetCenterPosition(building);
-                double buildingDistance = GetDistance(building.CenterPoint, BasePoint);
-                Console.WriteLine("Building id: " + building.id);
-                Console.WriteLine("     Center: " + building.CenterPoint);
-                Console.WriteLine("     Distance: " + buildingDistance);
-                if (buildingDistance < distance)
+                double CurrentDistanceToBasePoint = GetDistance(building.CenterPoint, BasePoint);
+                if (CurrentDistanceToBasePoint < HighestDistanceToBasePoint)
                 {
-                    distance = buildingDistance;
-                    Console.WriteLine("Assigning building id " + building.id + " as a base building");
+                    HighestDistanceToBasePoint = CurrentDistanceToBasePoint;
                     BaseBuilding = building;
                 }
-                Console.WriteLine("Adding side points for building id " + building.id);
-                Console.WriteLine("Building center point: " + building.CenterPoint);
-                building.SideCenterPoints = new List<PointLatLng>();
-                for (int i = 0; i < building.nodes.Length - 1; i++)
-                {
-                    Node newNode = Nodes
-                        .Select(e => e)
-                        .Where(e => e.id == building.nodes[i])
-                        .FirstOrDefault();
-                    Node nextNode = Nodes
-                        .Select(e => e)
-                        .Where(e => e.id == building.nodes[i + 1])
-                        .FirstOrDefault();
-
-                    PointLatLng Corner = new PointLatLng(newNode.lat, newNode.lon);
-                    PointLatLng NextCorner = new PointLatLng(nextNode.lat, nextNode.lon);
-
-                    double NewLat = (newNode.lat + nextNode.lat) / 2;
-                    double NewLng = (newNode.lon + nextNode.lon) / 2;
-
-                    PointLatLng SidePoint = new PointLatLng(NewLat, NewLng);
-                    building.SideCenterPoints.Add(SidePoint);
-                    Console.WriteLine("     Side point: " + SidePoint);
-                }
             }
-            Buildings.Remove(BaseBuilding);
+        }
+        private void RemoveNorthernBuildings()
+        {
+            // We are not removing partially included building
             double FarthestNorth = GetCenterPosition(BaseBuilding).Lat;
-            List<Building> NorthBuildings = new List<Building>();
+            List<Building> NorthernBuildings = new List<Building>();
             foreach (Building building in Buildings)
             {
                 double FarthestSouth = GetPointFarthestSouth(building);
                 if (FarthestNorth < FarthestSouth)
                 {
-                    NorthBuildings.Add(building);
+                    NorthernBuildings.Add(building);
                 }
             }
-            Buildings.RemoveAll(building => NorthBuildings.Contains(building));
-            Initialized = true;
+            Buildings.RemoveAll(building => NorthernBuildings.Contains(building));
         }
-        public void ShowBuildings(GMapOverlay polygonsOverlay, bool DirectionBuilding)
+
+        public void ShowBuildingsLogs()
         {
             if (Buildings.Count == 0 || Nodes.Count == 0)
             {
                 return;
             }
+            /*
             Console.WriteLine("/////////////////////////////////////////////////////////////");
             Console.WriteLine("Default building id: " + BaseBuilding.id);
             foreach (long node in BaseBuilding.nodes)
             {
-                Console.WriteLine("     Node id: " + node);
-                Console.WriteLine("         Node latitude: " + Nodes.FirstOrDefault(e => e.id == node).lat);
-                Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
+                //Console.WriteLine("     Node id: " + node);
+                //Console.WriteLine("         Node latitude: " + Nodes.FirstOrDefault(e => e.id == node).lat);
+                //Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
             }
             foreach (Building building in Buildings)
             {
@@ -122,6 +156,11 @@ namespace WindowsFormsApp2
                     Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
                 }
             }
+            */
+        }
+
+        public void DrawBuildings(GMapOverlay polygonsOverlay, bool DirectionBuilding)
+        {
             polygonsOverlay.Clear();
             List<PointLatLng> BaseBuildingPolygons = GetPolygons(BaseBuilding);
             DrawBuilding(polygonsOverlay, BaseBuildingPolygons, Color.Blue);
@@ -140,24 +179,27 @@ namespace WindowsFormsApp2
                         case Building.Direction.SouthWest_West: color = Color.Red; break;
                         default: color = Color.Gray; break;
                     }
-                } else
+                }
+                else
                 {
                     if (building.tags.height != null)
                     {
                         color = Color.Green;
-                    } else if (building.tags.BuildingLevels != null)
+                    }
+                    else if (building.tags.BuildingLevels != null)
                     {
                         color = Color.Orange;
-                    } else
+                    }
+                    else
                     {
                         color = Color.Red;
                     }
                 }
                 DrawBuilding(polygonsOverlay, BuildingPolygons, color);
             }
- 
         }
-        public void DrawBuilding(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, System.Drawing.Color color)
+
+        private void DrawBuilding(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, System.Drawing.Color color)
         {
             GMapPolygon buildingPolygon = new GMapPolygon(polygons, "building");
             buildingPolygon.Fill = new SolidBrush(System.Drawing.Color.FromArgb(50, color));
@@ -167,12 +209,9 @@ namespace WindowsFormsApp2
         public List<PointLatLng> GetPolygons(Building building)
         {
             List<PointLatLng> result = new List<PointLatLng>();
-            foreach(long node in building.nodes)
+            foreach(long node in building.NodesId)
             {
-                Node newNode = Nodes
-                    .Select(e => e)
-                    .Where(e => e.id == node)
-                    .FirstOrDefault();
+                Node newNode = GetNodeById(node);
                 result.Add(new PointLatLng(newNode.lat, newNode.lon));
             }
             return result;
@@ -193,12 +232,12 @@ namespace WindowsFormsApp2
             double lat = 0;
             double lng = 0;
             //We're checking 1 less because last one is a repetition
-            int length = building.nodes.Length - 1;
+            int length = building.NodesId.Length - 1;
             for (int i = 0; i < length; i++)
             {
                 Node selectedNode = Nodes
                     .Select(e => e)
-                    .Where(e => e.id == building.nodes[i])
+                    .Where(e => e.id == building.NodesId[i])
                     .FirstOrDefault();
                 lat += selectedNode.lat;
                 lng += selectedNode.lon;
@@ -246,7 +285,7 @@ namespace WindowsFormsApp2
         public double GetPointFarthestNorth(Building building)
         {
             double result = -10000;
-            foreach(long node in building.nodes)
+            foreach(long node in building.NodesId)
             {
                 Node newNode = Nodes
                     .Select(e => e)
@@ -262,7 +301,7 @@ namespace WindowsFormsApp2
         public double GetPointFarthestSouth(Building building)
         {
             double result = 10000;
-            foreach (long node in building.nodes)
+            foreach (long node in building.NodesId)
             {
                 Node newNode = Nodes
                     .Select(e => e)
@@ -327,7 +366,7 @@ namespace WindowsFormsApp2
             PointLatLng TargetPoint = new PointLatLng();
             foreach (PointLatLng SidePoint in BaseBuilding.SideCenterPoints)
             {
-                foreach(long node in building.nodes)
+                foreach(long node in building.NodesId)
                 {
                     Node NewNode = GetNodeForId(node);
                     PointLatLng NodePosition = new PointLatLng(NewNode.lat, NewNode.lon);
@@ -457,12 +496,5 @@ namespace WindowsFormsApp2
             lineRoute.Stroke = new Pen(Color.Black, 2);
             linesOverlay.Routes.Add(lineRoute);
         }
-    }
-    public class MaskResult
-    {
-        public double East_SouthEast { get; set; } = 0;
-        public double SouthEast_South { get; set; } = 0;
-        public double South_SouthWest { get; set; } = 0;
-        public double SouthWest_West { get; set; } = 0;
     }
 }
