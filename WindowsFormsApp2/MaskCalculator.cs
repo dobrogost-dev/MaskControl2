@@ -161,6 +161,10 @@ namespace WindowsFormsApp2
 
         public void DrawBuildings(GMapOverlay polygonsOverlay, bool DirectionBuilding)
         {
+            if (Buildings.Count == 0 || Nodes.Count == 0)
+            {
+                return;
+            }
             polygonsOverlay.Clear();
             List<PointLatLng> BaseBuildingPolygons = GetPolygons(BaseBuilding);
             DrawBuilding(polygonsOverlay, BaseBuildingPolygons, Color.Blue);
