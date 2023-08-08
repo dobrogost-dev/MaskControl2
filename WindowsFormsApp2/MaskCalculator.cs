@@ -61,7 +61,8 @@ namespace WindowsFormsApp2
         {
             foreach (Building building in Buildings)
             {
-                AssignNodes(building);
+                //Not used
+                //AssignNodes(building);
                 CalculateSideCenterPoints(building);
             }
         }
@@ -134,14 +135,13 @@ namespace WindowsFormsApp2
             {
                 return;
             }
-            /*
             Console.WriteLine("/////////////////////////////////////////////////////////////");
             Console.WriteLine("Default building id: " + BaseBuilding.id);
-            foreach (long node in BaseBuilding.nodes)
+            foreach (long node in BaseBuilding.NodesId)
             {
-                //Console.WriteLine("     Node id: " + node);
-                //Console.WriteLine("         Node latitude: " + Nodes.FirstOrDefault(e => e.id == node).lat);
-                //Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
+                Console.WriteLine("     Node id: " + node);
+                Console.WriteLine("         Node latitude: " + Nodes.FirstOrDefault(e => e.id == node).lat);
+                Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
             }
             foreach (Building building in Buildings)
             {
@@ -149,14 +149,13 @@ namespace WindowsFormsApp2
                 Console.WriteLine("     Building height: " + building.tags.height);
                 Console.WriteLine("     Building levels: " + building.tags.BuildingLevels);
                 Console.WriteLine("     Building direction: " + building.direction);
-                foreach (long node in building.nodes)
+                foreach (long node in building.NodesId)
                 {
                     Console.WriteLine("     Node id: " + node);
                     Console.WriteLine("         Node latitude: " + Nodes.FirstOrDefault(e => e.id == node).lat);
                     Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
                 }
             }
-            */
         }
 
         public void DrawBuildings(GMapOverlay polygonsOverlay, bool DirectionBuilding)
@@ -291,10 +290,7 @@ namespace WindowsFormsApp2
             double result = -10000;
             foreach(long node in building.NodesId)
             {
-                Node newNode = Nodes
-                    .Select(e => e)
-                    .Where(e => e.id == node)
-                    .FirstOrDefault();
+                Node newNode = GetNodeById(node);
                 if (newNode.lat > result)
                 {
                     result = newNode.lat;
@@ -307,10 +303,7 @@ namespace WindowsFormsApp2
             double result = 10000;
             foreach (long node in building.NodesId)
             {
-                Node newNode = Nodes
-                    .Select(e => e)
-                    .Where(e => e.id == node)
-                    .FirstOrDefault();
+                Node newNode = GetNodeById(node);
                 if (newNode.lat < result)
                 {
                     result = newNode.lat;
@@ -452,8 +445,6 @@ namespace WindowsFormsApp2
                         }
                         break;
                 }
-                //Console.WriteLine("         Mask: " + mask);
-
             }
             return result;
         }

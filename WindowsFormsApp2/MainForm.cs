@@ -28,6 +28,7 @@ namespace WindowsFormsApp2
         public GMapOverlay linesOverlay;
         public GMarkerGoogle currentMarker;
         public MaskCalculator maskCalculator;
+        public string PreviousAddress;
         public MainForm()
         {
             currentMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.red_dot);
@@ -85,10 +86,29 @@ namespace WindowsFormsApp2
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            if (AddressTextBox.Text != string.Empty)
+            string Address = AddressTextBox.Text;
+            if (Address != string.Empty)
             {
-                Map.SetPositionByKeywords(AddressTextBox.Text);
-                Map.Zoom = 18;
+                PointLatLng initialPosition = Map.Position; 
+                Map.SetPositionByKeywords(Address);
+                if (Address == PreviousAddress)
+                {
+
+                } else if (Map.Position == initialPosition)
+                {
+                    Console.WriteLine("Address not found");
+                    MessageBox.Show("Address not found",
+                        "Wrong address", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else
+                {
+                    PreviousAddress = Address;
+                    Map.Zoom = 18;
+                }
+            } else
+            {
+                Console.WriteLine("Address textbox empty");
+                MessageBox.Show("Address textbox is empty",
+                    "Address textbox empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void ZoomInButton_Click(object sender, EventArgs e)
