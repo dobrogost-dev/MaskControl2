@@ -455,12 +455,18 @@ namespace WindowsFormsApp2
             // Wzór: stopnie = (metry / (promień Ziemi * π)) * 180
             return (meters / (earthRadius * Math.PI)) * 180;
         }
-        private static double MetersToDegreesLongitude(double meters)
+        public static double MetersToDegreesLongitude(double meters, double latitude)
         {
-            double earthRadius = 6378137; // Promień Ziemi w metrach
+            // Earth's radius in meters
+            double earthRadius = 6371000;
 
-            // Wzór: stopnie = (metry / promień Ziemi) * 180
-            return (meters / earthRadius) * 180;
+            // Calculate the circumference of Earth at given latitude
+            double circumferenceAtLatitude = 2 * Math.PI * earthRadius * Math.Cos(latitude * Math.PI / 180);
+
+            // Calculate the longitude degrees for the given distance
+            double longitudeDegrees = meters * 360 / circumferenceAtLatitude;
+
+            return longitudeDegrees;
         }
 
         public void DrawLines(GMapOverlay linesOverlay, double radius)
@@ -477,24 +483,27 @@ namespace WindowsFormsApp2
 
             for (double a = 100; a >= -100; a -= 1)
             {
-                if (a != 0)
+                if (a == 0)
                 {
-                    double RadiusMeters = MetersToDegreesLatitude(radius);
-                    double AddedLongitude = MetersToDegreesLatitude(radius) * (a / 100);
-
-                    double AddedLatitudeSquared = (RadiusMeters * RadiusMeters) - (AddedLongitude * AddedLongitude);
-                    double AddedLatitude = Math.Sqrt(AddedLatitudeSquared);
-
-                    Console.WriteLine("     Drawing line: " + a);
-                    Console.WriteLine("         RadiusMeters: " + (RadiusMeters));
-                    Console.WriteLine("         Added Longitude: " + (AddedLongitude));
-                    Console.WriteLine("         Added Latitude Squared: " + (AddedLatitudeSquared));
-
-                    Console.WriteLine("         Added longitude: " + (AddedLongitude));
-                    Console.WriteLine("         Added latitude: " + (AddedLatitude));
-                    PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
-                    LinesPolygons.Add(TargetPoint);
+                    continue;
                 }
+                double RadiusMetersLongitude = MetersToDegreesLongitude(radius, BasePoint.Lat);
+                double AddedLongitude = RadiusMetersLongitude * (a / 100);
+
+                double RadiusMetersLatitude = MetersToDegreesLatitude(radius);
+                decimal AddedLatitudeSquared = new decimal(((RadiusMetersLongitude * RadiusMetersLongitude) - (AddedLongitude * AddedLongitude)) * ((RadiusMetersLatitude / RadiusMetersLongitude) * 0.67));
+                double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
+
+                Console.WriteLine("     Drawing line: " + a);
+                Console.WriteLine("         RadiusMetersLatitude: " + (RadiusMetersLatitude));
+                Console.WriteLine("         RadiusMetersLongitude: " + (RadiusMetersLongitude));
+
+                Console.WriteLine("         Added Latitude Squared: " + (AddedLatitudeSquared));
+
+                Console.WriteLine("         Added longitude: " + (AddedLongitude));
+                Console.WriteLine("         Added latitude: " + (AddedLatitude));
+                PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
+                LinesPolygons.Add(TargetPoint);
             }
             DrawEntity(linesOverlay, LinesPolygons, Color.DarkOrange);
 
