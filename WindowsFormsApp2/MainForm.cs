@@ -25,7 +25,8 @@ namespace WindowsFormsApp2
         public static int BaseZoom = 1;
         public GMapOverlay markersOverlay;
         public GMapOverlay polygonsOverlay;
-        public GMapOverlay linesOverlay;
+        public GMapOverlay SemicircleOverlay;
+        public GMapOverlay LinesOverlay;
         public GMarkerGoogle currentMarker;
         public MaskCalculator maskCalculator;
         public string PreviousAddress;
@@ -58,7 +59,8 @@ namespace WindowsFormsApp2
             MaskButton.Enabled = false;
             BuildingDataLegendPanel.Visible = false;
             DirectionLegendPanel.Visible = false;
-            linesOverlay.IsVisibile = false;
+            LinesOverlay.IsVisibile = false;
+            SemicircleOverlay.IsVisibile = false;
         }
 
         private void SetMapConfiguration(double DefaultLatitude, double DefaultLongitude)
@@ -78,10 +80,13 @@ namespace WindowsFormsApp2
 
             markersOverlay = new GMapOverlay("markers");
             polygonsOverlay = new GMapOverlay("polygons");
-            linesOverlay = new GMapOverlay("lines");
+            SemicircleOverlay = new GMapOverlay("polygons");
+            LinesOverlay = new GMapOverlay("lines");
             Map.Overlays.Add(markersOverlay);
             Map.Overlays.Add(polygonsOverlay);
-            Map.Overlays.Add(linesOverlay);
+            Map.Overlays.Add(LinesOverlay);
+            Map.Overlays.Add(SemicircleOverlay);
+
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
@@ -189,7 +194,7 @@ namespace WindowsFormsApp2
                         double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
                         MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
 
-                        maskCalculator.DrawLines(linesOverlay, radius);
+                        maskCalculator.DrawLines(SemicircleOverlay, LinesOverlay, radius);
                         Map.Refresh();
                         East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°"; 
                         SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
@@ -236,10 +241,12 @@ namespace WindowsFormsApp2
         {
             if (DirectionLinesCheckBox.Checked)
             {
-                linesOverlay.IsVisibile = true;
+                LinesOverlay.IsVisibile = true;
+                SemicircleOverlay.IsVisibile = true;
             } else
             {
-                linesOverlay.IsVisibile = false;
+                LinesOverlay.IsVisibile = false;
+                SemicircleOverlay.IsVisibile = false;
             }
         }
 

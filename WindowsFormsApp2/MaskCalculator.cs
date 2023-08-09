@@ -469,7 +469,7 @@ namespace WindowsFormsApp2
             return longitudeDegrees;
         }
 
-        public void DrawLines(GMapOverlay linesOverlay, double radius)
+        public void DrawLines(GMapOverlay SemicircleOverlay, GMapOverlay LinesOverlay, double radius)
         {
             if (BaseBuilding == null)
             {
@@ -477,9 +477,14 @@ namespace WindowsFormsApp2
             }
             Console.WriteLine("Drawing lines: ");
             PointLatLng basePoint = GetCenterPosition(BaseBuilding);
-            linesOverlay.Clear();
+            SemicircleOverlay.Clear();
+            LinesOverlay.Clear();
 
-            List<PointLatLng> LinesPolygons = new List<PointLatLng>();
+            List<PointLatLng> SemicirclePolygons = new List<PointLatLng>();
+
+            bool FirstAzmiuth = true;
+            bool SecondAzimuth = true;
+            bool ThirdAzmiuth = true;
 
             for (double a = 100; a >= -100; a -= 1)
             {
@@ -513,9 +518,25 @@ namespace WindowsFormsApp2
                 Console.WriteLine("         Added longitude: " + (AddedLongitude));
                 Console.WriteLine("         Added latitude: " + (AddedLatitude));
                 PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
-                LinesPolygons.Add(TargetPoint);
+                SemicirclePolygons.Add(TargetPoint);
+                double azimuth = CalculateAzimuth(BasePoint, TargetPoint);
+                if (azimuth > 135 && FirstAzmiuth)
+                {
+                    DrawLine(LinesOverlay, basePoint, TargetPoint, Color.Orange, 1);
+                    FirstAzmiuth = false;
+                } 
+                if (azimuth > 180 && SecondAzimuth)
+                {
+                    DrawLine(LinesOverlay, basePoint, TargetPoint, Color.Orange, 1);
+                    SecondAzimuth = false;
+                }
+                if (azimuth > 225 && ThirdAzmiuth)
+                {
+                    DrawLine(LinesOverlay, basePoint, TargetPoint, Color.Orange, 1);
+                    ThirdAzmiuth = false;
+                }
             }
-            DrawEntity(linesOverlay, LinesPolygons, Color.DarkOrange);
+            DrawEntity(SemicircleOverlay, SemicirclePolygons, Color.DarkOrange);
 
         }
         private static decimal SquareRoot(decimal square)
@@ -528,7 +549,7 @@ namespace WindowsFormsApp2
                 root = (root + square / root) / 2;
             return root;
         }
-        public void DrawLine(GMapOverlay linesOverlay, PointLatLng startPoint, PointLatLng endPoint)
+        public void DrawLine(GMapOverlay linesOverlay, PointLatLng startPoint, PointLatLng endPoint, Color color, int thickness)
         {
             List<PointLatLng> points = new List<PointLatLng>
             {
@@ -537,7 +558,7 @@ namespace WindowsFormsApp2
             };
 
             GMapRoute lineRoute = new GMapRoute(points, "line");
-            lineRoute.Stroke = new Pen(Color.Black, 2);
+            lineRoute.Stroke = new Pen(color, thickness);
             linesOverlay.Routes.Add(lineRoute);
         }
     }
