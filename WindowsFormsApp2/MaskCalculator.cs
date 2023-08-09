@@ -204,7 +204,7 @@ namespace WindowsFormsApp2
             }
             polygonsOverlay.Clear();
             List<PointLatLng> BaseBuildingPolygons = GetPolygons(BaseBuilding);
-            DrawBuilding(polygonsOverlay, BaseBuildingPolygons, Color.Blue);
+            DrawEntity(polygonsOverlay, BaseBuildingPolygons, Color.Blue);
             foreach (Building building in Buildings)
             {
                 List<PointLatLng> BuildingPolygons = GetPolygons(building);
@@ -236,11 +236,11 @@ namespace WindowsFormsApp2
                         color = Color.Red;
                     }
                 }
-                DrawBuilding(polygonsOverlay, BuildingPolygons, color);
+                DrawEntity(polygonsOverlay, BuildingPolygons, color);
             }
         }
 
-        private void DrawBuilding(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, System.Drawing.Color color)
+        private void DrawEntity(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, System.Drawing.Color color)
         {
             GMapPolygon buildingPolygon = new GMapPolygon(polygons, "building");
             buildingPolygon.Fill = new SolidBrush(System.Drawing.Color.FromArgb(50, color));
@@ -473,14 +473,7 @@ namespace WindowsFormsApp2
             PointLatLng basePoint = GetCenterPosition(BaseBuilding);
             linesOverlay.Clear();
 
-            //PointLatLng TargetPoint = new PointLatLng(basePoint.Lat, basePoint.Lng + MetersToDegreesLongitude(radius)/2);
-            //DrawLine(linesOverlay, basePoint, TargetPoint);
-
-            //PointLatLng TargetPoint2 = new PointLatLng(basePoint.Lat - MetersToDegreesLatitude(radius), basePoint.Lng);
-            //DrawLine(linesOverlay, basePoint, TargetPoint2);
-
-            //PointLatLng TargetPoint3 = new PointLatLng(basePoint.Lat, basePoint.Lng - MetersToDegreesLongitude(radius)/2);
-            //DrawLine(linesOverlay, basePoint, TargetPoint3);
+            List<PointLatLng> LinesPolygons = new List<PointLatLng>();
 
             for (double a = 100; a >= -100; a -= 1)
             {
@@ -491,10 +484,7 @@ namespace WindowsFormsApp2
 
                     double AddedLatitudeSquared = (RadiusMeters * RadiusMeters) - (AddedLongitude * AddedLongitude);
                     double AddedLatitude = Math.Sqrt(AddedLatitudeSquared);
-                    //PointLatLng TargetPoint = new PointLatLng(PointLatitude, PointLongitude);
-                    // Obliczenia współrzędnych nowego punktu
 
-                    // Dodawanie punktu do serii
                     Console.WriteLine("     Drawing line: " + a);
                     Console.WriteLine("         RadiusMeters: " + (RadiusMeters));
                     Console.WriteLine("         Added Longitude: " + (AddedLongitude));
@@ -503,9 +493,10 @@ namespace WindowsFormsApp2
                     Console.WriteLine("         Added longitude: " + (AddedLongitude));
                     Console.WriteLine("         Added latitude: " + (AddedLatitude));
                     PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
-                    DrawLine(linesOverlay, basePoint, TargetPoint);
+                    LinesPolygons.Add(TargetPoint);
                 }
             }
+            DrawEntity(linesOverlay, LinesPolygons, Color.DarkOrange);
 
         }
         private static decimal SquareRoot(decimal square)
