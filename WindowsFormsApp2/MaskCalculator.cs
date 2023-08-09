@@ -491,7 +491,17 @@ namespace WindowsFormsApp2
                 double AddedLongitude = RadiusMetersLongitude * (a / 100);
 
                 double RadiusMetersLatitude = MetersToDegreesLatitude(radius);
-                decimal AddedLatitudeSquared = new decimal(((RadiusMetersLongitude * RadiusMetersLongitude) - (AddedLongitude * AddedLongitude)) * ((RadiusMetersLatitude / RadiusMetersLongitude) * 0.67));
+
+                double RadiusCorrection = ((RadiusMetersLatitude / RadiusMetersLongitude));
+                //The correction is supposed to maximalize the accuracy of the calculations
+                //By comparing the BasePoint and Relative Correction Point( which is Poiters, France)
+                //if BasePoint is above it the semicircle height gets smaller, if its below it gets bigger
+                double LongitudeCorrection = (46.590484 / BasePoint.Lat) * 0.67;
+                LongitudeCorrection = Math.Min(LongitudeCorrection, 1.0);
+                LongitudeCorrection = Math.Max(LongitudeCorrection, 0.5);
+
+                double LatitudeSquared = (RadiusMetersLongitude * RadiusMetersLongitude) - (AddedLongitude * AddedLongitude);
+                decimal AddedLatitudeSquared = new decimal(LatitudeSquared * RadiusCorrection * LongitudeCorrection);
                 double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
 
                 Console.WriteLine("     Drawing line: " + a);
