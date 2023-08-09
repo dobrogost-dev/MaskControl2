@@ -57,6 +57,44 @@ namespace WindowsFormsApp2
                 }
             }
         }
+        public void AssignDirection(Building building, PointLatLng point)
+        {
+            PointLatLng buildingCenter = GetCenterPosition(building);
+            double azimuth = CalculateAzimuth(point, buildingCenter);
+            if (azimuth < 135)
+            {
+                building.direction = Building.Direction.East_SouthEast;
+            }
+            else if (azimuth >= 135 && azimuth < 180)
+            {
+                building.direction = Building.Direction.SouthEast_South;
+            }
+            else if (azimuth >= 180 && azimuth < 225)
+            {
+                building.direction = Building.Direction.South_SouthWest;
+            }
+            else if (azimuth >= 225)
+            {
+                building.direction = Building.Direction.SouthWest_West;
+            }
+            //Console.WriteLine("Calculating azimuth for: " + buildingCenter);
+            // Console.WriteLine("Azimuth: " + azimuth);
+        }
+        public static double CalculateAzimuth(PointLatLng point1, PointLatLng point2)
+        {
+            const double radianToDegree = 180.0 / Math.PI;
+            const double degreeToRadian = Math.PI / 180.0;
+
+            double dLon = (point2.Lng - point1.Lng) * degreeToRadian;
+            point1.Lat *= degreeToRadian;
+            point2.Lat *= degreeToRadian;
+
+            double y = Math.Sin(dLon) * Math.Cos(point2.Lat);
+            double x = Math.Cos(point1.Lat) * Math.Sin(point2.Lat) - Math.Sin(point1.Lat) * Math.Cos(point2.Lat) * Math.Cos(dLon);
+            double azimuth = Math.Atan2(y, x) * radianToDegree;
+
+            return (azimuth + 360) % 360;
+        }
         private void InitializeBuildings()
         {
             foreach (Building building in Buildings)
@@ -247,44 +285,6 @@ namespace WindowsFormsApp2
             }
             return new PointLatLng(lat / length, lng / length);
         }
-        public static double CalculateAzimuth(PointLatLng point1, PointLatLng point2)
-        {
-            const double radianToDegree = 180.0 / Math.PI;
-            const double degreeToRadian = Math.PI / 180.0;
-
-            double dLon = (point2.Lng - point1.Lng) * degreeToRadian;
-            point1.Lat *= degreeToRadian;
-            point2.Lat *= degreeToRadian;
-
-            double y = Math.Sin(dLon) * Math.Cos(point2.Lat);
-            double x = Math.Cos(point1.Lat) * Math.Sin(point2.Lat) - Math.Sin(point1.Lat) * Math.Cos(point2.Lat) * Math.Cos(dLon);
-            double azimuth = Math.Atan2(y, x) * radianToDegree;
-
-            return (azimuth + 360) % 360; 
-        }
-        public void AssignDirection(Building building, PointLatLng point)
-        {
-            PointLatLng buildingCenter = GetCenterPosition(building);
-            double azimuth = CalculateAzimuth(point, buildingCenter);
-            if (azimuth < 135)
-            {
-                building.direction = Building.Direction.East_SouthEast;
-            }
-            else if (azimuth >= 135 && azimuth < 180)
-            {
-                building.direction = Building.Direction.SouthEast_South;
-            }
-            else if (azimuth >= 180 && azimuth < 225)
-            {
-                building.direction = Building.Direction.South_SouthWest;
-            }
-            else if (azimuth >= 225)
-            {
-                building.direction = Building.Direction.SouthWest_West;
-            }
-           //Console.WriteLine("Calculating azimuth for: " + buildingCenter);
-           // Console.WriteLine("Azimuth: " + azimuth);
-        }
         public double GetPointFarthestNorth(Building building)
         {
             double result = -10000;
@@ -448,12 +448,19 @@ namespace WindowsFormsApp2
             }
             return result;
         }
-        public static double MetersToDegrees(double meters)
+        private static double MetersToDegreesLatitude(double meters)
         {
-            const double earthRadius = 6378137; // Promień Ziemi w metrach
-            const double degreesPerRadian = 180.0 / Math.PI;
+            double earthRadius = 6378137; // Promień Ziemi w metrach
 
-            return meters / earthRadius * degreesPerRadian;
+            // Wzór: stopnie = (metry / (promień Ziemi * π)) * 180
+            return (meters / (earthRadius * Math.PI)) * 180;
+        }
+        private static double MetersToDegreesLongitude(double meters)
+        {
+            double earthRadius = 6378137; // Promień Ziemi w metrach
+
+            // Wzór: stopnie = (metry / promień Ziemi) * 180
+            return (meters / earthRadius) * 180;
         }
 
         public void DrawLines(GMapOverlay linesOverlay, double radius)
@@ -462,22 +469,54 @@ namespace WindowsFormsApp2
             {
                 return;
             }
-
+            Console.WriteLine("Drawing lines: ");
             PointLatLng basePoint = GetCenterPosition(BaseBuilding);
-            double distance = MetersToDegrees(radius);
-            Console.WriteLine(distance);
-            PointLatLng east = new PointLatLng(basePoint.Lat, basePoint.Lng + distance);
-            PointLatLng eastsouth = new PointLatLng(basePoint.Lat - distance / 2, basePoint.Lng + distance / 2);
-            PointLatLng south = new PointLatLng(basePoint.Lat - distance, basePoint.Lng);
-            PointLatLng southwest = new PointLatLng(basePoint.Lat - distance / 2, basePoint.Lng - distance / 2);
-            PointLatLng west = new PointLatLng(basePoint.Lat, basePoint.Lng - distance);
+            linesOverlay.Clear();
 
-            DrawLine(linesOverlay, basePoint, east);
-            DrawLine(linesOverlay, basePoint, eastsouth);
-            DrawLine(linesOverlay, basePoint, south);
-            DrawLine(linesOverlay, basePoint, southwest);
-            DrawLine(linesOverlay, basePoint, west);
+            //PointLatLng TargetPoint = new PointLatLng(basePoint.Lat, basePoint.Lng + MetersToDegreesLongitude(radius)/2);
+            //DrawLine(linesOverlay, basePoint, TargetPoint);
 
+            //PointLatLng TargetPoint2 = new PointLatLng(basePoint.Lat - MetersToDegreesLatitude(radius), basePoint.Lng);
+            //DrawLine(linesOverlay, basePoint, TargetPoint2);
+
+            //PointLatLng TargetPoint3 = new PointLatLng(basePoint.Lat, basePoint.Lng - MetersToDegreesLongitude(radius)/2);
+            //DrawLine(linesOverlay, basePoint, TargetPoint3);
+
+            for (double a = 100; a >= -100; a -= 1)
+            {
+                if (a != 0)
+                {
+                    double RadiusMeters = MetersToDegreesLatitude(radius);
+                    double AddedLongitude = MetersToDegreesLatitude(radius) * (a / 100);
+
+                    double AddedLatitudeSquared = (RadiusMeters * RadiusMeters) - (AddedLongitude * AddedLongitude);
+                    double AddedLatitude = Math.Sqrt(AddedLatitudeSquared);
+                    //PointLatLng TargetPoint = new PointLatLng(PointLatitude, PointLongitude);
+                    // Obliczenia współrzędnych nowego punktu
+
+                    // Dodawanie punktu do serii
+                    Console.WriteLine("     Drawing line: " + a);
+                    Console.WriteLine("         RadiusMeters: " + (RadiusMeters));
+                    Console.WriteLine("         Added Longitude: " + (AddedLongitude));
+                    Console.WriteLine("         Added Latitude Squared: " + (AddedLatitudeSquared));
+
+                    Console.WriteLine("         Added longitude: " + (AddedLongitude));
+                    Console.WriteLine("         Added latitude: " + (AddedLatitude));
+                    PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
+                    DrawLine(linesOverlay, basePoint, TargetPoint);
+                }
+            }
+
+        }
+        private static decimal SquareRoot(decimal square)
+        {
+            if (square <= 0) return 0;
+
+            decimal root = square / 3;
+            int i;
+            for (i = 0; i < 32; i++)
+                root = (root + square / root) / 2;
+            return root;
         }
         public void DrawLine(GMapOverlay linesOverlay, PointLatLng startPoint, PointLatLng endPoint)
         {
