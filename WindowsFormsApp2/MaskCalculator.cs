@@ -32,14 +32,14 @@ namespace WindowsFormsApp2
 
             LoadElements(Data);
             InitializeBuildings(BaseBuilding.CenterPoint);
-            Buildings.RemoveAll(b => b.CenterPoint == BaseBuilding.CenterPoint);
-
+            RemoveBaseBuilding();
             RemoveNorthernBuildings();
+
             Initialized = true;
         }
         private void RemoveBaseBuilding()
         {
-            Buildings.RemoveAll(b => b.CenterPoint == BaseBuilding.CenterPoint);
+            Buildings.RemoveAll(b => b.id == BaseBuilding.id);
         }
         public void LoadBaseBuilding(OSMdata Data, PointLatLng LoadedBasePoint)
         {
@@ -52,9 +52,8 @@ namespace WindowsFormsApp2
                 return;
             }
             LoadElements(Data);
-            InitializeBuildings(LoadedBasePoint);
             FindBaseBuilding(LoadedBasePoint);
-            Console.WriteLine(BaseBuilding.CenterPoint);
+            Console.WriteLine("Base building: " + BaseBuilding.id);
         }
 
         private void LoadElements(OSMdata Data)
@@ -165,6 +164,7 @@ namespace WindowsFormsApp2
                 {
                     HighestDistanceToBasePoint = CurrentDistanceToBasePoint;
                     BaseBuilding = building;
+                    CalculateSideCenterPoints(BaseBuilding);
                 }
             }
         }
