@@ -166,47 +166,66 @@ namespace WindowsFormsApp2
                     "Marker required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            double radius = Double.Parse(RadiusTextBox.Text);
+            double BaseBuildingRadius = 50.0;
+            double Radius = Double.Parse(RadiusTextBox.Text);
             // Zmiana double na stringa oddzielonego kropką zamiast przecinka
-            string latitude = currentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
-            string longitude = currentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
+            string MarkerLatitude = currentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
+            string MarkerLongitude = currentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
 
-            string apiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{radius},{latitude},{longitude});(._;>;);out;";
+            string BaseBuildingApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{BaseBuildingRadius},{MarkerLatitude},{MarkerLongitude});(._;>;);out;";
             //Console.WriteLine(apiUrl);
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
                     // Wysyłamy żądanie GET do API OpenStreetMap
-                    HttpResponseMessage response = await client.GetAsync(apiUrl);
                     //Console.WriteLine($"Response: {response}");
                     //Console.WriteLine($"Response: {response.Content.ReadAsStringAsync()}");
-                    if (response.IsSuccessStatusCode)
-                    {
-                        // Odczytujemy odpowiedź jako ciąg JSON
-                        string jsonResponse = await response.Content.ReadAsStringAsync();
-                        Console.WriteLine(jsonResponse);
-                        OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
-                        maskCalculator.LoadData(apiResponse, currentMarker.Position);
-                        //maskCalculator.ShowBuildingsLogs();
-                        maskCalculator.DrawBuildings(polygonsOverlay, DirectionRadioButton.Checked);
-                        double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
-                        double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
-                        MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
+                    HttpResponseMessage BaseBuildingResponse = await client.GetAsync(BaseBuildingApiUrl);
 
-                        maskCalculator.DrawLines(SemicircleOverlay, LinesOverlay, radius);
-                        Map.Refresh();
-                        East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°"; 
-                        SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
-                        South_SouthWestTextBox.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
-                        SouthWest_WestTextBox.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
-
-                        DirectionLegendPanel.Visible = true;
-                    }
-                    else
+                    if (!BaseBuildingResponse.IsSuccessStatusCode)
                     {
-                        Console.WriteLine($"Błąd HTTP: {response.StatusCode}");
+                        Console.WriteLine($"Błąd HTTP: {BaseBuildingResponse.StatusCode}");
+                        MessageBox.Show("Base building not found",
+                        "Base building not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
+                    string BaseBuildingJsonResponse = await BaseBuildingResponse.Content.ReadAsStringAsync();
+                    Console.WriteLine(BaseBuildingJsonResponse);
+                    OSMdata BaseBuildingApiResponse = JsonConvert.DeserializeObject<OSMdata>(BaseBuildingJsonResponse);
+                    maskCalculator.LoadBaseBuilding(BaseBuildingApiResponse, currentMarker.Position);
+
+                    string Latitude = maskCalculator.BaseBuilding.CenterPoint.Lat.ToString(CultureInfo.InvariantCulture);
+                    string Longitude = maskCalculator.BaseBuilding.CenterPoint.Lng.ToString(CultureInfo.InvariantCulture);
+
+                    string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{Latitude},{Longitude});(._;>;);out;";
+                    HttpResponseMessage Response = await client.GetAsync(ApiUrl);
+
+                    if (!Response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Buildings not found",
+                            "Buildings not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine($"Błąd HTTP: {BaseBuildingResponse.StatusCode}");
+                    }
+                    // Odczytujemy odpowiedź jako ciąg JSON
+                    string jsonResponse = await Response.Content.ReadAsStringAsync();
+                    Console.WriteLine(jsonResponse);
+                    OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
+                    maskCalculator.LoadData(apiResponse);
+                    //maskCalculator.ShowBuildingsLogs();
+                    maskCalculator.DrawBuildings(polygonsOverlay, DirectionRadioButton.Checked);
+                    double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
+                    double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
+                    MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
+
+                    maskCalculator.DrawLines(SemicircleOverlay, LinesOverlay, Radius);
+                    Map.Refresh();
+                    East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
+                    SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
+                    South_SouthWestTextBox.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
+                    SouthWest_WestTextBox.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
+
+                    DirectionLegendPanel.Visible = true;
                 }
                 catch (Exception ex)
                 {

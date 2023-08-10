@@ -13,16 +13,14 @@ namespace WindowsFormsApp2
 {
     public class MaskCalculator
     {
-        private PointLatLng BasePoint;
-        private Building BaseBuilding;
+        public Building BaseBuilding {  get; private set; }
         private List<Building> Buildings { get; set; }
         private List<Node> Nodes { get; set; }
 
         public bool Initialized = false;
-        public void LoadData(OSMdata Data, PointLatLng LoadedBasePoint)
+        public void LoadData(OSMdata Data)
         {
-            //Console.WriteLine("Setting base point as: " + BasePoint);
-            BasePoint = LoadedBasePoint;
+            Console.WriteLine("Setting base point as: " + BaseBuilding.CenterPoint);
 
             Buildings = new List<Building>();
             Nodes = new List<Node>();
@@ -33,11 +31,24 @@ namespace WindowsFormsApp2
             }
 
             LoadElements(Data);
-            InitializeBuildings();
-            FindBaseBuilding();
+            InitializeBuildings(BaseBuilding.CenterPoint);
             Buildings.Remove(BaseBuilding);
             RemoveNorthernBuildings();
             Initialized = true;
+        }
+        public void LoadBaseBuilding(OSMdata Data, PointLatLng LoadedBasePoint)
+        {
+            Buildings = new List<Building>();
+            Nodes = new List<Node>();
+
+            if (Data.elements.Length == 0)
+            {
+                return;
+            }
+            LoadElements(Data);
+            InitializeBuildings(LoadedBasePoint);
+            FindBaseBuilding(LoadedBasePoint);
+            Console.WriteLine(BaseBuilding.CenterPoint);
         }
 
         private void LoadElements(OSMdata Data)
@@ -52,7 +63,6 @@ namespace WindowsFormsApp2
                 else if (element.type == "way")
                 {
                     Building building = element as Building;
-                    AssignDirection(building, BasePoint);
                     Buildings.Add(building);
                 }
             }
@@ -95,13 +105,14 @@ namespace WindowsFormsApp2
 
             return (azimuth + 360) % 360;
         }
-        private void InitializeBuildings()
+        private void InitializeBuildings(PointLatLng BaseDirectionPoint)
         {
             foreach (Building building in Buildings)
             {
                 //Not used
                 //AssignNodes(building);
                 CalculateSideCenterPoints(building);
+                AssignDirection(building, BaseDirectionPoint);
             }
         }
         private void AssignNodes(Building building)
@@ -137,7 +148,7 @@ namespace WindowsFormsApp2
                 .Where(e => e.id == id)
                 .FirstOrDefault();
         }
-        private void FindBaseBuilding()
+        private void FindBaseBuilding(PointLatLng BasePoint)
         {
             double HighestDistanceToBasePoint = double.MaxValue;
             foreach (Building building in Buildings)
@@ -376,25 +387,25 @@ namespace WindowsFormsApp2
                     }
                 }
             }
-            Console.WriteLine("Building id: " + building.id);
-            Console.WriteLine("Base point: " + BasePoint);
-            Console.WriteLine("Target point: " + TargetPoint);
+            //Console.WriteLine("Building id: " + building.id);
+            //Console.WriteLine("Base point: " + BasePoint);
+            //Console.WriteLine("Target point: " + TargetPoint);
 
             if (building.tags.height != null)
             {
-                Console.WriteLine("     Using height");
+                //Console.WriteLine("     Using height");
                 mask = GetMaskValue(BasePoint,
                     TargetPoint, Double.Parse(building.tags.height));
             }
             else if (building.tags.BuildingLevels != null)
             {
-                Console.WriteLine("     Using building levels");
+                //Console.WriteLine("     Using building levels");
                 mask = GetMaskValue(BasePoint,
                     TargetPoint, Double.Parse(building.tags.BuildingLevels) * DefaultBuildingFloorHeight);
             }
             else
             {
-                Console.WriteLine("     Using default value");
+                //Console.WriteLine("     Using default value");
                 mask = GetMaskValue(BasePoint,
                     TargetPoint, DefaultBuildingHeight);
             }
@@ -475,7 +486,7 @@ namespace WindowsFormsApp2
             {
                 return;
             }
-            Console.WriteLine("Drawing lines: ");
+            //Console.WriteLine("Drawing lines: ");
             PointLatLng basePoint = GetCenterPosition(BaseBuilding);
             SemicircleOverlay.Clear();
             LinesOverlay.Clear();
@@ -492,7 +503,7 @@ namespace WindowsFormsApp2
                 {
                     continue;
                 }
-                double RadiusMetersLongitude = MetersToDegreesLongitude(radius, BasePoint.Lat);
+                double RadiusMetersLongitude = MetersToDegreesLongitude(radius, BaseBuilding.CenterPoint.Lat);
                 double AddedLongitude = RadiusMetersLongitude * (a / 100);
 
                 double RadiusMetersLatitude = MetersToDegreesLatitude(radius);
@@ -501,7 +512,7 @@ namespace WindowsFormsApp2
                 //The correction is supposed to maximalize the accuracy of the calculations
                 //By comparing the BasePoint and Relative Correction Point( which is Poiters, France)
                 //if BasePoint is above it the semicircle height gets smaller, if its below it gets bigger
-                double LongitudeCorrection = (46.590484 / BasePoint.Lat) * 0.67;
+                double LongitudeCorrection = (46.590484 / BaseBuilding.CenterPoint.Lat) * 0.67;
                 LongitudeCorrection = Math.Min(LongitudeCorrection, 1.0);
                 LongitudeCorrection = Math.Max(LongitudeCorrection, 0.5);
 
@@ -509,17 +520,17 @@ namespace WindowsFormsApp2
                 decimal AddedLatitudeSquared = new decimal(LatitudeSquared * RadiusCorrection * LongitudeCorrection);
                 double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
 
-                Console.WriteLine("     Drawing line: " + a);
-                Console.WriteLine("         RadiusMetersLatitude: " + (RadiusMetersLatitude));
-                Console.WriteLine("         RadiusMetersLongitude: " + (RadiusMetersLongitude));
-
-                Console.WriteLine("         Added Latitude Squared: " + (AddedLatitudeSquared));
-
-                Console.WriteLine("         Added longitude: " + (AddedLongitude));
-                Console.WriteLine("         Added latitude: " + (AddedLatitude));
+                //Console.WriteLine("     Drawing line: " + a);
+                //Console.WriteLine("         RadiusMetersLatitude: " + (RadiusMetersLatitude));
+                //Console.WriteLine("         RadiusMetersLongitude: " + (RadiusMetersLongitude));
+                //
+                //Console.WriteLine("         Added Latitude Squared: " + (AddedLatitudeSquared));
+                //
+                //Console.WriteLine("         Added longitude: " + (AddedLongitude));
+                //Console.WriteLine("         Added latitude: " + (AddedLatitude));
                 PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
                 SemicirclePolygons.Add(TargetPoint);
-                double azimuth = CalculateAzimuth(BasePoint, TargetPoint);
+                double azimuth = CalculateAzimuth(BaseBuilding.CenterPoint, TargetPoint);
                 if (azimuth > 135 && FirstAzmiuth)
                 {
                     DrawLine(LinesOverlay, basePoint, TargetPoint, Color.Orange, 1);
