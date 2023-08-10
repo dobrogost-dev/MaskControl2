@@ -32,14 +32,20 @@ namespace WindowsFormsApp2
 
             LoadElements(Data);
             InitializeBuildings(BaseBuilding.CenterPoint);
-            Buildings.Remove(BaseBuilding);
+            Buildings.RemoveAll(b => b.CenterPoint == BaseBuilding.CenterPoint);
+
             RemoveNorthernBuildings();
             Initialized = true;
+        }
+        private void RemoveBaseBuilding()
+        {
+            Buildings.RemoveAll(b => b.CenterPoint == BaseBuilding.CenterPoint);
         }
         public void LoadBaseBuilding(OSMdata Data, PointLatLng LoadedBasePoint)
         {
             Buildings = new List<Building>();
             Nodes = new List<Node>();
+            BaseBuilding = null;
 
             if (Data.elements.Length == 0)
             {

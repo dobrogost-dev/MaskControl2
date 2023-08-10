@@ -23,17 +23,17 @@ namespace WindowsFormsApp2
     public partial class MainForm : Form
     {
         public static int BaseZoom = 1;
-        public GMapOverlay markersOverlay;
-        public GMapOverlay polygonsOverlay;
+        public GMapOverlay MarkersOverlay;
+        public GMapOverlay PolygonsOverlay;
         public GMapOverlay SemicircleOverlay;
         public GMapOverlay LinesOverlay;
-        public GMarkerGoogle currentMarker;
-        public MaskCalculator maskCalculator;
+        public GMarkerGoogle CurrentMarker;
+        public MaskCalculator MaskCalculatorInstance;
         public string PreviousAddress;
         public MainForm()
         {
-            currentMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.red_dot);
-            maskCalculator = new MaskCalculator();
+            CurrentMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.red_dot);
+            MaskCalculatorInstance = new MaskCalculator();
 
             InitializeComponent();
             double DefaultLatitude = 52.2188;
@@ -78,12 +78,12 @@ namespace WindowsFormsApp2
             Map.Margin = new Padding(10);
             Map.BorderStyle = BorderStyle.FixedSingle;
 
-            markersOverlay = new GMapOverlay("markers");
-            polygonsOverlay = new GMapOverlay("polygons");
+            MarkersOverlay = new GMapOverlay("markers");
+            PolygonsOverlay = new GMapOverlay("polygons");
             SemicircleOverlay = new GMapOverlay("polygons");
             LinesOverlay = new GMapOverlay("lines");
-            Map.Overlays.Add(markersOverlay);
-            Map.Overlays.Add(polygonsOverlay);
+            Map.Overlays.Add(MarkersOverlay);
+            Map.Overlays.Add(PolygonsOverlay);
             Map.Overlays.Add(LinesOverlay);
             Map.Overlays.Add(SemicircleOverlay);
 
@@ -129,12 +129,12 @@ namespace WindowsFormsApp2
         }
         private void GMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (markersOverlay.Markers.Count == 0)
+            if (MarkersOverlay.Markers.Count == 0)
             {
-                markersOverlay.Markers.Add(currentMarker);
+                MarkersOverlay.Markers.Add(CurrentMarker);
             }
             PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
-            currentMarker.Position = point;
+            CurrentMarker.Position = point;
             Map.Refresh();
             LatitudeTextBox.Text = point.Lat.ToString();
             LongitudeTextBox.Text = point.Lng.ToString();
@@ -160,46 +160,49 @@ namespace WindowsFormsApp2
                     "Default building height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (markersOverlay.Markers.Count == 0)
+            if (MarkersOverlay.Markers.Count == 0)
             {
                 MessageBox.Show("Marker is required in order to calculate mask",
                     "Marker required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            double BaseBuildingRadius = 50.0;
+            double InitialRadius = 50.0;
             double Radius = Double.Parse(RadiusTextBox.Text);
             // Zmiana double na stringa oddzielonego kropką zamiast przecinka
-            string MarkerLatitude = currentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
-            string MarkerLongitude = currentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
+            string MarkerLatitude = CurrentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
+            string MarkerLongitude = CurrentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
 
-            string BaseBuildingApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{BaseBuildingRadius},{MarkerLatitude},{MarkerLongitude});(._;>;);out;";
-            //Console.WriteLine(apiUrl);
-            using (HttpClient client = new HttpClient())
+            string BaseBuildingApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{InitialRadius},{MarkerLatitude},{MarkerLongitude});(._;>;);out;";
+            using (HttpClient Client = new HttpClient())
             {
                 try
                 {
-                    // Wysyłamy żądanie GET do API OpenStreetMap
-                    //Console.WriteLine($"Response: {response}");
-                    //Console.WriteLine($"Response: {response.Content.ReadAsStringAsync()}");
-                    HttpResponseMessage BaseBuildingResponse = await client.GetAsync(BaseBuildingApiUrl);
+                    HttpResponseMessage BaseBuildingResponse = await Client.GetAsync(BaseBuildingApiUrl);
 
                     if (!BaseBuildingResponse.IsSuccessStatusCode)
                     {
                         Console.WriteLine($"Błąd HTTP: {BaseBuildingResponse.StatusCode}");
-                        MessageBox.Show("Base building not found",
-                        "Base building not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("HTTP Error",
+                        "HTTP Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     string BaseBuildingJsonResponse = await BaseBuildingResponse.Content.ReadAsStringAsync();
-                    Console.WriteLine(BaseBuildingJsonResponse);
                     OSMdata BaseBuildingApiResponse = JsonConvert.DeserializeObject<OSMdata>(BaseBuildingJsonResponse);
-                    maskCalculator.LoadBaseBuilding(BaseBuildingApiResponse, currentMarker.Position);
 
-                    string Latitude = maskCalculator.BaseBuilding.CenterPoint.Lat.ToString(CultureInfo.InvariantCulture);
-                    string Longitude = maskCalculator.BaseBuilding.CenterPoint.Lng.ToString(CultureInfo.InvariantCulture);
+                    MaskCalculatorInstance.LoadBaseBuilding(BaseBuildingApiResponse, CurrentMarker.Position);
 
-                    string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{Latitude},{Longitude});(._;>;);out;";
-                    HttpResponseMessage Response = await client.GetAsync(ApiUrl);
+                    if (MaskCalculatorInstance.BaseBuilding == null)
+                    {
+                        MessageBox.Show("Base building not found",
+                        "Base building not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    string BaseBuildingLatitude = MaskCalculatorInstance.BaseBuilding.CenterPoint.Lat.ToString(CultureInfo.InvariantCulture);
+                    string BaseBuildingLongitude = MaskCalculatorInstance.BaseBuilding.CenterPoint.Lng.ToString(CultureInfo.InvariantCulture);
+
+                    string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{BaseBuildingLatitude},{BaseBuildingLongitude});(._;>;);out;";
+                    HttpResponseMessage Response = await Client.GetAsync(ApiUrl);
 
                     if (!Response.IsSuccessStatusCode)
                     {
@@ -209,16 +212,15 @@ namespace WindowsFormsApp2
                     }
                     // Odczytujemy odpowiedź jako ciąg JSON
                     string jsonResponse = await Response.Content.ReadAsStringAsync();
-                    Console.WriteLine(jsonResponse);
                     OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
-                    maskCalculator.LoadData(apiResponse);
+                    MaskCalculatorInstance.LoadData(apiResponse);
                     //maskCalculator.ShowBuildingsLogs();
-                    maskCalculator.DrawBuildings(polygonsOverlay, DirectionRadioButton.Checked);
+                    MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
                     double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
                     double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
-                    MaskResult MaskResults = maskCalculator.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
+                    MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
 
-                    maskCalculator.DrawLines(SemicircleOverlay, LinesOverlay, Radius);
+                    MaskCalculatorInstance.DrawLines(SemicircleOverlay, LinesOverlay, Radius);
                     Map.Refresh();
                     East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
                     SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
@@ -236,9 +238,9 @@ namespace WindowsFormsApp2
         private void DirectionRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             BuildingDataRadioButton.Checked = !DirectionRadioButton.Checked;
-            if (maskCalculator.Initialized)
+            if (MaskCalculatorInstance.Initialized)
             {
-                maskCalculator.DrawBuildings(polygonsOverlay, true);
+                MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, true);
                 Map.Refresh();
                 DirectionLegendPanel.Visible = true;
                 BuildingDataLegendPanel.Visible = false;
@@ -248,9 +250,9 @@ namespace WindowsFormsApp2
         private void BuildingDataRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             DirectionRadioButton.Checked = !BuildingDataRadioButton.Checked;
-            if (maskCalculator.Initialized)
+            if (MaskCalculatorInstance.Initialized)
             {
-                maskCalculator.DrawBuildings(polygonsOverlay, false);
+                MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, false);
                 Map.Refresh();
                 DirectionLegendPanel.Visible = false;
                 BuildingDataLegendPanel.Visible = true;
