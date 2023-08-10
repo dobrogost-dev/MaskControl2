@@ -15,6 +15,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static GMap.NET.Entity.OpenStreetMapGeocodeEntity;
 using static GMap.NET.Entity.OpenStreetMapGraphHopperGeocodeEntity;
 using GMapRoute = GMap.NET.WindowsForms.GMapRoute;
 
@@ -89,31 +90,69 @@ namespace WindowsFormsApp2
 
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
+        private async void SearchButton_Click(object sender, EventArgs e)
         {
             string Address = AddressTextBox.Text;
-            if (Address != string.Empty)
+            if (Address == string.Empty)
             {
-                PointLatLng initialPosition = Map.Position; 
-                Map.SetPositionByKeywords(Address);
-                if (Address == PreviousAddress)
-                {
+                return;
+            }
+            PointLatLng initialPosition = Map.Position;
+            Map.SetPositionByKeywords(Address);
+            if (Address == PreviousAddress)
+            {
 
-                } else if (Map.Position == initialPosition)
-                {
-                    Console.WriteLine("Address not found");
-                    MessageBox.Show("Address not found",
-                        "Wrong address", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } else
-                {
-                    PreviousAddress = Address;
-                    Map.Zoom = 18;
-                }
-            } else
+            } else if (Map.Position == initialPosition)
             {
-                Console.WriteLine("Address textbox empty");
-                MessageBox.Show("Address textbox is empty",
-                    "Address textbox empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Address not found");
+                MessageBox.Show("Address not found",
+                    "Wrong address", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
+            PreviousAddress = Address;
+            Map.Zoom = 18;
+            using (HttpClient Client = new HttpClient())
+            {
+                try
+                {
+                    string GeocodingApiUrl = $"https://geocode.maps.co/search?q={Address}";
+                    HttpResponseMessage GeocodingResponse = await Client.GetAsync(GeocodingApiUrl);
+
+                    if (!GeocodingResponse.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine($"Błąd HTTP: {GeocodingResponse.StatusCode}");
+                        MessageBox.Show("HTTP Error",
+                        "Geocoding Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    string GeocodingJsonResponse = await GeocodingResponse.Content.ReadAsStringAsync();
+                    List<GeocodingData> Data = JsonConvert.DeserializeObject<List<GeocodingData>>(GeocodingJsonResponse);
+                    Console.WriteLine($"{GeocodingJsonResponse}");
+
+                    foreach (GeocodingData data in Data)
+                    {
+                        double Latitude = double.Parse(data.Lat.Replace('.', ','));
+                        double Longitude = double.Parse(data.Lon.Replace('.', ','));
+                        Console.WriteLine("OSM type: " + data.OsmType);
+                        Console.WriteLine("lat: " + Latitude);
+                        Console.WriteLine("lon: " + Longitude);
+                        if (data.OsmType == "way" && data.Class == "building")
+                        {
+                            if (MarkersOverlay.Markers.Count == 0)
+                            {
+                                MarkersOverlay.Markers.Add(CurrentMarker);
+                            }
+                            PointLatLng point = new PointLatLng(Latitude, Longitude);
+                            CurrentMarker.Position = point;
+                            Map.Refresh();
+                            MaskButton.Enabled = true;
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Wystąpił błąd: {ex.Message}");
+                }
             }
         }
         private void ZoomInButton_Click(object sender, EventArgs e)

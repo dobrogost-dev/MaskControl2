@@ -20,8 +20,6 @@ namespace WindowsFormsApp2
         public bool Initialized = false;
         public void LoadData(OSMdata Data)
         {
-            Console.WriteLine("Setting base point as: " + BaseBuilding.CenterPoint);
-
             Buildings = new List<Building>();
             Nodes = new List<Node>();
 
@@ -53,7 +51,6 @@ namespace WindowsFormsApp2
             }
             LoadElements(Data);
             FindBaseBuilding(LoadedBasePoint);
-            Console.WriteLine("Base building: " + BaseBuilding.id);
         }
 
         private void LoadElements(OSMdata Data)
