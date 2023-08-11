@@ -575,5 +575,22 @@ namespace WindowsFormsApp2
             lineRoute.Stroke = new Pen(color, thickness);
             linesOverlay.Routes.Add(lineRoute);
         }
+
+        public PointLatLng PlaceAtClosestFacade(PointLatLng position)
+        {
+            double MaxDistance = double.MaxValue;
+            PointLatLng ClosestSide = new PointLatLng();
+            foreach(PointLatLng Side in BaseBuilding.SideCenterPoints)
+            {
+                double distance = GetDistance(Side, position);
+                if (distance < MaxDistance)
+                {
+                    ClosestSide = Side;
+                    MaxDistance = distance;
+                }
+
+            }
+            return ClosestSide;
+        }
     }
 }

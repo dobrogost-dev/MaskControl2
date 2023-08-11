@@ -236,10 +236,9 @@ namespace WindowsFormsApp2
                         "Base building not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
+                    CurrentMarker.Position = MaskCalculatorInstance.PlaceAtClosestFacade(CurrentMarker.Position);
                     string BaseBuildingLatitude = MaskCalculatorInstance.BaseBuilding.CenterPoint.Lat.ToString(CultureInfo.InvariantCulture);
                     string BaseBuildingLongitude = MaskCalculatorInstance.BaseBuilding.CenterPoint.Lng.ToString(CultureInfo.InvariantCulture);
-
                     string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{BaseBuildingLatitude},{BaseBuildingLongitude});(._;>;);out;";
                     HttpResponseMessage Response = await Client.GetAsync(ApiUrl);
 
@@ -249,11 +248,9 @@ namespace WindowsFormsApp2
                             "Buildings not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Console.WriteLine($"Błąd HTTP: {BaseBuildingResponse.StatusCode}");
                     }
-                    // Odczytujemy odpowiedź jako ciąg JSON
                     string jsonResponse = await Response.Content.ReadAsStringAsync();
                     OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
                     MaskCalculatorInstance.LoadData(apiResponse);
-                    //maskCalculator.ShowBuildingsLogs();
                     MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
                     double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
                     double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
