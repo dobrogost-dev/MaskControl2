@@ -49,8 +49,8 @@ namespace WindowsFormsApp2
             South_SouthWestTextBox.ReadOnly = true;
             SouthWest_WestTextBox.ReadOnly = true;
 
-            string DefaultRadius = "100";
-            string DefaultFloorHeight = "2,7";
+            string DefaultRadius = "45";
+            string DefaultFloorHeight = "2,5";
             string DefaultBuildingHeight = "10";
 
             RadiusTextBox.Text = DefaultRadius;
