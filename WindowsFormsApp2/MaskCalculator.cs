@@ -76,26 +76,43 @@ namespace WindowsFormsApp2
 
             double TargetAzimuth = CalculateAzimuth(BaseBuildingAnalyzedFacade.PointCenter, TargetBuildingCenter);
 
-            double LeftAzimuth = (BaseAzimuth + 270) % 360; 
-            double LeftMiddleAzimuth = (BaseAzimuth + 315) % 360;
+            // Przekształć azymuty na przedział [0, 360)
+            BaseAzimuth = (BaseAzimuth + 360) % 360;
+            TargetAzimuth = (TargetAzimuth + 360) % 360;
+
+            double LeftAzimuth = (BaseAzimuth - 90 + 360) % 360;
+            double LeftMiddleAzimuth = (BaseAzimuth - 45 + 360) % 360;
             double RightMiddleAzimuth = (BaseAzimuth + 45) % 360;
             double RightAzimuth = (BaseAzimuth + 90) % 360;
 
-            if (TargetAzimuth > LeftAzimuth && TargetAzimuth < LeftMiddleAzimuth)
+            if (IsBetween(TargetAzimuth, LeftAzimuth, LeftMiddleAzimuth))
             {
                 TargetBuilding.direction = Building.Direction.East_SouthEast;
             }
-            else if (TargetAzimuth > LeftMiddleAzimuth && TargetAzimuth < BaseAzimuth)
+            else if (IsBetween(TargetAzimuth, LeftMiddleAzimuth, BaseAzimuth))
             {
                 TargetBuilding.direction = Building.Direction.SouthEast_South;
             }
-            else if (TargetAzimuth > BaseAzimuth && TargetAzimuth < RightMiddleAzimuth)
+            else if (IsBetween(TargetAzimuth, BaseAzimuth, RightMiddleAzimuth))
             {
                 TargetBuilding.direction = Building.Direction.South_SouthWest;
             }
-            else if (TargetAzimuth > RightMiddleAzimuth && TargetAzimuth < RightAzimuth)
+            else if (IsBetween(TargetAzimuth, RightMiddleAzimuth, RightAzimuth))
             {
                 TargetBuilding.direction = Building.Direction.SouthWest_West;
+            }
+        }
+
+        // Funkcja sprawdzająca, czy dany kąt mieści się pomiędzy dwoma innymi kątami (zakres włącznie)
+        private bool IsBetween(double angle, double start, double end)
+        {
+            if (start <= end)
+            {
+                return angle >= start && angle <= end;
+            }
+            else
+            {
+                return angle >= start || angle <= end;
             }
         }
         public static double CalculateAzimuth(PointLatLng point1, PointLatLng point2)
@@ -149,10 +166,21 @@ namespace WindowsFormsApp2
                 Facade.PointCenter = new PointLatLng(NewLat, NewLng);
                 Facade.PointTo = new PointLatLng(NextNode.lat, NextNode.lon);
 
-                Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo) - 90;
+                Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo);
+                double CenterAzimuth = CalculateAzimuth(Facade.PointCenter, building.CenterPoint);
+                if (Facade.Azimuth - CenterAzimuth > 180)
+                {
+                    Facade.Azimuth -= 90;
+                } else
+                {
+                    Facade.Azimuth += 90;
+                }
                 if (Facade.Azimuth < 0)
                 {
                     Facade.Azimuth += 360;
+                } else if (Facade.Azimuth > 360)
+                {
+                    Facade.Azimuth -= 360;
                 }
 
                 building.Facades.Add(Facade);
