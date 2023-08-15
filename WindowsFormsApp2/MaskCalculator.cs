@@ -32,7 +32,6 @@ namespace WindowsFormsApp2
             LoadElements(Data);
             InitializeBuildings(BaseBuilding.CenterPoint);
             RemoveBaseBuilding();
-            RemoveNorthernBuildings();
 
             Initialized = true;
         }
@@ -70,28 +69,34 @@ namespace WindowsFormsApp2
                 }
             }
         }
-        public void AssignDirection(Building building, PointLatLng point)
+        public void AssignDirection(Building TargetBuilding, Facade BaseBuildingAnalyzedFacade)
         {
-            PointLatLng buildingCenter = GetCenterPosition(building);
-            double azimuth = CalculateAzimuth(point, buildingCenter);
-            if (azimuth < 135)
+            PointLatLng TargetBuildingCenter = GetCenterPosition(TargetBuilding);
+            double BaseAzimuth = BaseBuildingAnalyzedFacade.Azimuth;
+
+            double TargetAzimuth = CalculateAzimuth(BaseBuildingAnalyzedFacade.PointCenter, TargetBuildingCenter);
+
+            double LeftAzimuth = (BaseAzimuth + 270) % 360; 
+            double LeftMiddleAzimuth = (BaseAzimuth + 315) % 360;
+            double RightMiddleAzimuth = (BaseAzimuth + 45) % 360;
+            double RightAzimuth = (BaseAzimuth + 90) % 360;
+
+            if (TargetAzimuth > LeftAzimuth && TargetAzimuth < LeftMiddleAzimuth)
             {
-                building.direction = Building.Direction.East_SouthEast;
+                TargetBuilding.direction = Building.Direction.East_SouthEast;
             }
-            else if (azimuth >= 135 && azimuth < 180)
+            else if (TargetAzimuth > LeftMiddleAzimuth && TargetAzimuth < BaseAzimuth)
             {
-                building.direction = Building.Direction.SouthEast_South;
+                TargetBuilding.direction = Building.Direction.SouthEast_South;
             }
-            else if (azimuth >= 180 && azimuth < 225)
+            else if (TargetAzimuth > BaseAzimuth && TargetAzimuth < RightMiddleAzimuth)
             {
-                building.direction = Building.Direction.South_SouthWest;
+                TargetBuilding.direction = Building.Direction.South_SouthWest;
             }
-            else if (azimuth >= 225)
+            else if (TargetAzimuth > RightMiddleAzimuth && TargetAzimuth < RightAzimuth)
             {
-                building.direction = Building.Direction.SouthWest_West;
+                TargetBuilding.direction = Building.Direction.SouthWest_West;
             }
-            //Console.WriteLine("Calculating azimuth for: " + buildingCenter);
-            // Console.WriteLine("Azimuth: " + azimuth);
         }
         public static double CalculateAzimuth(PointLatLng point1, PointLatLng point2)
         {
@@ -110,20 +115,13 @@ namespace WindowsFormsApp2
         }
         private void InitializeBuildings(PointLatLng BaseDirectionPoint)
         {
+            Console.WriteLine("Analyzed facade:");
+            Console.WriteLine("   Azimuth: " + AnalyzedFacade.Azimuth);
             foreach (Building building in Buildings)
             {
                 Console.WriteLine("Building id " + building.id);
                 CalculateFacades(building);
-                foreach(Facade facade in building.Facades)
-                {
-                    Console.WriteLine("    Facade:");
-                    Console.WriteLine("         From: " + facade.PointFrom);
-                    Console.WriteLine("         Center;: " + facade.PointCenter);
-                    Console.WriteLine("         To: " + facade.PointTo);
-
-
-                }
-                AssignDirection(building, BaseDirectionPoint);
+                AssignDirection(building, AnalyzedFacade);
             }
         }
         private void AssignNodes(Building building)
@@ -150,7 +148,13 @@ namespace WindowsFormsApp2
                 Facade.PointFrom = new PointLatLng(CurrentNode.lat, CurrentNode.lon);
                 Facade.PointCenter = new PointLatLng(NewLat, NewLng);
                 Facade.PointTo = new PointLatLng(NextNode.lat, NextNode.lon);
-                Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo);
+
+                Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo) - 90;
+                if (Facade.Azimuth < 0)
+                {
+                    Facade.Azimuth += 360;
+                }
+
                 building.Facades.Add(Facade);
             }
         }
