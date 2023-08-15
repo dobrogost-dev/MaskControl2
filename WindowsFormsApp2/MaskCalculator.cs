@@ -14,6 +14,7 @@ namespace WindowsFormsApp2
     public class MaskCalculator
     {
         public Building BaseBuilding {  get; private set; }
+        public Facade AnalyzedFacade { get; private set; }
         private List<Building> Buildings { get; set; }
         private List<Node> Nodes { get; set; }
 
@@ -111,9 +112,17 @@ namespace WindowsFormsApp2
         {
             foreach (Building building in Buildings)
             {
-                //Not used
-                //AssignNodes(building);
-                CalculateSideCenterPoints(building);
+                Console.WriteLine("Building id " + building.id);
+                CalculateFacades(building);
+                foreach(Facade facade in building.Facades)
+                {
+                    Console.WriteLine("    Facade:");
+                    Console.WriteLine("         From: " + facade.PointFrom);
+                    Console.WriteLine("         Center;: " + facade.PointCenter);
+                    Console.WriteLine("         To: " + facade.PointTo);
+
+
+                }
                 AssignDirection(building, BaseDirectionPoint);
             }
         }
@@ -126,21 +135,23 @@ namespace WindowsFormsApp2
                 building.Nodes.Add(NodeInstance);
             }
         }
-        private void CalculateSideCenterPoints(Building building)
+        private void CalculateFacades(Building building)
         {
-            building.SideCenterPoints = new List<PointLatLng>();
+            building.Facades = new List<Facade>();
             for (int i = 0; i < building.NodesId.Length - 1; i++)
             {
-                //Node CurrentNode = building.Nodes.Select(e => e).Where(e => e.id == building.NodesId[i]).FirstOrDefault();
                 Node CurrentNode = GetNodeById(building.NodesId[i]);
                 Node NextNode = GetNodeById(building.NodesId[i + 1]);
 
                 double NewLat = (CurrentNode.lat + NextNode.lat) / 2;
                 double NewLng = (CurrentNode.lon + NextNode.lon) / 2;
 
-                PointLatLng SideCenterPoint = new PointLatLng(NewLat, NewLng);
-                building.SideCenterPoints.Add(SideCenterPoint);
-                //Console.WriteLine("     Side point: " + SidePoint);
+                Facade Facade = new Facade();
+                Facade.PointFrom = new PointLatLng(CurrentNode.lat, CurrentNode.lon);
+                Facade.PointCenter = new PointLatLng(NewLat, NewLng);
+                Facade.PointTo = new PointLatLng(NextNode.lat, NextNode.lon);
+                Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo);
+                building.Facades.Add(Facade);
             }
         }
         private Node GetNodeById(long id)
@@ -161,7 +172,7 @@ namespace WindowsFormsApp2
                 {
                     HighestDistanceToBasePoint = CurrentDistanceToBasePoint;
                     BaseBuilding = building;
-                    CalculateSideCenterPoints(BaseBuilding);
+                    CalculateFacades(BaseBuilding);
                 }
             }
         }
@@ -289,8 +300,7 @@ namespace WindowsFormsApp2
             //We're checking 1 less because last one is a repetition
             int length = building.NodesId.Length - 1;
             for (int i = 0; i < length; i++)
-            {
-                Node selectedNode = Nodes
+            {                Node selectedNode = Nodes
                     .Select(e => e)
                     .Where(e => e.id == building.NodesId[i])
                     .FirstOrDefault();
@@ -372,20 +382,20 @@ namespace WindowsFormsApp2
         public double ProcessMask(Building building, double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
         {
             double mask = 0;
-            double distance = 1000000;
+            double distance = double.MaxValue;
             PointLatLng BasePoint = new PointLatLng();
             PointLatLng TargetPoint = new PointLatLng();
-            foreach (PointLatLng SidePoint in BaseBuilding.SideCenterPoints)
+            foreach (Facade facade in BaseBuilding.Facades)
             {
                 foreach(long node in building.NodesId)
                 {
                     Node NewNode = GetNodeForId(node);
                     PointLatLng NodePosition = new PointLatLng(NewNode.lat, NewNode.lon);
-                    double newDistance = GetDistance(SidePoint, new PointLatLng(NewNode.lat, NewNode.lon));
+                    double newDistance = GetDistance(facade.PointCenter, new PointLatLng(NewNode.lat, NewNode.lon));
                     if (newDistance < distance)
                     {
                         distance = newDistance;
-                        BasePoint = SidePoint;
+                        BasePoint = facade.PointCenter;
                         TargetPoint = NodePosition;
                     }
                 }
@@ -576,19 +586,19 @@ namespace WindowsFormsApp2
             linesOverlay.Routes.Add(lineRoute);
         }
 
-        public PointLatLng PlaceAtClosestFacade(PointLatLng position)
+        public PointLatLng PlaceAtClosestFacade(PointLatLng Position)
         {
             double MaxDistance = double.MaxValue;
             PointLatLng ClosestSide = new PointLatLng();
-            foreach(PointLatLng Side in BaseBuilding.SideCenterPoints)
+            foreach(Facade facade in BaseBuilding.Facades)
             {
-                double distance = GetDistance(Side, position);
+                double distance = GetDistance(facade.PointCenter, Position);
                 if (distance < MaxDistance)
                 {
-                    ClosestSide = Side;
+                    ClosestSide = facade.PointCenter;
                     MaxDistance = distance;
+                    AnalyzedFacade = facade;
                 }
-
             }
             return ClosestSide;
         }

@@ -60,7 +60,14 @@ namespace WindowsFormsApp2
         public BuildingTags tags { get; set; }
         public Direction direction = Direction.Unspecified;
         public PointLatLng CenterPoint { get; set; }
-        public List<PointLatLng> SideCenterPoints { get; set; }
+        public List<Facade> Facades { get; set; }
+    }
+    public class Facade
+    {
+        public PointLatLng PointFrom { get; set; }
+        public PointLatLng PointCenter { get; set; }
+        public PointLatLng PointTo { get; set; }
+        public double Azimuth { get; set; }
     }
 
     public class BuildingTags
