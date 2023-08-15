@@ -134,9 +134,9 @@ namespace WindowsFormsApp2
         {
             Console.WriteLine("Analyzed facade:");
             Console.WriteLine("   Azimuth: " + AnalyzedFacade.Azimuth);
+            Console.WriteLine("   Center Azimuth: " + CalculateAzimuth(AnalyzedFacade.PointCenter, BaseBuilding.CenterPoint));
             foreach (Building building in Buildings)
             {
-                Console.WriteLine("Building id " + building.id);
                 CalculateFacades(building);
                 AssignDirection(building, AnalyzedFacade);
             }
@@ -166,15 +166,13 @@ namespace WindowsFormsApp2
                 Facade.PointCenter = new PointLatLng(NewLat, NewLng);
                 Facade.PointTo = new PointLatLng(NextNode.lat, NextNode.lon);
 
-                Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo);
+                Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo) - 90;
                 double CenterAzimuth = CalculateAzimuth(Facade.PointCenter, building.CenterPoint);
-                if (Facade.Azimuth - CenterAzimuth > 180)
+                if (Math.Abs(Facade.Azimuth - CenterAzimuth) < 90)
                 {
-                    Facade.Azimuth -= 90;
-                } else
-                {
-                    Facade.Azimuth += 90;
+                    Facade.Azimuth += 180;
                 }
+                
                 if (Facade.Azimuth < 0)
                 {
                     Facade.Azimuth += 360;
