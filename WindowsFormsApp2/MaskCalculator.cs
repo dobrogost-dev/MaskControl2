@@ -100,10 +100,21 @@ namespace WindowsFormsApp2
             else if (IsBetween(TargetAzimuth, RightMiddleAzimuth, RightAzimuth))
             {
                 TargetBuilding.direction = Building.Direction.SouthWest_West;
+            } else
+            {
+                foreach(Facade facade in TargetBuilding.Facades)
+                {
+                    double TargetAzimuthExtended = CalculateAzimuth(BaseBuildingAnalyzedFacade.PointCenter, facade.PointCenter);
+                    if (IsBetween(TargetAzimuthExtended, LeftAzimuth, LeftMiddleAzimuth))
+                    {
+                        TargetBuilding.direction = Building.Direction.East_SouthEast;
+                    } else if (IsBetween(TargetAzimuthExtended, RightMiddleAzimuth, RightAzimuth))
+                    {
+                        TargetBuilding.direction = Building.Direction.SouthWest_West;
+                    }
+                }
             }
         }
-
-        // Funkcja sprawdzająca, czy dany kąt mieści się pomiędzy dwoma innymi kątami (zakres włącznie)
         private bool IsBetween(double angle, double start, double end)
         {
             if (start <= end)
