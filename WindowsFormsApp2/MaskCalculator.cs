@@ -279,7 +279,7 @@ namespace WindowsFormsApp2
                 {
                     switch (building.direction)
                     {
-                        case Building.Direction.Unspecified: color = Color.Orange; break;
+                        case Building.Direction.Unspecified: color = Color.Gray; break;
                         case Building.Direction.East_SouthEast: color = Color.LimeGreen; break;
                         case Building.Direction.SouthEast_South: color = Color.DeepSkyBlue; break;
                         case Building.Direction.South_SouthWest: color = Color.Magenta; break;
