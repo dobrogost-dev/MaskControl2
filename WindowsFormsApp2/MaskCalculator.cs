@@ -301,6 +301,10 @@ namespace WindowsFormsApp2
                     {
                         color = Color.Red;
                     }
+                    if (building.direction == Building.Direction.Unspecified)
+                    {
+                        color = Color.Gray;
+                    }
                 }
                 DrawEntity(polygonsOverlay, BuildingPolygons, color);
             }
