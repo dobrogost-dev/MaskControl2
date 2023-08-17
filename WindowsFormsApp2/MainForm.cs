@@ -262,7 +262,7 @@ namespace WindowsFormsApp2
                     SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
                     South_SouthWestTextBox.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
                     SouthWest_WestTextBox.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
-
+                    FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
                     DirectionLegendPanel.Visible = true;
                 }
                 catch (Exception ex)

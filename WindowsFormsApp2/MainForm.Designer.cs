@@ -72,6 +72,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.DirectionLinesCheckBox = new System.Windows.Forms.CheckBox();
+            this.FacadeDirectionDescriptionLabel = new System.Windows.Forms.Label();
+            this.FacadeDirectionLabel = new System.Windows.Forms.Label();
             this.DirectionLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
@@ -507,12 +509,31 @@
             this.DirectionLinesCheckBox.UseVisualStyleBackColor = true;
             this.DirectionLinesCheckBox.CheckedChanged += new System.EventHandler(this.DirectionLinesCheckBox_CheckedChanged);
             // 
+            // FacadeDirectionDescriptionLabel
+            // 
+            this.FacadeDirectionDescriptionLabel.AutoSize = true;
+            this.FacadeDirectionDescriptionLabel.Location = new System.Drawing.Point(361, 499);
+            this.FacadeDirectionDescriptionLabel.Name = "FacadeDirectionDescriptionLabel";
+            this.FacadeDirectionDescriptionLabel.Size = new System.Drawing.Size(166, 16);
+            this.FacadeDirectionDescriptionLabel.TabIndex = 39;
+            this.FacadeDirectionDescriptionLabel.Text = "Scanned facade direction: ";
+            // 
+            // FacadeDirectionLabel
+            // 
+            this.FacadeDirectionLabel.AutoSize = true;
+            this.FacadeDirectionLabel.Location = new System.Drawing.Point(533, 499);
+            this.FacadeDirectionLabel.Name = "FacadeDirectionLabel";
+            this.FacadeDirectionLabel.Size = new System.Drawing.Size(0, 16);
+            this.FacadeDirectionLabel.TabIndex = 40;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 603);
+            this.Controls.Add(this.FacadeDirectionLabel);
+            this.Controls.Add(this.FacadeDirectionDescriptionLabel);
             this.Controls.Add(this.DirectionLinesCheckBox);
             this.Controls.Add(this.DirectionRadioButton);
             this.Controls.Add(this.label1);
@@ -600,6 +621,8 @@
         private System.Windows.Forms.CheckBox DirectionLinesCheckBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label FacadeDirectionDescriptionLabel;
+        private System.Windows.Forms.Label FacadeDirectionLabel;
     }
 }
 

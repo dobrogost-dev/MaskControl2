@@ -653,5 +653,30 @@ namespace WindowsFormsApp2
             }
             return ClosestSide;
         }
+
+        public string GetDirectionAsText()
+        {
+            double Azimuth = AnalyzedFacade.Azimuth;
+            if (Azimuth > 315 || Azimuth < 45)
+            {
+                return "North";
+            }
+            else if (Azimuth > 45 && Azimuth < 135)
+            {
+                return "East";
+
+            }
+            else if (Azimuth > 135 && Azimuth < 225)
+            {
+                return "South";
+
+            }
+            else if (Azimuth > 225 && Azimuth < 315)
+            {
+                return "West";
+
+            }
+            return "Unspecified";
+        }
     }
 }
