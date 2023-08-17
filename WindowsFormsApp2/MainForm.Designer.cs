@@ -70,6 +70,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.DirectionLinesCheckBox = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.DirectionLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
@@ -339,15 +341,16 @@
             // 
             // DirectionLegendPanel
             // 
+            this.DirectionLegendPanel.Controls.Add(this.label14);
             this.DirectionLegendPanel.Controls.Add(this.label7);
             this.DirectionLegendPanel.Controls.Add(this.label6);
             this.DirectionLegendPanel.Controls.Add(this.label5);
             this.DirectionLegendPanel.Controls.Add(this.label4);
             this.DirectionLegendPanel.Controls.Add(this.label3);
             this.DirectionLegendPanel.Controls.Add(this.label2);
-            this.DirectionLegendPanel.Location = new System.Drawing.Point(681, 469);
+            this.DirectionLegendPanel.Location = new System.Drawing.Point(681, 468);
             this.DirectionLegendPanel.Name = "DirectionLegendPanel";
-            this.DirectionLegendPanel.Size = new System.Drawing.Size(210, 113);
+            this.DirectionLegendPanel.Size = new System.Drawing.Size(210, 134);
             this.DirectionLegendPanel.TabIndex = 36;
             // 
             // label7
@@ -364,41 +367,41 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.LightCoral;
-            this.label6.Location = new System.Drawing.Point(10, 92);
+            this.label6.Location = new System.Drawing.Point(10, 108);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(139, 16);
+            this.label6.Size = new System.Drawing.Size(70, 16);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Red: SouthWest-West";
+            this.label6.Text = "Red: Right";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Orchid;
-            this.label5.Location = new System.Drawing.Point(10, 76);
+            this.label5.Location = new System.Drawing.Point(10, 92);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 16);
+            this.label5.Size = new System.Drawing.Size(142, 16);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Magenta: South-SouthWest";
+            this.label5.Text = "Magenta: Right-Middle";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.SkyBlue;
-            this.label4.Location = new System.Drawing.Point(10, 60);
+            this.label4.Location = new System.Drawing.Point(10, 76);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 16);
+            this.label4.Size = new System.Drawing.Size(111, 16);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Aqua: SouthEast-South";
+            this.label4.Text = "Aqua: Left-Middle";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.LightGreen;
-            this.label3.Location = new System.Drawing.Point(10, 44);
+            this.label3.Location = new System.Drawing.Point(10, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 16);
+            this.label3.Size = new System.Drawing.Size(71, 16);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Green: East-SouthEast";
+            this.label3.Text = "Green: Left";
             // 
             // label2
             // 
@@ -411,15 +414,17 @@
             // 
             // BuildingDataLegendPanel
             // 
+            this.BuildingDataLegendPanel.Controls.Add(this.label11);
             this.BuildingDataLegendPanel.Controls.Add(this.label8);
             this.BuildingDataLegendPanel.Controls.Add(this.label9);
             this.BuildingDataLegendPanel.Controls.Add(this.label10);
             this.BuildingDataLegendPanel.Controls.Add(this.label12);
             this.BuildingDataLegendPanel.Controls.Add(this.label13);
-            this.BuildingDataLegendPanel.Location = new System.Drawing.Point(681, 469);
+            this.BuildingDataLegendPanel.Location = new System.Drawing.Point(681, 468);
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
-            this.BuildingDataLegendPanel.Size = new System.Drawing.Size(210, 113);
+            this.BuildingDataLegendPanel.Size = new System.Drawing.Size(210, 131);
             this.BuildingDataLegendPanel.TabIndex = 37;
+            this.BuildingDataLegendPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BuildingDataLegendPanel_Paint);
             // 
             // label8
             // 
@@ -435,7 +440,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.LightCoral;
-            this.label9.Location = new System.Drawing.Point(10, 92);
+            this.label9.Location = new System.Drawing.Point(10, 108);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(137, 16);
             this.label9.TabIndex = 4;
@@ -445,7 +450,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.SandyBrown;
-            this.label10.Location = new System.Drawing.Point(10, 76);
+            this.label10.Location = new System.Drawing.Point(10, 92);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(160, 16);
             this.label10.TabIndex = 3;
@@ -455,7 +460,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.LightGreen;
-            this.label12.Location = new System.Drawing.Point(10, 60);
+            this.label12.Location = new System.Drawing.Point(10, 76);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(105, 16);
             this.label12.TabIndex = 1;
@@ -481,15 +486,34 @@
             this.DirectionLinesCheckBox.UseVisualStyleBackColor = true;
             this.DirectionLinesCheckBox.CheckedChanged += new System.EventHandler(this.DirectionLinesCheckBox_CheckedChanged);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.DarkGray;
+            this.label11.Location = new System.Drawing.Point(10, 44);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(138, 16);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Gray: Ignored building";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.DarkGray;
+            this.label14.Location = new System.Drawing.Point(10, 44);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(138, 16);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Gray: Ignored building";
+            // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 586);
+            this.ClientSize = new System.Drawing.Size(902, 603);
             this.Controls.Add(this.DirectionLinesCheckBox);
-            this.Controls.Add(this.BuildingDataLegendPanel);
-            this.Controls.Add(this.DirectionLegendPanel);
             this.Controls.Add(this.DirectionRadioButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BuildingDataRadioButton);
@@ -518,6 +542,8 @@
             this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.Map);
+            this.Controls.Add(this.DirectionLegendPanel);
+            this.Controls.Add(this.BuildingDataLegendPanel);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.DirectionLegendPanel.ResumeLayout(false);
@@ -572,6 +598,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox DirectionLinesCheckBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label14;
     }
 }
 

@@ -329,5 +329,15 @@ namespace WindowsFormsApp2
                 DefaultBuildingHeightTextBox.Text = string.Empty;
             }
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BuildingDataLegendPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
