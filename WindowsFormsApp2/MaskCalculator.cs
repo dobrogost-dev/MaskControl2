@@ -578,7 +578,21 @@ namespace WindowsFormsApp2
 
                 PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
                 Console.WriteLine("Adding: " + TargetPoint);
-                SemicirclePolygons.Add(TargetPoint);
+                double PointAzimuth = CalculateAzimuth(AnalyzedFacade.PointCenter, TargetPoint);
+                double Start = AnalyzedFacade.Azimuth - 90;
+                double End = AnalyzedFacade.Azimuth + 90;
+                if (Start < 0)
+                {
+                    Start += 360;
+                }
+                if (End > 360)
+                {
+                    End -= 360;
+                }
+                if (IsBetween(PointAzimuth, Start, End))
+                {
+                    SemicirclePolygons.Add(TargetPoint);
+                }
             }
             for (double a = -100; a <= 100; a += 1)
             {
@@ -605,8 +619,21 @@ namespace WindowsFormsApp2
 
                 PointLatLng TargetPoint = new PointLatLng(basePoint.Lat + AddedLatitude, basePoint.Lng + AddedLongitude);
                 Console.WriteLine("Adding: " + TargetPoint);
-
-                SemicirclePolygons.Add(TargetPoint);
+                double PointAzimuth = CalculateAzimuth(AnalyzedFacade.PointCenter, TargetPoint);
+                double Start = AnalyzedFacade.Azimuth - 90;
+                double End = AnalyzedFacade.Azimuth + 90;
+                if (Start < 0)
+                {
+                    Start += 360;
+                }
+                if (End > 360)
+                {
+                    End -= 360;
+                }
+                if (IsBetween(PointAzimuth, Start, End))
+                {
+                    SemicirclePolygons.Add(TargetPoint);
+                }
             }
             DrawEntity(SemicircleOverlay, SemicirclePolygons, Color.DarkOrange);
 
