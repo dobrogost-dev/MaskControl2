@@ -237,8 +237,8 @@ namespace WindowsFormsApp2
                         return;
                     }
                     CurrentMarker.Position = MaskCalculatorInstance.PlaceAtClosestFacade(CurrentMarker.Position);
-                    string BaseBuildingLatitude = MaskCalculatorInstance.BaseBuilding.CenterPoint.Lat.ToString(CultureInfo.InvariantCulture);
-                    string BaseBuildingLongitude = MaskCalculatorInstance.BaseBuilding.CenterPoint.Lng.ToString(CultureInfo.InvariantCulture);
+                    string BaseBuildingLatitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lat.ToString(CultureInfo.InvariantCulture);
+                    string BaseBuildingLongitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lng.ToString(CultureInfo.InvariantCulture);
                     string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{BaseBuildingLatitude},{BaseBuildingLongitude});(._;>;);out;";
                     HttpResponseMessage Response = await Client.GetAsync(ApiUrl);
 
