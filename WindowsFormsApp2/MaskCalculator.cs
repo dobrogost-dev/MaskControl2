@@ -547,7 +547,7 @@ namespace WindowsFormsApp2
                 return;
             }
             //Console.WriteLine("Drawing lines: ");
-            PointLatLng basePoint = GetCenterPosition(BaseBuilding);
+            PointLatLng basePoint = AnalyzedFacade.PointCenter;
             SemicircleOverlay.Clear();
             LinesOverlay.Clear();
 
