@@ -471,7 +471,8 @@ namespace WindowsFormsApp2
             }
             return mask;
         }
-        public MaskResult CalculateMasks(double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
+        public MaskResult CalculateMasks(double DefaultBuildingFloorHeight, double DefaultLeftBuildingHeight,
+            double DefaultLeftMiddleBuildingHeight, double DefaultRightMiddleBuildingHeight, double DefaultRightBuildingHeight)
         {
             MaskResult result = new MaskResult();
             if (Buildings.Count == 0 || Nodes.Count == 0)
@@ -488,28 +489,28 @@ namespace WindowsFormsApp2
                 switch (building.direction)
                 {
                     case Building.Direction.East_SouthEast:
-                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultBuildingHeight);
+                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultLeftBuildingHeight);
                         if (mask > result.East_SouthEast)
                         {
                             result.East_SouthEast = mask;
                         }
                         break;
                     case Building.Direction.SouthEast_South:
-                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultBuildingHeight);
+                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultLeftMiddleBuildingHeight);
                         if (mask > result.SouthEast_South)
                         {
                             result.SouthEast_South = mask;
                         }
                         break;
                     case Building.Direction.South_SouthWest:
-                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultBuildingHeight);
+                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultRightMiddleBuildingHeight);
                         if (mask > result.South_SouthWest)
                         {
                             result.South_SouthWest = mask;
                         }
                         break;
                     case Building.Direction.SouthWest_West:
-                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultBuildingHeight);
+                        mask = ProcessMask(building, DefaultBuildingFloorHeight, DefaultRightBuildingHeight);
                         if (mask > result.SouthWest_West)
                         {
                             result.SouthWest_West = mask;

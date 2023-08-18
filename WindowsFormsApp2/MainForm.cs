@@ -51,11 +51,18 @@ namespace WindowsFormsApp2
 
             string DefaultRadius = "45";
             string DefaultFloorHeight = "2,5";
-            string DefaultBuildingHeight = "10";
+            string DefaultLeftBuildingHeight = "10";
+            string DefaultLeftMiddleBuildingHeight = "10";
+            string DefaultRightMiddleBuildingHeight = "10";
+            string DefaultRightBuildingHeight = "10";
+
 
             RadiusTextBox.Text = DefaultRadius;
             DefaultFloorHeightTextBox.Text = DefaultFloorHeight;
-            DefaultBuildingHeightTextBox.Text = DefaultBuildingHeight;
+            DefaultLeftBuildingHeightTextBox.Text = DefaultLeftBuildingHeight;
+            DefaultLeftMiddleBuildingHeightTextBox.Text = DefaultLeftMiddleBuildingHeight;
+            DefaultRightMiddleBuildingHeightTextBox.Text = DefaultRightMiddleBuildingHeight;
+            DefaultRightBuildingHeightTextBox.Text = DefaultRightBuildingHeight;
 
             MaskButton.Enabled = false;
             BuildingDataLegendPanel.Visible = false;
@@ -193,7 +200,7 @@ namespace WindowsFormsApp2
                     "Default building floor height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (DefaultBuildingHeightTextBox.Text == string.Empty)
+            if (DefaultLeftBuildingHeightTextBox.Text == string.Empty)
             {
                 MessageBox.Show("Default building height value is required in order to calculate mask",
                     "Default building height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -253,8 +260,13 @@ namespace WindowsFormsApp2
                     MaskCalculatorInstance.LoadData(apiResponse);
                     MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
                     double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
-                    double DefaultBuildingHeight = Double.Parse(DefaultBuildingHeightTextBox.Text);
-                    MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight, DefaultBuildingHeight);
+                    double DefaultLeftBuildingHeight = Double.Parse(DefaultLeftBuildingHeightTextBox.Text);
+                    double DefaultLeftMiddleBuildingHeight = Double.Parse(DefaultLeftMiddleBuildingHeightTextBox.Text);
+                    double DefaultRightMiddleBuildingHeight = Double.Parse(DefaultRightMiddleBuildingHeightTextBox.Text);
+                    double DefaultRightBuildingHeight = Double.Parse(DefaultRightBuildingHeightTextBox.Text);
+
+                    MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight, DefaultLeftBuildingHeight,
+                        DefaultLeftMiddleBuildingHeight, DefaultRightMiddleBuildingHeight, DefaultRightBuildingHeight);
 
                     MaskCalculatorInstance.DrawLines(SemicircleOverlay, LinesOverlay, Radius);
                     Map.Refresh();
@@ -324,9 +336,9 @@ namespace WindowsFormsApp2
 
         private void DefaultBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!MainFormUtilities.IsValidDecimal(DefaultBuildingHeightTextBox.Text))
+            if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
             {
-                DefaultBuildingHeightTextBox.Text = string.Empty;
+                DefaultLeftBuildingHeightTextBox.Text = string.Empty;
             }
         }
 
@@ -338,6 +350,40 @@ namespace WindowsFormsApp2
         private void BuildingDataLegendPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DefaultBuildingHeightLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
+            {
+                DefaultLeftBuildingHeightTextBox.Text = string.Empty;
+            }
+        }
+
+        private void DefaultRightMiddleBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
+            {
+                DefaultLeftBuildingHeightTextBox.Text = string.Empty;
+            }
+        }
+
+        private void DefaultRightBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
+            {
+                DefaultLeftBuildingHeightTextBox.Text = string.Empty;
+            }
         }
     }
 }
