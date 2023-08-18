@@ -510,9 +510,9 @@
             this.DirectionLinesCheckBox.AutoSize = true;
             this.DirectionLinesCheckBox.Location = new System.Drawing.Point(743, 442);
             this.DirectionLinesCheckBox.Name = "DirectionLinesCheckBox";
-            this.DirectionLinesCheckBox.Size = new System.Drawing.Size(147, 20);
+            this.DirectionLinesCheckBox.Size = new System.Drawing.Size(109, 20);
             this.DirectionLinesCheckBox.TabIndex = 38;
-            this.DirectionLinesCheckBox.Text = "Show direction lines";
+            this.DirectionLinesCheckBox.Text = "Show sectors";
             this.DirectionLinesCheckBox.UseVisualStyleBackColor = true;
             this.DirectionLinesCheckBox.CheckedChanged += new System.EventHandler(this.DirectionLinesCheckBox_CheckedChanged);
             // 
