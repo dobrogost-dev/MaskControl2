@@ -181,12 +181,8 @@ namespace WindowsFormsApp2
 
                 Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo) - 90;
                 double CenterAzimuth = CalculateAzimuth(Facade.PointCenter, building.CenterPoint);
-                Console.WriteLine("Calculating for building id: " + building.id);
-                Console.WriteLine("     Azimuth: " + Facade.Azimuth);
-                Console.WriteLine("     Center Azimuth: " + CenterAzimuth);
                 if (Math.Abs(Facade.Azimuth - CenterAzimuth) < 90)
                 {
-                    Console.WriteLine("     Facade direction has been adjusted");
                     Facade.Azimuth += 180;
                 }
                 
@@ -557,10 +553,6 @@ namespace WindowsFormsApp2
 
             List<PointLatLng> SemicirclePolygons = new List<PointLatLng>();
 
-            bool FirstAzmiuth = true;
-            bool SecondAzimuth = true;
-            bool ThirdAzmiuth = true;
-
             for (double a = 100; a >= -100; a -= 1)
             {
                 if (a == 0)
@@ -584,32 +576,37 @@ namespace WindowsFormsApp2
                 decimal AddedLatitudeSquared = new decimal(LatitudeSquared * RadiusCorrection * LongitudeCorrection);
                 double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
 
-                //Console.WriteLine("     Drawing line: " + a);
-                //Console.WriteLine("         RadiusMetersLatitude: " + (RadiusMetersLatitude));
-                //Console.WriteLine("         RadiusMetersLongitude: " + (RadiusMetersLongitude));
-                //
-                //Console.WriteLine("         Added Latitude Squared: " + (AddedLatitudeSquared));
-                //
-                //Console.WriteLine("         Added longitude: " + (AddedLongitude));
-                //Console.WriteLine("         Added latitude: " + (AddedLatitude));
                 PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
+                Console.WriteLine("Adding: " + TargetPoint);
                 SemicirclePolygons.Add(TargetPoint);
-                double azimuth = CalculateAzimuth(BaseBuilding.CenterPoint, TargetPoint);
-                if (azimuth > 135 && FirstAzmiuth)
+            }
+            for (double a = -100; a <= 100; a += 1)
+            {
+                if (a == 0)
                 {
-                    DrawLine(LinesOverlay, basePoint, TargetPoint, Color.Orange, 1);
-                    FirstAzmiuth = false;
-                } 
-                if (azimuth > 180 && SecondAzimuth)
-                {
-                    DrawLine(LinesOverlay, basePoint, TargetPoint, Color.Orange, 1);
-                    SecondAzimuth = false;
+                    continue;
                 }
-                if (azimuth > 225 && ThirdAzmiuth)
-                {
-                    DrawLine(LinesOverlay, basePoint, TargetPoint, Color.Orange, 1);
-                    ThirdAzmiuth = false;
-                }
+                double RadiusMetersLongitude = MetersToDegreesLongitude(radius, BaseBuilding.CenterPoint.Lat);
+                double AddedLongitude = RadiusMetersLongitude * (a / 100);
+
+                double RadiusMetersLatitude = MetersToDegreesLatitude(radius);
+
+                double RadiusCorrection = ((RadiusMetersLatitude / RadiusMetersLongitude));
+                //The correction is supposed to maximalize the accuracy of the calculations
+                //By comparing the BasePoint and Relative Correction Point( which is Poiters, France)
+                //if BasePoint is above it the semicircle height gets smaller, if its below it gets bigger
+                double LongitudeCorrection = (46.590484 / BaseBuilding.CenterPoint.Lat) * 0.67;
+                LongitudeCorrection = Math.Min(LongitudeCorrection, 1.0);
+                LongitudeCorrection = Math.Max(LongitudeCorrection, 0.5);
+
+                double LatitudeSquared = (RadiusMetersLongitude * RadiusMetersLongitude) - (AddedLongitude * AddedLongitude);
+                decimal AddedLatitudeSquared = new decimal(LatitudeSquared * RadiusCorrection * LongitudeCorrection);
+                double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
+
+                PointLatLng TargetPoint = new PointLatLng(basePoint.Lat + AddedLatitude, basePoint.Lng + AddedLongitude);
+                Console.WriteLine("Adding: " + TargetPoint);
+
+                SemicirclePolygons.Add(TargetPoint);
             }
             DrawEntity(SemicircleOverlay, SemicirclePolygons, Color.DarkOrange);
 
