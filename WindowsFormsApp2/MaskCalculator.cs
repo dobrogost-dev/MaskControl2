@@ -181,7 +181,7 @@ namespace WindowsFormsApp2
 
                 Facade.Azimuth = CalculateAzimuth(Facade.PointFrom, Facade.PointTo) - 90;
                 double CenterAzimuth = CalculateAzimuth(Facade.PointCenter, building.CenterPoint);
-                if (Math.Abs(Facade.Azimuth - CenterAzimuth) < 90)
+                if (Math.Abs(Facade.Azimuth - CenterAzimuth) < 90 || Math.Abs(Facade.Azimuth - CenterAzimuth) > 270)
                 {
                     Facade.Azimuth += 180;
                 }
