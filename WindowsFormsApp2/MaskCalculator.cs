@@ -554,14 +554,14 @@ namespace WindowsFormsApp2
 
             List<PointLatLng> SemicirclePolygons = new List<PointLatLng>();
 
-            for (double a = 360; a >= -360; a -= 1)
+            for (double a = 3600; a >= -3600; a -= 1)
             {
                 if (a == 0)
                 {
                     continue;
                 }
                 double RadiusMetersLongitude = MetersToDegreesLongitude(radius, BaseBuilding.CenterPoint.Lat);
-                double AddedLongitude = RadiusMetersLongitude * (a / 360);
+                double AddedLongitude = RadiusMetersLongitude * (a / 3600);
 
                 double RadiusMetersLatitude = MetersToDegreesLatitude(radius);
 
@@ -595,14 +595,14 @@ namespace WindowsFormsApp2
                     SemicirclePolygons.Add(TargetPoint);
                 }
             }
-            for (double a = -360; a <= 360; a += 1)
+            for (double a = -3600; a <= 3600; a += 1)
             {
                 if (a == 0)
                 {
                     continue;
                 }
                 double RadiusMetersLongitude = MetersToDegreesLongitude(radius, BaseBuilding.CenterPoint.Lat);
-                double AddedLongitude = RadiusMetersLongitude * (a / 360);
+                double AddedLongitude = RadiusMetersLongitude * (a / 3600);
 
                 double RadiusMetersLatitude = MetersToDegreesLatitude(radius);
 
