@@ -97,7 +97,7 @@ namespace WindowsFormsApp2
 
         }
 
-        private async void SearchButton_Click(object sender, EventArgs e)
+        private void SearchButton_Click(object sender, EventArgs e)
         {
             string Address = AddressTextBox.Text;
             if (Address == string.Empty)
@@ -117,6 +117,7 @@ namespace WindowsFormsApp2
             } 
             PreviousAddress = Address;
             Map.Zoom = 18;
+            /*
             using (HttpClient Client = new HttpClient())
             {
                 try
@@ -161,6 +162,7 @@ namespace WindowsFormsApp2
                     Console.WriteLine($"Wystąpił błąd: {ex.Message}");
                 }
             }
+            */
         }
         private void ZoomInButton_Click(object sender, EventArgs e)
         {
