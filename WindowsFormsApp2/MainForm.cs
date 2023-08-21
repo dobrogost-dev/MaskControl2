@@ -15,17 +15,21 @@ namespace WindowsFormsApp2
     public partial class MainForm : Form
     {
         public static int BaseZoom = 1;
+        public string PreviousAddress;
+
         public GMapOverlay MarkersOverlay;
         public GMapOverlay PolygonsOverlay;
         public GMapOverlay SemicircleOverlay;
         public GMapOverlay LinesOverlay;
+
         public GMarkerGoogle CurrentMarker;
         public MaskCalculator MaskCalculatorInstance;
-        public string PreviousAddress;
+        public MapPainter MapPainterInstance;
         public MainForm()
         {
             CurrentMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.red_dot);
             MaskCalculatorInstance = new MaskCalculator();
+            MapPainterInstance = new MapPainter(MaskCalculatorInstance);
 
             InitializeComponent();
             double DefaultLatitude = 52.2188;
@@ -264,8 +268,8 @@ namespace WindowsFormsApp2
                     FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
                     SectorsLegendPanel.Visible = true;
 
-                    MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
-                    MaskCalculatorInstance.DrawLines(SemicircleOverlay, LinesOverlay, Radius);
+                    MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
+                    MapPainterInstance.DrawSectors(SemicircleOverlay, LinesOverlay, Radius);
                     Map.Refresh();
                 }
                 catch (Exception ex)
@@ -296,7 +300,7 @@ namespace WindowsFormsApp2
             BuildingDataRadioButton.Checked = !DirectionRadioButton.Checked;
             if (MaskCalculatorInstance.Initialized)
             {
-                MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, true);
+                MapPainterInstance.DrawBuildings(PolygonsOverlay, true);
                 Map.Refresh();
                 SectorsLegendPanel.Visible = true;
                 BuildingDataLegendPanel.Visible = false;
@@ -308,7 +312,7 @@ namespace WindowsFormsApp2
             DirectionRadioButton.Checked = !BuildingDataRadioButton.Checked;
             if (MaskCalculatorInstance.Initialized)
             {
-                MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, false);
+                MapPainterInstance.DrawBuildings(PolygonsOverlay, false);
                 Map.Refresh();
                 SectorsLegendPanel.Visible = false;
                 BuildingDataLegendPanel.Visible = true;

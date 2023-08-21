@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static WindowsFormsApp2.MaskCalculatorUtilities;
 
 namespace WindowsFormsApp2
 {
@@ -15,8 +16,8 @@ namespace WindowsFormsApp2
     {
         public Building BaseBuilding {  get; private set; }
         public Facade AnalyzedFacade { get; private set; }
-        private List<Building> Buildings { get; set; }
-        private List<Node> Nodes { get; set; }
+        public List<Building> Buildings { get; private set; }
+        public List<Node> Nodes { get; private set; }
 
         public bool Initialized = false;
         public void LoadData(OSMdata Data)
@@ -116,32 +117,7 @@ namespace WindowsFormsApp2
                 }
             }
         }
-        private bool IsBetween(double angle, double start, double end)
-        {
-            if (start <= end)
-            {
-                return angle >= start && angle <= end;
-            }
-            else
-            {
-                return angle >= start || angle <= end;
-            }
-        }
-        public static double CalculateAzimuth(PointLatLng point1, PointLatLng point2)
-        {
-            const double radianToDegree = 180.0 / Math.PI;
-            const double degreeToRadian = Math.PI / 180.0;
 
-            double dLon = (point2.Lng - point1.Lng) * degreeToRadian;
-            point1.Lat *= degreeToRadian;
-            point2.Lat *= degreeToRadian;
-
-            double y = Math.Sin(dLon) * Math.Cos(point2.Lat);
-            double x = Math.Cos(point1.Lat) * Math.Sin(point2.Lat) - Math.Sin(point1.Lat) * Math.Cos(point2.Lat) * Math.Cos(dLon);
-            double azimuth = Math.Atan2(y, x) * radianToDegree;
-
-            return (azimuth + 360) % 360;
-        }
         private void InitializeBuildings(PointLatLng BaseDirectionPoint)
         {
             Console.WriteLine("************************************************************");
@@ -153,15 +129,6 @@ namespace WindowsFormsApp2
             {
                 CalculateFacades(building);
                 AssignDirection(building, AnalyzedFacade);
-            }
-        }
-        private void AssignNodes(Building building)
-        {
-            building.Nodes = new List<Node>();
-            foreach(long node in building.NodesId)
-            {
-                Node NodeInstance = GetNodeById(node);
-                building.Nodes.Add(NodeInstance);
             }
         }
         private void CalculateFacades(Building building)
@@ -198,7 +165,7 @@ namespace WindowsFormsApp2
                 building.Facades.Add(Facade);
             }
         }
-        private Node GetNodeById(long id)
+        public Node GetNodeById(long id)
         {
             return Nodes
                 .Select(e => e)
@@ -224,116 +191,7 @@ namespace WindowsFormsApp2
                 }
             }
         }
-        private void RemoveNorthernBuildings()
-        {
-            // We are not removing partially included building
-            double FarthestNorth = GetCenterPosition(BaseBuilding).Lat;
-            List<Building> NorthernBuildings = new List<Building>();
-            foreach (Building building in Buildings)
-            {
-                double FarthestSouth = GetPointFarthestSouth(building);
-                if (FarthestNorth < FarthestSouth)
-                {
-                    NorthernBuildings.Add(building);
-                }
-            }
-            Buildings.RemoveAll(building => NorthernBuildings.Contains(building));
-        }
 
-        public void ShowBuildingsLogs()
-        {
-            if (Buildings.Count == 0 || Nodes.Count == 0)
-            {
-                return;
-            }
-            Console.WriteLine("/////////////////////////////////////////////////////////////");
-            Console.WriteLine("Default building id: " + BaseBuilding.id);
-            foreach (long node in BaseBuilding.NodesId)
-            {
-                Console.WriteLine("     Node id: " + node);
-                Console.WriteLine("         Node latitude: " + Nodes.FirstOrDefault(e => e.id == node).lat);
-                Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
-            }
-            foreach (Building building in Buildings)
-            {
-                Console.WriteLine("Building id: " + building.id);
-                Console.WriteLine("     Building height: " + building.tags.height);
-                Console.WriteLine("     Building levels: " + building.tags.BuildingLevels);
-                Console.WriteLine("     Building direction: " + building.direction);
-                foreach (long node in building.NodesId)
-                {
-                    Console.WriteLine("     Node id: " + node);
-                    Console.WriteLine("         Node latitude: " + Nodes.FirstOrDefault(e => e.id == node).lat);
-                    Console.WriteLine("         Node longitude: " + Nodes.FirstOrDefault(e => e.id == node).lon);
-                }
-            }
-        }
-
-        public void DrawBuildings(GMapOverlay polygonsOverlay, bool DirectionBuilding)
-        {
-            if (Buildings.Count == 0 || Nodes.Count == 0)
-            {
-                return;
-            }
-            polygonsOverlay.Clear();
-            List<PointLatLng> BaseBuildingPolygons = GetPolygons(BaseBuilding);
-            DrawEntity(polygonsOverlay, BaseBuildingPolygons, Color.Blue);
-            foreach (Building building in Buildings)
-            {
-                List<PointLatLng> BuildingPolygons = GetPolygons(building);
-                Color color = Color.Gray;
-                if (DirectionBuilding)
-                {
-                    switch (building.direction)
-                    {
-                        case Building.Direction.Unspecified: color = Color.Gray; break;
-                        case Building.Direction.East_SouthEast: color = Color.LimeGreen; break;
-                        case Building.Direction.SouthEast_South: color = Color.DeepSkyBlue; break;
-                        case Building.Direction.South_SouthWest: color = Color.Magenta; break;
-                        case Building.Direction.SouthWest_West: color = Color.Red; break;
-                        default: color = Color.Gray; break;
-                    }
-                }
-                else
-                {
-                    if (building.tags.height != null)
-                    {
-                        color = Color.Green;
-                    }
-                    else if (building.tags.BuildingLevels != null)
-                    {
-                        color = Color.Orange;
-                    }
-                    else
-                    {
-                        color = Color.Red;
-                    }
-                    if (building.direction == Building.Direction.Unspecified)
-                    {
-                        color = Color.Gray;
-                    }
-                }
-                DrawEntity(polygonsOverlay, BuildingPolygons, color);
-            }
-        }
-
-        private void DrawEntity(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, System.Drawing.Color color)
-        {
-            GMapPolygon buildingPolygon = new GMapPolygon(polygons, "building");
-            buildingPolygon.Fill = new SolidBrush(System.Drawing.Color.FromArgb(50, color));
-            buildingPolygon.Stroke = new Pen(color, 1);
-            polygonsOverlay.Polygons.Add(buildingPolygon);
-        }
-        public List<PointLatLng> GetPolygons(Building building)
-        {
-            List<PointLatLng> result = new List<PointLatLng>();
-            foreach(long node in building.NodesId)
-            {
-                Node newNode = GetNodeById(node);
-                result.Add(new PointLatLng(newNode.lat, newNode.lon));
-            }
-            return result;
-        }
         public double GetDistance(PointLatLng p1, PointLatLng p2)
         {
             GMapRoute route = new GMapRoute("getDistance");
@@ -361,56 +219,12 @@ namespace WindowsFormsApp2
             }
             return new PointLatLng(lat / length, lng / length);
         }
-        public double GetPointFarthestNorth(Building building)
-        {
-            double result = -10000;
-            foreach(long node in building.NodesId)
-            {
-                Node newNode = GetNodeById(node);
-                if (newNode.lat > result)
-                {
-                    result = newNode.lat;
-                }
-            }
-            return result;
-        }
-        public double GetPointFarthestSouth(Building building)
-        {
-            double result = 10000;
-            foreach (long node in building.NodesId)
-            {
-                Node newNode = GetNodeById(node);
-                if (newNode.lat < result)
-                {
-                    result = newNode.lat;
-                }
-            }
-            return result;
-        }
         public double GetMaskValue(PointLatLng BasePoint, PointLatLng TargetPoint, double height)
         {
             double distance = CalculateDistanceInMeters(BasePoint.Lat, BasePoint.Lng, TargetPoint.Lat, TargetPoint.Lng);
-            //Console.WriteLine("         Distance: " + distance);
             double diagonal = Math.Sqrt((distance * distance) + (height * height));
-            //Console.WriteLine("         Diagonal: " + diagonal);
             double mask = CalculateAngleBetweenSides(distance, diagonal);
-            //Console.WriteLine("         Mask: " + mask);
             return mask;
-        }
-        public static double CalculateDistanceInMeters(double lat1, double lon1, double lat2, double lon2)
-        {
-            const double radiusEarth = 6371.0; 
-
-            double dLat = (lat2 - lat1) * (Math.PI / 180.0);
-            double dLon = (lon2 - lon1) * (Math.PI / 180.0);
-
-            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
-                       Math.Cos(lat1 * (Math.PI / 180.0)) * Math.Cos(lat2 * (Math.PI / 180.0)) *
-                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
-            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
-            double distance = radiusEarth * c;
-
-            return distance * 1000;
         }
         public Node GetNodeForId(long id)
         {
@@ -422,13 +236,8 @@ namespace WindowsFormsApp2
         public static double CalculateAngleBetweenSides(double baseLength, double hypotenuse)
         {
             double sinAlpha = baseLength / hypotenuse;
-            //Console.WriteLine("Sinus alfa: " +  sinAlpha);
-            double angleInRadians = Math.Acos(sinAlpha); // Używamy funkcji Asin do obliczenia kąta w radianach
-            //Console.WriteLine("Kat w radianach: " + angleInRadians);
-            double angleInDegrees = angleInRadians * (180.0 / Math.PI); // Konwersja radianów na stopnie
-            //Console.WriteLine("Kat w stopniach: " + angleInDegrees);
-
-
+            double angleInRadians = Math.Acos(sinAlpha); 
+            double angleInDegrees = angleInRadians * (180.0 / Math.PI); 
             return angleInDegrees;
         }
         public double ProcessMask(Building building, double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
@@ -452,25 +261,18 @@ namespace WindowsFormsApp2
                     }
                 }
             }
-            //Console.WriteLine("Building id: " + building.id);
-            //Console.WriteLine("Base point: " + BasePoint);
-            //Console.WriteLine("Target point: " + TargetPoint);
-
             if (building.tags.height != null)
             {
-                //Console.WriteLine("     Using height");
                 mask = GetMaskValue(BasePoint,
-                    TargetPoint, Double.Parse(building.tags.height));
+                    TargetPoint, double.Parse(building.tags.height));
             }
             else if (building.tags.BuildingLevels != null)
             {
-                //Console.WriteLine("     Using building levels");
                 mask = GetMaskValue(BasePoint,
-                    TargetPoint, Double.Parse(building.tags.BuildingLevels) * DefaultBuildingFloorHeight);
+                    TargetPoint, double.Parse(building.tags.BuildingLevels) * DefaultBuildingFloorHeight);
             }
             else
             {
-                //Console.WriteLine("     Using default value");
                 mask = GetMaskValue(BasePoint,
                     TargetPoint, DefaultBuildingHeight);
             }
@@ -486,10 +288,6 @@ namespace WindowsFormsApp2
             }
             foreach (Building building in Buildings)
             {
-                //Console.WriteLine("Calculating mask");
-                //Console.WriteLine("Building id " + building.id);
-                //Console.WriteLine("Building direction " + building.direction);
-                //Console.WriteLine("Coordinates " + GetCenterPosition(building));
                 double mask = 0;
                 switch (building.direction)
                 {
@@ -525,198 +323,6 @@ namespace WindowsFormsApp2
             }
             return result;
         }
-        private static double MetersToDegreesLatitude(double meters)
-        {
-            double earthRadius = 6378137; // Promień Ziemi w metrach
-
-            // Wzór: stopnie = (metry / (promień Ziemi * π)) * 180
-            return (meters / (earthRadius * Math.PI)) * 180;
-        }
-        public static double MetersToDegreesLongitude(double meters, double latitude)
-        {
-            // Earth's radius in meters
-            double earthRadius = 6371000;
-
-            // Calculate the circumference of Earth at given latitude
-            double circumferenceAtLatitude = 2 * Math.PI * earthRadius * Math.Cos(latitude * Math.PI / 180);
-
-            // Calculate the longitude degrees for the given distance
-            double longitudeDegrees = meters * 360 / circumferenceAtLatitude;
-
-            return longitudeDegrees;
-        }
-
-        public void DrawLines(GMapOverlay SemicircleOverlay, GMapOverlay LinesOverlay, double radius)
-        {
-            if (BaseBuilding == null)
-            {
-                return;
-            }
-            //Console.WriteLine("Drawing lines: ");
-            PointLatLng basePoint = AnalyzedFacade.PointCenter;
-            SemicircleOverlay.Clear();
-            LinesOverlay.Clear();
-
-            List<PointLatLng> SemicirclePolygons = new List<PointLatLng>();
-            bool FirstLinePlaced = false;
-            bool SecondLinePlaced = false;
-            bool ThirdLinePlaced = false;
-            double Start = AnalyzedFacade.Azimuth - 90;
-            double End = AnalyzedFacade.Azimuth + 90;
-
-            double FirstQuarter = AnalyzedFacade.Azimuth - 45;
-            double SecondQuarter = AnalyzedFacade.Azimuth + 45;
-
-            if (Start < 0)
-            {
-                Start += 360;
-            }
-            if (End > 360)
-            {
-                End -= 360;
-            }
-            if (FirstQuarter < 0)
-            {
-                FirstQuarter += 360;
-            }
-            if (SecondQuarter > 360)
-            {
-                SecondQuarter -= 360;
-            }
-            Console.WriteLine("Start: " + Start);
-            Console.WriteLine("FirstQuarter: " + FirstQuarter);
-            Console.WriteLine("Center: " + AnalyzedFacade.Azimuth);
-            Console.WriteLine("SecondQuarter: " + SecondQuarter);
-            Console.WriteLine("End: " + End);
-
-            for (double a = 3600; a >= -3600; a -= 1)
-            {
-                if (a == 0)
-                {
-                    continue;
-                }
-                double RadiusMetersLongitude = MetersToDegreesLongitude(radius, BaseBuilding.CenterPoint.Lat);
-                double AddedLongitude = RadiusMetersLongitude * (a / 3600);
-
-                double RadiusMetersLatitude = MetersToDegreesLatitude(radius);
-
-                double RadiusCorrection = ((RadiusMetersLatitude / RadiusMetersLongitude));
-                //The correction is supposed to maximalize the accuracy of the calculations
-                //By comparing the BasePoint and Relative Correction Point( which is Poiters, France)
-                //if BasePoint is above it the semicircle height gets smaller, if its below it gets bigger
-                double LongitudeCorrection = (46.590484 / BaseBuilding.CenterPoint.Lat) * 0.67;
-                LongitudeCorrection = Math.Min(LongitudeCorrection, 1.0);
-                LongitudeCorrection = Math.Max(LongitudeCorrection, 0.5);
-
-                double LatitudeSquared = (RadiusMetersLongitude * RadiusMetersLongitude) - (AddedLongitude * AddedLongitude);
-                decimal AddedLatitudeSquared = new decimal(LatitudeSquared * RadiusCorrection * LongitudeCorrection);
-                double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
-
-                PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
-                double PointAzimuth = CalculateAzimuth(AnalyzedFacade.PointCenter, TargetPoint);
-
-                if (IsBetween(PointAzimuth, Start, End))
-                {
-                    SemicirclePolygons.Add(TargetPoint);
-                }
-                if (IsBetween(PointAzimuth, FirstQuarter, (FirstQuarter + 1) % 360) && !FirstLinePlaced)
-                {
-                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
-                    FirstLinePlaced = true;
-                    Console.WriteLine("Placing first line at: " + PointAzimuth);
-
-                }
-                if (IsBetween(PointAzimuth, AnalyzedFacade.Azimuth, (AnalyzedFacade.Azimuth + 1) % 360) && !SecondLinePlaced)
-                {
-                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
-                    SecondLinePlaced = true;
-                    Console.WriteLine("Placing Second line at: " + PointAzimuth);
-
-                }
-                if (IsBetween(PointAzimuth, SecondQuarter, (SecondQuarter + 1) % 360) && !ThirdLinePlaced)
-                {
-                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
-                    ThirdLinePlaced = true;
-                    Console.WriteLine("Placing third line at: " + PointAzimuth);
-                }
-            }
-            for (double a = -3600; a <= 3600; a += 1)
-            {
-                if (a == 0)
-                {
-                    continue;
-                }
-                double RadiusMetersLongitude = MetersToDegreesLongitude(radius, BaseBuilding.CenterPoint.Lat);
-                double AddedLongitude = RadiusMetersLongitude * (a / 3600);
-
-                double RadiusMetersLatitude = MetersToDegreesLatitude(radius);
-
-                double RadiusCorrection = ((RadiusMetersLatitude / RadiusMetersLongitude));
-                //The correction is supposed to maximalize the accuracy of the calculations
-                //By comparing the BasePoint and Relative Correction Point( which is Poiters, France)
-                //if BasePoint is above it the semicircle height gets smaller, if its below it gets bigger
-                double LongitudeCorrection = (46.590484 / BaseBuilding.CenterPoint.Lat) * 0.67;
-                LongitudeCorrection = Math.Min(LongitudeCorrection, 1.0);
-                LongitudeCorrection = Math.Max(LongitudeCorrection, 0.5);
-
-                double LatitudeSquared = (RadiusMetersLongitude * RadiusMetersLongitude) - (AddedLongitude * AddedLongitude);
-                decimal AddedLatitudeSquared = new decimal(LatitudeSquared * RadiusCorrection * LongitudeCorrection);
-                double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
-
-                PointLatLng TargetPoint = new PointLatLng(basePoint.Lat + AddedLatitude, basePoint.Lng + AddedLongitude);
-                double PointAzimuth = CalculateAzimuth(AnalyzedFacade.PointCenter, TargetPoint);
-
-                if (IsBetween(PointAzimuth, Start, End))
-                {
-                    SemicirclePolygons.Add(TargetPoint);
-                }
-                if (IsBetween(PointAzimuth, FirstQuarter, (FirstQuarter + 1) % 360) && !FirstLinePlaced)
-                {
-                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
-                    FirstLinePlaced = true;
-                    Console.WriteLine("Placing first line at: " + PointAzimuth);
-
-                }
-                if (IsBetween(PointAzimuth, AnalyzedFacade.Azimuth, (AnalyzedFacade.Azimuth + 1) % 360) && !SecondLinePlaced)
-                {
-                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
-                    SecondLinePlaced = true;
-                    Console.WriteLine("Placing Second line at: " + PointAzimuth);
-
-                }
-                if (IsBetween(PointAzimuth, SecondQuarter, (SecondQuarter + 1) % 360) && !ThirdLinePlaced)
-                {
-                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
-                    ThirdLinePlaced = true;
-                    Console.WriteLine("Placing third line at: " + PointAzimuth);
-                }
-            }
-            DrawEntity(SemicircleOverlay, SemicirclePolygons, Color.DarkOrange);
-
-        }
-        private static decimal SquareRoot(decimal square)
-        {
-            if (square <= 0) return 0;
-
-            decimal root = square / 3;
-            int i;
-            for (i = 0; i < 32; i++)
-                root = (root + square / root) / 2;
-            return root;
-        }
-        public void DrawLine(GMapOverlay linesOverlay, PointLatLng startPoint, PointLatLng endPoint, Color color, int thickness)
-        {
-            List<PointLatLng> points = new List<PointLatLng>
-            {
-                startPoint,
-                endPoint
-            };
-
-            GMapRoute lineRoute = new GMapRoute(points, "line");
-            lineRoute.Stroke = new Pen(color, thickness);
-            linesOverlay.Routes.Add(lineRoute);
-        }
-
         public PointLatLng GetClosestFacade(PointLatLng Position)
         {
             double MaxDistance = double.MaxValue;

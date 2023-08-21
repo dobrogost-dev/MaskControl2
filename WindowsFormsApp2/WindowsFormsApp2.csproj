@@ -109,6 +109,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainFormUtilities.cs" />
+    <Compile Include="MapPainter.cs" />
     <Compile Include="MaskCalculator.cs" />
     <Compile Include="MaskCalculatorUtilities.cs" />
     <Compile Include="MaskResult.cs" />
