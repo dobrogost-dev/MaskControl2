@@ -32,27 +32,13 @@ namespace WindowsFormsApp2
             MapPainterInstance = new MapPainter(MaskCalculatorInstance);
 
             InitializeComponent();
-            double DefaultLatitude = 52.2188;
-            double DefaultLongitude = 21.0026;
-            SetMapConfiguration(DefaultLatitude, DefaultLongitude);
-            SetDefaultValues();
+            SetMapConfiguration();
+            SetInitialValues();
 
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            LatitudeTextBox.ReadOnly = true;
-            LongitudeTextBox.ReadOnly = true;
-            MaskLeftResult.ReadOnly = true;
-            MaskLeftMiddleResult.ReadOnly = true;
-            MaskRightMiddleResult.ReadOnly = true;
-            MaskRightResult.ReadOnly = true;
-
-            MaskButton.Enabled = false;
-            BuildingDataLegendPanel.Visible = false;
-            SectorsLegendPanel.Visible = false;
-            LinesOverlay.IsVisibile = false;
-            SemicircleOverlay.IsVisibile = false;
         }
 
-        private void SetDefaultValues()
+        private void SetInitialValues()
         {
             string DefaultRadius = "45";
             string DefaultFloorHeight = "2,5";
@@ -67,10 +53,26 @@ namespace WindowsFormsApp2
             DefaultLeftMiddleBuildingHeightTextBox.Text = DefaultLeftMiddleBuildingHeight;
             DefaultRightMiddleBuildingHeightTextBox.Text = DefaultRightMiddleBuildingHeight;
             DefaultRightBuildingHeightTextBox.Text = DefaultRightBuildingHeight;
+
+            LatitudeTextBox.ReadOnly = true;
+            LongitudeTextBox.ReadOnly = true;
+            MaskLeftResult.ReadOnly = true;
+            MaskLeftMiddleResult.ReadOnly = true;
+            MaskRightMiddleResult.ReadOnly = true;
+            MaskRightResult.ReadOnly = true;
+
+            MaskButton.Enabled = false;
+            BuildingDataLegendPanel.Visible = false;
+            SectorsLegendPanel.Visible = false;
+            LinesOverlay.IsVisibile = false;
+            SemicircleOverlay.IsVisibile = false;
         }
 
-        private void SetMapConfiguration(double DefaultLatitude, double DefaultLongitude)
+        private void SetMapConfiguration()
         {
+            double DefaultLatitude = 52.2188;
+            double DefaultLongitude = 21.0026;
+
             Map.MapProvider = GMapProviders.OpenStreetMap;
             Map.Position = new PointLatLng(DefaultLatitude, DefaultLongitude);
             Map.MouseWheelZoomEnabled = true;
@@ -346,7 +348,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void DefaultBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
+        private void DefaultLeftBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
             {
@@ -354,27 +356,27 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void DefaultLeftMiddleBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
+            if (!MainFormUtilities.IsValidDecimal(DefaultLeftMiddleBuildingHeightTextBox.Text))
             {
-                DefaultLeftBuildingHeightTextBox.Text = string.Empty;
+                DefaultLeftMiddleBuildingHeightTextBox.Text = string.Empty;
             }
         }
 
         private void DefaultRightMiddleBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
+            if (!MainFormUtilities.IsValidDecimal(DefaultRightMiddleBuildingHeightTextBox.Text))
             {
-                DefaultLeftBuildingHeightTextBox.Text = string.Empty;
+                DefaultRightMiddleBuildingHeightTextBox.Text = string.Empty;
             }
         }
 
         private void DefaultRightBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
+            if (!MainFormUtilities.IsValidDecimal(DefaultRightBuildingHeightTextBox.Text))
             {
-                DefaultLeftBuildingHeightTextBox.Text = string.Empty;
+                DefaultRightBuildingHeightTextBox.Text = string.Empty;
             }
         }
     }

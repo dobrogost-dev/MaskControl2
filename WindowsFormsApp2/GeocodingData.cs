@@ -10,7 +10,6 @@ using GMap.NET;
 
 namespace WindowsFormsApp2
 {
-
     public class GeocodingData
     {
         [JsonProperty("osm_type")]

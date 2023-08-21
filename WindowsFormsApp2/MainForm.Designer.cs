@@ -214,7 +214,7 @@
             this.DefaultLeftBuildingHeightTextBox.Name = "DefaultLeftBuildingHeightTextBox";
             this.DefaultLeftBuildingHeightTextBox.Size = new System.Drawing.Size(95, 22);
             this.DefaultLeftBuildingHeightTextBox.TabIndex = 19;
-            this.DefaultLeftBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultBuildingHeightTextBox_TextChanged);
+            this.DefaultLeftBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultLeftBuildingHeightTextBox_TextChanged);
             // 
             // AddressTextBox
             // 
@@ -536,7 +536,7 @@
             this.DefaultLeftMiddleBuildingHeightTextBox.Name = "DefaultLeftMiddleBuildingHeightTextBox";
             this.DefaultLeftMiddleBuildingHeightTextBox.Size = new System.Drawing.Size(95, 22);
             this.DefaultLeftMiddleBuildingHeightTextBox.TabIndex = 42;
-            this.DefaultLeftMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.DefaultLeftMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultLeftMiddleBuildingHeightTextBox_TextChanged);
             // 
             // DefaultLeftMiddleBuildingHeightLabel
             // 
