@@ -36,14 +36,14 @@ namespace WindowsFormsApp2
             FormBorderStyle = FormBorderStyle.FixedSingle;
             LatitudeTextBox.ReadOnly = true;
             LongitudeTextBox.ReadOnly = true;
-            East_SouthEastTextBox.ReadOnly = true;
-            SouthEast_SouthTextBox.ReadOnly = true;
-            South_SouthWestTextBox.ReadOnly = true;
-            SouthWest_WestTextBox.ReadOnly = true;
+            MaskLeftResult.ReadOnly = true;
+            MaskLeftMiddleResult.ReadOnly = true;
+            MaskRightMiddleResult.ReadOnly = true;
+            MaskRightResult.ReadOnly = true;
 
             MaskButton.Enabled = false;
             BuildingDataLegendPanel.Visible = false;
-            DirectionLegendPanel.Visible = false;
+            SectorsLegendPanel.Visible = false;
             LinesOverlay.IsVisibile = false;
             SemicircleOverlay.IsVisibile = false;
         }
@@ -257,12 +257,12 @@ namespace WindowsFormsApp2
                     MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight, DefaultLeftBuildingHeight,
                         DefaultLeftMiddleBuildingHeight, DefaultRightMiddleBuildingHeight, DefaultRightBuildingHeight);
 
-                    East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
-                    SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
-                    South_SouthWestTextBox.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
-                    SouthWest_WestTextBox.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
+                    MaskLeftResult.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
+                    MaskLeftMiddleResult.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
+                    MaskRightMiddleResult.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
+                    MaskRightResult.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
                     FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
-                    DirectionLegendPanel.Visible = true;
+                    SectorsLegendPanel.Visible = true;
 
                     MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
                     MaskCalculatorInstance.DrawLines(SemicircleOverlay, LinesOverlay, Radius);
@@ -298,7 +298,7 @@ namespace WindowsFormsApp2
             {
                 MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, true);
                 Map.Refresh();
-                DirectionLegendPanel.Visible = true;
+                SectorsLegendPanel.Visible = true;
                 BuildingDataLegendPanel.Visible = false;
             }
         }
@@ -310,13 +310,13 @@ namespace WindowsFormsApp2
             {
                 MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, false);
                 Map.Refresh();
-                DirectionLegendPanel.Visible = false;
+                SectorsLegendPanel.Visible = false;
                 BuildingDataLegendPanel.Visible = true;
             }
         }
         private void DirectionLinesCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (DirectionLinesCheckBox.Checked)
+            if (SectorsCheckBox.Checked)
             {
                 LinesOverlay.IsVisibile = true;
                 SemicircleOverlay.IsVisibile = true;

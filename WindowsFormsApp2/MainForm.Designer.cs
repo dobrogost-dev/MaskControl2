@@ -39,24 +39,24 @@
             this.MaskButton = new System.Windows.Forms.Button();
             this.RadiusLabel = new System.Windows.Forms.Label();
             this.DefaultFloorHeightLabel = new System.Windows.Forms.Label();
-            this.DefaultBuildingHeightLabel = new System.Windows.Forms.Label();
+            this.DefaultLeftBuildingHeightLabel = new System.Windows.Forms.Label();
             this.RadiusTextBox = new System.Windows.Forms.TextBox();
             this.DefaultFloorHeightTextBox = new System.Windows.Forms.TextBox();
             this.DefaultLeftBuildingHeightTextBox = new System.Windows.Forms.TextBox();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
-            this.East_SouthEastTextBox = new System.Windows.Forms.TextBox();
-            this.East_SouthEastLabel = new System.Windows.Forms.Label();
-            this.SouthEast_SouthLabel = new System.Windows.Forms.Label();
-            this.SouthEast_SouthTextBox = new System.Windows.Forms.TextBox();
-            this.South_SouthWestLabel = new System.Windows.Forms.Label();
-            this.South_SouthWestTextBox = new System.Windows.Forms.TextBox();
-            this.SouthWest_WestLabel = new System.Windows.Forms.Label();
-            this.SouthWest_WestTextBox = new System.Windows.Forms.TextBox();
+            this.MaskLeftResult = new System.Windows.Forms.TextBox();
+            this.MaskLeftLabel = new System.Windows.Forms.Label();
+            this.MaskLeftMiddleLabel = new System.Windows.Forms.Label();
+            this.MaskLeftMiddleResult = new System.Windows.Forms.TextBox();
+            this.MaskRightMiddleLabel = new System.Windows.Forms.Label();
+            this.MaskRightMiddleResult = new System.Windows.Forms.TextBox();
+            this.MaskRightLabel = new System.Windows.Forms.Label();
+            this.MaskRightResult = new System.Windows.Forms.TextBox();
             this.Map = new GMap.NET.WindowsForms.GMapControl();
             this.BuildingDataRadioButton = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ColorBuildingsByLabel = new System.Windows.Forms.Label();
             this.DirectionRadioButton = new System.Windows.Forms.RadioButton();
-            this.DirectionLegendPanel = new System.Windows.Forms.Panel();
+            this.SectorsLegendPanel = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -71,16 +71,16 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.DirectionLinesCheckBox = new System.Windows.Forms.CheckBox();
+            this.SectorsCheckBox = new System.Windows.Forms.CheckBox();
             this.FacadeDirectionDescriptionLabel = new System.Windows.Forms.Label();
             this.FacadeDirectionLabel = new System.Windows.Forms.Label();
             this.DefaultLeftMiddleBuildingHeightTextBox = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.DefaultLeftMiddleBuildingHeightLabel = new System.Windows.Forms.Label();
+            this.DefaultRightBuildingHeightLabel = new System.Windows.Forms.Label();
+            this.DefaultRightMiddleBuildingHeightLabel = new System.Windows.Forms.Label();
             this.DefaultRightMiddleBuildingHeightTextBox = new System.Windows.Forms.TextBox();
             this.DefaultRightBuildingHeightTextBox = new System.Windows.Forms.TextBox();
-            this.DirectionLegendPanel.SuspendLayout();
+            this.SectorsLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,14 +183,14 @@
             this.DefaultFloorHeightLabel.TabIndex = 14;
             this.DefaultFloorHeightLabel.Text = "Default floor height";
             // 
-            // DefaultBuildingHeightLabel
+            // DefaultLeftBuildingHeightLabel
             // 
-            this.DefaultBuildingHeightLabel.AutoSize = true;
-            this.DefaultBuildingHeightLabel.Location = new System.Drawing.Point(12, 535);
-            this.DefaultBuildingHeightLabel.Name = "DefaultBuildingHeightLabel";
-            this.DefaultBuildingHeightLabel.Size = new System.Drawing.Size(162, 16);
-            this.DefaultBuildingHeightLabel.TabIndex = 16;
-            this.DefaultBuildingHeightLabel.Text = "Default Left building height";
+            this.DefaultLeftBuildingHeightLabel.AutoSize = true;
+            this.DefaultLeftBuildingHeightLabel.Location = new System.Drawing.Point(12, 535);
+            this.DefaultLeftBuildingHeightLabel.Name = "DefaultLeftBuildingHeightLabel";
+            this.DefaultLeftBuildingHeightLabel.Size = new System.Drawing.Size(162, 16);
+            this.DefaultLeftBuildingHeightLabel.TabIndex = 16;
+            this.DefaultLeftBuildingHeightLabel.Text = "Default Left building height";
             // 
             // RadiusTextBox
             // 
@@ -223,69 +223,69 @@
             this.AddressTextBox.Size = new System.Drawing.Size(640, 22);
             this.AddressTextBox.TabIndex = 20;
             // 
-            // East_SouthEastTextBox
+            // MaskLeftResult
             // 
-            this.East_SouthEastTextBox.Location = new System.Drawing.Point(743, 138);
-            this.East_SouthEastTextBox.Name = "East_SouthEastTextBox";
-            this.East_SouthEastTextBox.Size = new System.Drawing.Size(134, 22);
-            this.East_SouthEastTextBox.TabIndex = 21;
+            this.MaskLeftResult.Location = new System.Drawing.Point(743, 138);
+            this.MaskLeftResult.Name = "MaskLeftResult";
+            this.MaskLeftResult.Size = new System.Drawing.Size(134, 22);
+            this.MaskLeftResult.TabIndex = 21;
             // 
-            // East_SouthEastLabel
+            // MaskLeftLabel
             // 
-            this.East_SouthEastLabel.AutoSize = true;
-            this.East_SouthEastLabel.Location = new System.Drawing.Point(750, 117);
-            this.East_SouthEastLabel.Name = "East_SouthEastLabel";
-            this.East_SouthEastLabel.Size = new System.Drawing.Size(28, 16);
-            this.East_SouthEastLabel.TabIndex = 25;
-            this.East_SouthEastLabel.Text = "Left";
+            this.MaskLeftLabel.AutoSize = true;
+            this.MaskLeftLabel.Location = new System.Drawing.Point(750, 117);
+            this.MaskLeftLabel.Name = "MaskLeftLabel";
+            this.MaskLeftLabel.Size = new System.Drawing.Size(28, 16);
+            this.MaskLeftLabel.TabIndex = 25;
+            this.MaskLeftLabel.Text = "Left";
             // 
-            // SouthEast_SouthLabel
+            // MaskLeftMiddleLabel
             // 
-            this.SouthEast_SouthLabel.AutoSize = true;
-            this.SouthEast_SouthLabel.Location = new System.Drawing.Point(750, 179);
-            this.SouthEast_SouthLabel.Name = "SouthEast_SouthLabel";
-            this.SouthEast_SouthLabel.Size = new System.Drawing.Size(73, 16);
-            this.SouthEast_SouthLabel.TabIndex = 27;
-            this.SouthEast_SouthLabel.Text = "Left-Middle";
+            this.MaskLeftMiddleLabel.AutoSize = true;
+            this.MaskLeftMiddleLabel.Location = new System.Drawing.Point(750, 179);
+            this.MaskLeftMiddleLabel.Name = "MaskLeftMiddleLabel";
+            this.MaskLeftMiddleLabel.Size = new System.Drawing.Size(73, 16);
+            this.MaskLeftMiddleLabel.TabIndex = 27;
+            this.MaskLeftMiddleLabel.Text = "Left-Middle";
             // 
-            // SouthEast_SouthTextBox
+            // MaskLeftMiddleResult
             // 
-            this.SouthEast_SouthTextBox.Location = new System.Drawing.Point(743, 200);
-            this.SouthEast_SouthTextBox.Name = "SouthEast_SouthTextBox";
-            this.SouthEast_SouthTextBox.Size = new System.Drawing.Size(134, 22);
-            this.SouthEast_SouthTextBox.TabIndex = 26;
+            this.MaskLeftMiddleResult.Location = new System.Drawing.Point(743, 200);
+            this.MaskLeftMiddleResult.Name = "MaskLeftMiddleResult";
+            this.MaskLeftMiddleResult.Size = new System.Drawing.Size(134, 22);
+            this.MaskLeftMiddleResult.TabIndex = 26;
             // 
-            // South_SouthWestLabel
+            // MaskRightMiddleLabel
             // 
-            this.South_SouthWestLabel.AutoSize = true;
-            this.South_SouthWestLabel.Location = new System.Drawing.Point(750, 245);
-            this.South_SouthWestLabel.Name = "South_SouthWestLabel";
-            this.South_SouthWestLabel.Size = new System.Drawing.Size(83, 16);
-            this.South_SouthWestLabel.TabIndex = 29;
-            this.South_SouthWestLabel.Text = "Right-Middle";
+            this.MaskRightMiddleLabel.AutoSize = true;
+            this.MaskRightMiddleLabel.Location = new System.Drawing.Point(750, 245);
+            this.MaskRightMiddleLabel.Name = "MaskRightMiddleLabel";
+            this.MaskRightMiddleLabel.Size = new System.Drawing.Size(83, 16);
+            this.MaskRightMiddleLabel.TabIndex = 29;
+            this.MaskRightMiddleLabel.Text = "Right-Middle";
             // 
-            // South_SouthWestTextBox
+            // MaskRightMiddleResult
             // 
-            this.South_SouthWestTextBox.Location = new System.Drawing.Point(743, 266);
-            this.South_SouthWestTextBox.Name = "South_SouthWestTextBox";
-            this.South_SouthWestTextBox.Size = new System.Drawing.Size(134, 22);
-            this.South_SouthWestTextBox.TabIndex = 28;
+            this.MaskRightMiddleResult.Location = new System.Drawing.Point(743, 266);
+            this.MaskRightMiddleResult.Name = "MaskRightMiddleResult";
+            this.MaskRightMiddleResult.Size = new System.Drawing.Size(134, 22);
+            this.MaskRightMiddleResult.TabIndex = 28;
             // 
-            // SouthWest_WestLabel
+            // MaskRightLabel
             // 
-            this.SouthWest_WestLabel.AutoSize = true;
-            this.SouthWest_WestLabel.Location = new System.Drawing.Point(750, 312);
-            this.SouthWest_WestLabel.Name = "SouthWest_WestLabel";
-            this.SouthWest_WestLabel.Size = new System.Drawing.Size(38, 16);
-            this.SouthWest_WestLabel.TabIndex = 31;
-            this.SouthWest_WestLabel.Text = "Right";
+            this.MaskRightLabel.AutoSize = true;
+            this.MaskRightLabel.Location = new System.Drawing.Point(750, 312);
+            this.MaskRightLabel.Name = "MaskRightLabel";
+            this.MaskRightLabel.Size = new System.Drawing.Size(38, 16);
+            this.MaskRightLabel.TabIndex = 31;
+            this.MaskRightLabel.Text = "Right";
             // 
-            // SouthWest_WestTextBox
+            // MaskRightResult
             // 
-            this.SouthWest_WestTextBox.Location = new System.Drawing.Point(743, 333);
-            this.SouthWest_WestTextBox.Name = "SouthWest_WestTextBox";
-            this.SouthWest_WestTextBox.Size = new System.Drawing.Size(134, 22);
-            this.SouthWest_WestTextBox.TabIndex = 30;
+            this.MaskRightResult.Location = new System.Drawing.Point(743, 333);
+            this.MaskRightResult.Name = "MaskRightResult";
+            this.MaskRightResult.Size = new System.Drawing.Size(134, 22);
+            this.MaskRightResult.TabIndex = 30;
             // 
             // Map
             // 
@@ -325,14 +325,14 @@
             this.BuildingDataRadioButton.UseVisualStyleBackColor = true;
             this.BuildingDataRadioButton.CheckedChanged += new System.EventHandler(this.BuildingDataRadioButton_CheckedChanged);
             // 
-            // label1
+            // ColorBuildingsByLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(740, 372);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 16);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "Color buildings by";
+            this.ColorBuildingsByLabel.AutoSize = true;
+            this.ColorBuildingsByLabel.Location = new System.Drawing.Point(740, 372);
+            this.ColorBuildingsByLabel.Name = "ColorBuildingsByLabel";
+            this.ColorBuildingsByLabel.Size = new System.Drawing.Size(114, 16);
+            this.ColorBuildingsByLabel.TabIndex = 34;
+            this.ColorBuildingsByLabel.Text = "Color buildings by";
             // 
             // DirectionRadioButton
             // 
@@ -347,19 +347,19 @@
             this.DirectionRadioButton.UseVisualStyleBackColor = true;
             this.DirectionRadioButton.CheckedChanged += new System.EventHandler(this.DirectionRadioButton_CheckedChanged);
             // 
-            // DirectionLegendPanel
+            // SectorsLegendPanel
             // 
-            this.DirectionLegendPanel.Controls.Add(this.label14);
-            this.DirectionLegendPanel.Controls.Add(this.label7);
-            this.DirectionLegendPanel.Controls.Add(this.label6);
-            this.DirectionLegendPanel.Controls.Add(this.label5);
-            this.DirectionLegendPanel.Controls.Add(this.label4);
-            this.DirectionLegendPanel.Controls.Add(this.label3);
-            this.DirectionLegendPanel.Controls.Add(this.label2);
-            this.DirectionLegendPanel.Location = new System.Drawing.Point(681, 468);
-            this.DirectionLegendPanel.Name = "DirectionLegendPanel";
-            this.DirectionLegendPanel.Size = new System.Drawing.Size(210, 134);
-            this.DirectionLegendPanel.TabIndex = 36;
+            this.SectorsLegendPanel.Controls.Add(this.label14);
+            this.SectorsLegendPanel.Controls.Add(this.label7);
+            this.SectorsLegendPanel.Controls.Add(this.label6);
+            this.SectorsLegendPanel.Controls.Add(this.label5);
+            this.SectorsLegendPanel.Controls.Add(this.label4);
+            this.SectorsLegendPanel.Controls.Add(this.label3);
+            this.SectorsLegendPanel.Controls.Add(this.label2);
+            this.SectorsLegendPanel.Location = new System.Drawing.Point(681, 468);
+            this.SectorsLegendPanel.Name = "SectorsLegendPanel";
+            this.SectorsLegendPanel.Size = new System.Drawing.Size(210, 134);
+            this.SectorsLegendPanel.TabIndex = 36;
             // 
             // label14
             // 
@@ -502,16 +502,16 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "Legend";
             // 
-            // DirectionLinesCheckBox
+            // SectorsCheckBox
             // 
-            this.DirectionLinesCheckBox.AutoSize = true;
-            this.DirectionLinesCheckBox.Location = new System.Drawing.Point(743, 442);
-            this.DirectionLinesCheckBox.Name = "DirectionLinesCheckBox";
-            this.DirectionLinesCheckBox.Size = new System.Drawing.Size(109, 20);
-            this.DirectionLinesCheckBox.TabIndex = 38;
-            this.DirectionLinesCheckBox.Text = "Show sectors";
-            this.DirectionLinesCheckBox.UseVisualStyleBackColor = true;
-            this.DirectionLinesCheckBox.CheckedChanged += new System.EventHandler(this.DirectionLinesCheckBox_CheckedChanged);
+            this.SectorsCheckBox.AutoSize = true;
+            this.SectorsCheckBox.Location = new System.Drawing.Point(743, 442);
+            this.SectorsCheckBox.Name = "SectorsCheckBox";
+            this.SectorsCheckBox.Size = new System.Drawing.Size(109, 20);
+            this.SectorsCheckBox.TabIndex = 38;
+            this.SectorsCheckBox.Text = "Show sectors";
+            this.SectorsCheckBox.UseVisualStyleBackColor = true;
+            this.SectorsCheckBox.CheckedChanged += new System.EventHandler(this.DirectionLinesCheckBox_CheckedChanged);
             // 
             // FacadeDirectionDescriptionLabel
             // 
@@ -538,32 +538,32 @@
             this.DefaultLeftMiddleBuildingHeightTextBox.TabIndex = 42;
             this.DefaultLeftMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label15
+            // DefaultLeftMiddleBuildingHeightLabel
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 566);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(207, 16);
-            this.label15.TabIndex = 41;
-            this.label15.Text = "Default Left-Middle building height";
+            this.DefaultLeftMiddleBuildingHeightLabel.AutoSize = true;
+            this.DefaultLeftMiddleBuildingHeightLabel.Location = new System.Drawing.Point(12, 566);
+            this.DefaultLeftMiddleBuildingHeightLabel.Name = "DefaultLeftMiddleBuildingHeightLabel";
+            this.DefaultLeftMiddleBuildingHeightLabel.Size = new System.Drawing.Size(207, 16);
+            this.DefaultLeftMiddleBuildingHeightLabel.TabIndex = 41;
+            this.DefaultLeftMiddleBuildingHeightLabel.Text = "Default Left-Middle building height";
             // 
-            // label16
+            // DefaultRightBuildingHeightLabel
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(326, 566);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(172, 16);
-            this.label16.TabIndex = 45;
-            this.label16.Text = "Default Right building height";
+            this.DefaultRightBuildingHeightLabel.AutoSize = true;
+            this.DefaultRightBuildingHeightLabel.Location = new System.Drawing.Point(326, 566);
+            this.DefaultRightBuildingHeightLabel.Name = "DefaultRightBuildingHeightLabel";
+            this.DefaultRightBuildingHeightLabel.Size = new System.Drawing.Size(172, 16);
+            this.DefaultRightBuildingHeightLabel.TabIndex = 45;
+            this.DefaultRightBuildingHeightLabel.Text = "Default Right building height";
             // 
-            // label17
+            // DefaultRightMiddleBuildingHeightLabel
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(326, 535);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(217, 16);
-            this.label17.TabIndex = 43;
-            this.label17.Text = "Default Right-Middle building height";
+            this.DefaultRightMiddleBuildingHeightLabel.AutoSize = true;
+            this.DefaultRightMiddleBuildingHeightLabel.Location = new System.Drawing.Point(326, 535);
+            this.DefaultRightMiddleBuildingHeightLabel.Name = "DefaultRightMiddleBuildingHeightLabel";
+            this.DefaultRightMiddleBuildingHeightLabel.Size = new System.Drawing.Size(217, 16);
+            this.DefaultRightMiddleBuildingHeightLabel.TabIndex = 43;
+            this.DefaultRightMiddleBuildingHeightLabel.Text = "Default Right-Middle building height";
             // 
             // DefaultRightMiddleBuildingHeightTextBox
             // 
@@ -589,29 +589,29 @@
             this.ClientSize = new System.Drawing.Size(902, 603);
             this.Controls.Add(this.DefaultRightBuildingHeightTextBox);
             this.Controls.Add(this.DefaultRightMiddleBuildingHeightTextBox);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label17);
+            this.Controls.Add(this.DefaultRightBuildingHeightLabel);
+            this.Controls.Add(this.DefaultRightMiddleBuildingHeightLabel);
             this.Controls.Add(this.DefaultLeftMiddleBuildingHeightTextBox);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.DefaultLeftMiddleBuildingHeightLabel);
             this.Controls.Add(this.FacadeDirectionLabel);
             this.Controls.Add(this.FacadeDirectionDescriptionLabel);
-            this.Controls.Add(this.DirectionLinesCheckBox);
+            this.Controls.Add(this.SectorsCheckBox);
             this.Controls.Add(this.DirectionRadioButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ColorBuildingsByLabel);
             this.Controls.Add(this.BuildingDataRadioButton);
-            this.Controls.Add(this.SouthWest_WestLabel);
-            this.Controls.Add(this.SouthWest_WestTextBox);
-            this.Controls.Add(this.South_SouthWestLabel);
-            this.Controls.Add(this.South_SouthWestTextBox);
-            this.Controls.Add(this.SouthEast_SouthLabel);
-            this.Controls.Add(this.SouthEast_SouthTextBox);
-            this.Controls.Add(this.East_SouthEastLabel);
-            this.Controls.Add(this.East_SouthEastTextBox);
+            this.Controls.Add(this.MaskRightLabel);
+            this.Controls.Add(this.MaskRightResult);
+            this.Controls.Add(this.MaskRightMiddleLabel);
+            this.Controls.Add(this.MaskRightMiddleResult);
+            this.Controls.Add(this.MaskLeftMiddleLabel);
+            this.Controls.Add(this.MaskLeftMiddleResult);
+            this.Controls.Add(this.MaskLeftLabel);
+            this.Controls.Add(this.MaskLeftResult);
             this.Controls.Add(this.AddressTextBox);
             this.Controls.Add(this.DefaultLeftBuildingHeightTextBox);
             this.Controls.Add(this.DefaultFloorHeightTextBox);
             this.Controls.Add(this.RadiusTextBox);
-            this.Controls.Add(this.DefaultBuildingHeightLabel);
+            this.Controls.Add(this.DefaultLeftBuildingHeightLabel);
             this.Controls.Add(this.DefaultFloorHeightLabel);
             this.Controls.Add(this.RadiusLabel);
             this.Controls.Add(this.MaskButton);
@@ -624,12 +624,12 @@
             this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.Map);
-            this.Controls.Add(this.DirectionLegendPanel);
+            this.Controls.Add(this.SectorsLegendPanel);
             this.Controls.Add(this.BuildingDataLegendPanel);
             this.Name = "MainForm";
             this.Text = "Form1";
-            this.DirectionLegendPanel.ResumeLayout(false);
-            this.DirectionLegendPanel.PerformLayout();
+            this.SectorsLegendPanel.ResumeLayout(false);
+            this.SectorsLegendPanel.PerformLayout();
             this.BuildingDataLegendPanel.ResumeLayout(false);
             this.BuildingDataLegendPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -649,24 +649,24 @@
         private System.Windows.Forms.Button MaskButton;
         private System.Windows.Forms.Label RadiusLabel;
         private System.Windows.Forms.Label DefaultFloorHeightLabel;
-        private System.Windows.Forms.Label DefaultBuildingHeightLabel;
+        private System.Windows.Forms.Label DefaultLeftBuildingHeightLabel;
         private System.Windows.Forms.TextBox RadiusTextBox;
         private System.Windows.Forms.TextBox DefaultFloorHeightTextBox;
         private System.Windows.Forms.TextBox DefaultLeftBuildingHeightTextBox;
         private System.Windows.Forms.TextBox AddressTextBox;
-        private System.Windows.Forms.TextBox East_SouthEastTextBox;
-        private System.Windows.Forms.Label East_SouthEastLabel;
-        private System.Windows.Forms.Label SouthEast_SouthLabel;
-        private System.Windows.Forms.TextBox SouthEast_SouthTextBox;
-        private System.Windows.Forms.Label South_SouthWestLabel;
-        private System.Windows.Forms.TextBox South_SouthWestTextBox;
-        private System.Windows.Forms.Label SouthWest_WestLabel;
-        private System.Windows.Forms.TextBox SouthWest_WestTextBox;
+        private System.Windows.Forms.TextBox MaskLeftResult;
+        private System.Windows.Forms.Label MaskLeftLabel;
+        private System.Windows.Forms.Label MaskLeftMiddleLabel;
+        private System.Windows.Forms.TextBox MaskLeftMiddleResult;
+        private System.Windows.Forms.Label MaskRightMiddleLabel;
+        private System.Windows.Forms.TextBox MaskRightMiddleResult;
+        private System.Windows.Forms.Label MaskRightLabel;
+        private System.Windows.Forms.TextBox MaskRightResult;
         private GMap.NET.WindowsForms.GMapControl Map;
         private System.Windows.Forms.RadioButton BuildingDataRadioButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ColorBuildingsByLabel;
         private System.Windows.Forms.RadioButton DirectionRadioButton;
-        private System.Windows.Forms.Panel DirectionLegendPanel;
+        private System.Windows.Forms.Panel SectorsLegendPanel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -679,15 +679,15 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.CheckBox DirectionLinesCheckBox;
+        private System.Windows.Forms.CheckBox SectorsCheckBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label FacadeDirectionDescriptionLabel;
         private System.Windows.Forms.Label FacadeDirectionLabel;
         private System.Windows.Forms.TextBox DefaultLeftMiddleBuildingHeightTextBox;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label DefaultLeftMiddleBuildingHeightLabel;
+        private System.Windows.Forms.Label DefaultRightBuildingHeightLabel;
+        private System.Windows.Forms.Label DefaultRightMiddleBuildingHeightLabel;
         private System.Windows.Forms.TextBox DefaultRightMiddleBuildingHeightTextBox;
         private System.Windows.Forms.TextBox DefaultRightBuildingHeightTextBox;
     }
