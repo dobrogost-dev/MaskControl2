@@ -519,7 +519,7 @@
             // FacadeDirectionDescriptionLabel
             // 
             this.FacadeDirectionDescriptionLabel.AutoSize = true;
-            this.FacadeDirectionDescriptionLabel.Location = new System.Drawing.Point(326, 499);
+            this.FacadeDirectionDescriptionLabel.Location = new System.Drawing.Point(326, 502);
             this.FacadeDirectionDescriptionLabel.Name = "FacadeDirectionDescriptionLabel";
             this.FacadeDirectionDescriptionLabel.Size = new System.Drawing.Size(166, 16);
             this.FacadeDirectionDescriptionLabel.TabIndex = 39;
