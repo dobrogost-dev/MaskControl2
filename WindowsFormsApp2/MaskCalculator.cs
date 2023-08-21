@@ -614,27 +614,26 @@ namespace WindowsFormsApp2
                 {
                     SemicirclePolygons.Add(TargetPoint);
                 }
-                if (IsBetween(PointAzimuth, FirstQuarter, FirstQuarter + 1) && !FirstLinePlaced)
+                if (IsBetween(PointAzimuth, FirstQuarter, (FirstQuarter + 1) % 360) && !FirstLinePlaced)
                 {
-                    DrawLine(LinesOverlay,AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
+                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
                     FirstLinePlaced = true;
                     Console.WriteLine("Placing first line at: " + PointAzimuth);
 
                 }
-                if (IsBetween(PointAzimuth, AnalyzedFacade.Azimuth, AnalyzedFacade.Azimuth + 1) && !SecondLinePlaced)
+                if (IsBetween(PointAzimuth, AnalyzedFacade.Azimuth, (AnalyzedFacade.Azimuth + 1) % 360) && !SecondLinePlaced)
                 {
                     DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
                     SecondLinePlaced = true;
                     Console.WriteLine("Placing Second line at: " + PointAzimuth);
 
                 }
-                if (IsBetween(PointAzimuth, SecondQuarter, SecondQuarter + 1) && !ThirdLinePlaced)
+                if (IsBetween(PointAzimuth, SecondQuarter, (SecondQuarter + 1) % 360) && !ThirdLinePlaced)
                 {
                     DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
                     ThirdLinePlaced = true;
                     Console.WriteLine("Placing third line at: " + PointAzimuth);
                 }
-
             }
             for (double a = -3600; a <= 3600; a += 1)
             {
@@ -666,21 +665,21 @@ namespace WindowsFormsApp2
                 {
                     SemicirclePolygons.Add(TargetPoint);
                 }
-                if (IsBetween(PointAzimuth, FirstQuarter, FirstQuarter + 1) && !FirstLinePlaced)
+                if (IsBetween(PointAzimuth, FirstQuarter, (FirstQuarter + 1) % 360) && !FirstLinePlaced)
                 {
                     DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
                     FirstLinePlaced = true;
                     Console.WriteLine("Placing first line at: " + PointAzimuth);
 
                 }
-                if (IsBetween(PointAzimuth, AnalyzedFacade.Azimuth, AnalyzedFacade.Azimuth + 1) && !SecondLinePlaced)
+                if (IsBetween(PointAzimuth, AnalyzedFacade.Azimuth, (AnalyzedFacade.Azimuth + 1) % 360) && !SecondLinePlaced)
                 {
                     DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
                     SecondLinePlaced = true;
                     Console.WriteLine("Placing Second line at: " + PointAzimuth);
 
                 }
-                if (IsBetween(PointAzimuth, SecondQuarter, SecondQuarter + 1) && !ThirdLinePlaced)
+                if (IsBetween(PointAzimuth, SecondQuarter, (SecondQuarter + 1) % 360) && !ThirdLinePlaced)
                 {
                     DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
                     ThirdLinePlaced = true;
