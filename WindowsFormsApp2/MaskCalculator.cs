@@ -553,6 +553,36 @@ namespace WindowsFormsApp2
             LinesOverlay.Clear();
 
             List<PointLatLng> SemicirclePolygons = new List<PointLatLng>();
+            bool FirstLinePlaced = false;
+            bool SecondLinePlaced = false;
+            bool ThirdLinePlaced = false;
+            double Start = AnalyzedFacade.Azimuth - 90;
+            double End = AnalyzedFacade.Azimuth + 90;
+
+            double FirstQuarter = AnalyzedFacade.Azimuth - 45;
+            double SecondQuarter = AnalyzedFacade.Azimuth + 45;
+
+            if (Start < 0)
+            {
+                Start += 360;
+            }
+            if (End > 360)
+            {
+                End -= 360;
+            }
+            if (FirstQuarter < 0)
+            {
+                FirstQuarter += 360;
+            }
+            if (SecondQuarter > 360)
+            {
+                SecondQuarter -= 360;
+            }
+            Console.WriteLine("Start: " + Start);
+            Console.WriteLine("FirstQuarter: " + FirstQuarter);
+            Console.WriteLine("Center: " + AnalyzedFacade.Azimuth);
+            Console.WriteLine("SecondQuarter: " + SecondQuarter);
+            Console.WriteLine("End: " + End);
 
             for (double a = 3600; a >= -3600; a -= 1)
             {
@@ -578,22 +608,33 @@ namespace WindowsFormsApp2
                 double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
 
                 PointLatLng TargetPoint = new PointLatLng(basePoint.Lat - AddedLatitude, basePoint.Lng + AddedLongitude);
-                Console.WriteLine("Adding: " + TargetPoint);
                 double PointAzimuth = CalculateAzimuth(AnalyzedFacade.PointCenter, TargetPoint);
-                double Start = AnalyzedFacade.Azimuth - 90;
-                double End = AnalyzedFacade.Azimuth + 90;
-                if (Start < 0)
-                {
-                    Start += 360;
-                }
-                if (End > 360)
-                {
-                    End -= 360;
-                }
+
                 if (IsBetween(PointAzimuth, Start, End))
                 {
                     SemicirclePolygons.Add(TargetPoint);
                 }
+                if (IsBetween(PointAzimuth, FirstQuarter, FirstQuarter + 1) && !FirstLinePlaced)
+                {
+                    DrawLine(LinesOverlay,AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
+                    FirstLinePlaced = true;
+                    Console.WriteLine("Placing first line at: " + PointAzimuth);
+
+                }
+                if (IsBetween(PointAzimuth, AnalyzedFacade.Azimuth, AnalyzedFacade.Azimuth + 1) && !SecondLinePlaced)
+                {
+                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
+                    SecondLinePlaced = true;
+                    Console.WriteLine("Placing Second line at: " + PointAzimuth);
+
+                }
+                if (IsBetween(PointAzimuth, SecondQuarter, SecondQuarter + 1) && !ThirdLinePlaced)
+                {
+                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
+                    ThirdLinePlaced = true;
+                    Console.WriteLine("Placing third line at: " + PointAzimuth);
+                }
+
             }
             for (double a = -3600; a <= 3600; a += 1)
             {
@@ -619,21 +660,31 @@ namespace WindowsFormsApp2
                 double AddedLatitude = decimal.ToDouble(SquareRoot(AddedLatitudeSquared));
 
                 PointLatLng TargetPoint = new PointLatLng(basePoint.Lat + AddedLatitude, basePoint.Lng + AddedLongitude);
-                Console.WriteLine("Adding: " + TargetPoint);
                 double PointAzimuth = CalculateAzimuth(AnalyzedFacade.PointCenter, TargetPoint);
-                double Start = AnalyzedFacade.Azimuth - 90;
-                double End = AnalyzedFacade.Azimuth + 90;
-                if (Start < 0)
-                {
-                    Start += 360;
-                }
-                if (End > 360)
-                {
-                    End -= 360;
-                }
+
                 if (IsBetween(PointAzimuth, Start, End))
                 {
                     SemicirclePolygons.Add(TargetPoint);
+                }
+                if (IsBetween(PointAzimuth, FirstQuarter, FirstQuarter + 1) && !FirstLinePlaced)
+                {
+                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
+                    FirstLinePlaced = true;
+                    Console.WriteLine("Placing first line at: " + PointAzimuth);
+
+                }
+                if (IsBetween(PointAzimuth, AnalyzedFacade.Azimuth, AnalyzedFacade.Azimuth + 1) && !SecondLinePlaced)
+                {
+                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
+                    SecondLinePlaced = true;
+                    Console.WriteLine("Placing Second line at: " + PointAzimuth);
+
+                }
+                if (IsBetween(PointAzimuth, SecondQuarter, SecondQuarter + 1) && !ThirdLinePlaced)
+                {
+                    DrawLine(LinesOverlay, AnalyzedFacade.PointCenter, TargetPoint, Color.Orange, 1);
+                    ThirdLinePlaced = true;
+                    Console.WriteLine("Placing third line at: " + PointAzimuth);
                 }
             }
             DrawEntity(SemicircleOverlay, SemicirclePolygons, Color.DarkOrange);
