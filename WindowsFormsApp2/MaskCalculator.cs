@@ -55,6 +55,7 @@ namespace WindowsFormsApp2
 
         private void LoadElements(OSMdata Data)
         {
+
             foreach (Element element in Data.elements)
             {
                 if (element.type == "node")
@@ -210,12 +211,16 @@ namespace WindowsFormsApp2
             foreach (Building building in Buildings)
             {
                 building.CenterPoint = GetCenterPosition(building);
-                double CurrentDistanceToBasePoint = GetDistance(building.CenterPoint, BasePoint);
-                if (CurrentDistanceToBasePoint < HighestDistanceToBasePoint)
-                {
-                    HighestDistanceToBasePoint = CurrentDistanceToBasePoint;
-                    BaseBuilding = building;
-                    CalculateFacades(BaseBuilding);
+                CalculateFacades(building);
+
+                foreach (Facade facade in building.Facades) {
+                    double CurrentDistanceToBasePoint = GetDistance(facade.PointCenter, BasePoint);
+                    if (CurrentDistanceToBasePoint < HighestDistanceToBasePoint)
+                    {
+                        HighestDistanceToBasePoint = CurrentDistanceToBasePoint;
+                        BaseBuilding = building;
+                        AnalyzedFacade = facade;
+                    }
                 }
             }
         }
@@ -723,7 +728,6 @@ namespace WindowsFormsApp2
                 {
                     ClosestSide = facade.PointCenter;
                     MaxDistance = distance;
-                    AnalyzedFacade = facade;
                 }
             }
             return ClosestSide;
