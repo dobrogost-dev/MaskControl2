@@ -2,22 +2,13 @@
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
-using GMap.NET.WindowsPresentation;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static GMap.NET.Entity.OpenStreetMapGeocodeEntity;
-using static GMap.NET.Entity.OpenStreetMapGraphHopperGeocodeEntity;
-using GMapRoute = GMap.NET.WindowsForms.GMapRoute;
+
 
 namespace WindowsFormsApp2
 {
@@ -40,8 +31,9 @@ namespace WindowsFormsApp2
             double DefaultLatitude = 52.2188;
             double DefaultLongitude = 21.0026;
             SetMapConfiguration(DefaultLatitude, DefaultLongitude);
+            SetDefaultValues();
 
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             LatitudeTextBox.ReadOnly = true;
             LongitudeTextBox.ReadOnly = true;
             East_SouthEastTextBox.ReadOnly = true;
@@ -49,6 +41,15 @@ namespace WindowsFormsApp2
             South_SouthWestTextBox.ReadOnly = true;
             SouthWest_WestTextBox.ReadOnly = true;
 
+            MaskButton.Enabled = false;
+            BuildingDataLegendPanel.Visible = false;
+            DirectionLegendPanel.Visible = false;
+            LinesOverlay.IsVisibile = false;
+            SemicircleOverlay.IsVisibile = false;
+        }
+
+        private void SetDefaultValues()
+        {
             string DefaultRadius = "45";
             string DefaultFloorHeight = "2,5";
             string DefaultLeftBuildingHeight = "10";
@@ -56,19 +57,12 @@ namespace WindowsFormsApp2
             string DefaultRightMiddleBuildingHeight = "10";
             string DefaultRightBuildingHeight = "10";
 
-
             RadiusTextBox.Text = DefaultRadius;
             DefaultFloorHeightTextBox.Text = DefaultFloorHeight;
             DefaultLeftBuildingHeightTextBox.Text = DefaultLeftBuildingHeight;
             DefaultLeftMiddleBuildingHeightTextBox.Text = DefaultLeftMiddleBuildingHeight;
             DefaultRightMiddleBuildingHeightTextBox.Text = DefaultRightMiddleBuildingHeight;
             DefaultRightBuildingHeightTextBox.Text = DefaultRightBuildingHeight;
-
-            MaskButton.Enabled = false;
-            BuildingDataLegendPanel.Visible = false;
-            DirectionLegendPanel.Visible = false;
-            LinesOverlay.IsVisibile = false;
-            SemicircleOverlay.IsVisibile = false;
         }
 
         private void SetMapConfiguration(double DefaultLatitude, double DefaultLongitude)
@@ -104,6 +98,7 @@ namespace WindowsFormsApp2
             {
                 return;
             }
+
             PointLatLng initialPosition = Map.Position;
             Map.SetPositionByKeywords(Address);
             if (Address == PreviousAddress)
@@ -202,7 +197,10 @@ namespace WindowsFormsApp2
                     "Default building floor height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (DefaultLeftBuildingHeightTextBox.Text == string.Empty)
+            if (DefaultLeftBuildingHeightTextBox.Text == string.Empty ||
+                DefaultLeftMiddleBuildingHeightTextBox.Text == string.Empty ||
+                DefaultRightMiddleBuildingHeightTextBox.Text == string.Empty ||
+                DefaultRightBuildingHeightTextBox.Text == string.Empty)
             {
                 MessageBox.Show("Default building height value is required in order to calculate mask",
                     "Default building height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -214,28 +212,23 @@ namespace WindowsFormsApp2
                     "Marker required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            await ProcessApiCall();
+        }
+
+        private async Task ProcessApiCall()
+        {
             double InitialRadius = 50.0;
             double Radius = Double.Parse(RadiusTextBox.Text);
             // Zmiana double na stringa oddzielonego kropką zamiast przecinka
-            string MarkerLatitude = CurrentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
-            string MarkerLongitude = CurrentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
+            string InitialMarkerLatitude = CurrentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
+            string InitialMarkerLongitude = CurrentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
 
-            string BaseBuildingApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{InitialRadius},{MarkerLatitude},{MarkerLongitude});(._;>;);out;";
             using (HttpClient Client = new HttpClient())
             {
                 try
                 {
-                    HttpResponseMessage BaseBuildingResponse = await Client.GetAsync(BaseBuildingApiUrl);
-
-                    if (!BaseBuildingResponse.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine($"Błąd HTTP: {BaseBuildingResponse.StatusCode}");
-                        MessageBox.Show("HTTP Error",
-                        "HTTP Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    string BaseBuildingJsonResponse = await BaseBuildingResponse.Content.ReadAsStringAsync();
-                    OSMdata BaseBuildingApiResponse = JsonConvert.DeserializeObject<OSMdata>(BaseBuildingJsonResponse);
+                    string BaseBuildingApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{InitialRadius},{InitialMarkerLatitude},{InitialMarkerLongitude});(._;>;);out;";
+                    OSMdata BaseBuildingApiResponse = await GetOSMApiResponse(BaseBuildingApiUrl, Client);
 
                     MaskCalculatorInstance.LoadBaseBuilding(BaseBuildingApiResponse, CurrentMarker.Position);
 
@@ -245,22 +238,16 @@ namespace WindowsFormsApp2
                         "Base building not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    CurrentMarker.Position = MaskCalculatorInstance.PlaceAtClosestFacade(CurrentMarker.Position);
+
+                    CurrentMarker.Position = MaskCalculatorInstance.GetClosestFacade(CurrentMarker.Position);
+
                     string BaseBuildingLatitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lat.ToString(CultureInfo.InvariantCulture);
                     string BaseBuildingLongitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lng.ToString(CultureInfo.InvariantCulture);
                     string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{BaseBuildingLatitude},{BaseBuildingLongitude});(._;>;);out;";
-                    HttpResponseMessage Response = await Client.GetAsync(ApiUrl);
+                    OSMdata apiResponse = await GetOSMApiResponse(ApiUrl, Client);
 
-                    if (!Response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Buildings not found",
-                            "Buildings not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Console.WriteLine($"Błąd HTTP: {BaseBuildingResponse.StatusCode}");
-                    }
-                    string jsonResponse = await Response.Content.ReadAsStringAsync();
-                    OSMdata apiResponse = JsonConvert.DeserializeObject<OSMdata>(jsonResponse);
                     MaskCalculatorInstance.LoadData(apiResponse);
-                    MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
+
                     double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
                     double DefaultLeftBuildingHeight = Double.Parse(DefaultLeftBuildingHeightTextBox.Text);
                     double DefaultLeftMiddleBuildingHeight = Double.Parse(DefaultLeftMiddleBuildingHeightTextBox.Text);
@@ -270,14 +257,16 @@ namespace WindowsFormsApp2
                     MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight, DefaultLeftBuildingHeight,
                         DefaultLeftMiddleBuildingHeight, DefaultRightMiddleBuildingHeight, DefaultRightBuildingHeight);
 
-                    MaskCalculatorInstance.DrawLines(SemicircleOverlay, LinesOverlay, Radius);
-                    Map.Refresh();
                     East_SouthEastTextBox.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
                     SouthEast_SouthTextBox.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
                     South_SouthWestTextBox.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
                     SouthWest_WestTextBox.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
                     FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
                     DirectionLegendPanel.Visible = true;
+
+                    MaskCalculatorInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
+                    MaskCalculatorInstance.DrawLines(SemicircleOverlay, LinesOverlay, Radius);
+                    Map.Refresh();
                 }
                 catch (Exception ex)
                 {
@@ -285,6 +274,23 @@ namespace WindowsFormsApp2
                 }
             }
         }
+        private async Task<OSMdata> GetOSMApiResponse(string url, HttpClient Client)
+        {
+            HttpResponseMessage BaseBuildingResponse = await Client.GetAsync(url);
+
+            if (!BaseBuildingResponse.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"Błąd HTTP: {BaseBuildingResponse.StatusCode}");
+                MessageBox.Show("HTTP Error",
+                "HTTP Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            string BaseBuildingJsonResponse = await BaseBuildingResponse.Content.ReadAsStringAsync();
+            OSMdata BaseBuildingApiResponse = JsonConvert.DeserializeObject<OSMdata>(BaseBuildingJsonResponse);
+
+            return BaseBuildingApiResponse;
+        }
+
         private void DirectionRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             BuildingDataRadioButton.Checked = !DirectionRadioButton.Checked;
@@ -342,26 +348,6 @@ namespace WindowsFormsApp2
             {
                 DefaultLeftBuildingHeightTextBox.Text = string.Empty;
             }
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BuildingDataLegendPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DefaultBuildingHeightLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

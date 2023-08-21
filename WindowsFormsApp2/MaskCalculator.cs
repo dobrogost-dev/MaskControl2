@@ -717,7 +717,7 @@ namespace WindowsFormsApp2
             linesOverlay.Routes.Add(lineRoute);
         }
 
-        public PointLatLng PlaceAtClosestFacade(PointLatLng Position)
+        public PointLatLng GetClosestFacade(PointLatLng Position)
         {
             double MaxDistance = double.MaxValue;
             PointLatLng ClosestSide = new PointLatLng();

@@ -191,7 +191,6 @@
             this.DefaultBuildingHeightLabel.Size = new System.Drawing.Size(162, 16);
             this.DefaultBuildingHeightLabel.TabIndex = 16;
             this.DefaultBuildingHeightLabel.Text = "Default Left building height";
-            this.DefaultBuildingHeightLabel.Click += new System.EventHandler(this.DefaultBuildingHeightLabel_Click);
             // 
             // RadiusTextBox
             // 
@@ -443,7 +442,6 @@
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
             this.BuildingDataLegendPanel.Size = new System.Drawing.Size(210, 131);
             this.BuildingDataLegendPanel.TabIndex = 37;
-            this.BuildingDataLegendPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BuildingDataLegendPanel_Paint);
             // 
             // label11
             // 
@@ -454,7 +452,6 @@
             this.label11.Size = new System.Drawing.Size(138, 16);
             this.label11.TabIndex = 6;
             this.label11.Text = "Gray: Ignored building";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label8
             // 
@@ -631,7 +628,6 @@
             this.Controls.Add(this.BuildingDataLegendPanel);
             this.Name = "MainForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.DirectionLegendPanel.ResumeLayout(false);
             this.DirectionLegendPanel.PerformLayout();
             this.BuildingDataLegendPanel.ResumeLayout(false);
