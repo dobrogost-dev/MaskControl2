@@ -71,7 +71,7 @@ namespace WindowsFormsApp2
                 }
             }
         }
-        public void AssignDirection(Building TargetBuilding, Facade BaseBuildingAnalyzedFacade)
+        private void AssignDirection(Building TargetBuilding, Facade BaseBuildingAnalyzedFacade)
         {
             PointLatLng TargetBuildingCenter = GetCenterPosition(TargetBuilding);
             double BaseAzimuth = BaseBuildingAnalyzedFacade.Azimuth;
@@ -192,18 +192,7 @@ namespace WindowsFormsApp2
             }
         }
 
-        public double GetDistance(PointLatLng p1, PointLatLng p2)
-        {
-            GMapRoute route = new GMapRoute("getDistance");
-            route.Points.Add(p1);
-            route.Points.Add(p2);
-            double distance = route.Distance;
-            route.Clear();
-            route = null;
-
-            return distance;
-        }
-        public PointLatLng GetCenterPosition(Building building)
+        private PointLatLng GetCenterPosition(Building building)
         {
             double lat = 0;
             double lng = 0;
@@ -219,64 +208,12 @@ namespace WindowsFormsApp2
             }
             return new PointLatLng(lat / length, lng / length);
         }
-        public double GetMaskValue(PointLatLng BasePoint, PointLatLng TargetPoint, double height)
-        {
-            double distance = CalculateDistanceInMeters(BasePoint.Lat, BasePoint.Lng, TargetPoint.Lat, TargetPoint.Lng);
-            double diagonal = Math.Sqrt((distance * distance) + (height * height));
-            double mask = CalculateAngleBetweenSides(distance, diagonal);
-            return mask;
-        }
-        public Node GetNodeForId(long id)
+        private Node GetNodeForId(long id)
         {
             return Nodes
                 .Select(e => e)
                 .Where(e => e.id == id)
                 .FirstOrDefault();
-        }
-        public static double CalculateAngleBetweenSides(double baseLength, double hypotenuse)
-        {
-            double sinAlpha = baseLength / hypotenuse;
-            double angleInRadians = Math.Acos(sinAlpha); 
-            double angleInDegrees = angleInRadians * (180.0 / Math.PI); 
-            return angleInDegrees;
-        }
-        public double ProcessMask(Building building, double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
-        {
-            double mask = 0;
-            double distance = double.MaxValue;
-            PointLatLng BasePoint = new PointLatLng();
-            PointLatLng TargetPoint = new PointLatLng();
-            foreach (Facade facade in BaseBuilding.Facades)
-            {
-                foreach(long node in building.NodesId)
-                {
-                    Node NewNode = GetNodeForId(node);
-                    PointLatLng NodePosition = new PointLatLng(NewNode.lat, NewNode.lon);
-                    double newDistance = GetDistance(facade.PointCenter, new PointLatLng(NewNode.lat, NewNode.lon));
-                    if (newDistance < distance)
-                    {
-                        distance = newDistance;
-                        BasePoint = facade.PointCenter;
-                        TargetPoint = NodePosition;
-                    }
-                }
-            }
-            if (building.tags.height != null)
-            {
-                mask = GetMaskValue(BasePoint,
-                    TargetPoint, double.Parse(building.tags.height));
-            }
-            else if (building.tags.BuildingLevels != null)
-            {
-                mask = GetMaskValue(BasePoint,
-                    TargetPoint, double.Parse(building.tags.BuildingLevels) * DefaultBuildingFloorHeight);
-            }
-            else
-            {
-                mask = GetMaskValue(BasePoint,
-                    TargetPoint, DefaultBuildingHeight);
-            }
-            return mask;
         }
         public MaskResult CalculateMasks(double DefaultBuildingFloorHeight, double DefaultLeftBuildingHeight,
             double DefaultLeftMiddleBuildingHeight, double DefaultRightMiddleBuildingHeight, double DefaultRightBuildingHeight)
@@ -322,6 +259,51 @@ namespace WindowsFormsApp2
                 }
             }
             return result;
+        }
+        private double ProcessMask(Building building, double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
+        {
+            double mask = 0;
+            double distance = double.MaxValue;
+            PointLatLng BasePoint = new PointLatLng();
+            PointLatLng TargetPoint = new PointLatLng();
+            foreach (Facade facade in BaseBuilding.Facades)
+            {
+                foreach (long node in building.NodesId)
+                {
+                    Node NewNode = GetNodeForId(node);
+                    PointLatLng NodePosition = new PointLatLng(NewNode.lat, NewNode.lon);
+                    double newDistance = GetDistance(facade.PointCenter, new PointLatLng(NewNode.lat, NewNode.lon));
+                    if (newDistance < distance)
+                    {
+                        distance = newDistance;
+                        BasePoint = facade.PointCenter;
+                        TargetPoint = NodePosition;
+                    }
+                }
+            }
+            if (building.tags.height != null)
+            {
+                mask = GetMaskValue(BasePoint,
+                    TargetPoint, double.Parse(building.tags.height));
+            }
+            else if (building.tags.BuildingLevels != null)
+            {
+                mask = GetMaskValue(BasePoint,
+                    TargetPoint, double.Parse(building.tags.BuildingLevels) * DefaultBuildingFloorHeight);
+            }
+            else
+            {
+                mask = GetMaskValue(BasePoint,
+                    TargetPoint, DefaultBuildingHeight);
+            }
+            return mask;
+        }
+        private double GetMaskValue(PointLatLng BasePoint, PointLatLng TargetPoint, double height)
+        {
+            double distance = CalculateDistanceInMeters(BasePoint.Lat, BasePoint.Lng, TargetPoint.Lat, TargetPoint.Lng);
+            double diagonal = Math.Sqrt((distance * distance) + (height * height));
+            double mask = CalculateAngleBetweenSides(distance, diagonal);
+            return mask;
         }
         public PointLatLng GetClosestFacade(PointLatLng Position)
         {

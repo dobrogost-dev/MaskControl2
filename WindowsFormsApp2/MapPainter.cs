@@ -228,7 +228,7 @@ namespace WindowsFormsApp2
                 DrawEntity(polygonsOverlay, BuildingPolygons, color);
             }
         }
-        public List<PointLatLng> GetPolygons(Building building)
+        private List<PointLatLng> GetPolygons(Building building)
         {
             List<PointLatLng> result = new List<PointLatLng>();
             foreach (long node in building.NodesId)

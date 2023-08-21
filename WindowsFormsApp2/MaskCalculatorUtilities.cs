@@ -1,4 +1,5 @@
 ﻿using GMap.NET;
+using GMap.NET.WindowsForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +77,24 @@ namespace WindowsFormsApp2
             {
                 return angle >= start || angle <= end;
             }
+        }
+        public static double CalculateAngleBetweenSides(double baseLength, double hypotenuse)
+        {
+            double sinAlpha = baseLength / hypotenuse;
+            double angleInRadians = Math.Acos(sinAlpha);
+            double angleInDegrees = angleInRadians * (180.0 / Math.PI);
+            return angleInDegrees;
+        }
+        public static double GetDistance(PointLatLng p1, PointLatLng p2)
+        {
+            GMapRoute route = new GMapRoute("getDistance");
+            route.Points.Add(p1);
+            route.Points.Add(p2);
+            double distance = route.Distance;
+            route.Clear();
+            route = null;
+
+            return distance;
         }
     }
 }
