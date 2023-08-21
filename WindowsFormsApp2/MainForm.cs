@@ -223,16 +223,15 @@ namespace WindowsFormsApp2
 
         private async Task ProcessApiCall()
         {
-            double InitialRadius = 50.0;
-            double Radius = Double.Parse(RadiusTextBox.Text);
-            // Zmiana double na stringa oddzielonego kropką zamiast przecinka
-            string InitialMarkerLatitude = CurrentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
-            string InitialMarkerLongitude = CurrentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
-
             using (HttpClient Client = new HttpClient())
             {
                 try
                 {
+                    double InitialRadius = 50.0;
+                    // Zmiana double na stringa oddzielonego kropką zamiast przecinka
+                    string InitialMarkerLatitude = CurrentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
+                    string InitialMarkerLongitude = CurrentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
+
                     string BaseBuildingApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{InitialRadius},{InitialMarkerLatitude},{InitialMarkerLongitude});(._;>;);out;";
                     OSMdata BaseBuildingApiResponse = await GetOSMApiResponse(BaseBuildingApiUrl, Client);
 
@@ -247,8 +246,10 @@ namespace WindowsFormsApp2
 
                     CurrentMarker.Position = MaskCalculatorInstance.GetClosestFacade(CurrentMarker.Position);
 
+                    double Radius = Double.Parse(RadiusTextBox.Text);
                     string BaseBuildingLatitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lat.ToString(CultureInfo.InvariantCulture);
                     string BaseBuildingLongitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lng.ToString(CultureInfo.InvariantCulture);
+
                     string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{BaseBuildingLatitude},{BaseBuildingLongitude});(._;>;);out;";
                     OSMdata apiResponse = await GetOSMApiResponse(ApiUrl, Client);
 

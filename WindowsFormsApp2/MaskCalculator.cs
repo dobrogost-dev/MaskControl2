@@ -78,7 +78,6 @@ namespace WindowsFormsApp2
 
             double TargetAzimuth = CalculateAzimuth(BaseBuildingAnalyzedFacade.PointCenter, TargetBuildingCenter);
 
-            // Przekształć azymuty na przedział [0, 360)
             BaseAzimuth = (BaseAzimuth + 360) % 360;
             TargetAzimuth = (TargetAzimuth + 360) % 360;
 
