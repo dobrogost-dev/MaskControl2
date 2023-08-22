@@ -29,13 +29,29 @@ namespace WindowsFormsApp2
             lineRoute.Stroke = new Pen(color, thickness);
             linesOverlay.Routes.Add(lineRoute);
         }
+        private void DrawEntity(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, Color color)
+        {
+            GMapPolygon buildingPolygon = new GMapPolygon(polygons, "building");
+            buildingPolygon.Fill = new SolidBrush(Color.FromArgb(50, color));
+            buildingPolygon.Stroke = new Pen(color, 1);
+            polygonsOverlay.Polygons.Add(buildingPolygon);
+        }
+        private List<PointLatLng> GetPolygons(Building building)
+        {
+            List<PointLatLng> result = new List<PointLatLng>();
+            foreach (long node in building.NodesId)
+            {
+                Node newNode = MaskCalculatorInstance.GetNodeById(node);
+                result.Add(new PointLatLng(newNode.lat, newNode.lon));
+            }
+            return result;
+        }
         public void DrawSectors(GMapOverlay SemicircleOverlay, GMapOverlay LinesOverlay, double radius)
         {
             if (MaskCalculatorInstance.BaseBuilding == null)
             {
                 return;
             }
-            //Console.WriteLine("Drawing lines: ");
             PointLatLng BasePoint = MaskCalculatorInstance.AnalyzedFacade.PointCenter;
             double BaseAzimuth = MaskCalculatorInstance.AnalyzedFacade.Azimuth;
             SemicircleOverlay.Clear();
@@ -168,13 +184,6 @@ namespace WindowsFormsApp2
             }
             DrawEntity(SemicircleOverlay, SemicirclePolygons, Color.DarkOrange);
         }
-        private void DrawEntity(GMapOverlay polygonsOverlay, List<PointLatLng> polygons, Color color)
-        {
-            GMapPolygon buildingPolygon = new GMapPolygon(polygons, "building");
-            buildingPolygon.Fill = new SolidBrush(Color.FromArgb(50, color));
-            buildingPolygon.Stroke = new Pen(color, 1);
-            polygonsOverlay.Polygons.Add(buildingPolygon);
-        }
         public void DrawBuildings(GMapOverlay polygonsOverlay, bool DirectionBuilding)
         {
             if (MaskCalculatorInstance.Buildings.Count == 0 || MaskCalculatorInstance.Nodes.Count == 0)
@@ -221,16 +230,6 @@ namespace WindowsFormsApp2
                 }
                 DrawEntity(polygonsOverlay, BuildingPolygons, color);
             }
-        }
-        private List<PointLatLng> GetPolygons(Building building)
-        {
-            List<PointLatLng> result = new List<PointLatLng>();
-            foreach (long node in building.NodesId)
-            {
-                Node newNode = MaskCalculatorInstance.GetNodeById(node);
-                result.Add(new PointLatLng(newNode.lat, newNode.lon));
-            }
-            return result;
         }
     }
 }
