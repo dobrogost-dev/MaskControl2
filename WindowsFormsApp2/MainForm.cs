@@ -15,6 +15,8 @@ namespace WindowsFormsApp2
     public partial class MainForm : Form
     {
         public static int BaseZoom = 1;
+        string DefaultRadius = "45";
+        double DefaultFloorHeight = 2.5;
         public string PreviousAddress;
 
         public GMapOverlay MarkersOverlay;
@@ -36,23 +38,13 @@ namespace WindowsFormsApp2
             SetInitialValues();
 
             FormBorderStyle = FormBorderStyle.FixedSingle;
+
         }
 
         private void SetInitialValues()
         {
-            string DefaultRadius = "45";
-            string DefaultFloorHeight = "2,5";
-            string DefaultLeftBuildingHeight = "10";
-            string DefaultLeftMiddleBuildingHeight = "10";
-            string DefaultRightMiddleBuildingHeight = "10";
-            string DefaultRightBuildingHeight = "10";
 
             RadiusTextBox.Text = DefaultRadius;
-            DefaultFloorHeightTextBox.Text = DefaultFloorHeight;
-            DefaultLeftBuildingHeightTextBox.Text = DefaultLeftBuildingHeight;
-            DefaultLeftMiddleBuildingHeightTextBox.Text = DefaultLeftMiddleBuildingHeight;
-            DefaultRightMiddleBuildingHeightTextBox.Text = DefaultRightMiddleBuildingHeight;
-            DefaultRightBuildingHeightTextBox.Text = DefaultRightBuildingHeight;
 
             LatitudeTextBox.ReadOnly = true;
             LongitudeTextBox.ReadOnly = true;
@@ -197,21 +189,6 @@ namespace WindowsFormsApp2
                     "Radius required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (DefaultFloorHeightTextBox.Text == string.Empty)
-            {
-                MessageBox.Show("Default building floor height value is required in order to calculate mask",
-                    "Default building floor height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (DefaultLeftBuildingHeightTextBox.Text == string.Empty ||
-                DefaultLeftMiddleBuildingHeightTextBox.Text == string.Empty ||
-                DefaultRightMiddleBuildingHeightTextBox.Text == string.Empty ||
-                DefaultRightBuildingHeightTextBox.Text == string.Empty)
-            {
-                MessageBox.Show("Default building height value is required in order to calculate mask",
-                    "Default building height required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             if (MarkersOverlay.Markers.Count == 0)
             {
                 MessageBox.Show("Marker is required in order to calculate mask",
@@ -255,14 +232,8 @@ namespace WindowsFormsApp2
 
                     MaskCalculatorInstance.LoadData(apiResponse);
 
-                    double DefaultFloorHeight = Double.Parse(DefaultFloorHeightTextBox.Text);
-                    double DefaultLeftBuildingHeight = Double.Parse(DefaultLeftBuildingHeightTextBox.Text);
-                    double DefaultLeftMiddleBuildingHeight = Double.Parse(DefaultLeftMiddleBuildingHeightTextBox.Text);
-                    double DefaultRightMiddleBuildingHeight = Double.Parse(DefaultRightMiddleBuildingHeightTextBox.Text);
-                    double DefaultRightBuildingHeight = Double.Parse(DefaultRightBuildingHeightTextBox.Text);
 
-                    MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight, DefaultLeftBuildingHeight,
-                        DefaultLeftMiddleBuildingHeight, DefaultRightMiddleBuildingHeight, DefaultRightBuildingHeight);
+                    MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight);
 
                     MaskLeftResult.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
                     MaskLeftMiddleResult.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
@@ -339,45 +310,6 @@ namespace WindowsFormsApp2
             if (!MainFormUtilities.IsValidDecimal(RadiusTextBox.Text))
             {
                 RadiusTextBox.Text = string.Empty;
-            }
-        }
-        private void DefaultFloorHeightTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!MainFormUtilities.IsValidDecimal(DefaultFloorHeightTextBox.Text))
-            {
-                DefaultFloorHeightTextBox.Text = string.Empty;
-            }
-        }
-
-        private void DefaultLeftBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!MainFormUtilities.IsValidDecimal(DefaultLeftBuildingHeightTextBox.Text))
-            {
-                DefaultLeftBuildingHeightTextBox.Text = string.Empty;
-            }
-        }
-
-        private void DefaultLeftMiddleBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!MainFormUtilities.IsValidDecimal(DefaultLeftMiddleBuildingHeightTextBox.Text))
-            {
-                DefaultLeftMiddleBuildingHeightTextBox.Text = string.Empty;
-            }
-        }
-
-        private void DefaultRightMiddleBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!MainFormUtilities.IsValidDecimal(DefaultRightMiddleBuildingHeightTextBox.Text))
-            {
-                DefaultRightMiddleBuildingHeightTextBox.Text = string.Empty;
-            }
-        }
-
-        private void DefaultRightBuildingHeightTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (!MainFormUtilities.IsValidDecimal(DefaultRightBuildingHeightTextBox.Text))
-            {
-                DefaultRightBuildingHeightTextBox.Text = string.Empty;
             }
         }
     }

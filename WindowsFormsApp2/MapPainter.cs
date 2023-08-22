@@ -104,21 +104,18 @@ namespace WindowsFormsApp2
                 {
                     DrawLine(LinesOverlay, BasePoint, TargetPoint, Color.Orange, 1);
                     FirstLinePlaced = true;
-                    Console.WriteLine("Placing first line at: " + PointAzimuth);
 
                 }
                 if (IsBetween(PointAzimuth, BaseAzimuth, (BaseAzimuth + 1) % 360) && !SecondLinePlaced)
                 {
                     DrawLine(LinesOverlay, BasePoint, TargetPoint, Color.Orange, 1);
                     SecondLinePlaced = true;
-                    Console.WriteLine("Placing Second line at: " + PointAzimuth);
 
                 }
                 if (IsBetween(PointAzimuth, SecondQuarter, (SecondQuarter + 1) % 360) && !ThirdLinePlaced)
                 {
                     DrawLine(LinesOverlay, BasePoint, TargetPoint, Color.Orange, 1);
                     ThirdLinePlaced = true;
-                    Console.WriteLine("Placing third line at: " + PointAzimuth);
                 }
             }
             for (double a = -3600; a <= 3600; a += 1)
@@ -155,21 +152,18 @@ namespace WindowsFormsApp2
                 {
                     DrawLine(LinesOverlay, BasePoint, TargetPoint, Color.Orange, 1);
                     FirstLinePlaced = true;
-                    Console.WriteLine("Placing first line at: " + PointAzimuth);
 
                 }
                 if (IsBetween(PointAzimuth, BaseAzimuth, (BaseAzimuth + 1) % 360) && !SecondLinePlaced)
                 {
                     DrawLine(LinesOverlay, BasePoint, TargetPoint, Color.Orange, 1);
                     SecondLinePlaced = true;
-                    Console.WriteLine("Placing Second line at: " + PointAzimuth);
 
                 }
                 if (IsBetween(PointAzimuth, SecondQuarter, (SecondQuarter + 1) % 360) && !ThirdLinePlaced)
                 {
                     DrawLine(LinesOverlay, BasePoint, TargetPoint, Color.Orange, 1);
                     ThirdLinePlaced = true;
-                    Console.WriteLine("Placing third line at: " + PointAzimuth);
                 }
             }
             DrawEntity(SemicircleOverlay, SemicirclePolygons, Color.DarkOrange);

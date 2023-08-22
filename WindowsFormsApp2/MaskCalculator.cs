@@ -20,6 +20,15 @@ namespace WindowsFormsApp2
         public List<Node> Nodes { get; private set; }
 
         public bool Initialized = false;
+        public double DefaultLeftBuildingHeight = 0;
+        public double DefaultLeftMiddleBuildingHeight = 0;
+        public double DefaultRightMiddleBuildingHeight = 0;
+        public double DefaultRightBuildingHeight = 0;
+
+        public bool DefaultLeftNotFound = false;
+        public bool DefaultLeftMiddleNotFound = false;
+        public bool DefaultRightMiddleNotFound = false;
+        public bool DefaultRightNotFound = false;
         public void LoadData(OSMdata Data)
         {
             Buildings = new List<Building>();
@@ -119,11 +128,7 @@ namespace WindowsFormsApp2
 
         private void InitializeBuildings(PointLatLng BaseDirectionPoint)
         {
-            Console.WriteLine("************************************************************");
-            Console.WriteLine("Base building id: " + BaseBuilding.id);
-            Console.WriteLine("Analyzed facade:");
-            Console.WriteLine("   Azimuth: " + AnalyzedFacade.Azimuth);
-            Console.WriteLine("   Center Azimuth: " + CalculateAzimuth(AnalyzedFacade.PointCenter, BaseBuilding.CenterPoint));
+
             foreach (Building building in Buildings)
             {
                 CalculateFacades(building);
@@ -214,13 +219,17 @@ namespace WindowsFormsApp2
                 .Where(e => e.id == id)
                 .FirstOrDefault();
         }
-        public MaskResult CalculateMasks(double DefaultBuildingFloorHeight, double DefaultLeftBuildingHeight,
-            double DefaultLeftMiddleBuildingHeight, double DefaultRightMiddleBuildingHeight, double DefaultRightBuildingHeight)
+        public MaskResult CalculateMasks(double DefaultBuildingFloorHeight)
         {
             MaskResult result = new MaskResult();
             if (Buildings.Count == 0 || Nodes.Count == 0)
             {
                 return result;
+            }
+            if (CheckForDefaultValues())
+            {
+                Console.WriteLine("Default values found");
+                GetDataFromDefaultHeightForm();
             }
             foreach (Building building in Buildings)
             {
@@ -259,6 +268,45 @@ namespace WindowsFormsApp2
             }
             return result;
         }
+
+        private void GetDataFromDefaultHeightForm()
+        {
+            DefaultHeightForm Form = new DefaultHeightForm(this);
+            Form.ShowDialog();
+        }
+
+        private bool CheckForDefaultValues()
+        {
+            DefaultLeftNotFound = false;
+            DefaultLeftMiddleNotFound = false;
+            DefaultRightMiddleNotFound = false;
+            DefaultRightNotFound = false;
+
+            foreach (Building building in Buildings)
+            {
+                if (building.tags.height == null && building.tags.BuildingLevels == null)
+                {
+                    switch (building.direction)
+                    {
+                        case Building.Direction.East_SouthEast: 
+                            DefaultLeftNotFound = true;
+                            break;
+                        case Building.Direction.SouthEast_South:
+                            DefaultLeftMiddleNotFound = true;
+                            break;
+                        case Building.Direction.South_SouthWest:
+                            DefaultRightMiddleNotFound = true;
+                            break;
+                        case Building.Direction.SouthWest_West:
+                            DefaultRightNotFound = true;
+                            break;
+                    }
+                }
+            }
+            return DefaultLeftNotFound || DefaultLeftMiddleNotFound ||
+                   DefaultRightMiddleNotFound || DefaultRightNotFound;
+        }
+
         private double ProcessMask(Building building, double DefaultBuildingFloorHeight, double DefaultBuildingHeight)
         {
             double mask = 0;

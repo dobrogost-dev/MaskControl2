@@ -38,11 +38,7 @@
             this.LongitudeTextBox = new System.Windows.Forms.MaskedTextBox();
             this.MaskButton = new System.Windows.Forms.Button();
             this.RadiusLabel = new System.Windows.Forms.Label();
-            this.DefaultFloorHeightLabel = new System.Windows.Forms.Label();
-            this.DefaultLeftBuildingHeightLabel = new System.Windows.Forms.Label();
             this.RadiusTextBox = new System.Windows.Forms.TextBox();
-            this.DefaultFloorHeightTextBox = new System.Windows.Forms.TextBox();
-            this.DefaultLeftBuildingHeightTextBox = new System.Windows.Forms.TextBox();
             this.AddressTextBox = new System.Windows.Forms.TextBox();
             this.MaskLeftResult = new System.Windows.Forms.TextBox();
             this.MaskLeftLabel = new System.Windows.Forms.Label();
@@ -74,12 +70,6 @@
             this.SectorsCheckBox = new System.Windows.Forms.CheckBox();
             this.FacadeDirectionDescriptionLabel = new System.Windows.Forms.Label();
             this.FacadeDirectionLabel = new System.Windows.Forms.Label();
-            this.DefaultLeftMiddleBuildingHeightTextBox = new System.Windows.Forms.TextBox();
-            this.DefaultLeftMiddleBuildingHeightLabel = new System.Windows.Forms.Label();
-            this.DefaultRightBuildingHeightLabel = new System.Windows.Forms.Label();
-            this.DefaultRightMiddleBuildingHeightLabel = new System.Windows.Forms.Label();
-            this.DefaultRightMiddleBuildingHeightTextBox = new System.Windows.Forms.TextBox();
-            this.DefaultRightBuildingHeightTextBox = new System.Windows.Forms.TextBox();
             this.SectorsLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
@@ -174,24 +164,6 @@
             this.RadiusLabel.TabIndex = 12;
             this.RadiusLabel.Text = "Radius";
             // 
-            // DefaultFloorHeightLabel
-            // 
-            this.DefaultFloorHeightLabel.AutoSize = true;
-            this.DefaultFloorHeightLabel.Location = new System.Drawing.Point(12, 502);
-            this.DefaultFloorHeightLabel.Name = "DefaultFloorHeightLabel";
-            this.DefaultFloorHeightLabel.Size = new System.Drawing.Size(117, 16);
-            this.DefaultFloorHeightLabel.TabIndex = 14;
-            this.DefaultFloorHeightLabel.Text = "Default floor height";
-            // 
-            // DefaultLeftBuildingHeightLabel
-            // 
-            this.DefaultLeftBuildingHeightLabel.AutoSize = true;
-            this.DefaultLeftBuildingHeightLabel.Location = new System.Drawing.Point(12, 535);
-            this.DefaultLeftBuildingHeightLabel.Name = "DefaultLeftBuildingHeightLabel";
-            this.DefaultLeftBuildingHeightLabel.Size = new System.Drawing.Size(162, 16);
-            this.DefaultLeftBuildingHeightLabel.TabIndex = 16;
-            this.DefaultLeftBuildingHeightLabel.Text = "Default Left building height";
-            // 
             // RadiusTextBox
             // 
             this.RadiusTextBox.Location = new System.Drawing.Point(651, 51);
@@ -199,22 +171,6 @@
             this.RadiusTextBox.Size = new System.Drawing.Size(79, 22);
             this.RadiusTextBox.TabIndex = 17;
             this.RadiusTextBox.TextChanged += new System.EventHandler(this.RadiusTextBox_TextChanged);
-            // 
-            // DefaultFloorHeightTextBox
-            // 
-            this.DefaultFloorHeightTextBox.Location = new System.Drawing.Point(225, 499);
-            this.DefaultFloorHeightTextBox.Name = "DefaultFloorHeightTextBox";
-            this.DefaultFloorHeightTextBox.Size = new System.Drawing.Size(95, 22);
-            this.DefaultFloorHeightTextBox.TabIndex = 18;
-            this.DefaultFloorHeightTextBox.TextChanged += new System.EventHandler(this.DefaultFloorHeightTextBox_TextChanged);
-            // 
-            // DefaultLeftBuildingHeightTextBox
-            // 
-            this.DefaultLeftBuildingHeightTextBox.Location = new System.Drawing.Point(225, 529);
-            this.DefaultLeftBuildingHeightTextBox.Name = "DefaultLeftBuildingHeightTextBox";
-            this.DefaultLeftBuildingHeightTextBox.Size = new System.Drawing.Size(95, 22);
-            this.DefaultLeftBuildingHeightTextBox.TabIndex = 19;
-            this.DefaultLeftBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultLeftBuildingHeightTextBox_TextChanged);
             // 
             // AddressTextBox
             // 
@@ -309,7 +265,7 @@
             this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Map.ShowTileGridLines = false;
-            this.Map.Size = new System.Drawing.Size(702, 346);
+            this.Map.Size = new System.Drawing.Size(702, 474);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
             // 
@@ -356,9 +312,9 @@
             this.SectorsLegendPanel.Controls.Add(this.label4);
             this.SectorsLegendPanel.Controls.Add(this.label3);
             this.SectorsLegendPanel.Controls.Add(this.label2);
-            this.SectorsLegendPanel.Location = new System.Drawing.Point(681, 468);
+            this.SectorsLegendPanel.Location = new System.Drawing.Point(743, 468);
             this.SectorsLegendPanel.Name = "SectorsLegendPanel";
-            this.SectorsLegendPanel.Size = new System.Drawing.Size(210, 134);
+            this.SectorsLegendPanel.Size = new System.Drawing.Size(148, 134);
             this.SectorsLegendPanel.TabIndex = 36;
             // 
             // label14
@@ -438,9 +394,9 @@
             this.BuildingDataLegendPanel.Controls.Add(this.label10);
             this.BuildingDataLegendPanel.Controls.Add(this.label12);
             this.BuildingDataLegendPanel.Controls.Add(this.label13);
-            this.BuildingDataLegendPanel.Location = new System.Drawing.Point(681, 468);
+            this.BuildingDataLegendPanel.Location = new System.Drawing.Point(743, 468);
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
-            this.BuildingDataLegendPanel.Size = new System.Drawing.Size(210, 131);
+            this.BuildingDataLegendPanel.Size = new System.Drawing.Size(148, 131);
             this.BuildingDataLegendPanel.TabIndex = 37;
             // 
             // label11
@@ -516,7 +472,7 @@
             // FacadeDirectionDescriptionLabel
             // 
             this.FacadeDirectionDescriptionLabel.AutoSize = true;
-            this.FacadeDirectionDescriptionLabel.Location = new System.Drawing.Point(326, 502);
+            this.FacadeDirectionDescriptionLabel.Location = new System.Drawing.Point(368, 89);
             this.FacadeDirectionDescriptionLabel.Name = "FacadeDirectionDescriptionLabel";
             this.FacadeDirectionDescriptionLabel.Size = new System.Drawing.Size(166, 16);
             this.FacadeDirectionDescriptionLabel.TabIndex = 39;
@@ -525,61 +481,10 @@
             // FacadeDirectionLabel
             // 
             this.FacadeDirectionLabel.AutoSize = true;
-            this.FacadeDirectionLabel.Location = new System.Drawing.Point(543, 499);
+            this.FacadeDirectionLabel.Location = new System.Drawing.Point(585, 86);
             this.FacadeDirectionLabel.Name = "FacadeDirectionLabel";
             this.FacadeDirectionLabel.Size = new System.Drawing.Size(0, 16);
             this.FacadeDirectionLabel.TabIndex = 40;
-            // 
-            // DefaultLeftMiddleBuildingHeightTextBox
-            // 
-            this.DefaultLeftMiddleBuildingHeightTextBox.Location = new System.Drawing.Point(225, 563);
-            this.DefaultLeftMiddleBuildingHeightTextBox.Name = "DefaultLeftMiddleBuildingHeightTextBox";
-            this.DefaultLeftMiddleBuildingHeightTextBox.Size = new System.Drawing.Size(95, 22);
-            this.DefaultLeftMiddleBuildingHeightTextBox.TabIndex = 42;
-            this.DefaultLeftMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultLeftMiddleBuildingHeightTextBox_TextChanged);
-            // 
-            // DefaultLeftMiddleBuildingHeightLabel
-            // 
-            this.DefaultLeftMiddleBuildingHeightLabel.AutoSize = true;
-            this.DefaultLeftMiddleBuildingHeightLabel.Location = new System.Drawing.Point(12, 566);
-            this.DefaultLeftMiddleBuildingHeightLabel.Name = "DefaultLeftMiddleBuildingHeightLabel";
-            this.DefaultLeftMiddleBuildingHeightLabel.Size = new System.Drawing.Size(207, 16);
-            this.DefaultLeftMiddleBuildingHeightLabel.TabIndex = 41;
-            this.DefaultLeftMiddleBuildingHeightLabel.Text = "Default Left-Middle building height";
-            // 
-            // DefaultRightBuildingHeightLabel
-            // 
-            this.DefaultRightBuildingHeightLabel.AutoSize = true;
-            this.DefaultRightBuildingHeightLabel.Location = new System.Drawing.Point(326, 566);
-            this.DefaultRightBuildingHeightLabel.Name = "DefaultRightBuildingHeightLabel";
-            this.DefaultRightBuildingHeightLabel.Size = new System.Drawing.Size(172, 16);
-            this.DefaultRightBuildingHeightLabel.TabIndex = 45;
-            this.DefaultRightBuildingHeightLabel.Text = "Default Right building height";
-            // 
-            // DefaultRightMiddleBuildingHeightLabel
-            // 
-            this.DefaultRightMiddleBuildingHeightLabel.AutoSize = true;
-            this.DefaultRightMiddleBuildingHeightLabel.Location = new System.Drawing.Point(326, 535);
-            this.DefaultRightMiddleBuildingHeightLabel.Name = "DefaultRightMiddleBuildingHeightLabel";
-            this.DefaultRightMiddleBuildingHeightLabel.Size = new System.Drawing.Size(217, 16);
-            this.DefaultRightMiddleBuildingHeightLabel.TabIndex = 43;
-            this.DefaultRightMiddleBuildingHeightLabel.Text = "Default Right-Middle building height";
-            // 
-            // DefaultRightMiddleBuildingHeightTextBox
-            // 
-            this.DefaultRightMiddleBuildingHeightTextBox.Location = new System.Drawing.Point(546, 532);
-            this.DefaultRightMiddleBuildingHeightTextBox.Name = "DefaultRightMiddleBuildingHeightTextBox";
-            this.DefaultRightMiddleBuildingHeightTextBox.Size = new System.Drawing.Size(95, 22);
-            this.DefaultRightMiddleBuildingHeightTextBox.TabIndex = 46;
-            this.DefaultRightMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultRightMiddleBuildingHeightTextBox_TextChanged);
-            // 
-            // DefaultRightBuildingHeightTextBox
-            // 
-            this.DefaultRightBuildingHeightTextBox.Location = new System.Drawing.Point(546, 560);
-            this.DefaultRightBuildingHeightTextBox.Name = "DefaultRightBuildingHeightTextBox";
-            this.DefaultRightBuildingHeightTextBox.Size = new System.Drawing.Size(95, 22);
-            this.DefaultRightBuildingHeightTextBox.TabIndex = 47;
-            this.DefaultRightBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultRightBuildingHeightTextBox_TextChanged);
             // 
             // MainForm
             // 
@@ -587,12 +492,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 603);
-            this.Controls.Add(this.DefaultRightBuildingHeightTextBox);
-            this.Controls.Add(this.DefaultRightMiddleBuildingHeightTextBox);
-            this.Controls.Add(this.DefaultRightBuildingHeightLabel);
-            this.Controls.Add(this.DefaultRightMiddleBuildingHeightLabel);
-            this.Controls.Add(this.DefaultLeftMiddleBuildingHeightTextBox);
-            this.Controls.Add(this.DefaultLeftMiddleBuildingHeightLabel);
             this.Controls.Add(this.FacadeDirectionLabel);
             this.Controls.Add(this.FacadeDirectionDescriptionLabel);
             this.Controls.Add(this.SectorsCheckBox);
@@ -608,11 +507,7 @@
             this.Controls.Add(this.MaskLeftLabel);
             this.Controls.Add(this.MaskLeftResult);
             this.Controls.Add(this.AddressTextBox);
-            this.Controls.Add(this.DefaultLeftBuildingHeightTextBox);
-            this.Controls.Add(this.DefaultFloorHeightTextBox);
             this.Controls.Add(this.RadiusTextBox);
-            this.Controls.Add(this.DefaultLeftBuildingHeightLabel);
-            this.Controls.Add(this.DefaultFloorHeightLabel);
             this.Controls.Add(this.RadiusLabel);
             this.Controls.Add(this.MaskButton);
             this.Controls.Add(this.ZoomOutButton);
@@ -648,11 +543,7 @@
         private System.Windows.Forms.MaskedTextBox LongitudeTextBox;
         private System.Windows.Forms.Button MaskButton;
         private System.Windows.Forms.Label RadiusLabel;
-        private System.Windows.Forms.Label DefaultFloorHeightLabel;
-        private System.Windows.Forms.Label DefaultLeftBuildingHeightLabel;
         private System.Windows.Forms.TextBox RadiusTextBox;
-        private System.Windows.Forms.TextBox DefaultFloorHeightTextBox;
-        private System.Windows.Forms.TextBox DefaultLeftBuildingHeightTextBox;
         private System.Windows.Forms.TextBox AddressTextBox;
         private System.Windows.Forms.TextBox MaskLeftResult;
         private System.Windows.Forms.Label MaskLeftLabel;
@@ -684,12 +575,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label FacadeDirectionDescriptionLabel;
         private System.Windows.Forms.Label FacadeDirectionLabel;
-        private System.Windows.Forms.TextBox DefaultLeftMiddleBuildingHeightTextBox;
-        private System.Windows.Forms.Label DefaultLeftMiddleBuildingHeightLabel;
-        private System.Windows.Forms.Label DefaultRightBuildingHeightLabel;
-        private System.Windows.Forms.Label DefaultRightMiddleBuildingHeightLabel;
-        private System.Windows.Forms.TextBox DefaultRightMiddleBuildingHeightTextBox;
-        private System.Windows.Forms.TextBox DefaultRightBuildingHeightTextBox;
     }
 }
 
