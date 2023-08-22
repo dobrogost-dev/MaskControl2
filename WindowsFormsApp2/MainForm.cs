@@ -312,5 +312,10 @@ namespace WindowsFormsApp2
                 RadiusTextBox.Text = string.Empty;
             }
         }
+
+        private void Map_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

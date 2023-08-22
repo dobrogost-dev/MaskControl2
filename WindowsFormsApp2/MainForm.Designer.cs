@@ -268,6 +268,7 @@
             this.Map.Size = new System.Drawing.Size(702, 474);
             this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
+            this.Map.Load += new System.EventHandler(this.Map_Load);
             // 
             // BuildingDataRadioButton
             // 

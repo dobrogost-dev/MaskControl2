@@ -13,6 +13,7 @@ namespace WindowsFormsApp2
     public partial class DefaultHeightForm : Form
     {
         private MaskCalculator MaskCalculatorInstance;
+        private string Language;
 
         public DefaultHeightForm(MaskCalculator maskCalulatorInstance)
         {
@@ -63,7 +64,7 @@ namespace WindowsFormsApp2
                     CanExit = false;
                 } else
                 {
-                    MaskCalculatorInstance.DefaultLeftBuildingHeight = double.Parse(DefaultLeftBuildingHeightTextBox.Text);
+                    MaskCalculatorInstance.DefaultLeftMiddleBuildingHeight = double.Parse(DefaultLeftMiddleBuildingHeightTextBox.Text);
                 }
             }
             if (DefaultRightMiddleBuildingHeightTextBox.Visible)
@@ -73,7 +74,7 @@ namespace WindowsFormsApp2
                     CanExit = false;
                 } else
                 {
-                    MaskCalculatorInstance.DefaultLeftBuildingHeight = double.Parse(DefaultLeftBuildingHeightTextBox.Text);
+                    MaskCalculatorInstance.DefaultRightMiddleBuildingHeight = double.Parse(DefaultRightMiddleBuildingHeightTextBox.Text);
                 }
             }
             if (DefaultRightBuildingHeightTextBox.Visible)
@@ -83,17 +84,17 @@ namespace WindowsFormsApp2
                     CanExit = false;
                 } else
                 {
-                    MaskCalculatorInstance.DefaultLeftBuildingHeight = double.Parse(DefaultLeftBuildingHeightTextBox.Text);
+                    MaskCalculatorInstance.DefaultRightBuildingHeight = double.Parse(DefaultRightBuildingHeightTextBox.Text);
                 }
             }
-
+            
             if (CanExit)
             {
                 this.Close();
             } else
             {
-                MessageBox.Show("You need to input data for all the sectors in order to proceed",
-                    "Some values are missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vous devez entrer des données pour tous les secteurs afin de continuer",
+                    "Certaines valeurs manquent", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
