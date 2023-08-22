@@ -49,15 +49,15 @@
             // 
             // DefaultLeftBuildingHeightTextBox
             // 
-            resources.ApplyResources(this.DefaultLeftBuildingHeightTextBox, "DefaultLeftBuildingHeightTextBox");
             this.DefaultLeftBuildingHeightTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.DefaultLeftBuildingHeightTextBox, "DefaultLeftBuildingHeightTextBox");
             this.DefaultLeftBuildingHeightTextBox.Name = "DefaultLeftBuildingHeightTextBox";
             this.DefaultLeftBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultLeftBuildingHeightTextBox_TextChanged);
             // 
             // CancelButton
             // 
-            resources.ApplyResources(this.CancelButton, "CancelButton");
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.CancelButton, "CancelButton");
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -71,22 +71,22 @@
             // 
             // DefaultLeftMiddleBuildingHeightTextBox
             // 
-            resources.ApplyResources(this.DefaultLeftMiddleBuildingHeightTextBox, "DefaultLeftMiddleBuildingHeightTextBox");
             this.DefaultLeftMiddleBuildingHeightTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.DefaultLeftMiddleBuildingHeightTextBox, "DefaultLeftMiddleBuildingHeightTextBox");
             this.DefaultLeftMiddleBuildingHeightTextBox.Name = "DefaultLeftMiddleBuildingHeightTextBox";
             this.DefaultLeftMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultLeftMiddleBuildingHeightTextBox_TextChanged);
             // 
             // DefaultRightMiddleBuildingHeightTextBox
             // 
-            resources.ApplyResources(this.DefaultRightMiddleBuildingHeightTextBox, "DefaultRightMiddleBuildingHeightTextBox");
             this.DefaultRightMiddleBuildingHeightTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.DefaultRightMiddleBuildingHeightTextBox, "DefaultRightMiddleBuildingHeightTextBox");
             this.DefaultRightMiddleBuildingHeightTextBox.Name = "DefaultRightMiddleBuildingHeightTextBox";
             this.DefaultRightMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultRightMiddleBuildingHeightTextBox_TextChanged);
             // 
             // DefaultRightBuildingHeightTextBox
             // 
-            resources.ApplyResources(this.DefaultRightBuildingHeightTextBox, "DefaultRightBuildingHeightTextBox");
             this.DefaultRightBuildingHeightTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.DefaultRightBuildingHeightTextBox, "DefaultRightBuildingHeightTextBox");
             this.DefaultRightBuildingHeightTextBox.Name = "DefaultRightBuildingHeightTextBox";
             this.DefaultRightBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultRightBuildingHeightTextBox_TextChanged);
             // 
@@ -102,8 +102,8 @@
             // 
             // pictureBox1
             // 
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Image = global::WindowsFormsApp2.Properties.Resources.masqueLontain2;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
             // 
