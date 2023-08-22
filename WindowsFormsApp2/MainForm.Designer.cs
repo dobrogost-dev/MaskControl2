@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.SearchButton = new System.Windows.Forms.Button();
             this.LatitudeTextBox = new System.Windows.Forms.MaskedTextBox();
             this.LatitudeLabel = new System.Windows.Forms.Label();
@@ -76,172 +77,112 @@
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(753, 8);
+            resources.ApplyResources(this.SearchButton, "SearchButton");
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(113, 34);
-            this.SearchButton.TabIndex = 1;
-            this.SearchButton.Text = "Search";
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // LatitudeTextBox
             // 
-            this.LatitudeTextBox.Location = new System.Drawing.Point(92, 45);
+            resources.ApplyResources(this.LatitudeTextBox, "LatitudeTextBox");
             this.LatitudeTextBox.Name = "LatitudeTextBox";
-            this.LatitudeTextBox.Size = new System.Drawing.Size(240, 22);
-            this.LatitudeTextBox.TabIndex = 2;
             // 
             // LatitudeLabel
             // 
-            this.LatitudeLabel.AutoSize = true;
-            this.LatitudeLabel.Location = new System.Drawing.Point(18, 48);
+            resources.ApplyResources(this.LatitudeLabel, "LatitudeLabel");
             this.LatitudeLabel.Name = "LatitudeLabel";
-            this.LatitudeLabel.Size = new System.Drawing.Size(57, 16);
-            this.LatitudeLabel.TabIndex = 4;
-            this.LatitudeLabel.Text = "Latitude:";
             // 
             // LongitudeLabel
             // 
-            this.LongitudeLabel.AutoSize = true;
-            this.LongitudeLabel.Location = new System.Drawing.Point(18, 89);
+            resources.ApplyResources(this.LongitudeLabel, "LongitudeLabel");
             this.LongitudeLabel.Name = "LongitudeLabel";
-            this.LongitudeLabel.Size = new System.Drawing.Size(66, 16);
-            this.LongitudeLabel.TabIndex = 5;
-            this.LongitudeLabel.Text = "Longitude";
             // 
             // AddressLabel
             // 
-            this.AddressLabel.AutoSize = true;
-            this.AddressLabel.Location = new System.Drawing.Point(17, 9);
+            resources.ApplyResources(this.AddressLabel, "AddressLabel");
             this.AddressLabel.Name = "AddressLabel";
-            this.AddressLabel.Size = new System.Drawing.Size(58, 16);
-            this.AddressLabel.TabIndex = 7;
-            this.AddressLabel.Text = "Address";
             // 
             // ZoomInButton
             // 
-            this.ZoomInButton.Location = new System.Drawing.Point(21, 130);
+            resources.ApplyResources(this.ZoomInButton, "ZoomInButton");
             this.ZoomInButton.Name = "ZoomInButton";
-            this.ZoomInButton.Size = new System.Drawing.Size(93, 28);
-            this.ZoomInButton.TabIndex = 8;
-            this.ZoomInButton.Text = "Zoom in";
             this.ZoomInButton.UseVisualStyleBackColor = true;
             this.ZoomInButton.Click += new System.EventHandler(this.ZoomInButton_Click);
             // 
             // ZoomOutButton
             // 
-            this.ZoomOutButton.Location = new System.Drawing.Point(20, 164);
+            resources.ApplyResources(this.ZoomOutButton, "ZoomOutButton");
             this.ZoomOutButton.Name = "ZoomOutButton";
-            this.ZoomOutButton.Size = new System.Drawing.Size(93, 28);
-            this.ZoomOutButton.TabIndex = 9;
-            this.ZoomOutButton.Text = "Zoom out";
             this.ZoomOutButton.UseVisualStyleBackColor = true;
             this.ZoomOutButton.Click += new System.EventHandler(this.ZoomOutButton_Click);
             // 
             // LongitudeTextBox
             // 
-            this.LongitudeTextBox.Location = new System.Drawing.Point(90, 83);
+            resources.ApplyResources(this.LongitudeTextBox, "LongitudeTextBox");
             this.LongitudeTextBox.Name = "LongitudeTextBox";
-            this.LongitudeTextBox.Size = new System.Drawing.Size(240, 22);
-            this.LongitudeTextBox.TabIndex = 3;
             // 
             // MaskButton
             // 
-            this.MaskButton.Location = new System.Drawing.Point(753, 48);
+            resources.ApplyResources(this.MaskButton, "MaskButton");
             this.MaskButton.Name = "MaskButton";
-            this.MaskButton.Size = new System.Drawing.Size(113, 34);
-            this.MaskButton.TabIndex = 10;
-            this.MaskButton.Text = "Mask";
             this.MaskButton.UseVisualStyleBackColor = true;
             this.MaskButton.Click += new System.EventHandler(this.MaskButton_Click);
             // 
             // RadiusLabel
             // 
-            this.RadiusLabel.AutoSize = true;
-            this.RadiusLabel.Location = new System.Drawing.Point(595, 54);
+            resources.ApplyResources(this.RadiusLabel, "RadiusLabel");
             this.RadiusLabel.Name = "RadiusLabel";
-            this.RadiusLabel.Size = new System.Drawing.Size(50, 16);
-            this.RadiusLabel.TabIndex = 12;
-            this.RadiusLabel.Text = "Radius";
             // 
             // RadiusTextBox
             // 
-            this.RadiusTextBox.Location = new System.Drawing.Point(651, 51);
+            resources.ApplyResources(this.RadiusTextBox, "RadiusTextBox");
             this.RadiusTextBox.Name = "RadiusTextBox";
-            this.RadiusTextBox.Size = new System.Drawing.Size(79, 22);
-            this.RadiusTextBox.TabIndex = 17;
             this.RadiusTextBox.TextChanged += new System.EventHandler(this.RadiusTextBox_TextChanged);
             // 
             // AddressTextBox
             // 
-            this.AddressTextBox.Location = new System.Drawing.Point(90, 8);
+            resources.ApplyResources(this.AddressTextBox, "AddressTextBox");
             this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Size = new System.Drawing.Size(640, 22);
-            this.AddressTextBox.TabIndex = 20;
             // 
             // MaskLeftResult
             // 
-            this.MaskLeftResult.Location = new System.Drawing.Point(743, 138);
+            resources.ApplyResources(this.MaskLeftResult, "MaskLeftResult");
             this.MaskLeftResult.Name = "MaskLeftResult";
-            this.MaskLeftResult.Size = new System.Drawing.Size(134, 22);
-            this.MaskLeftResult.TabIndex = 21;
             // 
             // MaskLeftLabel
             // 
-            this.MaskLeftLabel.AutoSize = true;
-            this.MaskLeftLabel.Location = new System.Drawing.Point(750, 117);
+            resources.ApplyResources(this.MaskLeftLabel, "MaskLeftLabel");
             this.MaskLeftLabel.Name = "MaskLeftLabel";
-            this.MaskLeftLabel.Size = new System.Drawing.Size(28, 16);
-            this.MaskLeftLabel.TabIndex = 25;
-            this.MaskLeftLabel.Text = "Left";
             // 
             // MaskLeftMiddleLabel
             // 
-            this.MaskLeftMiddleLabel.AutoSize = true;
-            this.MaskLeftMiddleLabel.Location = new System.Drawing.Point(750, 179);
+            resources.ApplyResources(this.MaskLeftMiddleLabel, "MaskLeftMiddleLabel");
             this.MaskLeftMiddleLabel.Name = "MaskLeftMiddleLabel";
-            this.MaskLeftMiddleLabel.Size = new System.Drawing.Size(73, 16);
-            this.MaskLeftMiddleLabel.TabIndex = 27;
-            this.MaskLeftMiddleLabel.Text = "Left-Middle";
             // 
             // MaskLeftMiddleResult
             // 
-            this.MaskLeftMiddleResult.Location = new System.Drawing.Point(743, 200);
+            resources.ApplyResources(this.MaskLeftMiddleResult, "MaskLeftMiddleResult");
             this.MaskLeftMiddleResult.Name = "MaskLeftMiddleResult";
-            this.MaskLeftMiddleResult.Size = new System.Drawing.Size(134, 22);
-            this.MaskLeftMiddleResult.TabIndex = 26;
             // 
             // MaskRightMiddleLabel
             // 
-            this.MaskRightMiddleLabel.AutoSize = true;
-            this.MaskRightMiddleLabel.Location = new System.Drawing.Point(750, 245);
+            resources.ApplyResources(this.MaskRightMiddleLabel, "MaskRightMiddleLabel");
             this.MaskRightMiddleLabel.Name = "MaskRightMiddleLabel";
-            this.MaskRightMiddleLabel.Size = new System.Drawing.Size(83, 16);
-            this.MaskRightMiddleLabel.TabIndex = 29;
-            this.MaskRightMiddleLabel.Text = "Right-Middle";
             // 
             // MaskRightMiddleResult
             // 
-            this.MaskRightMiddleResult.Location = new System.Drawing.Point(743, 266);
+            resources.ApplyResources(this.MaskRightMiddleResult, "MaskRightMiddleResult");
             this.MaskRightMiddleResult.Name = "MaskRightMiddleResult";
-            this.MaskRightMiddleResult.Size = new System.Drawing.Size(134, 22);
-            this.MaskRightMiddleResult.TabIndex = 28;
             // 
             // MaskRightLabel
             // 
-            this.MaskRightLabel.AutoSize = true;
-            this.MaskRightLabel.Location = new System.Drawing.Point(750, 312);
+            resources.ApplyResources(this.MaskRightLabel, "MaskRightLabel");
             this.MaskRightLabel.Name = "MaskRightLabel";
-            this.MaskRightLabel.Size = new System.Drawing.Size(38, 16);
-            this.MaskRightLabel.TabIndex = 31;
-            this.MaskRightLabel.Text = "Right";
             // 
             // MaskRightResult
             // 
-            this.MaskRightResult.Location = new System.Drawing.Point(743, 333);
+            resources.ApplyResources(this.MaskRightResult, "MaskRightResult");
             this.MaskRightResult.Name = "MaskRightResult";
-            this.MaskRightResult.Size = new System.Drawing.Size(134, 22);
-            this.MaskRightResult.TabIndex = 30;
             // 
             // Map
             // 
@@ -251,7 +192,7 @@
             this.Map.GrayScaleMode = false;
             this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.Map.LevelsKeepInMemory = 5;
-            this.Map.Location = new System.Drawing.Point(12, 117);
+            resources.ApplyResources(this.Map, "Map");
             this.Map.MarkersEnabled = true;
             this.Map.MaxZoom = 2;
             this.Map.MinZoom = 2;
@@ -265,42 +206,28 @@
             this.Map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Map.ShowTileGridLines = false;
-            this.Map.Size = new System.Drawing.Size(702, 474);
-            this.Map.TabIndex = 0;
             this.Map.Zoom = 0D;
             this.Map.Load += new System.EventHandler(this.Map_Load);
             // 
             // BuildingDataRadioButton
             // 
-            this.BuildingDataRadioButton.AutoSize = true;
-            this.BuildingDataRadioButton.Location = new System.Drawing.Point(743, 417);
+            resources.ApplyResources(this.BuildingDataRadioButton, "BuildingDataRadioButton");
             this.BuildingDataRadioButton.Name = "BuildingDataRadioButton";
-            this.BuildingDataRadioButton.Size = new System.Drawing.Size(141, 20);
-            this.BuildingDataRadioButton.TabIndex = 33;
             this.BuildingDataRadioButton.TabStop = true;
-            this.BuildingDataRadioButton.Text = "Used building data";
             this.BuildingDataRadioButton.UseVisualStyleBackColor = true;
             this.BuildingDataRadioButton.CheckedChanged += new System.EventHandler(this.BuildingDataRadioButton_CheckedChanged);
             // 
             // ColorBuildingsByLabel
             // 
-            this.ColorBuildingsByLabel.AutoSize = true;
-            this.ColorBuildingsByLabel.Location = new System.Drawing.Point(740, 372);
+            resources.ApplyResources(this.ColorBuildingsByLabel, "ColorBuildingsByLabel");
             this.ColorBuildingsByLabel.Name = "ColorBuildingsByLabel";
-            this.ColorBuildingsByLabel.Size = new System.Drawing.Size(114, 16);
-            this.ColorBuildingsByLabel.TabIndex = 34;
-            this.ColorBuildingsByLabel.Text = "Color buildings by";
             // 
             // DirectionRadioButton
             // 
-            this.DirectionRadioButton.AutoSize = true;
+            resources.ApplyResources(this.DirectionRadioButton, "DirectionRadioButton");
             this.DirectionRadioButton.Checked = true;
-            this.DirectionRadioButton.Location = new System.Drawing.Point(743, 391);
             this.DirectionRadioButton.Name = "DirectionRadioButton";
-            this.DirectionRadioButton.Size = new System.Drawing.Size(81, 20);
-            this.DirectionRadioButton.TabIndex = 35;
             this.DirectionRadioButton.TabStop = true;
-            this.DirectionRadioButton.Text = "Direction";
             this.DirectionRadioButton.UseVisualStyleBackColor = true;
             this.DirectionRadioButton.CheckedChanged += new System.EventHandler(this.DirectionRadioButton_CheckedChanged);
             // 
@@ -313,79 +240,49 @@
             this.SectorsLegendPanel.Controls.Add(this.label4);
             this.SectorsLegendPanel.Controls.Add(this.label3);
             this.SectorsLegendPanel.Controls.Add(this.label2);
-            this.SectorsLegendPanel.Location = new System.Drawing.Point(729, 468);
+            resources.ApplyResources(this.SectorsLegendPanel, "SectorsLegendPanel");
             this.SectorsLegendPanel.Name = "SectorsLegendPanel";
-            this.SectorsLegendPanel.Size = new System.Drawing.Size(170, 134);
-            this.SectorsLegendPanel.TabIndex = 36;
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
+            resources.ApplyResources(this.label14, "label14");
             this.label14.BackColor = System.Drawing.Color.DarkGray;
-            this.label14.Location = new System.Drawing.Point(10, 44);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(138, 16);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Gray: Ignored building";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
+            resources.ApplyResources(this.label7, "label7");
             this.label7.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.label7.Location = new System.Drawing.Point(10, 28);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(122, 16);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Blue: Base building";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
+            resources.ApplyResources(this.label6, "label6");
             this.label6.BackColor = System.Drawing.Color.LightCoral;
-            this.label6.Location = new System.Drawing.Point(10, 108);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Red: Right";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
+            resources.ApplyResources(this.label5, "label5");
             this.label5.BackColor = System.Drawing.Color.Orchid;
-            this.label5.Location = new System.Drawing.Point(10, 92);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Magenta: Right-Middle";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
+            resources.ApplyResources(this.label4, "label4");
             this.label4.BackColor = System.Drawing.Color.SkyBlue;
-            this.label4.Location = new System.Drawing.Point(10, 76);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Aqua: Left-Middle";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
+            resources.ApplyResources(this.label3, "label3");
             this.label3.BackColor = System.Drawing.Color.LightGreen;
-            this.label3.Location = new System.Drawing.Point(10, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 16);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Green: Left";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 4);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 16);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Legend";
             // 
             // BuildingDataLegendPanel
             // 
@@ -395,104 +292,67 @@
             this.BuildingDataLegendPanel.Controls.Add(this.label10);
             this.BuildingDataLegendPanel.Controls.Add(this.label12);
             this.BuildingDataLegendPanel.Controls.Add(this.label13);
-            this.BuildingDataLegendPanel.Location = new System.Drawing.Point(729, 468);
+            resources.ApplyResources(this.BuildingDataLegendPanel, "BuildingDataLegendPanel");
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
-            this.BuildingDataLegendPanel.Size = new System.Drawing.Size(170, 131);
-            this.BuildingDataLegendPanel.TabIndex = 37;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
+            resources.ApplyResources(this.label11, "label11");
             this.label11.BackColor = System.Drawing.Color.DarkGray;
-            this.label11.Location = new System.Drawing.Point(10, 44);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(138, 16);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Gray: Ignored building";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
+            resources.ApplyResources(this.label8, "label8");
             this.label8.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.label8.Location = new System.Drawing.Point(10, 28);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 16);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Blue: Base building";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
+            resources.ApplyResources(this.label9, "label9");
             this.label9.BackColor = System.Drawing.Color.LightCoral;
-            this.label9.Location = new System.Drawing.Point(10, 108);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 16);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Red: By default height";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
+            resources.ApplyResources(this.label10, "label10");
             this.label10.BackColor = System.Drawing.Color.SandyBrown;
-            this.label10.Location = new System.Drawing.Point(10, 92);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(160, 16);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Orange: By building floors";
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
+            resources.ApplyResources(this.label12, "label12");
             this.label12.BackColor = System.Drawing.Color.LightGreen;
-            this.label12.Location = new System.Drawing.Point(10, 76);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(105, 16);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Green: By height";
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(10, 4);
+            resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 16);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Legend";
             // 
             // SectorsCheckBox
             // 
-            this.SectorsCheckBox.AutoSize = true;
-            this.SectorsCheckBox.Location = new System.Drawing.Point(743, 442);
+            resources.ApplyResources(this.SectorsCheckBox, "SectorsCheckBox");
             this.SectorsCheckBox.Name = "SectorsCheckBox";
-            this.SectorsCheckBox.Size = new System.Drawing.Size(109, 20);
-            this.SectorsCheckBox.TabIndex = 38;
-            this.SectorsCheckBox.Text = "Show sectors";
             this.SectorsCheckBox.UseVisualStyleBackColor = true;
             this.SectorsCheckBox.CheckedChanged += new System.EventHandler(this.DirectionLinesCheckBox_CheckedChanged);
             // 
             // FacadeDirectionDescriptionLabel
             // 
-            this.FacadeDirectionDescriptionLabel.AutoSize = true;
-            this.FacadeDirectionDescriptionLabel.Location = new System.Drawing.Point(368, 89);
+            resources.ApplyResources(this.FacadeDirectionDescriptionLabel, "FacadeDirectionDescriptionLabel");
             this.FacadeDirectionDescriptionLabel.Name = "FacadeDirectionDescriptionLabel";
-            this.FacadeDirectionDescriptionLabel.Size = new System.Drawing.Size(166, 16);
-            this.FacadeDirectionDescriptionLabel.TabIndex = 39;
-            this.FacadeDirectionDescriptionLabel.Text = "Scanned facade direction: ";
             // 
             // FacadeDirectionLabel
             // 
-            this.FacadeDirectionLabel.AutoSize = true;
-            this.FacadeDirectionLabel.Location = new System.Drawing.Point(585, 86);
+            resources.ApplyResources(this.FacadeDirectionLabel, "FacadeDirectionLabel");
             this.FacadeDirectionLabel.Name = "FacadeDirectionLabel";
-            this.FacadeDirectionLabel.Size = new System.Drawing.Size(0, 16);
-            this.FacadeDirectionLabel.TabIndex = 40;
             // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 603);
             this.Controls.Add(this.FacadeDirectionLabel);
             this.Controls.Add(this.FacadeDirectionDescriptionLabel);
             this.Controls.Add(this.SectorsCheckBox);
@@ -520,10 +380,9 @@
             this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.Map);
-            this.Controls.Add(this.BuildingDataLegendPanel);
             this.Controls.Add(this.SectorsLegendPanel);
+            this.Controls.Add(this.BuildingDataLegendPanel);
             this.Name = "MainForm";
-            this.Text = "Form1";
             this.SectorsLegendPanel.ResumeLayout(false);
             this.SectorsLegendPanel.PerformLayout();
             this.BuildingDataLegendPanel.ResumeLayout(false);

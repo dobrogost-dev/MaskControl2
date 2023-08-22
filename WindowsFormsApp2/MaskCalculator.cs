@@ -80,6 +80,27 @@ namespace WindowsFormsApp2
                 }
             }
         }
+        private void FindBaseBuilding(PointLatLng BasePoint)
+        {
+            double HighestDistanceToBasePoint = double.MaxValue;
+            foreach (Building building in Buildings)
+            {
+                building.CenterPoint = GetCenterPosition(building);
+                CalculateFacades(building);
+
+                foreach (Facade facade in building.Facades)
+                {
+                    double CurrentDistanceToBasePoint = GetDistance(facade.PointCenter, BasePoint);
+                    if (CurrentDistanceToBasePoint < HighestDistanceToBasePoint)
+                    {
+                        HighestDistanceToBasePoint = CurrentDistanceToBasePoint;
+                        BaseBuilding = building;
+                        AnalyzedFacade = facade;
+                    }
+                }
+            }
+        }
+
         private void AssignDirection(Building TargetBuilding, Facade BaseBuildingAnalyzedFacade)
         {
             PointLatLng TargetBuildingCenter = GetCenterPosition(TargetBuilding);
@@ -176,26 +197,6 @@ namespace WindowsFormsApp2
                 .Where(e => e.id == id)
                 .FirstOrDefault();
         }
-        private void FindBaseBuilding(PointLatLng BasePoint)
-        {
-            double HighestDistanceToBasePoint = double.MaxValue;
-            foreach (Building building in Buildings)
-            {
-                building.CenterPoint = GetCenterPosition(building);
-                CalculateFacades(building);
-
-                foreach (Facade facade in building.Facades) {
-                    double CurrentDistanceToBasePoint = GetDistance(facade.PointCenter, BasePoint);
-                    if (CurrentDistanceToBasePoint < HighestDistanceToBasePoint)
-                    {
-                        HighestDistanceToBasePoint = CurrentDistanceToBasePoint;
-                        BaseBuilding = building;
-                        AnalyzedFacade = facade;
-                    }
-                }
-            }
-        }
-
         private PointLatLng GetCenterPosition(Building building)
         {
             double lat = 0;
@@ -393,7 +394,6 @@ namespace WindowsFormsApp2
             else if (Azimuth > 225 && Azimuth < 315)
             {
                 return "West";
-
             }
             return "Unspecified";
         }
