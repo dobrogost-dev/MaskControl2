@@ -312,9 +312,9 @@
             this.SectorsLegendPanel.Controls.Add(this.label4);
             this.SectorsLegendPanel.Controls.Add(this.label3);
             this.SectorsLegendPanel.Controls.Add(this.label2);
-            this.SectorsLegendPanel.Location = new System.Drawing.Point(743, 468);
+            this.SectorsLegendPanel.Location = new System.Drawing.Point(729, 468);
             this.SectorsLegendPanel.Name = "SectorsLegendPanel";
-            this.SectorsLegendPanel.Size = new System.Drawing.Size(148, 134);
+            this.SectorsLegendPanel.Size = new System.Drawing.Size(170, 134);
             this.SectorsLegendPanel.TabIndex = 36;
             // 
             // label14
@@ -394,9 +394,9 @@
             this.BuildingDataLegendPanel.Controls.Add(this.label10);
             this.BuildingDataLegendPanel.Controls.Add(this.label12);
             this.BuildingDataLegendPanel.Controls.Add(this.label13);
-            this.BuildingDataLegendPanel.Location = new System.Drawing.Point(743, 468);
+            this.BuildingDataLegendPanel.Location = new System.Drawing.Point(729, 468);
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
-            this.BuildingDataLegendPanel.Size = new System.Drawing.Size(148, 131);
+            this.BuildingDataLegendPanel.Size = new System.Drawing.Size(170, 131);
             this.BuildingDataLegendPanel.TabIndex = 37;
             // 
             // label11
@@ -519,8 +519,8 @@
             this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.Map);
-            this.Controls.Add(this.SectorsLegendPanel);
             this.Controls.Add(this.BuildingDataLegendPanel);
+            this.Controls.Add(this.SectorsLegendPanel);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.SectorsLegendPanel.ResumeLayout(false);
