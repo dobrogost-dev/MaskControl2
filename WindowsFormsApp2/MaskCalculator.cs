@@ -282,6 +282,11 @@ namespace WindowsFormsApp2
             DefaultRightMiddleNotFound = false;
             DefaultRightNotFound = false;
 
+            DefaultLeftBuildingHeight = 0;
+            DefaultLeftMiddleBuildingHeight = 0;
+            DefaultRightMiddleBuildingHeight = 0;
+            DefaultRightBuildingHeight = 0;
+
             foreach (Building building in Buildings)
             {
                 if (building.tags.height == null && building.tags.BuildingLevels == null)
