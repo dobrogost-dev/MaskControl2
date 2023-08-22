@@ -122,6 +122,9 @@
     <Compile Include="OSMdata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DefaultHeightForm.fr.resx">
+      <DependentUpon>DefaultHeightForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DefaultHeightForm.resx">
       <DependentUpon>DefaultHeightForm.cs</DependentUpon>
     </EmbeddedResource>

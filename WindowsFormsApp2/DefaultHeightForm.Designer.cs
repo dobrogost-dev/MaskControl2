@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DefaultHeightForm));
             this.FacadeDirectionLabel = new System.Windows.Forms.Label();
             this.DefaultLeftBuildingHeightTextBox = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.ConfirmButton = new System.Windows.Forms.Button();
             this.DefaultLeftMiddleBuildingHeightTextBox = new System.Windows.Forms.TextBox();
@@ -39,111 +38,82 @@
             this.DefaultRightBuildingHeightTextBox = new System.Windows.Forms.TextBox();
             this.InformationLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // FacadeDirectionLabel
             // 
-            this.FacadeDirectionLabel.AutoSize = true;
-            this.FacadeDirectionLabel.Location = new System.Drawing.Point(558, 130);
+            resources.ApplyResources(this.FacadeDirectionLabel, "FacadeDirectionLabel");
             this.FacadeDirectionLabel.Name = "FacadeDirectionLabel";
-            this.FacadeDirectionLabel.Size = new System.Drawing.Size(0, 16);
-            this.FacadeDirectionLabel.TabIndex = 53;
             // 
             // DefaultLeftBuildingHeightTextBox
             // 
+            resources.ApplyResources(this.DefaultLeftBuildingHeightTextBox, "DefaultLeftBuildingHeightTextBox");
             this.DefaultLeftBuildingHeightTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DefaultLeftBuildingHeightTextBox.Location = new System.Drawing.Point(12, 295);
             this.DefaultLeftBuildingHeightTextBox.Name = "DefaultLeftBuildingHeightTextBox";
-            this.DefaultLeftBuildingHeightTextBox.Size = new System.Drawing.Size(81, 22);
-            this.DefaultLeftBuildingHeightTextBox.TabIndex = 51;
-            this.DefaultLeftBuildingHeightTextBox.Visible = false;
             this.DefaultLeftBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultLeftBuildingHeightTextBox_TextChanged);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp2.Properties.Resources.masqueLontain2;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 44);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(692, 349);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 60;
-            this.pictureBox1.TabStop = false;
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(190, 349);
+            resources.ApplyResources(this.CancelButton, "CancelButton");
+            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(109, 37);
-            this.CancelButton.TabIndex = 61;
-            this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(393, 349);
+            resources.ApplyResources(this.ConfirmButton, "ConfirmButton");
             this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(109, 37);
-            this.ConfirmButton.TabIndex = 62;
-            this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // DefaultLeftMiddleBuildingHeightTextBox
             // 
+            resources.ApplyResources(this.DefaultLeftMiddleBuildingHeightTextBox, "DefaultLeftMiddleBuildingHeightTextBox");
             this.DefaultLeftMiddleBuildingHeightTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DefaultLeftMiddleBuildingHeightTextBox.Location = new System.Drawing.Point(218, 152);
             this.DefaultLeftMiddleBuildingHeightTextBox.Name = "DefaultLeftMiddleBuildingHeightTextBox";
-            this.DefaultLeftMiddleBuildingHeightTextBox.Size = new System.Drawing.Size(81, 22);
-            this.DefaultLeftMiddleBuildingHeightTextBox.TabIndex = 63;
-            this.DefaultLeftMiddleBuildingHeightTextBox.Visible = false;
             this.DefaultLeftMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultLeftMiddleBuildingHeightTextBox_TextChanged);
             // 
             // DefaultRightMiddleBuildingHeightTextBox
             // 
+            resources.ApplyResources(this.DefaultRightMiddleBuildingHeightTextBox, "DefaultRightMiddleBuildingHeightTextBox");
             this.DefaultRightMiddleBuildingHeightTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DefaultRightMiddleBuildingHeightTextBox.Location = new System.Drawing.Point(393, 124);
             this.DefaultRightMiddleBuildingHeightTextBox.Name = "DefaultRightMiddleBuildingHeightTextBox";
-            this.DefaultRightMiddleBuildingHeightTextBox.Size = new System.Drawing.Size(81, 22);
-            this.DefaultRightMiddleBuildingHeightTextBox.TabIndex = 64;
-            this.DefaultRightMiddleBuildingHeightTextBox.Visible = false;
             this.DefaultRightMiddleBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultRightMiddleBuildingHeightTextBox_TextChanged);
             // 
             // DefaultRightBuildingHeightTextBox
             // 
+            resources.ApplyResources(this.DefaultRightBuildingHeightTextBox, "DefaultRightBuildingHeightTextBox");
             this.DefaultRightBuildingHeightTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DefaultRightBuildingHeightTextBox.Location = new System.Drawing.Point(597, 206);
             this.DefaultRightBuildingHeightTextBox.Name = "DefaultRightBuildingHeightTextBox";
-            this.DefaultRightBuildingHeightTextBox.Size = new System.Drawing.Size(81, 22);
-            this.DefaultRightBuildingHeightTextBox.TabIndex = 65;
-            this.DefaultRightBuildingHeightTextBox.Visible = false;
             this.DefaultRightBuildingHeightTextBox.TextChanged += new System.EventHandler(this.DefaultRightBuildingHeightTextBox_TextChanged);
             // 
             // InformationLabel
             // 
-            this.InformationLabel.AutoSize = true;
-            this.InformationLabel.Location = new System.Drawing.Point(9, 9);
-            this.InformationLabel.MaximumSize = new System.Drawing.Size(650, 0);
+            resources.ApplyResources(this.InformationLabel, "InformationLabel");
             this.InformationLabel.Name = "InformationLabel";
-            this.InformationLabel.Size = new System.Drawing.Size(607, 32);
-            this.InformationLabel.TabIndex = 66;
-            this.InformationLabel.Text = resources.GetString("InformationLabel.Text");
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 74);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(213, 16);
-            this.label1.TabIndex = 67;
-            this.label1.Text = "Default building heights for sectors:";
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Image = global::WindowsFormsApp2.Properties.Resources.masqueLontain2;
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
             // 
             // DefaultHeightForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.ConfirmButton;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 390);
+            this.CancelButton = this.CancelButton;
+            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.InformationLabel);
             this.Controls.Add(this.DefaultRightBuildingHeightTextBox);
@@ -155,9 +125,10 @@
             this.Controls.Add(this.DefaultLeftBuildingHeightTextBox);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DefaultHeightForm";
             this.ShowIcon = false;
-            this.Text = "Missing building heights";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
