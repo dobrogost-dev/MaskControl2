@@ -101,15 +101,18 @@ namespace WindowsFormsApp2
             Map.SetPositionByKeywords(Address);
             if (Address == PreviousAddress)
             {
-
             } else if (Map.Position == initialPosition)
             {
                 Console.WriteLine("Address not found");
-                MessageBox.Show("Address not found",
-                    "Wrong address", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
-            PreviousAddress = Address;
-            Map.Zoom = 18;
+                MessageBox.Show("Adresse introuvable!",
+                    "Adresse introuvable", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            } else
+            {
+                PreviousAddress = Address;
+                Map.Zoom = 18;
+            }
+
             /*
             using (HttpClient Client = new HttpClient())
             {
@@ -185,13 +188,13 @@ namespace WindowsFormsApp2
         {
             if (RadiusTextBox.Text == string.Empty)
             {
-                MessageBox.Show("Radius value is required in order to calculate mask",
+                MessageBox.Show("Veuillez indiquer la rayon afin de calculer les angles des masques!",
                     "Radius required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             if (MarkersOverlay.Markers.Count == 0)
             {
-                MessageBox.Show("Marker is required in order to calculate mask",
+                MessageBox.Show("Marker is required in order to calculate mask!",
                     "Marker required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -216,8 +219,8 @@ namespace WindowsFormsApp2
 
                     if (MaskCalculatorInstance.BaseBuilding == null)
                     {
-                        MessageBox.Show("Base building not found",
-                        "Base building not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Immeuble de base introuvable!",
+                        "Immeuble de base introuvable", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -319,6 +322,11 @@ namespace WindowsFormsApp2
         }
 
         private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MaskLeftResult_TextChanged(object sender, EventArgs e)
         {
 
         }
