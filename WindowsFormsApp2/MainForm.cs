@@ -5,6 +5,7 @@ using GMap.NET.WindowsForms.Markers;
 using Newtonsoft.Json;
 using System;
 using System.Globalization;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -64,6 +65,9 @@ namespace WindowsFormsApp2
         {
             double DefaultLatitude = 52.2188;
             double DefaultLongitude = 21.0026;
+
+            GMapProvider.WebProxy = WebRequest.GetSystemWebProxy();
+            GMapProvider.WebProxy.Credentials = CredentialCache.DefaultNetworkCredentials;
 
             Map.MapProvider = GMapProviders.OpenStreetMap;
             Map.Position = new PointLatLng(DefaultLatitude, DefaultLongitude);
