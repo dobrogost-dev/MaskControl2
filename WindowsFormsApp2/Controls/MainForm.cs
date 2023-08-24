@@ -66,8 +66,6 @@ namespace WindowsFormsApp2
             double DefaultLatitude = 52.2188;
             double DefaultLongitude = 21.0026;
 
-            GMapProvider.WebProxy = WebRequest.GetSystemWebProxy();
-            GMapProvider.WebProxy.Credentials = CredentialCache.DefaultNetworkCredentials;
 
             Map.MapProvider = GMapProviders.OpenStreetMap;
             Map.Position = new PointLatLng(DefaultLatitude, DefaultLongitude);
@@ -75,7 +73,7 @@ namespace WindowsFormsApp2
             Map.MouseWheelZoomType = MouseWheelZoomType.MousePositionWithoutCenter;
             Map.ShowCenter = false;
             Map.MaxZoom = 20;
-            Map.MinZoom = 3;
+            Map.MinZoom = 2;
             Map.Zoom = Map.MinZoom;
             Map.MouseDoubleClick += GMapControl_MouseDoubleClick;
             Map.DragButton = MouseButtons.Left;

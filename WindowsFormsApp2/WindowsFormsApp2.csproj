@@ -101,37 +101,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefaultHeightForm.cs">
+    <Compile Include="Controls\DefaultHeightForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DefaultHeightForm.Designer.cs">
+    <Compile Include="Controls\DefaultHeightForm.Designer.cs">
       <DependentUpon>DefaultHeightForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GeocodingData.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Data\GeocodingData.cs" />
+    <Compile Include="Controls\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Controls\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainFormUtilities.cs" />
-    <Compile Include="MapPainter.cs" />
-    <Compile Include="MaskCalculator.cs" />
-    <Compile Include="MaskCalculatorUtilities.cs" />
-    <Compile Include="MaskResult.cs" />
-    <Compile Include="OSMdata.cs" />
+    <Compile Include="Utilities\MainFormUtilities.cs" />
+    <Compile Include="Common\MapPainter.cs" />
+    <Compile Include="Common\MaskCalculator.cs" />
+    <Compile Include="Utilities\MaskCalculatorUtilities.cs" />
+    <Compile Include="Data\MaskResult.cs" />
+    <Compile Include="Data\OSMdata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DefaultHeightForm.fr.resx">
+    <EmbeddedResource Include="Controls\DefaultHeightForm.fr.resx">
       <DependentUpon>DefaultHeightForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DefaultHeightForm.resx">
+    <EmbeddedResource Include="Controls\DefaultHeightForm.resx">
       <DependentUpon>DefaultHeightForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.fr.resx">
+    <EmbeddedResource Include="Controls\MainForm.fr.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Controls\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
