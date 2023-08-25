@@ -112,7 +112,6 @@
             this.AcceptButton = this.ConfirmButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CancelButton;
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.InformationLabel);
@@ -139,7 +138,7 @@
         private System.Windows.Forms.Label FacadeDirectionLabel;
         private System.Windows.Forms.TextBox DefaultLeftBuildingHeightTextBox;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button CancelButton;
+        private new System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ConfirmButton;
         private System.Windows.Forms.TextBox DefaultLeftMiddleBuildingHeightTextBox;
         private System.Windows.Forms.TextBox DefaultRightMiddleBuildingHeightTextBox;

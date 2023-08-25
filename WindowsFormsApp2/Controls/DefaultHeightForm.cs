@@ -13,7 +13,6 @@ namespace WindowsFormsApp2
     public partial class DefaultHeightForm : Form
     {
         private MaskCalculator MaskCalculatorInstance;
-        private string Language;
 
         public DefaultHeightForm(MaskCalculator maskCalulatorInstance)
         {

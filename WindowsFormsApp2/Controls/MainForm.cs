@@ -111,56 +111,24 @@ namespace WindowsFormsApp2
                 return;
             } else
             {
+                if (MarkersOverlay.Markers.Count == 0)
+                {
+                    MarkersOverlay.Markers.Add(CurrentMarker);
+                }
+                CurrentMarker.Position = Map.Position;
+
                 PreviousAddress = Address;
-                Map.Zoom = 18;
+                Map.Zoom = 19;
+                MaskButton.Enabled = false;
+
+                Map.Refresh();
+
+                MessageBox.Show("Le marqueur est positionné au centre de l'immeuble recherché. " +
+                "Veuillez maintenant le positionner plus précisément au centre de la façade " +
+                "à partir de laquelle les masques lointains doivent être détectés !",
+                "Choose facade!",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            /*
-            using (HttpClient Client = new HttpClient())
-            {
-                try
-                {
-                    string GeocodingApiUrl = $"https://geocode.maps.co/search?q={Address}";
-                    HttpResponseMessage GeocodingResponse = await Client.GetAsync(GeocodingApiUrl);
-
-                    if (!GeocodingResponse.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine($"Błąd HTTP: {GeocodingResponse.StatusCode}");
-                        MessageBox.Show("HTTP Error",
-                        "Geocoding Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    string GeocodingJsonResponse = await GeocodingResponse.Content.ReadAsStringAsync();
-                    List<GeocodingData> Data = JsonConvert.DeserializeObject<List<GeocodingData>>(GeocodingJsonResponse);
-                    Console.WriteLine($"{GeocodingJsonResponse}");
-
-                    foreach (GeocodingData data in Data)
-                    {
-                        double Latitude = double.Parse(data.Lat.Replace('.', ','));
-                        double Longitude = double.Parse(data.Lon.Replace('.', ','));
-                        Console.WriteLine("OSM type: " + data.OsmType);
-                        Console.WriteLine("lat: " + Latitude);
-                        Console.WriteLine("lon: " + Longitude);
-                        if (data.OsmType == "way" && data.Class == "building")
-                        {
-                            if (MarkersOverlay.Markers.Count == 0)
-                            {
-                                MarkersOverlay.Markers.Add(CurrentMarker);
-                            }
-                            PointLatLng point = new PointLatLng(Latitude, Longitude);
-                            CurrentMarker.Position = point;
-                            Map.Refresh();
-                            MaskButton.Enabled = true;
-                        }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Wystąpił błąd: {ex.Message}");
-                }
-            }
-            */
         }
         private void ZoomInButton_Click(object sender, EventArgs e)
         {
@@ -316,21 +284,6 @@ namespace WindowsFormsApp2
             {
                 RadiusTextBox.Text = string.Empty;
             }
-        }
-
-        private void Map_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MaskLeftResult_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

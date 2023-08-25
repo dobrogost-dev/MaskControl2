@@ -148,7 +148,6 @@
             // 
             resources.ApplyResources(this.MaskLeftResult, "MaskLeftResult");
             this.MaskLeftResult.Name = "MaskLeftResult";
-            this.MaskLeftResult.TextChanged += new System.EventHandler(this.MaskLeftResult_TextChanged);
             // 
             // MaskLeftLabel
             // 
@@ -208,7 +207,6 @@
             this.Map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.Map.ShowTileGridLines = false;
             this.Map.Zoom = 0D;
-            this.Map.Load += new System.EventHandler(this.Map_Load);
             // 
             // BuildingDataRadioButton
             // 
@@ -313,7 +311,6 @@
             resources.ApplyResources(this.label9, "label9");
             this.label9.BackColor = System.Drawing.Color.LightCoral;
             this.label9.Name = "label9";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
