@@ -71,6 +71,8 @@
             this.SectorsCheckBox = new System.Windows.Forms.CheckBox();
             this.FacadeDirectionDescriptionLabel = new System.Windows.Forms.Label();
             this.FacadeDirectionLabel = new System.Windows.Forms.Label();
+            this.DefaultBuildingFloorHeightTextBox = new System.Windows.Forms.TextBox();
+            this.DefaultBuildingFloorHeightLabel = new System.Windows.Forms.Label();
             this.SectorsLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
@@ -186,13 +188,13 @@
             // 
             // Map
             // 
-            resources.ApplyResources(this.Map, "Map");
             this.Map.Bearing = 0F;
             this.Map.CanDragMap = true;
             this.Map.EmptyTileColor = System.Drawing.Color.Navy;
             this.Map.GrayScaleMode = false;
             this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.Map.LevelsKeepInMemory = 5;
+            resources.ApplyResources(this.Map, "Map");
             this.Map.MarkersEnabled = true;
             this.Map.MaxZoom = 2;
             this.Map.MinZoom = 2;
@@ -232,7 +234,6 @@
             // 
             // SectorsLegendPanel
             // 
-            resources.ApplyResources(this.SectorsLegendPanel, "SectorsLegendPanel");
             this.SectorsLegendPanel.Controls.Add(this.label14);
             this.SectorsLegendPanel.Controls.Add(this.label7);
             this.SectorsLegendPanel.Controls.Add(this.label6);
@@ -240,6 +241,7 @@
             this.SectorsLegendPanel.Controls.Add(this.label4);
             this.SectorsLegendPanel.Controls.Add(this.label3);
             this.SectorsLegendPanel.Controls.Add(this.label2);
+            resources.ApplyResources(this.SectorsLegendPanel, "SectorsLegendPanel");
             this.SectorsLegendPanel.Name = "SectorsLegendPanel";
             // 
             // label14
@@ -285,13 +287,13 @@
             // 
             // BuildingDataLegendPanel
             // 
-            resources.ApplyResources(this.BuildingDataLegendPanel, "BuildingDataLegendPanel");
             this.BuildingDataLegendPanel.Controls.Add(this.label11);
             this.BuildingDataLegendPanel.Controls.Add(this.label8);
             this.BuildingDataLegendPanel.Controls.Add(this.label9);
             this.BuildingDataLegendPanel.Controls.Add(this.label10);
             this.BuildingDataLegendPanel.Controls.Add(this.label12);
             this.BuildingDataLegendPanel.Controls.Add(this.label13);
+            resources.ApplyResources(this.BuildingDataLegendPanel, "BuildingDataLegendPanel");
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
             // 
             // label11
@@ -346,11 +348,24 @@
             resources.ApplyResources(this.FacadeDirectionLabel, "FacadeDirectionLabel");
             this.FacadeDirectionLabel.Name = "FacadeDirectionLabel";
             // 
+            // DefaultBuildingFloorHeightTextBox
+            // 
+            resources.ApplyResources(this.DefaultBuildingFloorHeightTextBox, "DefaultBuildingFloorHeightTextBox");
+            this.DefaultBuildingFloorHeightTextBox.Name = "DefaultBuildingFloorHeightTextBox";
+            this.DefaultBuildingFloorHeightTextBox.TextChanged += new System.EventHandler(this.DefaultBuildingFloorHeightTextBox_TextChanged);
+            // 
+            // DefaultBuildingFloorHeightLabel
+            // 
+            resources.ApplyResources(this.DefaultBuildingFloorHeightLabel, "DefaultBuildingFloorHeightLabel");
+            this.DefaultBuildingFloorHeightLabel.Name = "DefaultBuildingFloorHeightLabel";
+            // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DefaultBuildingFloorHeightTextBox);
+            this.Controls.Add(this.DefaultBuildingFloorHeightLabel);
             this.Controls.Add(this.FacadeDirectionLabel);
             this.Controls.Add(this.FacadeDirectionDescriptionLabel);
             this.Controls.Add(this.SectorsCheckBox);
@@ -433,6 +448,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label FacadeDirectionDescriptionLabel;
         private System.Windows.Forms.Label FacadeDirectionLabel;
+        private System.Windows.Forms.TextBox DefaultBuildingFloorHeightTextBox;
+        private System.Windows.Forms.Label DefaultBuildingFloorHeightLabel;
     }
 }
 

@@ -181,6 +181,9 @@
   <data name="MaskRightResult.Location" type="System.Drawing.Point, System.Drawing">
     <value>727, 277</value>
   </data>
+  <data name="Map.Size" type="System.Drawing.Size, System.Drawing">
+    <value>702, 416</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BuildingDataRadioButton.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -325,5 +328,21 @@
   </data>
   <data name="FacadeDirectionDescriptionLabel.Text" xml:space="preserve">
     <value>Direction de la façade scannée</value>
+  </data>
+  <data name="DefaultBuildingFloorHeightTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 22</value>
+  </data>
+  <data name="DefaultBuildingFloorHeightLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DefaultBuildingFloorHeightLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="DefaultBuildingFloorHeightLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 16</value>
+  </data>
+  <data name="DefaultBuildingFloorHeightLabel.Text" xml:space="preserve">
+    <value>Default building floor height</value>
   </data>
 </root>

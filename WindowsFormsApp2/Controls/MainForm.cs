@@ -17,7 +17,7 @@ namespace WindowsFormsApp2
     {
         public static int BaseZoom = 1;
         string DefaultRadius = "45";
-        double DefaultFloorHeight = 2.5;
+        string DefaultBuildingFloorHeight = "2,5";
         public string PreviousAddress;
 
         public GMapOverlay MarkersOverlay;
@@ -46,6 +46,7 @@ namespace WindowsFormsApp2
         {
 
             RadiusTextBox.Text = DefaultRadius;
+            DefaultBuildingFloorHeightTextBox.Text = DefaultBuildingFloorHeight;
 
             LatitudeTextBox.ReadOnly = true;
             LongitudeTextBox.ReadOnly = true;
@@ -205,6 +206,7 @@ namespace WindowsFormsApp2
 
                     MaskCalculatorInstance.LoadData(apiResponse);
 
+                    double DefaultFloorHeight = double.Parse(DefaultBuildingFloorHeightTextBox.Text);
 
                     MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight);
 
@@ -214,6 +216,7 @@ namespace WindowsFormsApp2
                     MaskRightResult.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
                     FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
                     SectorsLegendPanel.Visible = true;
+
 
                     MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
                     MapPainterInstance.DrawSectors(SemicircleOverlay, LinesOverlay, Radius);
@@ -283,6 +286,14 @@ namespace WindowsFormsApp2
             if (!MainFormUtilities.IsValidDecimal(RadiusTextBox.Text))
             {
                 RadiusTextBox.Text = string.Empty;
+            }
+        }
+
+        private void DefaultBuildingFloorHeightTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!MainFormUtilities.IsValidDecimal(DefaultBuildingFloorHeightTextBox.Text))
+            {
+                DefaultBuildingFloorHeightTextBox.Text = string.Empty;
             }
         }
     }
