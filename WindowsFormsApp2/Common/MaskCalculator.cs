@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using WindowsFormsApp2.Controls;
 using static WindowsFormsApp2.MaskCalculatorUtilities;
 
 namespace WindowsFormsApp2
@@ -396,6 +397,53 @@ namespace WindowsFormsApp2
                 return "West";
             }
             return "Unspecified";
+        }
+
+        internal bool AdjustTargetBuildingHeight(PointLatLng point)
+        {
+            if (Buildings == null)
+            {
+                return false;
+            }
+            foreach(Building building in Buildings)
+            {
+                if (IsPointInsidePolygon(point, building.NodesId) )
+                {
+                    Console.WriteLine("Building id: " + building.id + " detected");
+                    string InitialHeight = building.tags.height;
+                    AdjustHeightForm Form = new AdjustHeightForm(building);
+                    Form.ShowDialog();
+                    string NewHeight = building.tags.height;
+                    if (InitialHeight != NewHeight)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public bool IsPointInsidePolygon(PointLatLng point, long[] nodes)
+        {
+            List<PointLatLng> polygon = new List<PointLatLng>();
+            foreach (long node in nodes)
+            {
+                Node NewNode = GetNodeForId(node);
+                PointLatLng Point = new PointLatLng(NewNode.lat, NewNode.lon);
+                polygon.Add(Point);
+            }
+            int i, j;
+            bool isInside = false;
+
+            for (i = 0, j = polygon.Count - 1; i < polygon.Count; j = i++)
+            {
+                if (((polygon[i].Lat > point.Lat) != (polygon[j].Lat > point.Lat)) &&
+                    (point.Lng < (polygon[j].Lng - polygon[i].Lng) * (point.Lat - polygon[i].Lat) / (polygon[j].Lat - polygon[i].Lat) + polygon[i].Lng))
+                {
+                    isInside = !isInside;
+                }
+            }
+
+            return isInside;
         }
     }
 }

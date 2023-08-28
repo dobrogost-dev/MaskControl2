@@ -223,6 +223,10 @@ namespace WindowsFormsApp2
                     {
                         color = Color.Red;
                     }
+                    if (building.HeightChanged)
+                    {
+                        color = Color.Yellow;
+                    }
                     if (building.direction == Building.Direction.Unspecified)
                     {
                         color = Color.Gray;

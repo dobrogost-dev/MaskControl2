@@ -160,8 +160,15 @@ namespace WindowsFormsApp2
         {
             if (SelectionMode)
             {
+                PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
+                if (MaskCalculatorInstance.AdjustTargetBuildingHeight(point))
+                {
 
-            } else
+                }
+                MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
+                Map.Refresh();
+            }
+            else
             {
                 if (MarkersOverlay.Markers.Count == 0)
                 {
@@ -231,6 +238,15 @@ namespace WindowsFormsApp2
 
             MaskCalculatorInstance.LoadData(apiResponse);
 
+            ProcessCalculatingMasks();
+
+            MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
+            MapPainterInstance.DrawSectors(SemicircleOverlay, LinesOverlay, Radius);
+            Map.Refresh();
+        }
+
+        private void ProcessCalculatingMasks()
+        {
             double DefaultFloorHeight = double.Parse(DefaultBuildingFloorHeightTextBox.Text);
 
             MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight);
@@ -241,12 +257,8 @@ namespace WindowsFormsApp2
             MaskRightResult.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
             FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
             SectorsLegendPanel.Visible = true;
-
-
-            MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
-            MapPainterInstance.DrawSectors(SemicircleOverlay, LinesOverlay, Radius);
-            Map.Refresh();
         }
+
         private async Task<OSMdata> GetOSMApiResponse(string url, HttpClient Client)
         {
             HttpResponseMessage BaseBuildingResponse = await Client.GetAsync(url);
@@ -326,10 +338,17 @@ namespace WindowsFormsApp2
             if (SelectionMode)
             {
                 SelectionMode = false;
+                SelectionModeLabel.Text = "Normal";
             } else
             {
                 SelectionMode = true;
+                SelectionModeLabel.Text = "Manual height selection";
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

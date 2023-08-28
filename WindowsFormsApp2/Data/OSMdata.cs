@@ -61,6 +61,7 @@ namespace WindowsFormsApp2
         public Direction direction = Direction.Unspecified;
         public PointLatLng CenterPoint { get; set; }
         public List<Facade> Facades { get; set; }
+        public bool HeightChanged = false;
     }
     public class Facade
     {

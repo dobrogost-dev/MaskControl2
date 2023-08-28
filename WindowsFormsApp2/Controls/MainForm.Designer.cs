@@ -74,6 +74,8 @@
             this.DefaultBuildingFloorHeightTextBox = new System.Windows.Forms.TextBox();
             this.DefaultBuildingFloorHeightLabel = new System.Windows.Forms.Label();
             this.ManualSelectionButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SelectionModeLabel = new System.Windows.Forms.Label();
             this.SectorsLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
@@ -367,11 +369,24 @@
             this.ManualSelectionButton.UseVisualStyleBackColor = true;
             this.ManualSelectionButton.Click += new System.EventHandler(this.ManualSelectionButton_Click);
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // SelectionModeLabel
+            // 
+            resources.ApplyResources(this.SelectionModeLabel, "SelectionModeLabel");
+            this.SelectionModeLabel.Name = "SelectionModeLabel";
+            // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SelectionModeLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ManualSelectionButton);
             this.Controls.Add(this.DefaultBuildingFloorHeightTextBox);
             this.Controls.Add(this.DefaultBuildingFloorHeightLabel);
@@ -461,6 +476,8 @@
         private System.Windows.Forms.TextBox DefaultBuildingFloorHeightTextBox;
         private System.Windows.Forms.Label DefaultBuildingFloorHeightLabel;
         private System.Windows.Forms.Button ManualSelectionButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label SelectionModeLabel;
     }
 }
 
