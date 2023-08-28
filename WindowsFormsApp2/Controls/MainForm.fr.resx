@@ -198,7 +198,7 @@
     <value>169, 53</value>
   </data>
   <data name="BuildingDataRadioButton.Text" xml:space="preserve">
-    <value>Utilisation des données de l'immeuble</value>
+    <value>Utilisation données immeuble</value>
   </data>
   <data name="ColorBuildingsByLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>715, 328</value>
@@ -324,10 +324,10 @@
     <value>Affichage des secteurs</value>
   </data>
   <data name="FacadeDirectionDescriptionLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 16</value>
+    <value>204, 16</value>
   </data>
   <data name="FacadeDirectionDescriptionLabel.Text" xml:space="preserve">
-    <value>Direction de la façade scannée</value>
+    <value>Orientation de la façade scannée</value>
   </data>
   <data name="DefaultBuildingFloorHeightTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 22</value>
@@ -340,9 +340,9 @@
     <value>NoControl</value>
   </data>
   <data name="DefaultBuildingFloorHeightLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 16</value>
+    <value>178, 16</value>
   </data>
   <data name="DefaultBuildingFloorHeightLabel.Text" xml:space="preserve">
-    <value>Default building floor height</value>
+    <value>Hauteur par défaut du niveau</value>
   </data>
 </root>

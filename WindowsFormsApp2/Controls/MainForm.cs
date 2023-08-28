@@ -296,5 +296,10 @@ namespace WindowsFormsApp2
                 DefaultBuildingFloorHeightTextBox.Text = string.Empty;
             }
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
