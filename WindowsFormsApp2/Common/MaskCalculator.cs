@@ -32,8 +32,14 @@ namespace WindowsFormsApp2
         public bool DefaultRightNotFound = false;
         public void LoadData(OSMdata Data)
         {
-            Buildings = new List<Building>();
-            Nodes = new List<Node>();
+            if (Buildings == null)
+            {
+                Buildings = new List<Building>();
+            }
+            if (Nodes == null)
+            {
+                Nodes = new List<Node>();
+            }
 
             if (Data.elements.Length == 0)
             {
@@ -52,8 +58,14 @@ namespace WindowsFormsApp2
         }
         public void LoadBaseBuilding(OSMdata Data, PointLatLng LoadedBasePoint)
         {
-            Buildings = new List<Building>();
-            Nodes = new List<Node>();
+            if (Buildings == null)
+            {
+                Buildings = new List<Building>();
+            }
+            if (Nodes == null)
+            {
+                Nodes = new List<Node>();
+            }
             BaseBuilding = null;
 
             if (Data.elements.Length == 0)
@@ -72,12 +84,18 @@ namespace WindowsFormsApp2
                 if (element.type == "node")
                 {
                     Node node = element as Node;
-                    Nodes.Add(node);
+                    if (!Nodes.Contains(node))
+                    {
+                        Nodes.Add(node);
+                    }
                 }
                 else if (element.type == "way")
                 {
                     Building building = element as Building;
-                    Buildings.Add(building);
+                    if (!Buildings.Any(b => b.id == building.id))
+                    {
+                        Buildings.Add(building);
+                    }
                 }
             }
         }
@@ -150,7 +168,6 @@ namespace WindowsFormsApp2
 
         private void InitializeBuildings(PointLatLng BaseDirectionPoint)
         {
-
             foreach (Building building in Buildings)
             {
                 CalculateFacades(building);
