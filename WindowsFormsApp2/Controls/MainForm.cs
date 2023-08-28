@@ -170,6 +170,7 @@ namespace WindowsFormsApp2
                 return;
             }
             await ProcessApiCall();
+            SectorsCheckBox.Checked = true;
         }
 
         private async Task ProcessApiCall()

@@ -212,6 +212,12 @@
   <data name="DirectionRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>729, 357</value>
   </data>
+  <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>718, 457</value>
+  </data>
+  <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 148</value>
+  </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 16</value>
   </data>
@@ -254,10 +260,10 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Légende</value>
   </data>
-  <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="BuildingDataLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>718, 457</value>
   </data>
-  <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BuildingDataLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 148</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
@@ -307,12 +313,6 @@
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>Légende</value>
-  </data>
-  <data name="BuildingDataLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>718, 457</value>
-  </data>
-  <data name="BuildingDataLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 148</value>
   </data>
   <data name="SectorsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>729, 433</value>

@@ -149,6 +149,9 @@
   <data name="&gt;&gt;RadiusLabel.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
+  <data name="MaskLeftMiddleLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="MaskRightResult.Location" type="System.Drawing.Point, System.Drawing">
     <value>743, 333</value>
   </data>
@@ -158,14 +161,17 @@
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 76</value>
   </data>
+  <data name="&gt;&gt;MaskLeftMiddleResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 134</value>
   </data>
   <data name="&gt;&gt;ColorBuildingsByLabel.Name" xml:space="preserve">
     <value>ColorBuildingsByLabel</value>
   </data>
-  <data name="MaskRightLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>750, 312</value>
+  <data name="&gt;&gt;MaskLeftMiddleResult.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;LatitudeTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -176,8 +182,8 @@
   <data name="ZoomOutButton.Text" xml:space="preserve">
     <value>Zoom -</value>
   </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 16</value>
+  <data name="ZoomInButton.Text" xml:space="preserve">
+    <value>Zoom +</value>
   </data>
   <data name="SectorsCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 20</value>
@@ -206,8 +212,8 @@
   <data name="DirectionRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>743, 391</value>
   </data>
-  <data name="MaskLeftLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>750, 117</value>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 16</value>
   </data>
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -230,14 +236,14 @@
   <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>729, 468</value>
   </data>
+  <data name="&gt;&gt;MaskLeftMiddleLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="MaskLeftMiddleResult.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
   </data>
-  <data name="ColorBuildingsByLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>740, 372</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>BuildingDataLegendPanel</value>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 16</value>
   </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
@@ -251,8 +257,8 @@
   <data name="&gt;&gt;MaskLeftMiddleResult.Name" xml:space="preserve">
     <value>MaskLeftMiddleResult</value>
   </data>
-  <data name="&gt;&gt;RadiusTextBox.ZOrder" xml:space="preserve">
-    <value>17</value>
+  <data name="MaskLeftResult.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
   </data>
   <data name="&gt;&gt;label14.Parent" xml:space="preserve">
     <value>SectorsLegendPanel</value>
@@ -260,17 +266,11 @@
   <data name="&gt;&gt;AddressTextBox.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="BuildingDataRadioButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 92</value>
   </data>
   <data name="&gt;&gt;LatitudeLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FacadeDirectionLabel.Name" xml:space="preserve">
-    <value>FacadeDirectionLabel</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>902, 603</value>
@@ -311,8 +311,8 @@
   <data name="&gt;&gt;label8.Parent" xml:space="preserve">
     <value>BuildingDataLegendPanel</value>
   </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
+  <data name="MaskRightMiddleResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>743, 266</value>
   </data>
   <data name="&gt;&gt;FacadeDirectionDescriptionLabel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -338,6 +338,9 @@
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="BuildingDataRadioButton.Text" xml:space="preserve">
     <value>Used building data</value>
   </data>
@@ -348,6 +351,9 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AddressLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DefaultBuildingFloorHeightLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
@@ -362,11 +368,11 @@
   <data name="DirectionRadioButton.Text" xml:space="preserve">
     <value>Direction</value>
   </data>
-  <data name="MaskRightMiddleResult.Location" type="System.Drawing.Point, System.Drawing">
-    <value>743, 266</value>
+  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 4</value>
   </data>
   <data name="ZoomOutButton.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -380,8 +386,8 @@
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MaskRightMiddleLabel.Text" xml:space="preserve">
-    <value>Right-Middle</value>
+  <data name="RadiusLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>595, 54</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -403,9 +409,6 @@
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="&gt;&gt;DefaultBuildingFloorHeightTextBox.Name" xml:space="preserve">
-    <value>DefaultBuildingFloorHeightTextBox</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Gray: Ignored building</value>
@@ -431,14 +434,23 @@
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 76</value>
   </data>
+  <data name="LatitudeTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="LongitudeLabel.Text" xml:space="preserve">
     <value>Longitude</value>
   </data>
   <data name="&gt;&gt;SectorsLegendPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 16</value>
+  </data>
   <data name="BuildingDataRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 20</value>
+  </data>
+  <data name="&gt;&gt;BuildingDataLegendPanel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="LongitudeTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -446,8 +458,14 @@
   <data name="MaskRightResult.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 22</value>
   </data>
-  <data name="FacadeDirectionLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>585, 86</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Gray: Ignored building</value>
+  </data>
+  <data name="&gt;&gt;DefaultBuildingFloorHeightTextBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 16</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
@@ -458,11 +476,11 @@
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>SectorsLegendPanel</value>
   </data>
-  <data name="ZoomInButton.Text" xml:space="preserve">
-    <value>Zoom +</value>
+  <data name="&gt;&gt;DefaultBuildingFloorHeightTextBox.Name" xml:space="preserve">
+    <value>DefaultBuildingFloorHeightTextBox</value>
   </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;RadiusTextBox.Parent" xml:space="preserve">
     <value>$this</value>
@@ -472,9 +490,6 @@
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 92</value>
   </data>
   <data name="&gt;&gt;BuildingDataRadioButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -488,6 +503,9 @@
   <data name="&gt;&gt;MaskRightLabel.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="&gt;&gt;MaskLeftLabel.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
   <data name="ColorBuildingsByLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -500,8 +518,11 @@
   <data name="label9.Text" xml:space="preserve">
     <value>Red: By default height</value>
   </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="BuildingDataRadioButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MaskLeftLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>750, 117</value>
   </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>SectorsLegendPanel</value>
@@ -518,9 +539,6 @@
   <data name="LatitudeTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 22</value>
   </data>
-  <data name="MaskLeftMiddleResult.Location" type="System.Drawing.Point, System.Drawing">
-    <value>743, 200</value>
-  </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 44</value>
   </data>
@@ -530,8 +548,8 @@
   <data name="RadiusTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>651, 51</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
+  <data name="FacadeDirectionDescriptionLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="SectorsCheckBox.Text" xml:space="preserve">
     <value>Show sectors</value>
@@ -541,9 +559,6 @@
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 108</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="&gt;&gt;LongitudeTextBox.ZOrder" xml:space="preserve">
     <value>25</value>
@@ -563,11 +578,8 @@
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;FacadeDirectionDescriptionLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
   </data>
   <data name="&gt;&gt;MaskButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -587,8 +599,8 @@
   <data name="ColorBuildingsByLabel.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
   </data>
-  <data name="MaskLeftResult.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
+  <data name="FacadeDirectionLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>585, 86</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -623,17 +635,14 @@
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 28</value>
   </data>
-  <data name="&gt;&gt;SectorsCheckBox.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="&gt;&gt;DirectionRadioButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="FacadeDirectionDescriptionLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 89</value>
-  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 16</value>
+  </data>
+  <data name="&gt;&gt;ZoomOutButton.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 60</value>
@@ -665,6 +674,9 @@
   <data name="SearchButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>753, 8</value>
   </data>
+  <data name="DirectionRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 20</value>
+  </data>
   <data name="&gt;&gt;MaskRightMiddleResult.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
@@ -677,14 +689,20 @@
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 16</value>
   </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
   <data name="AddressTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
   <data name="DefaultBuildingFloorHeightTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 22</value>
   </data>
-  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
     <value>BuildingDataLegendPanel</value>
@@ -737,8 +755,8 @@
   <data name="SearchButton.Text" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="RadiusTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
   </data>
   <data name="&gt;&gt;LongitudeTextBox.Parent" xml:space="preserve">
     <value>$this</value>
@@ -779,9 +797,6 @@
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
   </data>
-  <data name="&gt;&gt;LongitudeTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -794,11 +809,14 @@
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
   <data name="MaskLeftLabel.Text" xml:space="preserve">
     <value>Left</value>
   </data>
-  <data name="&gt;&gt;BuildingDataLegendPanel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="MaskLeftLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
   <data name="FacadeDirectionLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -812,8 +830,8 @@
   <data name="&gt;&gt;BuildingDataRadioButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
+  <data name="&gt;&gt;SectorsCheckBox.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="AddressTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>640, 22</value>
@@ -836,12 +854,6 @@
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MaskRightResult.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;DefaultBuildingFloorHeightLabel.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -854,8 +866,11 @@
   <data name="&gt;&gt;label14.Name" xml:space="preserve">
     <value>label14</value>
   </data>
-  <data name="RadiusLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>595, 54</value>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RadiusTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -863,16 +878,10 @@
   <data name="&gt;&gt;MaskRightMiddleLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 4</value>
-  </data>
   <data name="RadiusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 16</value>
   </data>
   <data name="&gt;&gt;RadiusLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;DefaultBuildingFloorHeightTextBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
@@ -881,20 +890,14 @@
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>SectorsLegendPanel</value>
   </data>
-  <data name="&gt;&gt;BuildingDataLegendPanel.Name" xml:space="preserve">
-    <value>BuildingDataLegendPanel</value>
-  </data>
-  <data name="MaskLeftLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="FacadeDirectionDescriptionLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>368, 89</value>
   </data>
   <data name="&gt;&gt;MaskLeftResult.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
   <data name="&gt;&gt;LongitudeLabel.Name" xml:space="preserve">
     <value>LongitudeLabel</value>
-  </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="ZoomInButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -917,17 +920,14 @@
   <data name="&gt;&gt;MaskLeftMiddleLabel.Name" xml:space="preserve">
     <value>MaskLeftMiddleLabel</value>
   </data>
-  <data name="&gt;&gt;DirectionRadioButton.Name" xml:space="preserve">
-    <value>DirectionRadioButton</value>
-  </data>
   <data name="&gt;&gt;label10.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MaskLeftLabel.Name" xml:space="preserve">
     <value>MaskLeftLabel</value>
   </data>
-  <data name="LatitudeTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;MaskRightResult.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="MaskRightLabel.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -989,6 +989,9 @@
   <data name="label12.Text" xml:space="preserve">
     <value>Green: By height</value>
   </data>
+  <data name="MaskRightMiddleLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="MaskLeftMiddleResult.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 22</value>
   </data>
@@ -997,6 +1000,9 @@
   </data>
   <data name="LongitudeLabel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="MaskLeftMiddleLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>750, 179</value>
   </data>
   <data name="&gt;&gt;SectorsLegendPanel.Name" xml:space="preserve">
     <value>SectorsLegendPanel</value>
@@ -1049,8 +1055,8 @@
   <data name="&gt;&gt;FacadeDirectionLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 16</value>
+  <data name="MaskLeftMiddleResult.Location" type="System.Drawing.Point, System.Drawing">
+    <value>743, 200</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>SectorsLegendPanel</value>
@@ -1067,8 +1073,8 @@
   <data name="&gt;&gt;LongitudeLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Gray: Ignored building</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MaskLeftResult.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1076,8 +1082,8 @@
   <data name="&gt;&gt;SearchButton.Name" xml:space="preserve">
     <value>SearchButton</value>
   </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>SectorsLegendPanel</value>
+  <data name="&gt;&gt;DirectionRadioButton.Name" xml:space="preserve">
+    <value>DirectionRadioButton</value>
   </data>
   <data name="&gt;&gt;MaskButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1091,14 +1097,14 @@
   <data name="&gt;&gt;label11.Name" xml:space="preserve">
     <value>label11</value>
   </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 16</value>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="ColorBuildingsByLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 16</value>
   </data>
-  <data name="&gt;&gt;MaskLeftLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="&gt;&gt;FacadeDirectionDescriptionLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MaskButton.Name" xml:space="preserve">
     <value>MaskButton</value>
@@ -1109,8 +1115,8 @@
   <data name="DefaultBuildingFloorHeightTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>221, 547</value>
   </data>
-  <data name="DirectionRadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 20</value>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1136,32 +1142,32 @@
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 16</value>
   </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 16</value>
+  <data name="&gt;&gt;BuildingDataLegendPanel.Name" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="FacadeDirectionDescriptionLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
   </data>
-  <data name="&gt;&gt;AddressLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MaskLeftMiddleResult.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;LongitudeTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;MaskLeftMiddleLabel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="MaskRightLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>750, 312</value>
   </data>
-  <data name="MaskLeftMiddleLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="ColorBuildingsByLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>740, 372</value>
   </data>
   <data name="&gt;&gt;ColorBuildingsByLabel.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;RadiusTextBox.ZOrder" xml:space="preserve">
+    <value>17</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>SectorsLegendPanel</value>
@@ -1187,8 +1193,8 @@
   <data name="&gt;&gt;MaskLeftMiddleLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MaskLeftMiddleLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>750, 179</value>
+  <data name="label12.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="DefaultBuildingFloorHeightLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 550</value>
@@ -1208,23 +1214,17 @@
   <data name="&gt;&gt;DefaultBuildingFloorHeightTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MaskLeftMiddleResult.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;FacadeDirectionLabel.Name" xml:space="preserve">
+    <value>FacadeDirectionLabel</value>
   </data>
-  <data name="MaskRightMiddleLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;AddressLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ZoomOutButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;DefaultBuildingFloorHeightLabel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="MaskRightMiddleLabel.Text" xml:space="preserve">
+    <value>Right-Middle</value>
   </data>
   <data name="BuildingDataRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>743, 417</value>
-  </data>
-  <data name="RadiusTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
   </data>
   <data name="&gt;&gt;MaskRightMiddleResult.Name" xml:space="preserve">
     <value>MaskRightMiddleResult</value>
@@ -1237,8 +1237,5 @@
   </metadata>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>fr</value>
   </metadata>
 </root>
