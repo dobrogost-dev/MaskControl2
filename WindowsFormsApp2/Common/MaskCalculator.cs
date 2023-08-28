@@ -30,6 +30,8 @@ namespace WindowsFormsApp2
         public bool DefaultLeftMiddleNotFound = false;
         public bool DefaultRightMiddleNotFound = false;
         public bool DefaultRightNotFound = false;
+
+        public double radius = 45;
         public void LoadData(OSMdata Data)
         {
             if (Buildings == null)
@@ -135,6 +137,7 @@ namespace WindowsFormsApp2
             double RightMiddleAzimuth = (BaseAzimuth + 45) % 360;
             double RightAzimuth = (BaseAzimuth + 90) % 360;
 
+
             TargetBuilding.direction = Building.Direction.Unspecified;
 
             if (IsBetween(TargetAzimuth, LeftAzimuth, LeftMiddleAzimuth))
@@ -165,6 +168,10 @@ namespace WindowsFormsApp2
                         TargetBuilding.direction = Building.Direction.SouthWest_West;
                     }
                 }
+            }
+            if (!AnyPointIsWithin(TargetBuilding, BaseBuildingAnalyzedFacade.PointCenter, radius))
+            {
+                TargetBuilding.direction = Building.Direction.Unspecified;
             }
         }
 
@@ -463,6 +470,28 @@ namespace WindowsFormsApp2
             }
 
             return isInside;
+        }
+        public bool AnyPointIsWithin(Building building, PointLatLng point, double radius)
+        {
+            foreach (Facade facade in building.Facades)
+            {
+                Console.WriteLine(CalculateDistanceInMeters(facade.PointCenter.Lat, facade.PointCenter.Lng, point.Lat, point.Lng));
+
+                if (CalculateDistanceInMeters(facade.PointCenter.Lat, facade.PointCenter.Lng, point.Lat, point.Lng) < radius)
+                {
+                    return true;
+                }
+            }
+            foreach (long NodeId in building.NodesId)
+            {
+                Node node = GetNodeForId(NodeId);
+                Console.WriteLine(CalculateDistanceInMeters(node.lat, node.lon, point.Lat, point.Lng));
+                if (CalculateDistanceInMeters(node.lat, node.lon, point.Lat, point.Lng) < radius)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

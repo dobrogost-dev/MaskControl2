@@ -198,6 +198,7 @@ namespace WindowsFormsApp2
             }
             try
             {
+                MaskCalculatorInstance.radius = double.Parse(RadiusTextBox.Text);
                 await FindBaseBuilding(Client);
                 CurrentMarker.Position = MaskCalculatorInstance.GetClosestFacade(CurrentMarker.Position);
                 await GetBuildingsData(Client);
