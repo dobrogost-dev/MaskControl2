@@ -20,6 +20,8 @@ namespace WindowsFormsApp2
         string DefaultBuildingFloorHeight = "2,5";
         public string PreviousAddress;
 
+        HttpClient Client;
+
         public GMapOverlay MarkersOverlay;
         public GMapOverlay PolygonsOverlay;
         public GMapOverlay SemicircleOverlay;
@@ -30,6 +32,8 @@ namespace WindowsFormsApp2
         public MapPainter MapPainterInstance;
         public MainForm()
         {
+            Client = new HttpClient();
+
             CurrentMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.red_dot);
             MaskCalculatorInstance = new MaskCalculator();
             MapPainterInstance = new MapPainter(MaskCalculatorInstance);
@@ -92,7 +96,7 @@ namespace WindowsFormsApp2
 
         }
 
-        private void SearchButton_Click(object sender, EventArgs e)
+        private async void SearchButton_ClickAsync(object sender, EventArgs e)
         {
             string Address = AddressTextBox.Text;
             if (Address == string.Empty)
@@ -117,7 +121,15 @@ namespace WindowsFormsApp2
                     MarkersOverlay.Markers.Add(CurrentMarker);
                 }
                 CurrentMarker.Position = Map.Position;
-
+                try
+                {
+                    await FindBaseBuilding(Client);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Wystąpił błąd: {ex.Message}");
+                }
+                CurrentMarker.Position = MaskCalculatorInstance.BaseBuilding.CenterPoint;
                 PreviousAddress = Address;
                 Map.Zoom = 19;
                 MaskButton.Enabled = false;
@@ -169,65 +181,63 @@ namespace WindowsFormsApp2
                     "Marker required", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            await ProcessApiCall();
-            SectorsCheckBox.Checked = true;
-        }
-
-        private async Task ProcessApiCall()
-        {
-            using (HttpClient Client = new HttpClient())
+            try
             {
-                try
-                {
-                    double InitialRadius = 50.0;
-                    // Zmiana double na stringa oddzielonego kropką zamiast przecinka
-                    string InitialMarkerLatitude = CurrentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
-                    string InitialMarkerLongitude = CurrentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
-
-                    string BaseBuildingApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{InitialRadius},{InitialMarkerLatitude},{InitialMarkerLongitude});(._;>;);out;";
-                    OSMdata BaseBuildingApiResponse = await GetOSMApiResponse(BaseBuildingApiUrl, Client);
-
-                    MaskCalculatorInstance.LoadBaseBuilding(BaseBuildingApiResponse, CurrentMarker.Position);
-
-                    if (MaskCalculatorInstance.BaseBuilding == null)
-                    {
-                        MessageBox.Show("Immeuble de base introuvable!",
-                        "Immeuble de base introuvable", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    CurrentMarker.Position = MaskCalculatorInstance.GetClosestFacade(CurrentMarker.Position);
-
-                    double Radius = Double.Parse(RadiusTextBox.Text);
-                    string BaseBuildingLatitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lat.ToString(CultureInfo.InvariantCulture);
-                    string BaseBuildingLongitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lng.ToString(CultureInfo.InvariantCulture);
-
-                    string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{BaseBuildingLatitude},{BaseBuildingLongitude});(._;>;);out;";
-                    OSMdata apiResponse = await GetOSMApiResponse(ApiUrl, Client);
-
-                    MaskCalculatorInstance.LoadData(apiResponse);
-
-                    double DefaultFloorHeight = double.Parse(DefaultBuildingFloorHeightTextBox.Text);
-
-                    MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight);
-
-                    MaskLeftResult.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
-                    MaskLeftMiddleResult.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
-                    MaskRightMiddleResult.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
-                    MaskRightResult.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
-                    FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
-                    SectorsLegendPanel.Visible = true;
-
-
-                    MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
-                    MapPainterInstance.DrawSectors(SemicircleOverlay, LinesOverlay, Radius);
-                    Map.Refresh();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Wystąpił błąd: {ex.Message}");
-                }
+                await FindBaseBuilding(Client);
+                CurrentMarker.Position = MaskCalculatorInstance.GetClosestFacade(CurrentMarker.Position);
+                await GetBuildingsData(Client);
+                SectorsCheckBox.Checked = true;
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Wystąpił błąd: {ex.Message}");
+            }
+        }
+        private async Task FindBaseBuilding(HttpClient Client)
+        {
+            double InitialRadius = 50.0;
+            // Zmiana double na stringa oddzielonego kropką zamiast przecinka
+            string InitialMarkerLatitude = CurrentMarker.Position.Lat.ToString(CultureInfo.InvariantCulture);
+            string InitialMarkerLongitude = CurrentMarker.Position.Lng.ToString(CultureInfo.InvariantCulture);
+
+            string BaseBuildingApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{InitialRadius},{InitialMarkerLatitude},{InitialMarkerLongitude});(._;>;);out;";
+            OSMdata BaseBuildingApiResponse = await GetOSMApiResponse(BaseBuildingApiUrl, Client);
+
+            MaskCalculatorInstance.LoadBaseBuilding(BaseBuildingApiResponse, CurrentMarker.Position);
+
+            if (MaskCalculatorInstance.BaseBuilding == null)
+            {
+                MessageBox.Show("Immeuble de base introuvable!",
+                "Immeuble de base introuvable", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+        private async Task GetBuildingsData(HttpClient Client)
+        {
+            double Radius = Double.Parse(RadiusTextBox.Text);
+            string BaseBuildingLatitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lat.ToString(CultureInfo.InvariantCulture);
+            string BaseBuildingLongitude = MaskCalculatorInstance.AnalyzedFacade.PointCenter.Lng.ToString(CultureInfo.InvariantCulture);
+
+            string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{BaseBuildingLatitude},{BaseBuildingLongitude});(._;>;);out;";
+            OSMdata apiResponse = await GetOSMApiResponse(ApiUrl, Client);
+
+            MaskCalculatorInstance.LoadData(apiResponse);
+
+            double DefaultFloorHeight = double.Parse(DefaultBuildingFloorHeightTextBox.Text);
+
+            MaskResult MaskResults = MaskCalculatorInstance.CalculateMasks(DefaultFloorHeight);
+
+            MaskLeftResult.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
+            MaskLeftMiddleResult.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
+            MaskRightMiddleResult.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
+            MaskRightResult.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
+            FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
+            SectorsLegendPanel.Visible = true;
+
+
+            MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
+            MapPainterInstance.DrawSectors(SemicircleOverlay, LinesOverlay, Radius);
+            Map.Refresh();
         }
         private async Task<OSMdata> GetOSMApiResponse(string url, HttpClient Client)
         {
