@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
         string DefaultRadius = "45";
         string DefaultBuildingFloorHeight = "2,5";
         public string PreviousAddress;
-
+        public bool SelectionMode;
         HttpClient Client;
 
         public GMapOverlay MarkersOverlay;
@@ -64,6 +64,8 @@ namespace WindowsFormsApp2
             SectorsLegendPanel.Visible = false;
             LinesOverlay.IsVisibile = false;
             SemicircleOverlay.IsVisibile = false;
+
+            SelectionMode = false;
         }
 
         private void SetMapConfiguration()
@@ -156,16 +158,22 @@ namespace WindowsFormsApp2
         }
         private void GMapControl_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (MarkersOverlay.Markers.Count == 0)
+            if (SelectionMode)
             {
-                MarkersOverlay.Markers.Add(CurrentMarker);
+
+            } else
+            {
+                if (MarkersOverlay.Markers.Count == 0)
+                {
+                    MarkersOverlay.Markers.Add(CurrentMarker);
+                }
+                PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
+                CurrentMarker.Position = point;
+                Map.Refresh();
+                LatitudeTextBox.Text = point.Lat.ToString();
+                LongitudeTextBox.Text = point.Lng.ToString();
+                MaskButton.Enabled = true;
             }
-            PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
-            CurrentMarker.Position = point;
-            Map.Refresh();
-            LatitudeTextBox.Text = point.Lat.ToString();
-            LongitudeTextBox.Text = point.Lng.ToString();
-            MaskButton.Enabled = true;
         }
         private async void MaskButton_Click(object sender, EventArgs e)
         {
@@ -311,6 +319,17 @@ namespace WindowsFormsApp2
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ManualSelectionButton_Click(object sender, EventArgs e)
+        {
+            if (SelectionMode)
+            {
+                SelectionMode = false;
+            } else
+            {
+                SelectionMode = true;
+            }
         }
     }
 }
