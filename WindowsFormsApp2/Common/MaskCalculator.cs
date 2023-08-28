@@ -135,6 +135,8 @@ namespace WindowsFormsApp2
             double RightMiddleAzimuth = (BaseAzimuth + 45) % 360;
             double RightAzimuth = (BaseAzimuth + 90) % 360;
 
+            TargetBuilding.direction = Building.Direction.Unspecified;
+
             if (IsBetween(TargetAzimuth, LeftAzimuth, LeftMiddleAzimuth))
             {
                 TargetBuilding.direction = Building.Direction.East_SouthEast;

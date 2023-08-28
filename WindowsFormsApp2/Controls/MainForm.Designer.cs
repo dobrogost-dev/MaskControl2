@@ -76,6 +76,7 @@
             this.ManualSelectionButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SelectionModeLabel = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.SectorsLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
@@ -290,6 +291,7 @@
             // 
             // BuildingDataLegendPanel
             // 
+            this.BuildingDataLegendPanel.Controls.Add(this.label15);
             this.BuildingDataLegendPanel.Controls.Add(this.label11);
             this.BuildingDataLegendPanel.Controls.Add(this.label8);
             this.BuildingDataLegendPanel.Controls.Add(this.label9);
@@ -380,6 +382,12 @@
             resources.ApplyResources(this.SelectionModeLabel, "SelectionModeLabel");
             this.SelectionModeLabel.Name = "SelectionModeLabel";
             // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.BackColor = System.Drawing.Color.Khaki;
+            this.label15.Name = "label15";
+            // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
@@ -417,8 +425,8 @@
             this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.Map);
-            this.Controls.Add(this.SectorsLegendPanel);
             this.Controls.Add(this.BuildingDataLegendPanel);
+            this.Controls.Add(this.SectorsLegendPanel);
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SectorsLegendPanel.ResumeLayout(false);
@@ -478,6 +486,7 @@
         private System.Windows.Forms.Button ManualSelectionButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label SelectionModeLabel;
+        private System.Windows.Forms.Label label15;
     }
 }
 

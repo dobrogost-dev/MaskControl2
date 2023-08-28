@@ -47,13 +47,13 @@
             // 
             this.ChoosingHeightTextBox.Location = new System.Drawing.Point(186, 22);
             this.ChoosingHeightTextBox.Name = "ChoosingHeightTextBox";
-            this.ChoosingHeightTextBox.Size = new System.Drawing.Size(55, 22);
+            this.ChoosingHeightTextBox.Size = new System.Drawing.Size(69, 22);
             this.ChoosingHeightTextBox.TabIndex = 1;
             this.ChoosingHeightTextBox.TextChanged += new System.EventHandler(this.ChoosingHeightTextBox_TextChanged);
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(31, 60);
+            this.CancelButton.Location = new System.Drawing.Point(15, 74);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(79, 35);
             this.CancelButton.TabIndex = 2;
@@ -63,7 +63,7 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(139, 60);
+            this.ConfirmButton.Location = new System.Drawing.Point(176, 74);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(79, 35);
             this.ConfirmButton.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(253, 109);
+            this.ClientSize = new System.Drawing.Size(267, 121);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ChoosingHeightTextBox);
