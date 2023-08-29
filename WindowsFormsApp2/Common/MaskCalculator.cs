@@ -443,22 +443,25 @@ namespace WindowsFormsApp2
                 if (IsPointInsidePolygon(point, building.NodesId) )
                 {
                     Console.WriteLine("Building id: " + building.id + " detected");
-                    string InitialHeight = building.tags.height;
                     bool InitialStatus = building.HeightChanged;
                     AdjustHeightForm Form = new AdjustHeightForm(building);
                     Form.ShowDialog();
-                    string NewHeight = building.tags.height;
                     if (InitialStatus)
                     {
                         MarkersOverlay.Markers.Remove(building.MapText);
                     }
-                    GMapText Text = new GMapText(building.CenterPoint, building.UserHeight.ToString());
-                    building.MapText = Text;
-                    MarkersOverlay.Markers.Add(Text);
 
-                    if (InitialHeight != NewHeight)
+                    if (building.UserHeight == 0)
                     {
                         return true;
+                    }
+                    else
+                    {
+                        GMapText Text = new GMapText(building.CenterPoint, building.UserHeight.ToString() + "m");
+                        building.MapText = Text;
+                        MarkersOverlay.Markers.Add(Text);
+                        return true;
+
                     }
                 }
             }

@@ -45,5 +45,12 @@ namespace WindowsFormsApp2.Controls
                  "Choose height", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            BuildingInstance.UserHeight = 0;
+            BuildingInstance.HeightChanged = false;
+            this.Close();
+        }
     }
 }

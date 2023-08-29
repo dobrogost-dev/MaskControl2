@@ -32,6 +32,7 @@
             this.ChoosingHeightTextBox = new System.Windows.Forms.TextBox();
             this.CancelButton = new System.Windows.Forms.Button();
             this.ConfirmButton = new System.Windows.Forms.Button();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ChoosingHeightLabel
@@ -63,7 +64,7 @@
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(176, 74);
+            this.ConfirmButton.Location = new System.Drawing.Point(186, 74);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(79, 35);
             this.ConfirmButton.TabIndex = 3;
@@ -71,11 +72,22 @@
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
+            // ResetButton
+            // 
+            this.ResetButton.Location = new System.Drawing.Point(101, 74);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(79, 35);
+            this.ResetButton.TabIndex = 4;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // AdjustHeightForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 121);
+            this.ClientSize = new System.Drawing.Size(287, 124);
+            this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ChoosingHeightTextBox);
@@ -93,5 +105,6 @@
         private System.Windows.Forms.TextBox ChoosingHeightTextBox;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button ConfirmButton;
+        private System.Windows.Forms.Button ResetButton;
     }
 }
