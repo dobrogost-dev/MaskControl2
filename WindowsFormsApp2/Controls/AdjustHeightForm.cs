@@ -36,7 +36,7 @@ namespace WindowsFormsApp2.Controls
         {
             if (ChoosingHeightTextBox.Text != string.Empty)
             {
-                BuildingInstance.tags.height = ChoosingHeightTextBox.Text;
+                BuildingInstance.UserHeight = double.Parse(ChoosingHeightTextBox.Text);
                 BuildingInstance.HeightChanged = true;
                 this.Close();
             } else

@@ -351,5 +351,11 @@ namespace WindowsFormsApp2
         {
 
         }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            MaskCalculatorInstance.Reset(MarkersOverlay);
+            MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
+        }
     }
 }

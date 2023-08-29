@@ -62,6 +62,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BuildingDataLegendPanel = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -76,7 +77,7 @@
             this.ManualSelectionButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SelectionModeLabel = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.SectorsLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
@@ -301,6 +302,12 @@
             resources.ApplyResources(this.BuildingDataLegendPanel, "BuildingDataLegendPanel");
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
             // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.BackColor = System.Drawing.Color.Khaki;
+            this.label15.Name = "label15";
+            // 
             // label11
             // 
             resources.ApplyResources(this.label11, "label11");
@@ -382,17 +389,19 @@
             resources.ApplyResources(this.SelectionModeLabel, "SelectionModeLabel");
             this.SelectionModeLabel.Name = "SelectionModeLabel";
             // 
-            // label15
+            // ResetButton
             // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.BackColor = System.Drawing.Color.Khaki;
-            this.label15.Name = "label15";
+            resources.ApplyResources(this.ResetButton, "ResetButton");
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.SelectionModeLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ManualSelectionButton);
@@ -487,6 +496,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label SelectionModeLabel;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button ResetButton;
     }
 }
 

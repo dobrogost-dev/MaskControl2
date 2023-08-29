@@ -64,6 +64,7 @@ namespace WindowsFormsApp2
         public List<Facade> Facades { get; set; }
         public bool HeightChanged = false;
         public GMapText MapText { get; set; }
+        public double UserHeight { get; set; } = 0;
     }
     public class Facade
     {

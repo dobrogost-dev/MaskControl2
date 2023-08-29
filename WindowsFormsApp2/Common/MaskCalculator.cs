@@ -363,7 +363,12 @@ namespace WindowsFormsApp2
                     }
                 }
             }
-            if (building.tags.height != null)
+            if (building.UserHeight != 0)
+            {
+                mask = GetMaskValue(BasePoint,
+                    TargetPoint, building.UserHeight);
+            } 
+            else if (building.tags.height != null)
             {
                 mask = GetMaskValue(BasePoint,
                     TargetPoint, double.Parse(building.tags.height));
@@ -447,7 +452,7 @@ namespace WindowsFormsApp2
                     {
                         MarkersOverlay.Markers.Remove(building.MapText);
                     }
-                    GMapText Text = new GMapText(building.CenterPoint, building.tags.height);
+                    GMapText Text = new GMapText(building.CenterPoint, building.UserHeight.ToString());
                     building.MapText = Text;
                     MarkersOverlay.Markers.Add(Text);
 
@@ -503,6 +508,22 @@ namespace WindowsFormsApp2
                 }
             }
             return false;
+        }
+
+        internal void Reset(GMapOverlay MarkersOverlay)
+        {
+            foreach (Building building in Buildings)
+            {
+                if (building.HeightChanged)
+                {
+                    building.HeightChanged = false;
+                    if (building.MapText != null)
+                    {
+                        MarkersOverlay.Markers.Remove(building.MapText);
+                        building.UserHeight = 0;
+                    }
+                }
+            }
         }
     }
 }
