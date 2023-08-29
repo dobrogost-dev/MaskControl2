@@ -161,7 +161,7 @@ namespace WindowsFormsApp2
             if (SelectionMode)
             {
                 PointLatLng point = Map.FromLocalToLatLng(e.X, e.Y);
-                if (MaskCalculatorInstance.AdjustTargetBuildingHeight(point))
+                if (MaskCalculatorInstance.AdjustTargetBuildingHeight(MarkersOverlay, point))
                 {
 
                 }

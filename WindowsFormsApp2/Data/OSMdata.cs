@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using GMap.NET;
+using WindowsFormsApp2.Lib;
 
 namespace WindowsFormsApp2
 {
@@ -62,6 +63,7 @@ namespace WindowsFormsApp2
         public PointLatLng CenterPoint { get; set; }
         public List<Facade> Facades { get; set; }
         public bool HeightChanged = false;
+        public GMapText MapText { get; set; }
     }
     public class Facade
     {

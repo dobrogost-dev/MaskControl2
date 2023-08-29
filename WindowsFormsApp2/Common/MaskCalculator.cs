@@ -1,5 +1,6 @@
 ﻿using GMap.NET;
 using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using WindowsFormsApp2.Controls;
+using WindowsFormsApp2.Lib;
 using static WindowsFormsApp2.MaskCalculatorUtilities;
 
 namespace WindowsFormsApp2
@@ -425,7 +427,7 @@ namespace WindowsFormsApp2
             return "Unspecified";
         }
 
-        internal bool AdjustTargetBuildingHeight(PointLatLng point)
+        internal bool AdjustTargetBuildingHeight(GMapOverlay MarkersOverlay, PointLatLng point)
         {
             if (Buildings == null)
             {
@@ -437,9 +439,18 @@ namespace WindowsFormsApp2
                 {
                     Console.WriteLine("Building id: " + building.id + " detected");
                     string InitialHeight = building.tags.height;
+                    bool InitialStatus = building.HeightChanged;
                     AdjustHeightForm Form = new AdjustHeightForm(building);
                     Form.ShowDialog();
                     string NewHeight = building.tags.height;
+                    if (InitialStatus)
+                    {
+                        MarkersOverlay.Markers.Remove(building.MapText);
+                    }
+                    GMapText Text = new GMapText(building.CenterPoint, building.tags.height);
+                    building.MapText = Text;
+                    MarkersOverlay.Markers.Add(Text);
+
                     if (InitialHeight != NewHeight)
                     {
                         return true;
