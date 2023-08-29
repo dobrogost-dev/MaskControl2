@@ -32,6 +32,7 @@ namespace WindowsFormsApp2
         public bool DefaultLeftMiddleNotFound = false;
         public bool DefaultRightMiddleNotFound = false;
         public bool DefaultRightNotFound = false;
+        public bool MarkerMoved = false;
 
         public double radius = 45;
         public void LoadData(OSMdata Data)
@@ -256,7 +257,7 @@ namespace WindowsFormsApp2
             {
                 return result;
             }
-            if (CheckForDefaultValues())
+            if (CheckForDefaultValues() && MarkerMoved)
             {
                 Console.WriteLine("Default values found");
                 GetDataFromDefaultHeightForm();

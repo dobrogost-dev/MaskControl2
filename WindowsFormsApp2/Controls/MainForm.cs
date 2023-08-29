@@ -180,6 +180,7 @@ namespace WindowsFormsApp2
                 LatitudeTextBox.Text = point.Lat.ToString();
                 LongitudeTextBox.Text = point.Lng.ToString();
                 MaskButton.Enabled = true;
+                MaskCalculatorInstance.MarkerMoved = true;
             }
         }
         private async void MaskButton_Click(object sender, EventArgs e)
@@ -203,6 +204,7 @@ namespace WindowsFormsApp2
                 CurrentMarker.Position = MaskCalculatorInstance.GetClosestFacade(CurrentMarker.Position);
                 await GetBuildingsData(Client);
                 SectorsCheckBox.Checked = true;
+                MaskCalculatorInstance.MarkerMoved = false;
             }
             catch (Exception ex)
             {
