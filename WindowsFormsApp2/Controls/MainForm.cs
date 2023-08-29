@@ -126,12 +126,15 @@ namespace WindowsFormsApp2
                 try
                 {
                     await FindBaseBuilding(Client);
+                    if (MaskCalculatorInstance.BaseBuilding != null)
+                    {
+                        CurrentMarker.Position = MaskCalculatorInstance.BaseBuilding.CenterPoint;
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Wystąpił błąd: {ex.Message}");
                 }
-                CurrentMarker.Position = MaskCalculatorInstance.BaseBuilding.CenterPoint;
                 PreviousAddress = Address;
                 Map.Zoom = 19;
                 MaskButton.Enabled = false;
