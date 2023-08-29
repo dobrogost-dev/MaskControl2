@@ -78,6 +78,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SelectionModeLabel = new System.Windows.Forms.Label();
             this.ResetButton = new System.Windows.Forms.Button();
+            this.AdjustDefaultBuildingHeightButton = new System.Windows.Forms.Button();
             this.SectorsLegendPanel.SuspendLayout();
             this.BuildingDataLegendPanel.SuspendLayout();
             this.SuspendLayout();
@@ -396,11 +397,19 @@
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
+            // AdjustDefaultBuildingHeightButton
+            // 
+            resources.ApplyResources(this.AdjustDefaultBuildingHeightButton, "AdjustDefaultBuildingHeightButton");
+            this.AdjustDefaultBuildingHeightButton.Name = "AdjustDefaultBuildingHeightButton";
+            this.AdjustDefaultBuildingHeightButton.UseVisualStyleBackColor = true;
+            this.AdjustDefaultBuildingHeightButton.Click += new System.EventHandler(this.AdjustDefaultBuildingHeightButton_Click);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.SearchButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.AdjustDefaultBuildingHeightButton);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.SelectionModeLabel);
             this.Controls.Add(this.label1);
@@ -497,6 +506,7 @@
         private System.Windows.Forms.Label SelectionModeLabel;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button ResetButton;
+        private System.Windows.Forms.Button AdjustDefaultBuildingHeightButton;
     }
 }
 

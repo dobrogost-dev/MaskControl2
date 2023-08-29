@@ -141,7 +141,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SearchButton.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>32</value>
   </data>
   <data name="LatitudeTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 45</value>
@@ -162,7 +162,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LatitudeTextBox.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>31</value>
   </data>
   <data name="LatitudeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -189,7 +189,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LatitudeLabel.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="LongitudeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -216,7 +216,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LongitudeLabel.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="AddressLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -243,7 +243,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AddressLabel.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="ZoomInButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>21, 130</value>
@@ -267,7 +267,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ZoomInButton.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="ZoomOutButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 164</value>
@@ -291,7 +291,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ZoomOutButton.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="LongitudeTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 83</value>
@@ -312,7 +312,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;LongitudeTextBox.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>30</value>
   </data>
   <data name="MaskButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>753, 48</value>
@@ -336,7 +336,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskButton.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="RadiusLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -363,7 +363,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;RadiusLabel.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="RadiusTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>651, 51</value>
@@ -384,7 +384,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;RadiusTextBox.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="AddressTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 8</value>
@@ -405,7 +405,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;AddressTextBox.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="MaskLeftResult.Location" type="System.Drawing.Point, System.Drawing">
     <value>743, 138</value>
@@ -426,7 +426,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskLeftResult.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="MaskLeftLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -453,7 +453,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskLeftLabel.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="MaskLeftMiddleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -480,7 +480,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskLeftMiddleLabel.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="MaskLeftMiddleResult.Location" type="System.Drawing.Point, System.Drawing">
     <value>743, 200</value>
@@ -501,7 +501,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskLeftMiddleResult.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="MaskRightMiddleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -528,7 +528,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskRightMiddleLabel.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="MaskRightMiddleResult.Location" type="System.Drawing.Point, System.Drawing">
     <value>743, 266</value>
@@ -549,7 +549,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskRightMiddleResult.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="MaskRightLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -576,7 +576,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskRightLabel.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="MaskRightResult.Location" type="System.Drawing.Point, System.Drawing">
     <value>743, 333</value>
@@ -597,7 +597,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;MaskRightResult.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="Map.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 117</value>
@@ -618,7 +618,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;Map.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>33</value>
   </data>
   <data name="BuildingDataRadioButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -645,7 +645,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BuildingDataRadioButton.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="ColorBuildingsByLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -672,7 +672,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ColorBuildingsByLabel.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="DirectionRadioButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -699,7 +699,112 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DirectionRadioButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>729, 468</value>
+  </data>
+  <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 134</value>
+  </data>
+  <data name="SectorsLegendPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanel.Name" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanel.ZOrder" xml:space="preserve">
+    <value>35</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -890,25 +995,109 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="BuildingDataLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>729, 468</value>
   </data>
-  <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 134</value>
+  <data name="BuildingDataLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 131</value>
   </data>
-  <data name="SectorsLegendPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+  <data name="BuildingDataLegendPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
   </data>
-  <data name="&gt;&gt;SectorsLegendPanel.Name" xml:space="preserve">
-    <value>SectorsLegendPanel</value>
+  <data name="&gt;&gt;BuildingDataLegendPanel.Name" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
   </data>
-  <data name="&gt;&gt;SectorsLegendPanel.Type" xml:space="preserve">
+  <data name="&gt;&gt;BuildingDataLegendPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;SectorsLegendPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;BuildingDataLegendPanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;SectorsLegendPanel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;BuildingDataLegendPanel.ZOrder" xml:space="preserve">
     <value>34</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
@@ -1104,27 +1293,6 @@
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="BuildingDataLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>729, 468</value>
-  </data>
-  <data name="BuildingDataLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 131</value>
-  </data>
-  <data name="BuildingDataLegendPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="&gt;&gt;BuildingDataLegendPanel.Name" xml:space="preserve">
-    <value>BuildingDataLegendPanel</value>
-  </data>
-  <data name="&gt;&gt;BuildingDataLegendPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BuildingDataLegendPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;BuildingDataLegendPanel.ZOrder" xml:space="preserve">
-    <value>33</value>
-  </data>
   <data name="SectorsCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1150,7 +1318,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SectorsCheckBox.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="FacadeDirectionDescriptionLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1177,7 +1345,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FacadeDirectionDescriptionLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="FacadeDirectionLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1201,7 +1369,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;FacadeDirectionLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="DefaultBuildingFloorHeightTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>221, 547</value>
@@ -1222,7 +1390,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DefaultBuildingFloorHeightTextBox.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="DefaultBuildingFloorHeightLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 550</value>
@@ -1246,7 +1414,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DefaultBuildingFloorHeightLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="ManualSelectionButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1273,7 +1441,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ManualSelectionButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1300,7 +1468,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="SelectionModeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1330,16 +1498,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SelectionModeLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="ResetButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="ResetButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 586</value>
+    <value>415, 586</value>
   </data>
   <data name="ResetButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 28</value>
+    <value>95, 28</value>
   </data>
   <data name="ResetButton.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -1357,6 +1525,33 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;ResetButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="AdjustDefaultBuildingHeightButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="AdjustDefaultBuildingHeightButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 586</value>
+  </data>
+  <data name="AdjustDefaultBuildingHeightButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 28</value>
+  </data>
+  <data name="AdjustDefaultBuildingHeightButton.TabIndex" type="System.Int32, mscorlib">
+    <value>47</value>
+  </data>
+  <data name="AdjustDefaultBuildingHeightButton.Text" xml:space="preserve">
+    <value>Adjust default building height</value>
+  </data>
+  <data name="&gt;&gt;AdjustDefaultBuildingHeightButton.Name" xml:space="preserve">
+    <value>AdjustDefaultBuildingHeightButton</value>
+  </data>
+  <data name="&gt;&gt;AdjustDefaultBuildingHeightButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AdjustDefaultBuildingHeightButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;AdjustDefaultBuildingHeightButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

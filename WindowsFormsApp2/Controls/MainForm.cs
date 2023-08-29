@@ -359,5 +359,13 @@ namespace WindowsFormsApp2
             MaskCalculatorInstance.Reset(MarkersOverlay);
             MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
         }
+
+        private void AdjustDefaultBuildingHeightButton_Click(object sender, EventArgs e)
+        {
+            if (MaskCalculatorInstance.CheckForDefaultValues())
+            {
+                MaskCalculatorInstance.GetDataFromDefaultHeightForm();
+            }
+        }
     }
 }

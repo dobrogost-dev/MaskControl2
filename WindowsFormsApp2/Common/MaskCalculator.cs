@@ -257,10 +257,12 @@ namespace WindowsFormsApp2
             {
                 return result;
             }
-            if (CheckForDefaultValues() && MarkerMoved)
-            {
-                Console.WriteLine("Default values found");
-                GetDataFromDefaultHeightForm();
+            if (MarkerMoved)
+            { 
+                if (CheckForDefaultValues())
+                {
+                    GetDataFromDefaultHeightForm();
+                }
             }
             foreach (Building building in Buildings)
             {
@@ -300,13 +302,13 @@ namespace WindowsFormsApp2
             return result;
         }
 
-        private void GetDataFromDefaultHeightForm()
+        public void GetDataFromDefaultHeightForm()
         {
             DefaultHeightForm Form = new DefaultHeightForm(this);
             Form.ShowDialog();
         }
 
-        private bool CheckForDefaultValues()
+        public bool CheckForDefaultValues()
         {
             DefaultLeftNotFound = false;
             DefaultLeftMiddleNotFound = false;
@@ -317,7 +319,11 @@ namespace WindowsFormsApp2
             DefaultLeftMiddleBuildingHeight = 0;
             DefaultRightMiddleBuildingHeight = 0;
             DefaultRightBuildingHeight = 0;
-
+            
+            if (Buildings == null)
+            {
+                return false;
+            }
             foreach (Building building in Buildings)
             {
                 if (building.tags.height == null && building.tags.BuildingLevels == null)
@@ -443,7 +449,6 @@ namespace WindowsFormsApp2
             {
                 if (IsPointInsidePolygon(point, building.NodesId) )
                 {
-                    Console.WriteLine("Building id: " + building.id + " detected");
                     bool InitialStatus = building.HeightChanged;
                     AdjustHeightForm Form = new AdjustHeightForm(building);
                     Form.ShowDialog();
@@ -495,8 +500,6 @@ namespace WindowsFormsApp2
         {
             foreach (Facade facade in building.Facades)
             {
-                Console.WriteLine(CalculateDistanceInMeters(facade.PointCenter.Lat, facade.PointCenter.Lng, point.Lat, point.Lng));
-
                 if (CalculateDistanceInMeters(facade.PointCenter.Lat, facade.PointCenter.Lng, point.Lat, point.Lng) < radius)
                 {
                     return true;
@@ -505,7 +508,6 @@ namespace WindowsFormsApp2
             foreach (long NodeId in building.NodesId)
             {
                 Node node = GetNodeForId(NodeId);
-                Console.WriteLine(CalculateDistanceInMeters(node.lat, node.lon, point.Lat, point.Lng));
                 if (CalculateDistanceInMeters(node.lat, node.lon, point.Lat, point.Lng) < radius)
                 {
                     return true;
