@@ -10,7 +10,10 @@ namespace WindowsFormsApp2
     {
         public static bool IsValidDecimal(string input)
         {
-            return decimal.TryParse(input, out _);
+            char[] validSeparators = { '.', ',' };
+
+            return input.All(c => char.IsDigit(c) || validSeparators.Contains(c))
+                   && input.Count(c => validSeparators.Contains(c)) <= 1; 
         }
     }
 }
