@@ -19,6 +19,28 @@ namespace WindowsFormsApp2
             InitializeComponent();
             MaskCalculatorInstance = maskCalulatorInstance;
             SetTextboxesVisible();
+            Console.WriteLine(MaskCalculatorInstance.DefaultLeftBuildingHeight);
+            Console.WriteLine(MaskCalculatorInstance.DefaultLeftMiddleBuildingHeight);
+            Console.WriteLine(MaskCalculatorInstance.DefaultRightMiddleBuildingHeight);
+            Console.WriteLine(MaskCalculatorInstance.DefaultRightBuildingHeight);
+
+            if (MaskCalculatorInstance.DefaultLeftBuildingHeight != 0)
+            {
+                DefaultLeftBuildingHeightTextBox.Text = MaskCalculatorInstance.DefaultLeftBuildingHeight.ToString();
+            }
+            if (MaskCalculatorInstance.DefaultLeftMiddleBuildingHeight != 0)
+            {
+                DefaultLeftMiddleBuildingHeightTextBox.Text = MaskCalculatorInstance.DefaultLeftMiddleBuildingHeight.ToString();
+            }
+            if (MaskCalculatorInstance.DefaultRightMiddleBuildingHeight != 0)
+            {
+                DefaultRightMiddleBuildingHeightTextBox.Text = MaskCalculatorInstance.DefaultRightMiddleBuildingHeight.ToString();
+            }
+            if (MaskCalculatorInstance.DefaultRightBuildingHeight != 0)
+            {
+                DefaultRightBuildingHeightTextBox.Text = MaskCalculatorInstance.DefaultRightBuildingHeight.ToString();
+            }
+
         }
 
         private void SetTextboxesVisible()
