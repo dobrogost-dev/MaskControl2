@@ -194,13 +194,13 @@
             // 
             // Map
             // 
+            resources.ApplyResources(this.Map, "Map");
             this.Map.Bearing = 0F;
             this.Map.CanDragMap = true;
             this.Map.EmptyTileColor = System.Drawing.Color.Navy;
             this.Map.GrayScaleMode = false;
             this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.Map.LevelsKeepInMemory = 5;
-            resources.ApplyResources(this.Map, "Map");
             this.Map.MarkersEnabled = true;
             this.Map.MaxZoom = 2;
             this.Map.MinZoom = 2;
@@ -240,6 +240,7 @@
             // 
             // SectorsLegendPanel
             // 
+            resources.ApplyResources(this.SectorsLegendPanel, "SectorsLegendPanel");
             this.SectorsLegendPanel.Controls.Add(this.label14);
             this.SectorsLegendPanel.Controls.Add(this.label7);
             this.SectorsLegendPanel.Controls.Add(this.label6);
@@ -247,7 +248,6 @@
             this.SectorsLegendPanel.Controls.Add(this.label4);
             this.SectorsLegendPanel.Controls.Add(this.label3);
             this.SectorsLegendPanel.Controls.Add(this.label2);
-            resources.ApplyResources(this.SectorsLegendPanel, "SectorsLegendPanel");
             this.SectorsLegendPanel.Name = "SectorsLegendPanel";
             // 
             // label14
@@ -293,6 +293,7 @@
             // 
             // BuildingDataLegendPanel
             // 
+            resources.ApplyResources(this.BuildingDataLegendPanel, "BuildingDataLegendPanel");
             this.BuildingDataLegendPanel.Controls.Add(this.label15);
             this.BuildingDataLegendPanel.Controls.Add(this.label11);
             this.BuildingDataLegendPanel.Controls.Add(this.label8);
@@ -300,7 +301,6 @@
             this.BuildingDataLegendPanel.Controls.Add(this.label10);
             this.BuildingDataLegendPanel.Controls.Add(this.label12);
             this.BuildingDataLegendPanel.Controls.Add(this.label13);
-            resources.ApplyResources(this.BuildingDataLegendPanel, "BuildingDataLegendPanel");
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
             // 
             // label15
@@ -389,6 +389,7 @@
             // 
             resources.ApplyResources(this.SelectionModeLabel, "SelectionModeLabel");
             this.SelectionModeLabel.Name = "SelectionModeLabel";
+            this.SelectionModeLabel.Click += new System.EventHandler(this.SelectionModeLabel_Click);
             // 
             // ResetButton
             // 

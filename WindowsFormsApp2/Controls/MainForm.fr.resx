@@ -293,9 +293,6 @@
   <data name="label10.Text" xml:space="preserve">
     <value>Orange: par niveaux de l'immeuble</value>
   </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 60</value>
-  </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 16</value>
   </data>
@@ -344,5 +341,11 @@
   </data>
   <data name="DefaultBuildingFloorHeightLabel.Text" xml:space="preserve">
     <value>Hauteur par défaut du niveau</value>
+  </data>
+  <data name="ManualSelectionButton.Text" xml:space="preserve">
+    <value>Selection hauteur manuelle</value>
+  </data>
+  <data name="AdjustDefaultBuildingHeightButton.Text" xml:space="preserve">
+    <value>Ajuster hauteur immeuble</value>
   </data>
 </root>

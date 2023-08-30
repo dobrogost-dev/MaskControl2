@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdjustHeightForm));
             this.ChoosingHeightLabel = new System.Windows.Forms.Label();
             this.ChoosingHeightTextBox = new System.Windows.Forms.TextBox();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -37,63 +38,46 @@
             // 
             // ChoosingHeightLabel
             // 
-            this.ChoosingHeightLabel.AutoSize = true;
-            this.ChoosingHeightLabel.Location = new System.Drawing.Point(12, 22);
+            resources.ApplyResources(this.ChoosingHeightLabel, "ChoosingHeightLabel");
             this.ChoosingHeightLabel.Name = "ChoosingHeightLabel";
-            this.ChoosingHeightLabel.Size = new System.Drawing.Size(168, 16);
-            this.ChoosingHeightLabel.TabIndex = 0;
-            this.ChoosingHeightLabel.Text = "Height of selected building:";
             // 
             // ChoosingHeightTextBox
             // 
-            this.ChoosingHeightTextBox.Location = new System.Drawing.Point(186, 22);
+            resources.ApplyResources(this.ChoosingHeightTextBox, "ChoosingHeightTextBox");
             this.ChoosingHeightTextBox.Name = "ChoosingHeightTextBox";
-            this.ChoosingHeightTextBox.Size = new System.Drawing.Size(69, 22);
-            this.ChoosingHeightTextBox.TabIndex = 1;
             this.ChoosingHeightTextBox.TextChanged += new System.EventHandler(this.ChoosingHeightTextBox_TextChanged);
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(15, 74);
+            resources.ApplyResources(this.CancelButton, "CancelButton");
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(79, 35);
-            this.CancelButton.TabIndex = 2;
-            this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.Location = new System.Drawing.Point(186, 74);
+            resources.ApplyResources(this.ConfirmButton, "ConfirmButton");
             this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(79, 35);
-            this.ConfirmButton.TabIndex = 3;
-            this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = true;
             this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // ResetButton
             // 
-            this.ResetButton.Location = new System.Drawing.Point(101, 74);
+            resources.ApplyResources(this.ResetButton, "ResetButton");
             this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(79, 35);
-            this.ResetButton.TabIndex = 4;
-            this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // AdjustHeightForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(287, 124);
             this.Controls.Add(this.ResetButton);
             this.Controls.Add(this.ConfirmButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.ChoosingHeightTextBox);
             this.Controls.Add(this.ChoosingHeightLabel);
             this.Name = "AdjustHeightForm";
-            this.Text = "AdjustHeightForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

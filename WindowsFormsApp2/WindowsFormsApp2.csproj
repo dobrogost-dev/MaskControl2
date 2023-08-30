@@ -129,6 +129,9 @@
     <Compile Include="Data\OSMdata.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\AdjustHeightForm.fr.resx">
+      <DependentUpon>AdjustHeightForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\AdjustHeightForm.resx">
       <DependentUpon>AdjustHeightForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -41,9 +41,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
             SetMapConfiguration();
             SetInitialValues();
-
             FormBorderStyle = FormBorderStyle.FixedSingle;
-
         }
 
         private void SetInitialValues()
@@ -348,7 +346,7 @@ namespace WindowsFormsApp2
             } else
             {
                 SelectionMode = true;
-                SelectionModeLabel.Text = "Manual height selection";
+                SelectionModeLabel.Text = "Selection hauteur manuelle";
             }
         }
 
@@ -369,6 +367,11 @@ namespace WindowsFormsApp2
             {
                 MaskCalculatorInstance.GetDataFromDefaultHeightForm();
             }
+        }
+
+        private void SelectionModeLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
