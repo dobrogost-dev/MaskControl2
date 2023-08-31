@@ -252,7 +252,7 @@ namespace WindowsFormsApp2
         }
         public MaskResult CalculateMasks(double DefaultBuildingFloorHeight)
         {
-            MaskResult result = new MaskResult();
+            MaskResult result = new MaskResult(0,0,0,0);
             if (Buildings.Count == 0 || Nodes.Count == 0)
             {
                 return result;

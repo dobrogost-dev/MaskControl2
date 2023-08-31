@@ -362,6 +362,22 @@ namespace WindowsFormsApp2
                 SelectionMode = true;
                 SelectionModeLabel.Text = "Sélection manuelle hauteur";
             }
+            MaskResult MaskResults = new MaskResult(0, 0, 0, 0);
+
+            MaskLeftResult.Text = Math.Round(MaskResults.East_SouthEast, 2).ToString() + "°";
+            MaskLeftMiddleResult.Text = Math.Round(MaskResults.SouthEast_South, 2).ToString() + "°";
+            MaskRightMiddleResult.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
+            MaskRightResult.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
+
+            MaskCalculatorInstance.DefaultLeftBuildingHeight = 0;
+            MaskCalculatorInstance.DefaultLeftMiddleBuildingHeight = 0;
+            MaskCalculatorInstance.DefaultRightMiddleBuildingHeight = 0;
+            MaskCalculatorInstance.DefaultRightBuildingHeight = 0;
+            MessageBox.Show("Si vous utilisez cette fonction, après avoir indiqué la hauteur individuelle" +
+                 " d'un ou plusieurs immeubles, il faudra cliquer sur le bouton \"Masque\" pour recalculer" +
+                 " les angles des masques lointains ! Les hauteurs moyennes par secteurs saisies précédemment" +
+                 " seront alors remises à zéro !",
+                 "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void label1_Click(object sender, EventArgs e)
