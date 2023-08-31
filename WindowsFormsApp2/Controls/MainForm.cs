@@ -346,7 +346,7 @@ namespace WindowsFormsApp2
             } else
             {
                 SelectionMode = true;
-                SelectionModeLabel.Text = "Selection hauteur manuelle";
+                SelectionModeLabel.Text = "Sélection manuelle hauteur";
             }
         }
 
