@@ -161,9 +161,6 @@
   <data name="AdjustDefaultBuildingHeightButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 28</value>
   </data>
-  <data name="AddressLabel.Text" xml:space="preserve">
-    <value>Address</value>
-  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 76</value>
   </data>
@@ -858,9 +855,6 @@
   <data name="MaskLeftLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;MaskRightMiddleLabel.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
   <data name="MaskRightMiddleLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -903,6 +897,9 @@
   <data name="FacadeDirectionDescriptionLabel.Text" xml:space="preserve">
     <value>Scanned facade direction: </value>
   </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
   <data name="&gt;&gt;ZoomOutButton.Name" xml:space="preserve">
     <value>ZoomOutButton</value>
   </data>
@@ -944,9 +941,6 @@
   </data>
   <data name="AddressTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>640, 22</value>
-  </data>
-  <data name="&gt;&gt;ZoomOutButton.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="AddressTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>90, 8</value>
@@ -1043,6 +1037,9 @@
   </data>
   <data name="&gt;&gt;LatitudeTextBox.Name" xml:space="preserve">
     <value>LatitudeTextBox</value>
+  </data>
+  <data name="MaskLeftResult.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
   </data>
   <data name="LatitudeLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 48</value>
@@ -1149,8 +1146,8 @@
   <data name="&gt;&gt;ResetButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="MaskLeftResult.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
+  <data name="AddressLabel.Text" xml:space="preserve">
+    <value>Address</value>
   </data>
   <data name="DefaultBuildingFloorHeightLabel.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -1217,6 +1214,9 @@
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Gray: Ignored building</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>BuildingDataLegendPanel</value>
   </data>
   <data name="&gt;&gt;MaskLeftResult.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1308,14 +1308,14 @@
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>BuildingDataLegendPanel</value>
+  <data name="&gt;&gt;AddressLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LongitudeTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="MaskRightLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>750, 312</value>
@@ -1341,8 +1341,8 @@
   <data name="&gt;&gt;label12.Parent" xml:space="preserve">
     <value>BuildingDataLegendPanel</value>
   </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;MaskRightMiddleLabel.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1380,8 +1380,8 @@
   <data name="&gt;&gt;FacadeDirectionLabel.Name" xml:space="preserve">
     <value>FacadeDirectionLabel</value>
   </data>
-  <data name="&gt;&gt;AddressLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ZoomOutButton.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="MaskRightMiddleLabel.Text" xml:space="preserve">
     <value>Right-Middle</value>

@@ -204,14 +204,29 @@ namespace WindowsFormsApp2
                 await FindBaseBuilding(Client);
                 CurrentMarker.Position = MaskCalculatorInstance.GetClosestFacade(CurrentMarker.Position);
                 await GetBuildingsData(Client);
-                SectorsCheckBox.Checked = true;
-                MaskCalculatorInstance.MarkerMoved = false;
+                ProcessInterfaceAfterCalculations();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Wystąpił błąd: {ex.Message}");
             }
         }
+
+        private void ProcessInterfaceAfterCalculations()
+        {
+            if (!SectorsCheckBox.Checked && !BuildingDataRadioButton.Checked)
+            {
+                SectorsLegendPanel.Visible = true;
+                BuildingDataLegendPanel.Visible = false;
+
+                DirectionRadioButton.Checked = true;
+                BuildingDataRadioButton.Checked = false;
+            }
+
+            SectorsCheckBox.Checked = true;
+            MaskCalculatorInstance.MarkerMoved = false;
+        }
+
         private async Task FindBaseBuilding(HttpClient Client)
         {
             double InitialRadius = 50.0;
@@ -260,7 +275,6 @@ namespace WindowsFormsApp2
             MaskRightMiddleResult.Text = Math.Round(MaskResults.South_SouthWest, 2).ToString() + "°";
             MaskRightResult.Text = Math.Round(MaskResults.SouthWest_West, 2).ToString() + "°";
             FacadeDirectionLabel.Text = MaskCalculatorInstance.GetDirectionAsText();
-            SectorsLegendPanel.Visible = true;
         }
 
         private async Task<OSMdata> GetOSMApiResponse(string url, HttpClient Client)
