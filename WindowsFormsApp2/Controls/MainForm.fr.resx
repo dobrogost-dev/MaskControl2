@@ -246,7 +246,7 @@
     <value>84, 16</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Vart: Gauche</value>
+    <value>Vert: Gauche</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 16</value>
@@ -272,6 +272,9 @@
   <data name="label8.Text" xml:space="preserve">
     <value>Bleu: immeuble de base</value>
   </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 122</value>
+  </data>
   <data name="label9.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>165, 0</value>
   </data>
@@ -282,7 +285,7 @@
     <value>Rouge: par la hauteur par défaut</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 76</value>
+    <value>10, 90</value>
   </data>
   <data name="label10.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>160, 0</value>
@@ -309,7 +312,7 @@
     <value>718, 457</value>
   </data>
   <data name="BuildingDataLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 148</value>
+    <value>181, 168</value>
   </data>
   <data name="SectorsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>729, 433</value>
@@ -343,7 +346,7 @@
     <value>Hauteur par défaut du niveau</value>
   </data>
   <data name="ManualSelectionButton.Text" xml:space="preserve">
-    <value>Selection hauteur manuelle</value>
+    <value>Sélection manuelle hauteur</value>
   </data>
   <data name="AdjustDefaultBuildingHeightButton.Text" xml:space="preserve">
     <value>Ajuster hauteur immeuble</value>

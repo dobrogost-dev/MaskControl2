@@ -139,9 +139,9 @@ namespace WindowsFormsApp2
 
                 Map.Refresh();
 
-                MessageBox.Show("Le marqueur est positionné au centre de l'immeuble recherché. " +
-                "Veuillez maintenant le positionner plus précisément au centre de la façade " +
-                "à partir de laquelle les masques lointains doivent être détectés !",
+                MessageBox.Show("Le marqueur est positionné au centre ou à proximité de l'immeuble recherché." +
+                    " Veuillez maintenant le positionner plus précisément au centre de la façade de l'immeuble à" +
+                    " partir de laquelle les masques lointains doivent être détectés!",
                 "Choose facade!",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

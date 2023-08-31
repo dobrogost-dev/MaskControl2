@@ -415,21 +415,21 @@ namespace WindowsFormsApp2
             double Azimuth = AnalyzedFacade.Azimuth;
             if (Azimuth > 315 || Azimuth < 45)
             {
-                return "North";
+                return "Nord";
             }
             else if (Azimuth > 45 && Azimuth < 135)
             {
-                return "East";
+                return "Est";
 
             }
             else if (Azimuth > 135 && Azimuth < 225)
             {
-                return "South";
+                return "Sud";
 
             }
             else if (Azimuth > 225 && Azimuth < 315)
             {
-                return "West";
+                return "Ouest";
             }
             return "Unspecified";
         }

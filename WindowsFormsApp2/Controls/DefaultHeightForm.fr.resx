@@ -138,10 +138,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="InformationLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>633, 32</value>
+    <value>637, 32</value>
   </data>
   <data name="InformationLabel.Text" xml:space="preserve">
-    <value>La hauteur des immeubles ou de certains d'entre eux n'est pas disponible dans Open street view. Veuillez indiquer la hauteur moyenne des immeubles dans les secteurs dans lesquels elle n'a pu être calculée</value>
+    <value>La hauteur des immeubles ou de certains d'entre eux n'est pas disponible dans Open Street View. Veuillez indiquer la hauteur des immeubles dans les secteurs ci-dessous dans lesquels elle n'a pu être calculée.</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -156,6 +156,6 @@
     <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Hauteur moyenne des immeubles par secteur</value>
+    <value>Localisation de l'immeuble et détection des masques lointains</value>
   </data>
 </root>
