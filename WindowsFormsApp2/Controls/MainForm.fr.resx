@@ -212,6 +212,12 @@
   <data name="DirectionRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>729, 357</value>
   </data>
+  <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>715, 457</value>
+  </data>
+  <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 168</value>
+  </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 16</value>
   </data>
@@ -254,10 +260,10 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Légende</value>
   </data>
-  <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="BuildingDataLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>715, 457</value>
   </data>
-  <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="BuildingDataLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>181, 168</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
@@ -314,12 +320,6 @@
   <data name="label13.Text" xml:space="preserve">
     <value>Légende</value>
   </data>
-  <data name="BuildingDataLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>715, 457</value>
-  </data>
-  <data name="BuildingDataLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 168</value>
-  </data>
   <data name="SectorsCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>729, 433</value>
   </data>
@@ -356,5 +356,8 @@
   </data>
   <data name="AdjustDefaultBuildingHeightButton.Text" xml:space="preserve">
     <value>Ajuster hauteur immeuble</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Localisation de l'immeuble et détection des masques lointains</value>
   </data>
 </root>
