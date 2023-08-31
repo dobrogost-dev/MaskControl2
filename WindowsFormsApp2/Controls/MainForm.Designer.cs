@@ -301,6 +301,7 @@
             this.BuildingDataLegendPanel.Controls.Add(this.label10);
             this.BuildingDataLegendPanel.Controls.Add(this.label12);
             this.BuildingDataLegendPanel.Controls.Add(this.label13);
+            this.BuildingDataLegendPanel.Controls.Add(this.SectorsLegendPanel);
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
             // 
             // label15
@@ -444,7 +445,6 @@
             this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.Map);
-            this.Controls.Add(this.SectorsLegendPanel);
             this.Controls.Add(this.BuildingDataLegendPanel);
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
