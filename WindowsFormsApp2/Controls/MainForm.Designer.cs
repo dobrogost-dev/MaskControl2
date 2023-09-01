@@ -54,20 +54,20 @@
             this.ColorBuildingsByLabel = new System.Windows.Forms.Label();
             this.DirectionRadioButton = new System.Windows.Forms.RadioButton();
             this.SectorsLegendPanel = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.SectorsLegendPanelIgnoredLabel = new System.Windows.Forms.Label();
+            this.SectorsLegendPanelBaseLabel = new System.Windows.Forms.Label();
+            this.SectorsLegendPanelRightLabel = new System.Windows.Forms.Label();
+            this.SectorsLegendPanelRightMiddleLabel = new System.Windows.Forms.Label();
+            this.SectorsLegendPanelLeftMiddleLabel = new System.Windows.Forms.Label();
+            this.SectorsLegendPanelLeftLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BuildingDataLegendPanel = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.BuildingDataLegendPanelUserHeightLabel = new System.Windows.Forms.Label();
+            this.BuildingDataLegendPanelIgnoredLabel = new System.Windows.Forms.Label();
+            this.BuildingDataLegendPanelBaseLabel = new System.Windows.Forms.Label();
+            this.BuildingDataLegendPanelDefaultHeightLabel = new System.Windows.Forms.Label();
+            this.BuildingDataLegendPanelBuildingFloorsLabel = new System.Windows.Forms.Label();
+            this.BuildingDataLegendPanelHeightLabel = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.SectorsCheckBox = new System.Windows.Forms.CheckBox();
             this.FacadeDirectionDescriptionLabel = new System.Windows.Forms.Label();
@@ -194,13 +194,13 @@
             // 
             // Map
             // 
-            resources.ApplyResources(this.Map, "Map");
             this.Map.Bearing = 0F;
             this.Map.CanDragMap = true;
             this.Map.EmptyTileColor = System.Drawing.Color.Navy;
             this.Map.GrayScaleMode = false;
             this.Map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.Map.LevelsKeepInMemory = 5;
+            resources.ApplyResources(this.Map, "Map");
             this.Map.MarkersEnabled = true;
             this.Map.MaxZoom = 2;
             this.Map.MinZoom = 2;
@@ -240,51 +240,51 @@
             // 
             // SectorsLegendPanel
             // 
-            resources.ApplyResources(this.SectorsLegendPanel, "SectorsLegendPanel");
-            this.SectorsLegendPanel.Controls.Add(this.label14);
-            this.SectorsLegendPanel.Controls.Add(this.label7);
-            this.SectorsLegendPanel.Controls.Add(this.label6);
-            this.SectorsLegendPanel.Controls.Add(this.label5);
-            this.SectorsLegendPanel.Controls.Add(this.label4);
-            this.SectorsLegendPanel.Controls.Add(this.label3);
+            this.SectorsLegendPanel.Controls.Add(this.SectorsLegendPanelIgnoredLabel);
+            this.SectorsLegendPanel.Controls.Add(this.SectorsLegendPanelBaseLabel);
+            this.SectorsLegendPanel.Controls.Add(this.SectorsLegendPanelRightLabel);
+            this.SectorsLegendPanel.Controls.Add(this.SectorsLegendPanelRightMiddleLabel);
+            this.SectorsLegendPanel.Controls.Add(this.SectorsLegendPanelLeftMiddleLabel);
+            this.SectorsLegendPanel.Controls.Add(this.SectorsLegendPanelLeftLabel);
             this.SectorsLegendPanel.Controls.Add(this.label2);
+            resources.ApplyResources(this.SectorsLegendPanel, "SectorsLegendPanel");
             this.SectorsLegendPanel.Name = "SectorsLegendPanel";
             // 
-            // label14
+            // SectorsLegendPanelIgnoredLabel
             // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.BackColor = System.Drawing.Color.DarkGray;
-            this.label14.Name = "label14";
+            resources.ApplyResources(this.SectorsLegendPanelIgnoredLabel, "SectorsLegendPanelIgnoredLabel");
+            this.SectorsLegendPanelIgnoredLabel.BackColor = System.Drawing.Color.DarkGray;
+            this.SectorsLegendPanelIgnoredLabel.Name = "SectorsLegendPanelIgnoredLabel";
             // 
-            // label7
+            // SectorsLegendPanelBaseLabel
             // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.label7.Name = "label7";
+            resources.ApplyResources(this.SectorsLegendPanelBaseLabel, "SectorsLegendPanelBaseLabel");
+            this.SectorsLegendPanelBaseLabel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.SectorsLegendPanelBaseLabel.Name = "SectorsLegendPanelBaseLabel";
             // 
-            // label6
+            // SectorsLegendPanelRightLabel
             // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.BackColor = System.Drawing.Color.LightCoral;
-            this.label6.Name = "label6";
+            resources.ApplyResources(this.SectorsLegendPanelRightLabel, "SectorsLegendPanelRightLabel");
+            this.SectorsLegendPanelRightLabel.BackColor = System.Drawing.Color.LightCoral;
+            this.SectorsLegendPanelRightLabel.Name = "SectorsLegendPanelRightLabel";
             // 
-            // label5
+            // SectorsLegendPanelRightMiddleLabel
             // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.BackColor = System.Drawing.Color.Orchid;
-            this.label5.Name = "label5";
+            resources.ApplyResources(this.SectorsLegendPanelRightMiddleLabel, "SectorsLegendPanelRightMiddleLabel");
+            this.SectorsLegendPanelRightMiddleLabel.BackColor = System.Drawing.Color.Orchid;
+            this.SectorsLegendPanelRightMiddleLabel.Name = "SectorsLegendPanelRightMiddleLabel";
             // 
-            // label4
+            // SectorsLegendPanelLeftMiddleLabel
             // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.BackColor = System.Drawing.Color.SkyBlue;
-            this.label4.Name = "label4";
+            resources.ApplyResources(this.SectorsLegendPanelLeftMiddleLabel, "SectorsLegendPanelLeftMiddleLabel");
+            this.SectorsLegendPanelLeftMiddleLabel.BackColor = System.Drawing.Color.SkyBlue;
+            this.SectorsLegendPanelLeftMiddleLabel.Name = "SectorsLegendPanelLeftMiddleLabel";
             // 
-            // label3
+            // SectorsLegendPanelLeftLabel
             // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.BackColor = System.Drawing.Color.LightGreen;
-            this.label3.Name = "label3";
+            resources.ApplyResources(this.SectorsLegendPanelLeftLabel, "SectorsLegendPanelLeftLabel");
+            this.SectorsLegendPanelLeftLabel.BackColor = System.Drawing.Color.LightGreen;
+            this.SectorsLegendPanelLeftLabel.Name = "SectorsLegendPanelLeftLabel";
             // 
             // label2
             // 
@@ -293,51 +293,51 @@
             // 
             // BuildingDataLegendPanel
             // 
-            resources.ApplyResources(this.BuildingDataLegendPanel, "BuildingDataLegendPanel");
-            this.BuildingDataLegendPanel.Controls.Add(this.label15);
-            this.BuildingDataLegendPanel.Controls.Add(this.label11);
-            this.BuildingDataLegendPanel.Controls.Add(this.label8);
-            this.BuildingDataLegendPanel.Controls.Add(this.label9);
-            this.BuildingDataLegendPanel.Controls.Add(this.label10);
-            this.BuildingDataLegendPanel.Controls.Add(this.label12);
+            this.BuildingDataLegendPanel.Controls.Add(this.BuildingDataLegendPanelUserHeightLabel);
+            this.BuildingDataLegendPanel.Controls.Add(this.BuildingDataLegendPanelIgnoredLabel);
+            this.BuildingDataLegendPanel.Controls.Add(this.BuildingDataLegendPanelBaseLabel);
+            this.BuildingDataLegendPanel.Controls.Add(this.BuildingDataLegendPanelDefaultHeightLabel);
+            this.BuildingDataLegendPanel.Controls.Add(this.BuildingDataLegendPanelBuildingFloorsLabel);
+            this.BuildingDataLegendPanel.Controls.Add(this.BuildingDataLegendPanelHeightLabel);
             this.BuildingDataLegendPanel.Controls.Add(this.label13);
+            resources.ApplyResources(this.BuildingDataLegendPanel, "BuildingDataLegendPanel");
             this.BuildingDataLegendPanel.Name = "BuildingDataLegendPanel";
             // 
-            // label15
+            // BuildingDataLegendPanelUserHeightLabel
             // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.BackColor = System.Drawing.Color.Khaki;
-            this.label15.Name = "label15";
+            resources.ApplyResources(this.BuildingDataLegendPanelUserHeightLabel, "BuildingDataLegendPanelUserHeightLabel");
+            this.BuildingDataLegendPanelUserHeightLabel.BackColor = System.Drawing.Color.Khaki;
+            this.BuildingDataLegendPanelUserHeightLabel.Name = "BuildingDataLegendPanelUserHeightLabel";
             // 
-            // label11
+            // BuildingDataLegendPanelIgnoredLabel
             // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.BackColor = System.Drawing.Color.DarkGray;
-            this.label11.Name = "label11";
+            resources.ApplyResources(this.BuildingDataLegendPanelIgnoredLabel, "BuildingDataLegendPanelIgnoredLabel");
+            this.BuildingDataLegendPanelIgnoredLabel.BackColor = System.Drawing.Color.DarkGray;
+            this.BuildingDataLegendPanelIgnoredLabel.Name = "BuildingDataLegendPanelIgnoredLabel";
             // 
-            // label8
+            // BuildingDataLegendPanelBaseLabel
             // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.label8.Name = "label8";
+            resources.ApplyResources(this.BuildingDataLegendPanelBaseLabel, "BuildingDataLegendPanelBaseLabel");
+            this.BuildingDataLegendPanelBaseLabel.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.BuildingDataLegendPanelBaseLabel.Name = "BuildingDataLegendPanelBaseLabel";
             // 
-            // label9
+            // BuildingDataLegendPanelDefaultHeightLabel
             // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.BackColor = System.Drawing.Color.LightCoral;
-            this.label9.Name = "label9";
+            resources.ApplyResources(this.BuildingDataLegendPanelDefaultHeightLabel, "BuildingDataLegendPanelDefaultHeightLabel");
+            this.BuildingDataLegendPanelDefaultHeightLabel.BackColor = System.Drawing.Color.LightCoral;
+            this.BuildingDataLegendPanelDefaultHeightLabel.Name = "BuildingDataLegendPanelDefaultHeightLabel";
             // 
-            // label10
+            // BuildingDataLegendPanelBuildingFloorsLabel
             // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.BackColor = System.Drawing.Color.SandyBrown;
-            this.label10.Name = "label10";
+            resources.ApplyResources(this.BuildingDataLegendPanelBuildingFloorsLabel, "BuildingDataLegendPanelBuildingFloorsLabel");
+            this.BuildingDataLegendPanelBuildingFloorsLabel.BackColor = System.Drawing.Color.SandyBrown;
+            this.BuildingDataLegendPanelBuildingFloorsLabel.Name = "BuildingDataLegendPanelBuildingFloorsLabel";
             // 
-            // label12
+            // BuildingDataLegendPanelHeightLabel
             // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.BackColor = System.Drawing.Color.LightGreen;
-            this.label12.Name = "label12";
+            resources.ApplyResources(this.BuildingDataLegendPanelHeightLabel, "BuildingDataLegendPanelHeightLabel");
+            this.BuildingDataLegendPanelHeightLabel.BackColor = System.Drawing.Color.LightGreen;
+            this.BuildingDataLegendPanelHeightLabel.Name = "BuildingDataLegendPanelHeightLabel";
             // 
             // label13
             // 
@@ -483,21 +483,21 @@
         private System.Windows.Forms.Label ColorBuildingsByLabel;
         private System.Windows.Forms.RadioButton DirectionRadioButton;
         private System.Windows.Forms.Panel SectorsLegendPanel;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label SectorsLegendPanelBaseLabel;
+        private System.Windows.Forms.Label SectorsLegendPanelRightLabel;
+        private System.Windows.Forms.Label SectorsLegendPanelRightMiddleLabel;
+        private System.Windows.Forms.Label SectorsLegendPanelLeftMiddleLabel;
+        private System.Windows.Forms.Label SectorsLegendPanelLeftLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel BuildingDataLegendPanel;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label BuildingDataLegendPanelBaseLabel;
+        private System.Windows.Forms.Label BuildingDataLegendPanelDefaultHeightLabel;
+        private System.Windows.Forms.Label BuildingDataLegendPanelBuildingFloorsLabel;
+        private System.Windows.Forms.Label BuildingDataLegendPanelHeightLabel;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox SectorsCheckBox;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label BuildingDataLegendPanelIgnoredLabel;
+        private System.Windows.Forms.Label SectorsLegendPanelIgnoredLabel;
         private System.Windows.Forms.Label FacadeDirectionDescriptionLabel;
         private System.Windows.Forms.Label FacadeDirectionLabel;
         private System.Windows.Forms.TextBox DefaultBuildingFloorHeightTextBox;
@@ -505,7 +505,7 @@
         private System.Windows.Forms.Button ManualSelectionButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label SelectionModeLabel;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label BuildingDataLegendPanelUserHeightLabel;
         private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.Button AdjustDefaultBuildingHeightButton;
     }
