@@ -137,7 +137,7 @@ namespace WindowsFormsApp2
                 Map.Zoom = 19;
                 MaskButton.Enabled = false;
 
-                await ScanBuildings(Map.Position, 200, Client);
+                await ScanBuildings(Map.Position, 100, Client);
                 Map.Refresh();
 
                 MessageBox.Show("Le marqueur est positionné au centre ou à proximité de l'immeuble recherché." +
