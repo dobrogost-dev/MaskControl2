@@ -444,8 +444,8 @@
             this.Controls.Add(this.LatitudeTextBox);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.Map);
-            this.Controls.Add(this.SectorsLegendPanel);
             this.Controls.Add(this.BuildingDataLegendPanel);
+            this.Controls.Add(this.SectorsLegendPanel);
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.SectorsLegendPanel.ResumeLayout(false);

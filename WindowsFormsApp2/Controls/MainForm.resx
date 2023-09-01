@@ -701,6 +701,111 @@
   <data name="&gt;&gt;DirectionRadioButton.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="&gt;&gt;SectorsLegendPanelIgnoredLabel.Name" xml:space="preserve">
+    <value>SectorsLegendPanelIgnoredLabel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelIgnoredLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelIgnoredLabel.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelIgnoredLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelBaseLabel.Name" xml:space="preserve">
+    <value>SectorsLegendPanelBaseLabel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelBaseLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelBaseLabel.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelBaseLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelRightLabel.Name" xml:space="preserve">
+    <value>SectorsLegendPanelRightLabel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelRightLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelRightLabel.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelRightLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelRightMiddleLabel.Name" xml:space="preserve">
+    <value>SectorsLegendPanelRightMiddleLabel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelRightMiddleLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelRightMiddleLabel.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelRightMiddleLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelLeftMiddleLabel.Name" xml:space="preserve">
+    <value>SectorsLegendPanelLeftMiddleLabel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelLeftMiddleLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelLeftMiddleLabel.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelLeftMiddleLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelLeftLabel.Name" xml:space="preserve">
+    <value>SectorsLegendPanelLeftLabel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelLeftLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelLeftLabel.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanelLeftLabel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>729, 468</value>
+  </data>
+  <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 134</value>
+  </data>
+  <data name="SectorsLegendPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanel.Name" xml:space="preserve">
+    <value>SectorsLegendPanel</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;SectorsLegendPanel.ZOrder" xml:space="preserve">
+    <value>35</value>
+  </data>
   <data name="SectorsLegendPanelIgnoredLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -890,27 +995,6 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="SectorsLegendPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>729, 468</value>
-  </data>
-  <data name="SectorsLegendPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 134</value>
-  </data>
-  <data name="SectorsLegendPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
-  </data>
-  <data name="&gt;&gt;SectorsLegendPanel.Name" xml:space="preserve">
-    <value>SectorsLegendPanel</value>
-  </data>
-  <data name="&gt;&gt;SectorsLegendPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;SectorsLegendPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;SectorsLegendPanel.ZOrder" xml:space="preserve">
-    <value>34</value>
-  </data>
   <data name="&gt;&gt;BuildingDataLegendPanelUserHeightLabel.Name" xml:space="preserve">
     <value>BuildingDataLegendPanelUserHeightLabel</value>
   </data>
@@ -1014,7 +1098,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;BuildingDataLegendPanel.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>34</value>
   </data>
   <data name="BuildingDataLegendPanelUserHeightLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

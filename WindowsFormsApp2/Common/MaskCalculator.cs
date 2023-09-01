@@ -57,6 +57,27 @@ namespace WindowsFormsApp2
 
             Initialized = true;
         }
+        public void LoadRawData(OSMdata Data)
+        {
+            if (Buildings == null)
+            {
+                Buildings = new List<Building>();
+            }
+            if (Nodes == null)
+            {
+                Nodes = new List<Node>();
+            }
+
+            if (Data.elements.Length == 0)
+            {
+                return;
+            }
+
+            LoadElements(Data);
+            RemoveBaseBuilding();
+
+            Initialized = true;
+        }
         private void RemoveBaseBuilding()
         {
             Buildings.RemoveAll(b => b.id == BaseBuilding.id);

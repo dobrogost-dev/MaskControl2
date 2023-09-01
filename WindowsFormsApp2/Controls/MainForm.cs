@@ -137,6 +137,7 @@ namespace WindowsFormsApp2
                 Map.Zoom = 19;
                 MaskButton.Enabled = false;
 
+                await ScanBuildings(Map.Position, 200, Client);
                 Map.Refresh();
 
                 MessageBox.Show("Le marqueur est positionné au centre ou à proximité de l'immeuble recherché." +
@@ -261,6 +262,20 @@ namespace WindowsFormsApp2
 
             MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
             MapPainterInstance.DrawSectors(SemicircleOverlay, LinesOverlay, Radius);
+            Map.Refresh();
+        }
+        private async Task ScanBuildings(PointLatLng Point, double ScanRadius, HttpClient Client)
+        {
+            double Radius = ScanRadius;
+            string BaseLatitude = Point.Lat.ToString(CultureInfo.InvariantCulture);
+            string BaseLongitude = Point.Lng.ToString(CultureInfo.InvariantCulture);
+
+            string ApiUrl = $"https://overpass-api.de/api/interpreter?data=[out:json];way[\"building\"](around:{Radius},{BaseLatitude},{BaseLongitude});(._;>;);out;";
+            OSMdata apiResponse = await GetOSMApiResponse(ApiUrl, Client);
+
+            MaskCalculatorInstance.LoadRawData(apiResponse);
+
+            MapPainterInstance.DrawBuildings(PolygonsOverlay, DirectionRadioButton.Checked);
             Map.Refresh();
         }
 
